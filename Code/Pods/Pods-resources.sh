@@ -42,6 +42,10 @@ install_resource()
   esac
 }
 install_resource "Facebook-iOS-SDK/src/FBUserSettingsViewResources.bundle"
+install_resource "IDMPhotoBrowser/Classes/IDMPhotoBrowser.bundle"
+install_resource "IDMPhotoBrowser/Classes/IDMPBLocalizations.bundle"
+install_resource "SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle"
+install_resource "iRate/iRate/iRate.bundle"
 
 rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 if [[ "${ACTION}" == "install" ]]; then

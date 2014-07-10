@@ -20,11 +20,14 @@
 		06DCBCF4196EE40600E8C9B2 /* PGCamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBCF3196EE40600E8C9B2 /* PGCamViewController.m */; };
 		06DCBCF7196EE41800E8C9B2 /* AVCamPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBCF6196EE41800E8C9B2 /* AVCamPreviewView.m */; };
 		06DCBCFA196EE8EB00E8C9B2 /* PGPingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBCF9196EE8EB00E8C9B2 /* PGPingViewController.m */; };
-		06DCBCFF196EFE5200E8C9B2 /* PGSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBCFE196EFE5200E8C9B2 /* PGSettingsViewController.m */; };
 		06DCBD03196F063400E8C9B2 /* PGFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBD02196F063400E8C9B2 /* PGFeedViewController.m */; };
 		06DCBD06196F07C500E8C9B2 /* PGFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBD05196F07C500E8C9B2 /* PGFeedTableViewCell.m */; };
 		06DCBD09196F2A5900E8C9B2 /* UIViewController+Transitions.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBD08196F2A5900E8C9B2 /* UIViewController+Transitions.m */; };
 		06DCBD0C196F2E0500E8C9B2 /* UIView+Animate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBD0B196F2E0500E8C9B2 /* UIView+Animate.m */; };
+		06DCBD12196F404C00E8C9B2 /* SettingsShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06DCBD0D196F404C00E8C9B2 /* SettingsShareView.xib */; };
+		06DCBD13196F404C00E8C9B2 /* PGSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBD0F196F404C00E8C9B2 /* PGSettingsViewController.m */; };
+		06DCBD14196F404C00E8C9B2 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBD11196F404C00E8C9B2 /* WebViewController.m */; };
+		06DCBD17196F421400E8C9B2 /* UIDevice-Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBD16196F421400E8C9B2 /* UIDevice-Hardware.m */; };
 		B4D0781A6E87400B8846C0E9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 44403505DE314A23B874DE7D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -53,8 +56,6 @@
 		06DCBCF6196EE41800E8C9B2 /* AVCamPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCamPreviewView.m; sourceTree = "<group>"; };
 		06DCBCF8196EE8EB00E8C9B2 /* PGPingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPingViewController.h; sourceTree = "<group>"; };
 		06DCBCF9196EE8EB00E8C9B2 /* PGPingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPingViewController.m; sourceTree = "<group>"; };
-		06DCBCFD196EFE5200E8C9B2 /* PGSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSettingsViewController.h; sourceTree = "<group>"; };
-		06DCBCFE196EFE5200E8C9B2 /* PGSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSettingsViewController.m; sourceTree = "<group>"; };
 		06DCBD01196F063400E8C9B2 /* PGFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGFeedViewController.h; sourceTree = "<group>"; };
 		06DCBD02196F063400E8C9B2 /* PGFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGFeedViewController.m; sourceTree = "<group>"; };
 		06DCBD04196F07C500E8C9B2 /* PGFeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGFeedTableViewCell.h; sourceTree = "<group>"; };
@@ -63,6 +64,13 @@
 		06DCBD08196F2A5900E8C9B2 /* UIViewController+Transitions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Transitions.m"; sourceTree = "<group>"; };
 		06DCBD0A196F2E0400E8C9B2 /* UIView+Animate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Animate.h"; sourceTree = "<group>"; };
 		06DCBD0B196F2E0500E8C9B2 /* UIView+Animate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Animate.m"; sourceTree = "<group>"; };
+		06DCBD0D196F404C00E8C9B2 /* SettingsShareView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsShareView.xib; sourceTree = "<group>"; };
+		06DCBD0E196F404C00E8C9B2 /* PGSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSettingsViewController.h; sourceTree = "<group>"; };
+		06DCBD0F196F404C00E8C9B2 /* PGSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSettingsViewController.m; sourceTree = "<group>"; };
+		06DCBD10196F404C00E8C9B2 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		06DCBD11196F404C00E8C9B2 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		06DCBD15196F421400E8C9B2 /* UIDevice-Hardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice-Hardware.h"; sourceTree = "<group>"; };
+		06DCBD16196F421400E8C9B2 /* UIDevice-Hardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice-Hardware.m"; sourceTree = "<group>"; };
 		44403505DE314A23B874DE7D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3EC4F2809A54D8D8F1E8EBE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,10 +123,8 @@
 		06DCBCBF196E2AFF00E8C9B2 /* Ping */ = {
 			isa = PBXGroup;
 			children = (
-				06DCBD07196F2A5900E8C9B2 /* UIViewController+Transitions.h */,
-				06DCBD08196F2A5900E8C9B2 /* UIViewController+Transitions.m */,
-				06DCBD0A196F2E0400E8C9B2 /* UIView+Animate.h */,
-				06DCBD0B196F2E0500E8C9B2 /* UIView+Animate.m */,
+				06DCBD18196F42E800E8C9B2 /* Utilities */,
+				06DCBD19196F42F500E8C9B2 /* Animations */,
 				06DCBCC8196E2AFF00E8C9B2 /* PGAppDelegate.h */,
 				06DCBCC9196E2AFF00E8C9B2 /* PGAppDelegate.m */,
 				06DCBCCB196E2AFF00E8C9B2 /* Main.storyboard */,
@@ -174,10 +180,33 @@
 		06DCBD00196F060F00E8C9B2 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				06DCBCFD196EFE5200E8C9B2 /* PGSettingsViewController.h */,
-				06DCBCFE196EFE5200E8C9B2 /* PGSettingsViewController.m */,
+				06DCBD0D196F404C00E8C9B2 /* SettingsShareView.xib */,
+				06DCBD0E196F404C00E8C9B2 /* PGSettingsViewController.h */,
+				06DCBD0F196F404C00E8C9B2 /* PGSettingsViewController.m */,
+				06DCBD10196F404C00E8C9B2 /* WebViewController.h */,
+				06DCBD11196F404C00E8C9B2 /* WebViewController.m */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		06DCBD18196F42E800E8C9B2 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				06DCBD15196F421400E8C9B2 /* UIDevice-Hardware.h */,
+				06DCBD16196F421400E8C9B2 /* UIDevice-Hardware.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		06DCBD19196F42F500E8C9B2 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				06DCBD07196F2A5900E8C9B2 /* UIViewController+Transitions.h */,
+				06DCBD08196F2A5900E8C9B2 /* UIViewController+Transitions.m */,
+				06DCBD0A196F2E0400E8C9B2 /* UIView+Animate.h */,
+				06DCBD0B196F2E0500E8C9B2 /* UIView+Animate.m */,
+			);
+			name = Animations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06DCBCD2196E2AFF00E8C9B2 /* Images.xcassets in Resources */,
+				06DCBD12196F404C00E8C9B2 /* SettingsShareView.xib in Resources */,
 				06DCBCC4196E2AFF00E8C9B2 /* InfoPlist.strings in Resources */,
 				06DCBCCD196E2AFF00E8C9B2 /* Main.storyboard in Resources */,
 			);
@@ -287,10 +317,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				06DCBCFA196EE8EB00E8C9B2 /* PGPingViewController.m in Sources */,
+				06DCBD14196F404C00E8C9B2 /* WebViewController.m in Sources */,
 				06DCBCF4196EE40600E8C9B2 /* PGCamViewController.m in Sources */,
 				06DCBCF1196EDDFA00E8C9B2 /* PGMainViewController.m in Sources */,
 				06DCBCF7196EE41800E8C9B2 /* AVCamPreviewView.m in Sources */,
-				06DCBCFF196EFE5200E8C9B2 /* PGSettingsViewController.m in Sources */,
 				06DCBD09196F2A5900E8C9B2 /* UIViewController+Transitions.m in Sources */,
 				06DCBD0C196F2E0500E8C9B2 /* UIView+Animate.m in Sources */,
 				06DCBD03196F063400E8C9B2 /* PGFeedViewController.m in Sources */,
@@ -298,6 +328,8 @@
 				06DCBCC6196E2AFF00E8C9B2 /* main.m in Sources */,
 				06DCBCD0196E2AFF00E8C9B2 /* PGLoginViewController.m in Sources */,
 				06DCBCCA196E2AFF00E8C9B2 /* PGAppDelegate.m in Sources */,
+				06DCBD13196F404C00E8C9B2 /* PGSettingsViewController.m in Sources */,
+				06DCBD17196F421400E8C9B2 /* UIDevice-Hardware.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

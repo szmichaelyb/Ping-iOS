@@ -18,26 +18,42 @@ PODS:
   - AFNetworking/UIKit (2.2.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - APParallaxHeader (0.1.3)
   - Bolts (1.1.0)
+  - DACircularProgress (2.2.0)
   - Facebook-iOS-SDK (3.15.1):
     - Bolts
+  - IDMPhotoBrowser (1.3.5):
+    - AFNetworking (~> 2.2.3)
+    - DACircularProgress (~> 2.2)
+    - SVProgressHUD (~> 1.0)
+  - iRate (1.9.3)
   - Parse (1.2.19):
     - Facebook-iOS-SDK (~> 3.11)
   - pop (1.0.6)
   - STZPullToRefresh (0.0.1)
+  - SVProgressHUD (1.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.2.3)
+  - APParallaxHeader (~> 0.1.3)
+  - IDMPhotoBrowser (~> 1.3.5)
+  - iRate (~> 1.9.3)
   - Parse (~> 1.2.9)
   - pop (~> 1.0.4)
   - STZPullToRefresh (~> 0.0.1)
 
 SPEC CHECKSUMS:
   AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
+  APParallaxHeader: 266806ff19b9ed3fa9d75b3678fb0b031cb14cbe
   Bolts: 91c2af8eae1d44e1dd75946a5b0ae04a43ea43e4
+  DACircularProgress: 3b41941891a56dc6aa17971f5322a9a38a6f446e
   Facebook-iOS-SDK: 56214af8e0ef16e751eb2804250326b709e571b8
+  IDMPhotoBrowser: d691bcdf470553e165f8eb982c5cd8e9a58bcdef
+  iRate: 34b63a5e9dabcd26a5cf573d872ebb366802d63d
   Parse: ffebaecaddd32cb52671010f81567c298ff93d04
   pop: e518794da38942c05255eb64b36d894e70cb4f00
   STZPullToRefresh: 1dc4ff1654b0a0384bc53e995eace3a782b5abf7
+  SVProgressHUD: 5034c6e22b8c2ca3e09402e48d41ed0340aa1c50
 
 COCOAPODS: 0.33.1

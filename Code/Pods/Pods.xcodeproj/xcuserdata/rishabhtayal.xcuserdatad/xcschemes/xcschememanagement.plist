@@ -9,12 +9,27 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-APParallaxHeader.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Bolts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-DACircularProgress.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Facebook-iOS-SDK.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-IDMPhotoBrowser.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -25,6 +40,16 @@
 			<false/>
 		</dict>
 		<key>Pods-STZPullToRefresh.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-SVProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-iRate.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -42,37 +67,62 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0B9F090CC8254C03B23B0FD6</key>
+		<key>1D6639B213C84EC5A5B0B199</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>44EFEEC8DEE3415D9821B080</key>
+		<key>1F3EB0F079BE4FC2990CF375</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>65CED4DABAB54F3D8262FA4E</key>
+		<key>265BE3C093C549B3A41D6928</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9BFDA785E20545DE9178A9C1</key>
+		<key>2C905A841B12452DB677B576</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B0734C26AEF84E16B9EF7527</key>
+		<key>33204364BB464BA1A0D8CC17</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CDF0C0636A284C91B324EA56</key>
+		<key>4D065E881A0E4998B646B2D2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D718D98C74984984BC007A92</key>
+		<key>8F6A2653C7AA432385487CF5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>984030D92C3A4D81BF35EA94</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>98D4DD12D806440ABD6A0273</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A16D8EA4725545F695AD574B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BE2753BFC47840EF878D5637</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DE967FBE1EA44744ACB72B06</key>
 		<dict>
 			<key>primary</key>
 			<true/>
