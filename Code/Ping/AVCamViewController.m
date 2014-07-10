@@ -14,6 +14,7 @@
 #import "AVCamPreviewView.h"
 
 #import "PGPingViewController.h"
+#import <pop/POP.h>
 
 static void * CapturingStillImageContext = &CapturingStillImageContext;
 //static void * RecordingContext = &RecordingContext;
@@ -141,11 +142,6 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 			[self setStillImageOutput:stillImageOutput];
 		}
 	});
-    
-    self.cameraButton.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.cameraButton.layer.borderWidth = 2;
-    self.cameraButton.layer.cornerRadius = self.cameraButton.bounds.size.width/2;
-    self.cameraButton.layer.masksToBounds = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -350,6 +346,8 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 
 - (IBAction)snapStillImage:(id)sender
 {
+    [self animateButton:sender];
+    
 	dispatch_async([self sessionQueue], ^{
 		// Update the orientation on the still image output video connection before capturing.
 		[[[self stillImageOutput] connectionWithMediaType:AVMediaTypeVideo] setVideoOrientation:[[(AVCaptureVideoPreviewLayer *)[[self previewView] layer] connection] videoOrientation]];
@@ -510,6 +508,30 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 			});
 		}
 	}];
+}
+
+-(void)animateButton:(UIButton*)sender
+{
+    CALayer *layer = sender.layer;
+    
+    // First let's remove any existing animations
+    [layer pop_removeAllAnimations];
+    POPSpringAnimation  *anim1 = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerSize];
+    POPSpringAnimation *anim2 = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerSize];
+    
+    anim1.toValue = [NSValue valueWithCGSize:CGSizeMake(sender.frame.size.width, sender.frame.size.height)];
+    anim1.springBounciness = 20;
+    anim1.springSpeed = 16;
+    
+    anim2.toValue = [NSValue valueWithCGSize:CGSizeMake(sender.frame.size.width + 10, sender.frame.size.height + 10)];
+    anim2.springSpeed = 16;
+    sender.tintColor = [UIColor redColor];
+    
+    anim2.completionBlock = ^(POPAnimation *anim, BOOL finished) {
+        NSLog(@"Animation has completed.");
+        [layer pop_addAnimation:anim1 forKey:@"size"];
+    };
+    [layer pop_addAnimation:anim2 forKey:@"size"];
 }
 
 @end
