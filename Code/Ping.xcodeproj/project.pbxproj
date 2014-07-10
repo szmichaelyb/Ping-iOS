@@ -17,7 +17,7 @@
 		06DCBCD0196E2AFF00E8C9B2 /* PGLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBCCF196E2AFF00E8C9B2 /* PGLoginViewController.m */; };
 		06DCBCD2196E2AFF00E8C9B2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06DCBCD1196E2AFF00E8C9B2 /* Images.xcassets */; };
 		06DCBCF1196EDDFA00E8C9B2 /* PGMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBCF0196EDDFA00E8C9B2 /* PGMainViewController.m */; };
-		06DCBCF4196EE40600E8C9B2 /* AVCamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBCF3196EE40600E8C9B2 /* AVCamViewController.m */; };
+		06DCBCF4196EE40600E8C9B2 /* PGCamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBCF3196EE40600E8C9B2 /* PGCamViewController.m */; };
 		06DCBCF7196EE41800E8C9B2 /* AVCamPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBCF6196EE41800E8C9B2 /* AVCamPreviewView.m */; };
 		06DCBCFA196EE8EB00E8C9B2 /* PGPingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBCF9196EE8EB00E8C9B2 /* PGPingViewController.m */; };
 		06DCBCFF196EFE5200E8C9B2 /* PGSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBCFE196EFE5200E8C9B2 /* PGSettingsViewController.m */; };
@@ -45,8 +45,8 @@
 		06DCBCEE196EDD5100E8C9B2 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		06DCBCEF196EDDFA00E8C9B2 /* PGMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMainViewController.h; sourceTree = "<group>"; };
 		06DCBCF0196EDDFA00E8C9B2 /* PGMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMainViewController.m; sourceTree = "<group>"; };
-		06DCBCF2196EE40600E8C9B2 /* AVCamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCamViewController.h; sourceTree = "<group>"; };
-		06DCBCF3196EE40600E8C9B2 /* AVCamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCamViewController.m; sourceTree = "<group>"; };
+		06DCBCF2196EE40600E8C9B2 /* PGCamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGCamViewController.h; sourceTree = "<group>"; };
+		06DCBCF3196EE40600E8C9B2 /* PGCamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGCamViewController.m; sourceTree = "<group>"; };
 		06DCBCF5196EE41800E8C9B2 /* AVCamPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCamPreviewView.h; sourceTree = "<group>"; };
 		06DCBCF6196EE41800E8C9B2 /* AVCamPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCamPreviewView.m; sourceTree = "<group>"; };
 		06DCBCF8196EE8EB00E8C9B2 /* PGPingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPingViewController.h; sourceTree = "<group>"; };
@@ -142,8 +142,8 @@
 		06DCBCFB196EF61A00E8C9B2 /* Ping VC */ = {
 			isa = PBXGroup;
 			children = (
-				06DCBCF2196EE40600E8C9B2 /* AVCamViewController.h */,
-				06DCBCF3196EE40600E8C9B2 /* AVCamViewController.m */,
+				06DCBCF2196EE40600E8C9B2 /* PGCamViewController.h */,
+				06DCBCF3196EE40600E8C9B2 /* PGCamViewController.m */,
 				06DCBCF5196EE41800E8C9B2 /* AVCamPreviewView.h */,
 				06DCBCF6196EE41800E8C9B2 /* AVCamPreviewView.m */,
 				06DCBCF8196EE8EB00E8C9B2 /* PGPingViewController.h */,
@@ -277,7 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06DCBCFA196EE8EB00E8C9B2 /* PGPingViewController.m in Sources */,
-				06DCBCF4196EE40600E8C9B2 /* AVCamViewController.m in Sources */,
+				06DCBCF4196EE40600E8C9B2 /* PGCamViewController.m in Sources */,
 				06DCBCF1196EDDFA00E8C9B2 /* PGMainViewController.m in Sources */,
 				06DCBCF7196EE41800E8C9B2 /* AVCamPreviewView.m in Sources */,
 				06DCBCFF196EFE5200E8C9B2 /* PGSettingsViewController.m in Sources */,

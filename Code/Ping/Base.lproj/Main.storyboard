@@ -133,7 +133,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" id="ml9-AE-lNm"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings-off" id="ml9-AE-lNm"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gHq-wE-bNE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -142,7 +142,7 @@
         <!--Cam View Controller-->
         <scene sceneID="1iz-TW-ZzU">
             <objects>
-                <viewController restorationIdentifier="AVCamViewController" storyboardIdentifier="AVCamViewController" id="vCX-ZW-3h4" customClass="AVCamViewController" sceneMemberID="viewController">
+                <viewController restorationIdentifier="PGCamViewController" storyboardIdentifier="PGCamViewController" id="vCX-ZW-3h4" customClass="PGCamViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QAW-2X-S4O">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -261,6 +261,7 @@
     </scenes>
     <resources>
         <image name="CaptureButton-Normal" width="66" height="66"/>
+        <image name="settings-off" width="23" height="23"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

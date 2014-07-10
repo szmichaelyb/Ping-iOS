@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Appikon Mobile. All rights reserved.
 //
 
-#import "AVCamViewController.h"
+#import "PGCamViewController.h"
 
 #import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
@@ -20,7 +20,7 @@ static void * CapturingStillImageContext = &CapturingStillImageContext;
 //static void * RecordingContext = &RecordingContext;
 static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDeviceAuthorizedContext;
 
-@interface AVCamViewController () <AVCaptureFileOutputRecordingDelegate>
+@interface PGCamViewController () <AVCaptureFileOutputRecordingDelegate>
 
 // For use in the storyboards.
 @property (nonatomic, weak) IBOutlet AVCamPreviewView *previewView;
@@ -49,7 +49,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 
 @end
 
-@implementation AVCamViewController
+@implementation PGCamViewController
 
 - (BOOL)isSessionRunningAndDeviceAuthorized
 {
@@ -89,7 +89,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 		
 		NSError *error = nil;
 		
-		AVCaptureDevice *videoDevice = [AVCamViewController deviceWithMediaType:AVMediaTypeVideo preferringPosition:AVCaptureDevicePositionBack];
+		AVCaptureDevice *videoDevice = [PGCamViewController deviceWithMediaType:AVMediaTypeVideo preferringPosition:AVCaptureDevicePositionBack];
 		AVCaptureDeviceInput *videoDeviceInput = [AVCaptureDeviceInput deviceInputWithDevice:videoDevice error:&error];
         
 		if (error)
@@ -152,9 +152,9 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
         //		[self addObserver:self forKeyPath:@"movieFileOutput.recording" options:(NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew) context:RecordingContext];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(subjectAreaDidChange:) name:AVCaptureDeviceSubjectAreaDidChangeNotification object:[[self videoDeviceInput] device]];
 		
-		__weak AVCamViewController *weakSelf = self;
+		__weak PGCamViewController *weakSelf = self;
 		[self setRuntimeErrorHandlingObserver:[[NSNotificationCenter defaultCenter] addObserverForName:AVCaptureSessionRuntimeErrorNotification object:[self session] queue:nil usingBlock:^(NSNotification *note) {
-			AVCamViewController *strongSelf = weakSelf;
+			PGCamViewController *strongSelf = weakSelf;
 			dispatch_async([strongSelf sessionQueue], ^{
 				// Manually restarting the session since it must have been stopped due to an error.
 				[[strongSelf session] startRunning];
@@ -313,7 +313,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 				break;
 		}
 		
-		AVCaptureDevice *videoDevice = [AVCamViewController deviceWithMediaType:AVMediaTypeVideo preferringPosition:preferredPosition];
+		AVCaptureDevice *videoDevice = [PGCamViewController deviceWithMediaType:AVMediaTypeVideo preferringPosition:preferredPosition];
 		AVCaptureDeviceInput *videoDeviceInput = [AVCaptureDeviceInput deviceInputWithDevice:videoDevice error:nil];
 		
 		[[self session] beginConfiguration];
@@ -323,7 +323,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 		{
             //			[[NSNotificationCenter defaultCenter] removeObserver:self name:AVCaptureDeviceSubjectAreaDidChangeNotification object:currentVideoDevice];
 			
-			[AVCamViewController setFlashMode:AVCaptureFlashModeAuto forDevice:videoDevice];
+			[PGCamViewController setFlashMode:AVCaptureFlashModeAuto forDevice:videoDevice];
 			[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(subjectAreaDidChange:) name:AVCaptureDeviceSubjectAreaDidChangeNotification object:videoDevice];
 			
 			[[self session] addInput:videoDeviceInput];
@@ -353,7 +353,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 		[[[self stillImageOutput] connectionWithMediaType:AVMediaTypeVideo] setVideoOrientation:[[(AVCaptureVideoPreviewLayer *)[[self previewView] layer] connection] videoOrientation]];
 		
 		// Flash set to Auto for Still Capture
-		[AVCamViewController setFlashMode:AVCaptureFlashModeAuto forDevice:[[self videoDeviceInput] device]];
+		[PGCamViewController setFlashMode:AVCaptureFlashModeAuto forDevice:[[self videoDeviceInput] device]];
 		
 		// Capture a still image.
 		[[self stillImageOutput] captureStillImageAsynchronouslyFromConnection:[[self stillImageOutput] connectionWithMediaType:AVMediaTypeVideo] completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
