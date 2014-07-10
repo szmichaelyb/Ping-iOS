@@ -8,8 +8,12 @@
 
 #import "PGFeedViewController.h"
 #import "PGFeedTableViewCell.h"
+#import <pop/POP.h>
 
 @interface PGFeedViewController ()
+{
+    CGRect originalFrame;
+}
 
 @property (strong, nonatomic) IBOutlet UITableView* tableView;
 
@@ -55,7 +59,7 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSLog(@"%@", objects);
         [self.pullToRefresh finishRefresh];
-
+        
         _datasource = [NSMutableArray arrayWithArray:objects];
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
     }];
@@ -97,6 +101,63 @@
     cell.captionLabel.text = _datasource[indexPath.row][@"caption"];
     PFUser* senderUser = _datasource[indexPath.row][@"owner"];
     cell.senderLabel.text = senderUser[kPFUser_Name];
+    
+    cell.iv.userInteractionEnabled = YES;
+    cell.iv.tag = indexPath.row;
+    UITapGestureRecognizer* gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(performFullScreenAnimation:)];
+    [cell.iv addGestureRecognizer:gesture];
 }
 
+-(void)performFullScreenAnimation:(UITapGestureRecognizer*)sender
+{
+    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:sender.view.tag inSection:0];
+    
+    PGFeedTableViewCell* cell = (PGFeedTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+    UIImageView* iv = cell.iv;
+    
+    UIImageView* ivExpand = [[UIImageView alloc] initWithImage:iv.image];
+    ivExpand.contentMode = iv.contentMode;
+    ivExpand.frame = [self.view convertRect:iv.frame fromView:iv.superview];
+    ivExpand.userInteractionEnabled = YES;
+    ivExpand.clipsToBounds = YES;
+    
+    originalFrame = ivExpand.frame;
+    
+    [self.navigationController.view addSubview:ivExpand];
+    self.tabBarController.tabBar.hidden = YES;
+    
+    UITapGestureRecognizer* tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeFullScreen:)];
+    [ivExpand addGestureRecognizer:tgr];
+    
+    [self animateView:ivExpand toFrame:self.view.bounds completion:nil];
+}
+
+-(void)removeFullScreen:(UITapGestureRecognizer*)tgr
+{
+    CGRect frame = originalFrame;
+    self.tabBarController.tabBar.hidden = NO;
+    
+    [self animateView:tgr.view toFrame:frame completion:^(POPAnimation *anim, bool finished) {
+        [tgr.view removeFromSuperview];
+    }];
+}
+
+-(void)animateView:(UIView*)view toFrame:(CGRect)frame completion:(void (^)(POPAnimation* anim, bool finished))completion
+{
+    [view pop_removeAllAnimations];
+    
+    POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewFrame];
+    animation.springBounciness = 10;
+    
+    animation.toValue = [NSValue valueWithCGRect:frame];
+    
+    animation.completionBlock = ^(POPAnimation *anim, BOOL finished) {
+        NSLog(@"Animation has completed.");
+        if (completion) {
+            completion(anim, finished);
+        }
+    };
+    
+    [view pop_addAnimation:animation forKey:@"fullscreen"];
+}
 @end
