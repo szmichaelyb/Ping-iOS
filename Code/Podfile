@@ -5,3 +5,4 @@ inhibit_all_warnings!
 pod 'AFNetworking', '~> 2.2.3'
 pod 'Parse', '~> 1.2.9'
 pod 'pop', '~> 1.0.4'
+pod 'STZPullToRefresh', '~> 0.0.1'

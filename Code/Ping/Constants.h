@@ -15,6 +15,7 @@
 #define kPFUser_FBID @"fbID"
 #define kPFUser_Picture @"picture"
 #define kPFUser_Invited @"invited"
+#define kPFUser_Location @"location"
 
 //Parse Table Names
 #define kPFTableName_Selfies @"Selfies"

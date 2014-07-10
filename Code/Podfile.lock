@@ -24,11 +24,13 @@ PODS:
   - Parse (1.2.19):
     - Facebook-iOS-SDK (~> 3.11)
   - pop (1.0.6)
+  - STZPullToRefresh (0.0.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.2.3)
   - Parse (~> 1.2.9)
   - pop (~> 1.0.4)
+  - STZPullToRefresh (~> 0.0.1)
 
 SPEC CHECKSUMS:
   AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
@@ -36,5 +38,6 @@ SPEC CHECKSUMS:
   Facebook-iOS-SDK: 56214af8e0ef16e751eb2804250326b709e571b8
   Parse: ffebaecaddd32cb52671010f81567c298ff93d04
   pop: e518794da38942c05255eb64b36d894e70cb4f00
+  STZPullToRefresh: 1dc4ff1654b0a0384bc53e995eace3a782b5abf7
 
 COCOAPODS: 0.33.1

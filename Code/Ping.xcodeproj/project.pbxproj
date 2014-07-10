@@ -23,6 +23,8 @@
 		06DCBCFF196EFE5200E8C9B2 /* PGSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBCFE196EFE5200E8C9B2 /* PGSettingsViewController.m */; };
 		06DCBD03196F063400E8C9B2 /* PGFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBD02196F063400E8C9B2 /* PGFeedViewController.m */; };
 		06DCBD06196F07C500E8C9B2 /* PGFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBD05196F07C500E8C9B2 /* PGFeedTableViewCell.m */; };
+		06DCBD09196F2A5900E8C9B2 /* UIViewController+Transitions.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBD08196F2A5900E8C9B2 /* UIViewController+Transitions.m */; };
+		06DCBD0C196F2E0500E8C9B2 /* UIView+Animate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBD0B196F2E0500E8C9B2 /* UIView+Animate.m */; };
 		B4D0781A6E87400B8846C0E9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 44403505DE314A23B874DE7D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +59,10 @@
 		06DCBD02196F063400E8C9B2 /* PGFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGFeedViewController.m; sourceTree = "<group>"; };
 		06DCBD04196F07C500E8C9B2 /* PGFeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGFeedTableViewCell.h; sourceTree = "<group>"; };
 		06DCBD05196F07C500E8C9B2 /* PGFeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGFeedTableViewCell.m; sourceTree = "<group>"; };
+		06DCBD07196F2A5900E8C9B2 /* UIViewController+Transitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Transitions.h"; sourceTree = "<group>"; };
+		06DCBD08196F2A5900E8C9B2 /* UIViewController+Transitions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Transitions.m"; sourceTree = "<group>"; };
+		06DCBD0A196F2E0400E8C9B2 /* UIView+Animate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Animate.h"; sourceTree = "<group>"; };
+		06DCBD0B196F2E0500E8C9B2 /* UIView+Animate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Animate.m"; sourceTree = "<group>"; };
 		44403505DE314A23B874DE7D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3EC4F2809A54D8D8F1E8EBE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,6 +115,10 @@
 		06DCBCBF196E2AFF00E8C9B2 /* Ping */ = {
 			isa = PBXGroup;
 			children = (
+				06DCBD07196F2A5900E8C9B2 /* UIViewController+Transitions.h */,
+				06DCBD08196F2A5900E8C9B2 /* UIViewController+Transitions.m */,
+				06DCBD0A196F2E0400E8C9B2 /* UIView+Animate.h */,
+				06DCBD0B196F2E0500E8C9B2 /* UIView+Animate.m */,
 				06DCBCC8196E2AFF00E8C9B2 /* PGAppDelegate.h */,
 				06DCBCC9196E2AFF00E8C9B2 /* PGAppDelegate.m */,
 				06DCBCCB196E2AFF00E8C9B2 /* Main.storyboard */,
@@ -281,6 +291,8 @@
 				06DCBCF1196EDDFA00E8C9B2 /* PGMainViewController.m in Sources */,
 				06DCBCF7196EE41800E8C9B2 /* AVCamPreviewView.m in Sources */,
 				06DCBCFF196EFE5200E8C9B2 /* PGSettingsViewController.m in Sources */,
+				06DCBD09196F2A5900E8C9B2 /* UIViewController+Transitions.m in Sources */,
+				06DCBD0C196F2E0500E8C9B2 /* UIView+Animate.m in Sources */,
 				06DCBD03196F063400E8C9B2 /* PGFeedViewController.m in Sources */,
 				06DCBD06196F07C500E8C9B2 /* PGFeedTableViewCell.m in Sources */,
 				06DCBCC6196E2AFF00E8C9B2 /* main.m in Sources */,

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <STZPullToRefresh/STZPullToRefresh.h>
 
-@interface PGFeedViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface PGFeedViewController : UIViewController<UITableViewDataSource, STZPullToRefreshDelegate, UITableViewDelegate>
 
 @end

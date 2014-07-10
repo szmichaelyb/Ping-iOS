@@ -7,6 +7,8 @@
 //
 
 #import "PGPingViewController.h"
+#import "UIViewController+Transitions.h"
+#import "UIView+Animate.h"
 
 @interface PGPingViewController ()
 
@@ -27,11 +29,6 @@
     [super viewDidLoad];
     self.imageView.image = self.image;
     
-    self.sendButton.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.sendButton.layer.cornerRadius = self.sendButton.bounds.size.width/2;
-    self.sendButton.layer.borderWidth = 2;
-    self.sendButton.layer.masksToBounds = YES;
-    
     UITapGestureRecognizer* dismissGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     [self.view addGestureRecognizer:dismissGesture];
     // Do any additional setup after loading the view.
@@ -50,41 +47,42 @@
 
 -(IBAction)sendButtonClicked:(id)sender
 {
-    if (_captionTF.text.length == 0) {
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Enter a caption" message:nil delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-        [alert show];
-    } else {
-        PFObject* object = [PFObject objectWithClassName:kPFTableName_Selfies];
-        object[@"owner"] = [PFUser currentUser];
+    //    if (_captionTF.text.length == 0) {
+    //        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Enter a caption" message:nil delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+    //        [alert show];
+    //    } else {
+    [sender springAnimate];
+    
+    PFObject* object = [PFObject objectWithClassName:kPFTableName_Selfies];
+    object[@"owner"] = [PFUser currentUser];
+    
+    //TODO: Change it to
+    NSData* imgData = UIImageJPEGRepresentation(self.imageView.image, 0.2);
+    PFFile* imageFile = [PFFile fileWithName:@"selfie.png" data:imgData];
+    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         
-        //TODO: Change it to
-        NSData* imgData = UIImageJPEGRepresentation(self.imageView.image, 0.2);
-        PFFile* imageFile = [PFFile fileWithName:@"selfie.png" data:imgData];
-        [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        object[@"selfie"] = imageFile;
+        object[@"caption"] = _captionTF.text;
+        [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             
-            object[@"selfie"] = imageFile;
-            object[@"caption"] = _captionTF.text;
-            [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            [self findRecieverBlock:^(PFObject *recieverObj) {
                 
-                [self findRecieverBlock:^(PFObject *recieverObj) {
-                    
-                    object[@"reciever"] = recieverObj[@"owner"];
-                    [object saveEventually];
-                    
-                    [self sendPushToObject:recieverObj];
-                    
-                    PFObject* queueObject = [PFObject objectWithClassName:kPFTableQueue];
-                    queueObject[@"owner"] = [PFUser currentUser];
-                    [queueObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                        
-                    }];
+                object[@"reciever"] = recieverObj[@"owner"];
+                [object saveEventually];
+                
+                [self sendPushToObject:recieverObj];
+                
+                PFObject* queueObject = [PFObject objectWithClassName:kPFTableQueue];
+                queueObject[@"owner"] = [PFUser currentUser];
+                [queueObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     
                 }];
                 
-                [self dismissViewControllerAnimated:YES completion:nil];
             }];
         }];
-    }
+        [self dismissModalViewController];
+    }];
+    //    }
 }
 
 -(IBAction)retakeClicked:(id)sender

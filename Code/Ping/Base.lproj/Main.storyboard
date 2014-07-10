@@ -44,7 +44,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="Psz-BO-JxK" customClass="PGFeedTableViewCell">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="262"/>
+                                        <rect key="frame" x="0.0" y="86" width="320" height="262"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Psz-BO-JxK" id="AYF-tc-BzQ">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="261"/>
@@ -84,13 +84,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Feed" id="CW1-xk-tWR"/>
+                    <navigationItem key="navigationItem" id="aas-mv-cQD"/>
                     <connections>
                         <outlet property="tableView" destination="xoX-Ij-vzJ" id="dAc-9Q-Od1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QcU-dQ-ZLA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="490" y="-914"/>
+            <point key="canvasLocation" x="816" y="-923"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="vFK-1B-OXU">
@@ -103,7 +104,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BCi-wY-6i3" kind="relationship" relationship="viewControllers" id="eFZ-BJ-nfK"/>
+                        <segue destination="WPs-iE-ZTp" kind="relationship" relationship="viewControllers" id="bNb-cG-cpZ"/>
                         <segue destination="vGQ-xP-Zp9" kind="relationship" relationship="viewControllers" id="Ls9-6E-Snq"/>
                         <segue destination="Fco-Ha-oh0" kind="relationship" relationship="viewControllers" id="hU8-1b-1Cx"/>
                     </connections>
@@ -151,12 +152,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="enB-7k-rQh">
-                                        <rect key="frame" x="125" y="440" width="70" height="70"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="enB-7k-rQh">
+                                        <rect key="frame" x="127" y="442" width="66" height="66"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <state key="normal" title="Snap" backgroundImage="CaptureButton-Normal">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <state key="selected" image="CaptureButton-Normal"/>
+                                        <state key="highlighted" image="CaptureButton-Normal"/>
                                         <connections>
                                             <action selector="snapStillImage:" destination="vCX-ZW-3h4" eventType="touchUpInside" id="79s-Kp-Sm1"/>
                                         </connections>
@@ -188,6 +191,22 @@
             </objects>
             <point key="canvasLocation" x="816" y="-155"/>
         </scene>
+        <!--Navigation Controller - Feed-->
+        <scene sceneID="wfy-ms-89x">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="WPs-iE-ZTp" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Feed" id="z7h-6J-rkP"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UQp-Vh-eVz">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BCi-wY-6i3" kind="relationship" relationship="rootViewController" id="fEb-wh-Esb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7nP-eW-opr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="413" y="-923"/>
+        </scene>
         <!--Ping View Controller-->
         <scene sceneID="2SQ-zd-hWp">
             <objects>
@@ -200,12 +219,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9bi-qT-dXP">
-                                <rect key="frame" x="125" y="478" width="70" height="70"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9bi-qT-dXP">
+                                <rect key="frame" x="127" y="480" width="66" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <state key="normal" title="Send">
+                                <state key="normal" title="Send" backgroundImage="CaptureButton-Normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="selected" image="CaptureButton-Normal"/>
+                                <state key="highlighted" image="CaptureButton-Normal"/>
                                 <connections>
                                     <action selector="sendButtonClicked:" destination="Dvu-oQ-EJq" eventType="touchUpInside" id="AEQ-rq-KUl"/>
                                 </connections>

@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "65CED4DABAB54F3D8262FA4E"
-               BuildableName = "libPods-Facebook-iOS-SDK.a"
-               BlueprintName = "Pods-Facebook-iOS-SDK"
+               BlueprintIdentifier = "9BFDA785E20545DE9178A9C1"
+               BuildableName = "libPods-STZPullToRefresh.a"
+               BlueprintName = "Pods-STZPullToRefresh"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
