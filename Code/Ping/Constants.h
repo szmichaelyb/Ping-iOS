@@ -19,5 +19,6 @@
 //Parse Table Names
 #define kPFTableName_Selfies @"Selfies"
 #define kPFTableUser @"User"
+#define kPFTableQueue @"Queue"
 
 #endif

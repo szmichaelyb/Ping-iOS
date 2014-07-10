@@ -97,8 +97,10 @@
                         });
                     }
                     
-                    [[PFInstallation currentInstallation] setObject:[PFUser currentUser][kPFUser_FBID] forKey:@"owner"];
-                    [[PFInstallation currentInstallation] saveInBackground];
+                    [[PFInstallation currentInstallation] setObject:[PFUser currentUser] forKey:@"owner"];
+                    [[PFInstallation currentInstallation] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                        NSLog(@"%@", error);
+                    }];
                     //
                     //                    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:kUDKeyUserLoggedIn];
                     //                    [[NSUserDefaults standardUserDefaults] synchronize];

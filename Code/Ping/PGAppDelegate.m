@@ -14,7 +14,6 @@
 {
     [Parse setApplicationId:@"RjjejatHY8BsqER68vg48jtr9nRv0FVAfKqryjja" clientKey:@"hTwjS9Ng9azIQoOfpQ6xeYX3Ah8mesiCWGt0gz3b"];
     
-    //TODO: Change FBID in plist
     [PFFacebookUtils initializeFacebook];
     
     return YES;
@@ -31,6 +30,14 @@
 //            [GAI trackEventWithCategory:@"pf_installation" action:@"registration_error" label:error.description value:nil];
         }
     }];
+}
+
+
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    BOOL wasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication withSession:[PFFacebookUtils session]];
+    
+    return wasHandled;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -52,6 +59,8 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+    [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
+
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 

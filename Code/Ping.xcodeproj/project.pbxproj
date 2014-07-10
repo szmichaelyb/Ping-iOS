@@ -25,6 +25,9 @@
 		06DCBCF4196EE40600E8C9B2 /* AVCamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBCF3196EE40600E8C9B2 /* AVCamViewController.m */; };
 		06DCBCF7196EE41800E8C9B2 /* AVCamPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBCF6196EE41800E8C9B2 /* AVCamPreviewView.m */; };
 		06DCBCFA196EE8EB00E8C9B2 /* PGPingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBCF9196EE8EB00E8C9B2 /* PGPingViewController.m */; };
+		06DCBCFF196EFE5200E8C9B2 /* PGSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBCFE196EFE5200E8C9B2 /* PGSettingsViewController.m */; };
+		06DCBD03196F063400E8C9B2 /* PGFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBD02196F063400E8C9B2 /* PGFeedViewController.m */; };
+		06DCBD06196F07C500E8C9B2 /* PGFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBD05196F07C500E8C9B2 /* PGFeedTableViewCell.m */; };
 		B4D0781A6E87400B8846C0E9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 44403505DE314A23B874DE7D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +70,12 @@
 		06DCBCF6196EE41800E8C9B2 /* AVCamPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCamPreviewView.m; sourceTree = "<group>"; };
 		06DCBCF8196EE8EB00E8C9B2 /* PGPingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPingViewController.h; sourceTree = "<group>"; };
 		06DCBCF9196EE8EB00E8C9B2 /* PGPingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPingViewController.m; sourceTree = "<group>"; };
+		06DCBCFD196EFE5200E8C9B2 /* PGSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSettingsViewController.h; sourceTree = "<group>"; };
+		06DCBCFE196EFE5200E8C9B2 /* PGSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSettingsViewController.m; sourceTree = "<group>"; };
+		06DCBD01196F063400E8C9B2 /* PGFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGFeedViewController.h; sourceTree = "<group>"; };
+		06DCBD02196F063400E8C9B2 /* PGFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGFeedViewController.m; sourceTree = "<group>"; };
+		06DCBD04196F07C500E8C9B2 /* PGFeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGFeedTableViewCell.h; sourceTree = "<group>"; };
+		06DCBD05196F07C500E8C9B2 /* PGFeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGFeedTableViewCell.m; sourceTree = "<group>"; };
 		44403505DE314A23B874DE7D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3EC4F2809A54D8D8F1E8EBE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -134,17 +143,15 @@
 				06DCBCC8196E2AFF00E8C9B2 /* PGAppDelegate.h */,
 				06DCBCC9196E2AFF00E8C9B2 /* PGAppDelegate.m */,
 				06DCBCCB196E2AFF00E8C9B2 /* Main.storyboard */,
+				06DCBD01196F063400E8C9B2 /* PGFeedViewController.h */,
+				06DCBD02196F063400E8C9B2 /* PGFeedViewController.m */,
+				06DCBD04196F07C500E8C9B2 /* PGFeedTableViewCell.h */,
+				06DCBD05196F07C500E8C9B2 /* PGFeedTableViewCell.m */,
+				06DCBD00196F060F00E8C9B2 /* Settings */,
 				06DCBCCE196E2AFF00E8C9B2 /* PGLoginViewController.h */,
 				06DCBCCF196E2AFF00E8C9B2 /* PGLoginViewController.m */,
-				06DCBCEF196EDDFA00E8C9B2 /* PGMainViewController.h */,
-				06DCBCF0196EDDFA00E8C9B2 /* PGMainViewController.m */,
-				06DCBCF2196EE40600E8C9B2 /* AVCamViewController.h */,
-				06DCBCF3196EE40600E8C9B2 /* AVCamViewController.m */,
-				06DCBCF5196EE41800E8C9B2 /* AVCamPreviewView.h */,
-				06DCBCF6196EE41800E8C9B2 /* AVCamPreviewView.m */,
-				06DCBCF8196EE8EB00E8C9B2 /* PGPingViewController.h */,
-				06DCBCF9196EE8EB00E8C9B2 /* PGPingViewController.m */,
-				06DCBCD1196E2AFF00E8C9B2 /* Images.xcassets */,
+				06DCBCFC196EF62000E8C9B2 /* Tab */,
+				06DCBCFB196EF61A00E8C9B2 /* Ping */,
 				06DCBCC0196E2AFF00E8C9B2 /* Supporting Files */,
 			);
 			path = Ping;
@@ -153,6 +160,7 @@
 		06DCBCC0196E2AFF00E8C9B2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				06DCBCD1196E2AFF00E8C9B2 /* Images.xcassets */,
 				06DCBCC1196E2AFF00E8C9B2 /* Ping-Info.plist */,
 				06DCBCC2196E2AFF00E8C9B2 /* InfoPlist.strings */,
 				06DCBCC5196E2AFF00E8C9B2 /* main.m */,
@@ -178,6 +186,37 @@
 				06DCBCE1196E2AFF00E8C9B2 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		06DCBCFB196EF61A00E8C9B2 /* Ping */ = {
+			isa = PBXGroup;
+			children = (
+				06DCBCF2196EE40600E8C9B2 /* AVCamViewController.h */,
+				06DCBCF3196EE40600E8C9B2 /* AVCamViewController.m */,
+				06DCBCF5196EE41800E8C9B2 /* AVCamPreviewView.h */,
+				06DCBCF6196EE41800E8C9B2 /* AVCamPreviewView.m */,
+				06DCBCF8196EE8EB00E8C9B2 /* PGPingViewController.h */,
+				06DCBCF9196EE8EB00E8C9B2 /* PGPingViewController.m */,
+			);
+			name = Ping;
+			sourceTree = "<group>";
+		};
+		06DCBCFC196EF62000E8C9B2 /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				06DCBCEF196EDDFA00E8C9B2 /* PGMainViewController.h */,
+				06DCBCF0196EDDFA00E8C9B2 /* PGMainViewController.m */,
+			);
+			name = Tab;
+			sourceTree = "<group>";
+		};
+		06DCBD00196F060F00E8C9B2 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				06DCBCFD196EFE5200E8C9B2 /* PGSettingsViewController.h */,
+				06DCBCFE196EFE5200E8C9B2 /* PGSettingsViewController.m */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,6 +359,9 @@
 				06DCBCF4196EE40600E8C9B2 /* AVCamViewController.m in Sources */,
 				06DCBCF1196EDDFA00E8C9B2 /* PGMainViewController.m in Sources */,
 				06DCBCF7196EE41800E8C9B2 /* AVCamPreviewView.m in Sources */,
+				06DCBCFF196EFE5200E8C9B2 /* PGSettingsViewController.m in Sources */,
+				06DCBD03196F063400E8C9B2 /* PGFeedViewController.m in Sources */,
+				06DCBD06196F07C500E8C9B2 /* PGFeedTableViewCell.m in Sources */,
 				06DCBCC6196E2AFF00E8C9B2 /* main.m in Sources */,
 				06DCBCD0196E2AFF00E8C9B2 /* PGLoginViewController.m in Sources */,
 				06DCBCCA196E2AFF00E8C9B2 /* PGAppDelegate.m in Sources */,
@@ -448,14 +490,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Rishabh Tayal (6X269LVTHH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rishabh Tayal (6X269LVTHH)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ping/Ping-Prefix.pch";
 				INFOPLIST_FILE = "Ping/Ping-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "1CA8FEBD-C5FF-46D5-AE6E-D5466D740E53";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;

@@ -23,15 +23,18 @@ PODS:
     - Bolts
   - Parse (1.2.19):
     - Facebook-iOS-SDK (~> 3.11)
+  - pop (1.0.6)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.2.3)
   - Parse (~> 1.2.9)
+  - pop (~> 1.0.4)
 
 SPEC CHECKSUMS:
   AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
   Bolts: 91c2af8eae1d44e1dd75946a5b0ae04a43ea43e4
   Facebook-iOS-SDK: 56214af8e0ef16e751eb2804250326b709e571b8
   Parse: ffebaecaddd32cb52671010f81567c298ff93d04
+  pop: e518794da38942c05255eb64b36d894e70cb4f00
 
 COCOAPODS: 0.33.1

@@ -43,13 +43,17 @@
 {
     PFObject* object = [PFObject objectWithClassName:kPFTableName_Selfies];
     object[@"owner"] = [PFUser currentUser];
-    
-    NSData* imgData = UIImagePNGRepresentation(self.imageView.image);
+
+//TODO: Change it to 
+    NSData* imgData = UIImageJPEGRepresentation(self.imageView.image, 0.2);
     PFFile* imageFile = [PFFile fileWithName:@"selfie.png" data:imgData];
     [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-
+        
         object[@"selfie"] = imageFile;
         [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            
+            [self sendPush];
+            
             [self dismissViewControllerAnimated:YES completion:nil];
         }];
     }];
@@ -63,6 +67,39 @@
 
 -(void)sendPush
 {
+    
+    PFQuery* query = [PFQuery queryWithClassName:kPFTableQueue];
+    query.limit = 1;
+    [query orderByDescending:@"createdAt"];
+    [query whereKey:@"owner" notEqualTo:[PFUser currentUser]];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"%@", objects);
+        if (objects.count) {
+            
+            PFQuery* pushQuery = [PFInstallation query];
+            [pushQuery whereKey:@"owner" equalTo:((PFObject*)objects[0])[@"owner"]];
+            
+            PFPush* push = [[PFPush alloc] init];
+            [push setQuery:pushQuery];
+            [push setMessage:@"You have recieved a selfie"];
+            [push sendPushInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                
+                //Remove object from queue
+                [objects[0] deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    
+                }];
+            }];
+        }
+    }];
+    
+    
+    PFObject* queueObject = [PFObject objectWithClassName:kPFTableQueue];
+    queueObject[@"owner"] = [PFUser currentUser];
+    [queueObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        
+    }];
+
     
 }
 
