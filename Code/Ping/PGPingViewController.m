@@ -97,7 +97,7 @@
             
             PFPush* push = [[PFPush alloc] init];
             [push setQuery:pushQuery];
-            [push setMessage:@"You have recieved a selfie"];
+            [push setMessage:[NSString stringWithFormat:@"You have recieved a selfie from %@", [PFUser currentUser][kPFUser_Name]]];
             [push sendPushInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 
                 //Remove object from queue
