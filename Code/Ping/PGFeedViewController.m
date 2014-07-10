@@ -41,7 +41,8 @@
 -(void)getObjectsFromParse
 {
     PFQuery* query = [PFQuery queryWithClassName:kPFTableName_Selfies];
-    [query whereKey:@"owner" equalTo:[PFUser currentUser]];
+    [query whereKey:@"reciever" equalTo:[PFUser currentUser]];
+    [query includeKey:@"owner"];
     [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSLog(@"%@", objects);
@@ -85,6 +86,9 @@
         UIImage* img = [UIImage imageWithData:data];
         cell.iv.image = img;
     }];
+    cell.captionLabel.text = _datasource[indexPath.row][@"caption"];
+    PFUser* senderUser = _datasource[indexPath.row][@"owner"];
+    cell.senderLabel.text = senderUser[kPFUser_Name];
 }
 
 @end

@@ -66,7 +66,20 @@
             object[@"caption"] = _captionTF.text;
             [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 
-                [self sendPush];
+                [self findRecieverBlock:^(PFObject *recieverObj) {
+                    
+                    object[@"reciever"] = recieverObj[@"owner"];
+                    [object saveEventually];
+                    
+                    [self sendPushToObject:recieverObj];
+                    
+                    PFObject* queueObject = [PFObject objectWithClassName:kPFTableQueue];
+                    queueObject[@"owner"] = [PFUser currentUser];
+                    [queueObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                        
+                    }];
+                    
+                }];
                 
                 [self dismissViewControllerAnimated:YES completion:nil];
             }];
@@ -79,10 +92,8 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
--(void)sendPush
+-(void)findRecieverBlock:(void (^)(PFObject* recieverObj))block
 {
-    
     PFQuery* query = [PFQuery queryWithClassName:kPFTableQueue];
     query.limit = 1;
     [query orderByDescending:@"createdAt"];
@@ -91,31 +102,27 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSLog(@"%@", objects);
         if (objects.count) {
-            
-            PFQuery* pushQuery = [PFInstallation query];
-            [pushQuery whereKey:@"owner" equalTo:((PFObject*)objects[0])[@"owner"]];
-            
-            PFPush* push = [[PFPush alloc] init];
-            [push setQuery:pushQuery];
-            [push setMessage:[NSString stringWithFormat:@"You have recieved a selfie from %@", [PFUser currentUser][kPFUser_Name]]];
-            [push sendPushInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                
-                //Remove object from queue
-                [objects[0] deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                    
-                }];
-            }];
+            block(objects[0]);
         }
     }];
+}
+
+-(void)sendPushToObject:(PFObject*)object
+{
     
+    PFQuery* pushQuery = [PFInstallation query];
+    [pushQuery whereKey:@"owner" equalTo:object[@"owner"]];
     
-    PFObject* queueObject = [PFObject objectWithClassName:kPFTableQueue];
-    queueObject[@"owner"] = [PFUser currentUser];
-    [queueObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    PFPush* push = [[PFPush alloc] init];
+    [push setQuery:pushQuery];
+    [push setMessage:[NSString stringWithFormat:@"You have recieved a selfie from %@", [PFUser currentUser][kPFUser_Name]]];
+    [push sendPushInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         
+        //Remove object from queue
+        [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            
+        }];
     }];
-    
-    
 }
 
 @end
