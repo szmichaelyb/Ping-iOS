@@ -30,6 +30,8 @@
 
 -(void)setMainView
 {
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
+    
     UIStoryboard* sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     PGMainViewController* mainVC = [sb instantiateViewControllerWithIdentifier:@"PGMainViewController"];
     

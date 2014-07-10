@@ -20,6 +20,19 @@
     return YES;
 }
 
+-(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    PFInstallation* currentInstallation  = [PFInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+    [currentInstallation setChannels:@[@"channel"]];
+    [currentInstallation saveEventually:^(BOOL succeeded, NSError *error) {
+        if (error) {
+//            DLog(@"Push Registration Error: %@", error);
+//            [GAI trackEventWithCategory:@"pf_installation" action:@"registration_error" label:error.description value:nil];
+        }
+    }];
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
