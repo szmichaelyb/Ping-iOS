@@ -16,11 +16,6 @@
 		06DCBCCD196E2AFF00E8C9B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06DCBCCB196E2AFF00E8C9B2 /* Main.storyboard */; };
 		06DCBCD0196E2AFF00E8C9B2 /* PGLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBCCF196E2AFF00E8C9B2 /* PGLoginViewController.m */; };
 		06DCBCD2196E2AFF00E8C9B2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06DCBCD1196E2AFF00E8C9B2 /* Images.xcassets */; };
-		06DCBCD9196E2AFF00E8C9B2 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06DCBCD8196E2AFF00E8C9B2 /* XCTest.framework */; };
-		06DCBCDA196E2AFF00E8C9B2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06DCBCB9196E2AFF00E8C9B2 /* Foundation.framework */; };
-		06DCBCDB196E2AFF00E8C9B2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06DCBCBD196E2AFF00E8C9B2 /* UIKit.framework */; };
-		06DCBCE3196E2AFF00E8C9B2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06DCBCE1196E2AFF00E8C9B2 /* InfoPlist.strings */; };
-		06DCBCE5196E2AFF00E8C9B2 /* PingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBCE4196E2AFF00E8C9B2 /* PingTests.m */; };
 		06DCBCF1196EDDFA00E8C9B2 /* PGMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBCF0196EDDFA00E8C9B2 /* PGMainViewController.m */; };
 		06DCBCF4196EE40600E8C9B2 /* AVCamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBCF3196EE40600E8C9B2 /* AVCamViewController.m */; };
 		06DCBCF7196EE41800E8C9B2 /* AVCamPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBCF6196EE41800E8C9B2 /* AVCamPreviewView.m */; };
@@ -30,16 +25,6 @@
 		06DCBD06196F07C500E8C9B2 /* PGFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBD05196F07C500E8C9B2 /* PGFeedTableViewCell.m */; };
 		B4D0781A6E87400B8846C0E9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 44403505DE314A23B874DE7D /* libPods.a */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		06DCBCDC196E2AFF00E8C9B2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 06DCBCAE196E2AFF00E8C9B2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 06DCBCB5196E2AFF00E8C9B2;
-			remoteInfo = Ping;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		06DCBCB6196E2AFF00E8C9B2 /* Ping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ping.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,11 +41,7 @@
 		06DCBCCE196E2AFF00E8C9B2 /* PGLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGLoginViewController.h; sourceTree = "<group>"; };
 		06DCBCCF196E2AFF00E8C9B2 /* PGLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGLoginViewController.m; sourceTree = "<group>"; };
 		06DCBCD1196E2AFF00E8C9B2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		06DCBCD7196E2AFF00E8C9B2 /* PingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		06DCBCD8196E2AFF00E8C9B2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		06DCBCE0196E2AFF00E8C9B2 /* PingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PingTests-Info.plist"; sourceTree = "<group>"; };
-		06DCBCE2196E2AFF00E8C9B2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		06DCBCE4196E2AFF00E8C9B2 /* PingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PingTests.m; sourceTree = "<group>"; };
 		06DCBCEE196EDD5100E8C9B2 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		06DCBCEF196EDDFA00E8C9B2 /* PGMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMainViewController.h; sourceTree = "<group>"; };
 		06DCBCF0196EDDFA00E8C9B2 /* PGMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMainViewController.m; sourceTree = "<group>"; };
@@ -92,16 +73,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		06DCBCD4196E2AFF00E8C9B2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				06DCBCD9196E2AFF00E8C9B2 /* XCTest.framework in Frameworks */,
-				06DCBCDB196E2AFF00E8C9B2 /* UIKit.framework in Frameworks */,
-				06DCBCDA196E2AFF00E8C9B2 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -109,7 +80,6 @@
 			isa = PBXGroup;
 			children = (
 				06DCBCBF196E2AFF00E8C9B2 /* Ping */,
-				06DCBCDE196E2AFF00E8C9B2 /* PingTests */,
 				06DCBCB8196E2AFF00E8C9B2 /* Frameworks */,
 				06DCBCB7196E2AFF00E8C9B2 /* Products */,
 				C3EC4F2809A54D8D8F1E8EBE /* Pods.xcconfig */,
@@ -120,7 +90,6 @@
 			isa = PBXGroup;
 			children = (
 				06DCBCB6196E2AFF00E8C9B2 /* Ping.app */,
-				06DCBCD7196E2AFF00E8C9B2 /* PingTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -151,7 +120,7 @@
 				06DCBCCE196E2AFF00E8C9B2 /* PGLoginViewController.h */,
 				06DCBCCF196E2AFF00E8C9B2 /* PGLoginViewController.m */,
 				06DCBCFC196EF62000E8C9B2 /* Tab */,
-				06DCBCFB196EF61A00E8C9B2 /* Ping */,
+				06DCBCFB196EF61A00E8C9B2 /* Ping VC */,
 				06DCBCC0196E2AFF00E8C9B2 /* Supporting Files */,
 			);
 			path = Ping;
@@ -170,25 +139,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		06DCBCDE196E2AFF00E8C9B2 /* PingTests */ = {
-			isa = PBXGroup;
-			children = (
-				06DCBCE4196E2AFF00E8C9B2 /* PingTests.m */,
-				06DCBCDF196E2AFF00E8C9B2 /* Supporting Files */,
-			);
-			path = PingTests;
-			sourceTree = "<group>";
-		};
-		06DCBCDF196E2AFF00E8C9B2 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				06DCBCE0196E2AFF00E8C9B2 /* PingTests-Info.plist */,
-				06DCBCE1196E2AFF00E8C9B2 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		06DCBCFB196EF61A00E8C9B2 /* Ping */ = {
+		06DCBCFB196EF61A00E8C9B2 /* Ping VC */ = {
 			isa = PBXGroup;
 			children = (
 				06DCBCF2196EE40600E8C9B2 /* AVCamViewController.h */,
@@ -198,7 +149,7 @@
 				06DCBCF8196EE8EB00E8C9B2 /* PGPingViewController.h */,
 				06DCBCF9196EE8EB00E8C9B2 /* PGPingViewController.m */,
 			);
-			name = Ping;
+			name = "Ping VC";
 			sourceTree = "<group>";
 		};
 		06DCBCFC196EF62000E8C9B2 /* Tab */ = {
@@ -241,24 +192,6 @@
 			productReference = 06DCBCB6196E2AFF00E8C9B2 /* Ping.app */;
 			productType = "com.apple.product-type.application";
 		};
-		06DCBCD6196E2AFF00E8C9B2 /* PingTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 06DCBCEB196E2AFF00E8C9B2 /* Build configuration list for PBXNativeTarget "PingTests" */;
-			buildPhases = (
-				06DCBCD3196E2AFF00E8C9B2 /* Sources */,
-				06DCBCD4196E2AFF00E8C9B2 /* Frameworks */,
-				06DCBCD5196E2AFF00E8C9B2 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				06DCBCDD196E2AFF00E8C9B2 /* PBXTargetDependency */,
-			);
-			name = PingTests;
-			productName = PingTests;
-			productReference = 06DCBCD7196E2AFF00E8C9B2 /* PingTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -271,9 +204,6 @@
 				TargetAttributes = {
 					06DCBCB5196E2AFF00E8C9B2 = {
 						DevelopmentTeam = CEBY93VF85;
-					};
-					06DCBCD6196E2AFF00E8C9B2 = {
-						TestTargetID = 06DCBCB5196E2AFF00E8C9B2;
 					};
 				};
 			};
@@ -291,7 +221,6 @@
 			projectRoot = "";
 			targets = (
 				06DCBCB5196E2AFF00E8C9B2 /* Ping */,
-				06DCBCD6196E2AFF00E8C9B2 /* PingTests */,
 			);
 		};
 /* End PBXProject section */
@@ -304,14 +233,6 @@
 				06DCBCD2196E2AFF00E8C9B2 /* Images.xcassets in Resources */,
 				06DCBCC4196E2AFF00E8C9B2 /* InfoPlist.strings in Resources */,
 				06DCBCCD196E2AFF00E8C9B2 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		06DCBCD5196E2AFF00E8C9B2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				06DCBCE3196E2AFF00E8C9B2 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,23 +289,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		06DCBCD3196E2AFF00E8C9B2 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				06DCBCE5196E2AFF00E8C9B2 /* PingTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		06DCBCDD196E2AFF00E8C9B2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 06DCBCB5196E2AFF00E8C9B2 /* Ping */;
-			targetProxy = 06DCBCDC196E2AFF00E8C9B2 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		06DCBCC2196E2AFF00E8C9B2 /* InfoPlist.strings */ = {
@@ -401,14 +306,6 @@
 				06DCBCCC196E2AFF00E8C9B2 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		06DCBCE1196E2AFF00E8C9B2 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				06DCBCE2196E2AFF00E8C9B2 /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -520,46 +417,6 @@
 			};
 			name = Release;
 		};
-		06DCBCEC196E2AFF00E8C9B2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Ping.app/Ping";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Ping/Ping-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "PingTests/PingTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		06DCBCED196E2AFF00E8C9B2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Ping.app/Ping";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Ping/Ping-Prefix.pch";
-				INFOPLIST_FILE = "PingTests/PingTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -577,15 +434,6 @@
 			buildConfigurations = (
 				06DCBCE9196E2AFF00E8C9B2 /* Debug */,
 				06DCBCEA196E2AFF00E8C9B2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		06DCBCEB196E2AFF00E8C9B2 /* Build configuration list for PBXNativeTarget "PingTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				06DCBCEC196E2AFF00E8C9B2 /* Debug */,
-				06DCBCED196E2AFF00E8C9B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

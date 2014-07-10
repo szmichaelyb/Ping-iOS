@@ -206,10 +206,20 @@
                                     <action selector="retakeClicked:" destination="Dvu-oQ-EJq" eventType="touchUpInside" id="fOw-L4-Ncc"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Add a caption" minimumFontSize="17" id="Vio-AN-f35">
+                                <rect key="frame" x="30" y="40" width="260" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.97647058819999999" green="0.62352941179999999" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.97647058819999999" green="0.62352941179999999" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="captionTF" destination="Vio-AN-f35" id="Szd-Ev-22U"/>
                         <outlet property="imageView" destination="Vwc-lv-uq3" id="qGR-F7-6Pl"/>
                         <outlet property="retakeButton" destination="QHl-Qf-TQe" id="muA-BQ-hck"/>
                         <outlet property="sendButton" destination="9bi-qT-dXP" id="P5z-JP-BRR"/>

@@ -13,6 +13,7 @@
 @property (nonatomic, strong) IBOutlet UIImageView* imageView;
 @property (nonatomic, strong) IBOutlet UIButton* sendButton;
 @property (nonatomic, strong) IBOutlet UIButton* retakeButton;
+@property (nonatomic, strong) IBOutlet UITextField* captionTF;
 
 -(IBAction)sendButtonClicked:(id)sender;
 -(IBAction)retakeClicked:(id)sender;
@@ -30,6 +31,9 @@
     self.sendButton.layer.cornerRadius = self.sendButton.bounds.size.width/2;
     self.sendButton.layer.borderWidth = 2;
     self.sendButton.layer.masksToBounds = YES;
+    
+    UITapGestureRecognizer* dismissGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
+    [self.view addGestureRecognizer:dismissGesture];
     // Do any additional setup after loading the view.
 }
 
@@ -39,24 +43,35 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)dismissKeyboard:(UIGestureRecognizer*)reco
+{
+    [self.view endEditing:YES];
+}
+
 -(IBAction)sendButtonClicked:(id)sender
 {
-    PFObject* object = [PFObject objectWithClassName:kPFTableName_Selfies];
-    object[@"owner"] = [PFUser currentUser];
-
-//TODO: Change it to 
-    NSData* imgData = UIImageJPEGRepresentation(self.imageView.image, 0.2);
-    PFFile* imageFile = [PFFile fileWithName:@"selfie.png" data:imgData];
-    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    if (_captionTF.text.length == 0) {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Enter a caption" message:nil delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alert show];
+    } else {
+        PFObject* object = [PFObject objectWithClassName:kPFTableName_Selfies];
+        object[@"owner"] = [PFUser currentUser];
         
-        object[@"selfie"] = imageFile;
-        [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        //TODO: Change it to
+        NSData* imgData = UIImageJPEGRepresentation(self.imageView.image, 0.2);
+        PFFile* imageFile = [PFFile fileWithName:@"selfie.png" data:imgData];
+        [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             
-            [self sendPush];
-            
-            [self dismissViewControllerAnimated:YES completion:nil];
+            object[@"selfie"] = imageFile;
+            object[@"caption"] = _captionTF.text;
+            [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                
+                [self sendPush];
+                
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }];
         }];
-    }];
+    }
 }
 
 -(IBAction)retakeClicked:(id)sender
@@ -99,7 +114,7 @@
     [queueObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         
     }];
-
+    
     
 }
 

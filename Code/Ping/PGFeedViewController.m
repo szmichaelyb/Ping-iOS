@@ -23,14 +23,8 @@
 {
     [super viewDidLoad];
     
-    PFQuery* query = [PFQuery queryWithClassName:kPFTableName_Selfies];
-    [query whereKey:@"owner" equalTo:[PFUser currentUser]];
-    [query orderByDescending:@"createdAt"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSLog(@"%@", objects);
-        _datasource = [NSMutableArray arrayWithArray:objects];
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
-    }];
+  
+    [self getObjectsFromParse];
     
     UIRefreshControl* refreshControl = [[UIRefreshControl alloc] init];
     [self.tableView addSubview:refreshControl];
@@ -44,11 +38,23 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)getObjectsFromParse
+{
+    PFQuery* query = [PFQuery queryWithClassName:kPFTableName_Selfies];
+    [query whereKey:@"owner" equalTo:[PFUser currentUser]];
+    [query orderByDescending:@"createdAt"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"%@", objects);
+        _datasource = [NSMutableArray arrayWithArray:objects];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }];
+}
+
 -(void)refreshTable:(UIRefreshControl*)refreshControl
 {
     [refreshControl endRefreshing];
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
-    //    [self updateInterfaceWithReachabiltity:_reachability];
+    
+    [self getObjectsFromParse];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
