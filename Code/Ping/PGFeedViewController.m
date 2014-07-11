@@ -29,10 +29,10 @@
 {
     [super viewDidLoad];
     
-    
+    self.navigationController.navigationBar.translucent = NO;
     
     /// Setup pull to refresh
-    CGFloat refreshBarY = self.navigationController.navigationBar.bounds.size.height + [UIApplication sharedApplication].statusBarFrame.size.height;
+    CGFloat refreshBarY = self.navigationController.navigationBar.bounds.size.height;
     STZPullToRefreshView *refreshView = [[STZPullToRefreshView alloc] initWithFrame:CGRectMake(0, refreshBarY, self.view.frame.size.width, 3)];
     [self.view addSubview:refreshView];
     
@@ -54,10 +54,13 @@
 -(void)getObjectsFromParse
 {
     PFQuery* query = [PFQuery queryWithClassName:kPFTableName_Selfies];
-//        [query whereKey:@"reciever" equalTo:[PFUser currentUser]];
-  
+    
+    if (_feedType == FeedTypeMine) {
         [query whereKey:@"owner" equalTo:[PFUser currentUser]];
-  
+    } else {
+        [query whereKey:@"reciever" equalTo:[PFUser currentUser]];
+    }
+    
     [query includeKey:@"owner"];
     [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -126,6 +129,7 @@
     ivExpand.clipsToBounds = YES;
     
     originalFrame = ivExpand.frame;
+    originalFrame.origin.y = originalFrame.origin.y + self.navigationController.navigationBar.bounds.size.height + [UIApplication sharedApplication].statusBarFrame.size.height;
     tempIV = cell.iv;
     
     [self.navigationController.view addSubview:ivExpand];

@@ -30,70 +30,20 @@
             </objects>
             <point key="canvasLocation" x="-468" y="-155"/>
         </scene>
-        <!--Feed View Controller - Feed-->
-        <scene sceneID="sUT-yO-t4e">
+        <!--Twitter Pagging Viewer-->
+        <scene sceneID="cAW-JU-wcO">
             <objects>
-                <viewController restorationIdentifier="PGFeedViewController" storyboardIdentifier="PGFeedViewController" id="BCi-wY-6i3" customClass="PGFeedViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="vnQ-G8-XGh">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                <viewController id="a1e-Vp-bqR" customClass="XHTwitterPaggingViewer" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AYf-09-H1B">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="262" sectionHeaderHeight="22" sectionFooterHeight="22" id="xoX-Ij-vzJ">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="Psz-BO-JxK" customClass="PGFeedTableViewCell">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="262"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Psz-BO-JxK" id="AYF-tc-BzQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="261"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="JUG-9w-GYB">
-                                                    <rect key="frame" x="0.0" y="14" width="320" height="191"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Exz-Mc-I9q">
-                                                    <rect key="frame" x="8" y="213" width="216" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nHn-Or-HkE">
-                                                    <rect key="frame" x="8" y="236" width="292" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="captionLabel" destination="Exz-Mc-I9q" id="vwU-Hg-2U2"/>
-                                            <outlet property="iv" destination="JUG-9w-GYB" id="LlL-VA-bhd"/>
-                                            <outlet property="senderLabel" destination="nHn-Or-HkE" id="Ejl-xM-mYR"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="BCi-wY-6i3" id="ifX-RG-Pb9"/>
-                                    <outlet property="delegate" destination="BCi-wY-6i3" id="YLn-rs-mXh"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Feed" id="CW1-xk-tWR"/>
-                    <navigationItem key="navigationItem" id="aas-mv-cQD"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
-                    <connections>
-                        <outlet property="tableView" destination="xoX-Ij-vzJ" id="dAc-9Q-Od1"/>
-                    </connections>
+                    <navigationItem key="navigationItem" id="tyV-j2-U1F"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QcU-dQ-ZLA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E3o-5j-brh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="816" y="-923"/>
+            <point key="canvasLocation" x="789" y="-923"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="vFK-1B-OXU">
@@ -175,7 +125,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="BCi-wY-6i3" kind="relationship" relationship="rootViewController" id="fEb-wh-Esb"/>
+                        <segue destination="a1e-Vp-bqR" kind="relationship" relationship="rootViewController" id="iTY-fH-0Du"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7nP-eW-opr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -524,6 +474,71 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Fi-8M-fhx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1314" y="626"/>
+        </scene>
+        <!--Feed View Controller - Feed-->
+        <scene sceneID="09M-sL-HQQ">
+            <objects>
+                <viewController restorationIdentifier="PGFeedViewController" storyboardIdentifier="PGFeedViewController" id="1cV-B3-Drv" customClass="PGFeedViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gaQ-7C-CVy">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="262" sectionHeaderHeight="22" sectionFooterHeight="22" id="ABh-Sw-yPl">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="xpM-xe-WZq" customClass="PGFeedTableViewCell">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="262"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xpM-xe-WZq" id="uow-Ys-ja5">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="261"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="0Ig-fv-iOL">
+                                                    <rect key="frame" x="0.0" y="14" width="320" height="191"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="65P-4A-kiY">
+                                                    <rect key="frame" x="8" y="213" width="216" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2Y7-P5-afs">
+                                                    <rect key="frame" x="8" y="236" width="292" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="captionLabel" destination="65P-4A-kiY" id="9EP-yA-Jxj"/>
+                                            <outlet property="iv" destination="0Ig-fv-iOL" id="2uf-pC-2hA"/>
+                                            <outlet property="senderLabel" destination="2Y7-P5-afs" id="CeR-eV-6Bz"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="1cV-B3-Drv" id="5xj-B9-1WV"/>
+                                    <outlet property="delegate" destination="1cV-B3-Drv" id="us3-hX-nPs"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Feed" id="ItB-Qg-YCG"/>
+                    <navigationItem key="navigationItem" id="bIG-s4-hve"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="ABh-Sw-yPl" id="R6E-R7-If9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tc9-FD-g6e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1165" y="-923"/>
         </scene>
     </scenes>
     <resources>
