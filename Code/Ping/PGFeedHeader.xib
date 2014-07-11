@@ -11,14 +11,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lGo-CC-Yot">
-                    <rect key="frame" x="55" y="4" width="171" height="21"/>
+                    <rect key="frame" x="55" y="4" width="196" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQ7-Wr-7ko">
-                    <rect key="frame" x="55" y="25" width="253" height="20"/>
+                    <rect key="frame" x="55" y="25" width="245" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -32,9 +32,9 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="locationLabel" destination="LQ7-Wr-7ko" id="Dk5-IW-i4X"/>
                 <outlet property="nameLabel" destination="lGo-CC-Yot" id="bEg-Z8-7A3"/>
                 <outlet property="thumbIV" destination="2V5-HJ-cyw" id="I7c-I4-XeT"/>
+                <outlet property="timeAndlocationLabel" destination="LQ7-Wr-7ko" id="9a2-eY-dxC"/>
             </connections>
         </view>
     </objects>

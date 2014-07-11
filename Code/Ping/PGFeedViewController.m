@@ -11,6 +11,7 @@
 #import <pop/POP.h>
 #import <UIActionSheet+Blocks/UIActionSheet+Blocks.h>
 #import "PGFeedHeader.h"
+#import <FormatterKit/TTTTimeIntervalFormatter.h>
 
 @interface PGFeedViewController ()
 {
@@ -99,7 +100,7 @@
     PGFeedHeader* view = [[NSBundle mainBundle] loadNibNamed:@"PGFeedHeader" owner:self options:nil][0];
     PFUser* senderUser = _datasource[section][@"owner"];
     view.nameLabel.text = senderUser[kPFUser_Name];
-    view.locationLabel.text = _datasource[section][@"location"];
+    view.timeAndlocationLabel.text = [NSString stringWithFormat:@"%@ at %@", [self friendlyDateTime:((PFObject*)_datasource[section]).createdAt], _datasource[section][@"location"]];
     
     PFFile* file = senderUser[kPFUser_Picture];
     [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
@@ -220,6 +221,14 @@
             }];
         }
     }];
+}
+
+-(NSString*)friendlyDateTime:(NSDate*)dateTime
+{
+    NSTimeInterval interval = [dateTime timeIntervalSinceNow];
+    TTTTimeIntervalFormatter* tif = [[TTTTimeIntervalFormatter alloc] init];
+    NSString* str = [tif stringForTimeInterval:interval];
+    return str;
 }
 
 @end

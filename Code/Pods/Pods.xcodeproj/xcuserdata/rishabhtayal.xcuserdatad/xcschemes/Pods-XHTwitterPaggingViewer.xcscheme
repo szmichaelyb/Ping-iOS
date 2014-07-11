@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9859838BE6FC41A2B53EBA3D"
+               BlueprintIdentifier = "290386E9CD5B4E57946D0BC3"
                BuildableName = "libPods-XHTwitterPaggingViewer.a"
                BlueprintName = "Pods-XHTwitterPaggingViewer"
                ReferencedContainer = "container:Pods.xcodeproj">
