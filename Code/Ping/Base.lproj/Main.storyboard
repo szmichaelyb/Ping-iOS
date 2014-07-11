@@ -531,12 +531,20 @@
                                                         <action selector="moreButtonClicked:" destination="1cV-B3-Drv" eventType="touchUpInside" id="psh-dF-phl"/>
                                                     </connections>
                                                 </button>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ht3-ql-Nfz">
+                                                    <rect key="frame" x="175" y="207" width="125" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="captionLabel" destination="65P-4A-kiY" id="9EP-yA-Jxj"/>
                                             <outlet property="iv" destination="0Ig-fv-iOL" id="2uf-pC-2hA"/>
+                                            <outlet property="locationLabel" destination="Ht3-ql-Nfz" id="uoF-74-SAO"/>
                                             <outlet property="senderLabel" destination="2Y7-P5-afs" id="CeR-eV-6Bz"/>
                                         </connections>
                                     </tableViewCell>

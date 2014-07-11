@@ -70,6 +70,7 @@
             
             object[@"selfie"] = imageFile;
             object[@"caption"] = _captionTF.text;
+            object[@"location"] = _locationLabel.text;
             [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 
                 [self findRecieverBlock:^(PFObject *recieverObj) {

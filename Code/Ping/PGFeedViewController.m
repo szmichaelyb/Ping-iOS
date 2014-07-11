@@ -33,7 +33,7 @@
     [super viewDidLoad];
     
     self.navigationController.navigationBar.translucent = NO;
-    
+
     /// Setup pull to refresh
     CGFloat refreshBarY = self.navigationController.navigationBar.bounds.size.height;
     STZPullToRefreshView *refreshView = [[STZPullToRefreshView alloc] initWithFrame:CGRectMake(0, refreshBarY, self.view.frame.size.width, 3)];
@@ -109,9 +109,10 @@
         cell.iv.image = img;
     }];
     cell.captionLabel.text = _datasource[indexPath.row][@"caption"];
+    cell.locationLabel.text = _datasource[indexPath.row][@"location"];
     PFUser* senderUser = _datasource[indexPath.row][@"owner"];
     cell.senderLabel.text = senderUser[kPFUser_Name];
-    
+
     cell.iv.userInteractionEnabled = YES;
     cell.iv.tag = indexPath.row;
     UITapGestureRecognizer* gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(performFullScreenAnimation:)];
