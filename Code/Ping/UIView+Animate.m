@@ -7,11 +7,10 @@
 //
 
 #import "UIView+Animate.h"
-#import <pop/POP.h>
 
 @implementation UIView (Animate)
 
--(void)springAnimate
+-(void)springAnimateCompletion:(void (^)(POPAnimation* anim, BOOL finished))block
 {
     CALayer *layer = self.layer;
     
@@ -23,13 +22,16 @@
     anim1.toValue = [NSValue valueWithCGSize:CGSizeMake(self.frame.size.width, self.frame.size.height)];
     anim1.springBounciness = 20;
     anim1.springSpeed = 16;
+    anim1.completionBlock = ^(POPAnimation* anim, BOOL finished) {
+        block(anim, finished);
+    };
     
     anim2.toValue = [NSValue valueWithCGSize:CGSizeMake(self.frame.size.width + 10, self.frame.size.height + 10)];
     anim2.springSpeed = 16;
 //    sender.tintColor = [UIColor redColor];
     
     anim2.completionBlock = ^(POPAnimation *anim, BOOL finished) {
-        NSLog(@"Animation has completed.");
+        DLog(@"Animation has completed.");
         [layer pop_addAnimation:anim1 forKey:@"size"];
     };
     [layer pop_addAnimation:anim2 forKey:@"size"];

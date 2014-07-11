@@ -6,20 +6,19 @@
 //  Copyright (c) 2014 Appikon Mobile. All rights reserved.
 //
 
-#import "PGMainViewController.h"
+#import "PGTabViewController.h"
 #import <XHTwitterPaggingViewer/XHTwitterPaggingViewer.h>
 #import "PGFeedViewController.h"
 
-@interface PGMainViewController ()
+@interface PGTabViewController ()
 
 @end
 
-@implementation PGMainViewController
+@implementation PGTabViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     
     UIStoryboard* sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     PGFeedViewController* feed1 = [sb instantiateViewControllerWithIdentifier:@"PGFeedViewController"];
@@ -46,15 +45,18 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+-(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    DLog(@"selected");
+    
+    if ([[tabBar items] indexOfObject:item] == 0) {
+        item.badgeValue = nil;
+        PFInstallation* installation = [PFInstallation currentInstallation];
+//        if (installation.badge != 0) {
+            installation.badge = 0;
+            [installation saveEventually];
+//        }
+    }
 }
-*/
 
 @end

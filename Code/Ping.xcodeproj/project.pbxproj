@@ -16,7 +16,7 @@
 		06DCBCCD196E2AFF00E8C9B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06DCBCCB196E2AFF00E8C9B2 /* Main.storyboard */; };
 		06DCBCD0196E2AFF00E8C9B2 /* PGLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBCCF196E2AFF00E8C9B2 /* PGLoginViewController.m */; };
 		06DCBCD2196E2AFF00E8C9B2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06DCBCD1196E2AFF00E8C9B2 /* Images.xcassets */; };
-		06DCBCF1196EDDFA00E8C9B2 /* PGMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBCF0196EDDFA00E8C9B2 /* PGMainViewController.m */; };
+		06DCBCF1196EDDFA00E8C9B2 /* PGTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBCF0196EDDFA00E8C9B2 /* PGTabViewController.m */; };
 		06DCBCF4196EE40600E8C9B2 /* PGCamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBCF3196EE40600E8C9B2 /* PGCamViewController.m */; };
 		06DCBCF7196EE41800E8C9B2 /* AVCamPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBCF6196EE41800E8C9B2 /* AVCamPreviewView.m */; };
 		06DCBCFA196EE8EB00E8C9B2 /* PGPingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBCF9196EE8EB00E8C9B2 /* PGPingViewController.m */; };
@@ -44,26 +44,26 @@
 		06DCBCC9196E2AFF00E8C9B2 /* PGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGAppDelegate.m; sourceTree = "<group>"; };
 		06DCBCCC196E2AFF00E8C9B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		06DCBCCE196E2AFF00E8C9B2 /* PGLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGLoginViewController.h; sourceTree = "<group>"; };
-		06DCBCCF196E2AFF00E8C9B2 /* PGLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGLoginViewController.m; sourceTree = "<group>"; };
+		06DCBCCF196E2AFF00E8C9B2 /* PGLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PGLoginViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		06DCBCD1196E2AFF00E8C9B2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		06DCBCD8196E2AFF00E8C9B2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		06DCBCEE196EDD5100E8C9B2 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		06DCBCEF196EDDFA00E8C9B2 /* PGMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMainViewController.h; sourceTree = "<group>"; };
-		06DCBCF0196EDDFA00E8C9B2 /* PGMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMainViewController.m; sourceTree = "<group>"; };
+		06DCBCEE196EDD5100E8C9B2 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Constants.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		06DCBCEF196EDDFA00E8C9B2 /* PGTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGTabViewController.h; sourceTree = "<group>"; };
+		06DCBCF0196EDDFA00E8C9B2 /* PGTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGTabViewController.m; sourceTree = "<group>"; };
 		06DCBCF2196EE40600E8C9B2 /* PGCamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGCamViewController.h; sourceTree = "<group>"; };
-		06DCBCF3196EE40600E8C9B2 /* PGCamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGCamViewController.m; sourceTree = "<group>"; };
+		06DCBCF3196EE40600E8C9B2 /* PGCamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PGCamViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		06DCBCF5196EE41800E8C9B2 /* AVCamPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCamPreviewView.h; sourceTree = "<group>"; };
 		06DCBCF6196EE41800E8C9B2 /* AVCamPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCamPreviewView.m; sourceTree = "<group>"; };
 		06DCBCF8196EE8EB00E8C9B2 /* PGPingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPingViewController.h; sourceTree = "<group>"; };
-		06DCBCF9196EE8EB00E8C9B2 /* PGPingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPingViewController.m; sourceTree = "<group>"; };
+		06DCBCF9196EE8EB00E8C9B2 /* PGPingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PGPingViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		06DCBD01196F063400E8C9B2 /* PGFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGFeedViewController.h; sourceTree = "<group>"; };
-		06DCBD02196F063400E8C9B2 /* PGFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGFeedViewController.m; sourceTree = "<group>"; };
+		06DCBD02196F063400E8C9B2 /* PGFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PGFeedViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		06DCBD04196F07C500E8C9B2 /* PGFeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGFeedTableViewCell.h; sourceTree = "<group>"; };
 		06DCBD05196F07C500E8C9B2 /* PGFeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGFeedTableViewCell.m; sourceTree = "<group>"; };
 		06DCBD07196F2A5900E8C9B2 /* UIViewController+Transitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Transitions.h"; sourceTree = "<group>"; };
-		06DCBD08196F2A5900E8C9B2 /* UIViewController+Transitions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Transitions.m"; sourceTree = "<group>"; };
+		06DCBD08196F2A5900E8C9B2 /* UIViewController+Transitions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "UIViewController+Transitions.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		06DCBD0A196F2E0400E8C9B2 /* UIView+Animate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Animate.h"; sourceTree = "<group>"; };
-		06DCBD0B196F2E0500E8C9B2 /* UIView+Animate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Animate.m"; sourceTree = "<group>"; };
+		06DCBD0B196F2E0500E8C9B2 /* UIView+Animate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "UIView+Animate.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		06DCBD0D196F404C00E8C9B2 /* SettingsShareView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsShareView.xib; sourceTree = "<group>"; };
 		06DCBD0E196F404C00E8C9B2 /* PGSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSettingsViewController.h; sourceTree = "<group>"; };
 		06DCBD0F196F404C00E8C9B2 /* PGSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSettingsViewController.m; sourceTree = "<group>"; };
@@ -123,13 +123,12 @@
 		06DCBCBF196E2AFF00E8C9B2 /* Ping */ = {
 			isa = PBXGroup;
 			children = (
-				06DCBD19196F42F500E8C9B2 /* Animations */,
 				06DCBD18196F42E800E8C9B2 /* Utilities */,
-				06DCBD1E196F9DCF00E8C9B2 /* Feed */,
-				06DCBD00196F060F00E8C9B2 /* Settings */,
-				06DCBD1C196F9DB000E8C9B2 /* Login */,
-				06DCBCFC196EF62000E8C9B2 /* Tab */,
+				06DCBD00196F060F00E8C9B2 /* Settings VC */,
+				06DCBD1E196F9DCF00E8C9B2 /* Feed VC */,
 				06DCBCFB196EF61A00E8C9B2 /* Ping VC */,
+				06DCBD1C196F9DB000E8C9B2 /* Login VC */,
+				06DCBCFC196EF62000E8C9B2 /* Tab */,
 				06DCBCC8196E2AFF00E8C9B2 /* PGAppDelegate.h */,
 				06DCBCC9196E2AFF00E8C9B2 /* PGAppDelegate.m */,
 				06DCBCCB196E2AFF00E8C9B2 /* Main.storyboard */,
@@ -166,13 +165,13 @@
 		06DCBCFC196EF62000E8C9B2 /* Tab */ = {
 			isa = PBXGroup;
 			children = (
-				06DCBCEF196EDDFA00E8C9B2 /* PGMainViewController.h */,
-				06DCBCF0196EDDFA00E8C9B2 /* PGMainViewController.m */,
+				06DCBCEF196EDDFA00E8C9B2 /* PGTabViewController.h */,
+				06DCBCF0196EDDFA00E8C9B2 /* PGTabViewController.m */,
 			);
 			name = Tab;
 			sourceTree = "<group>";
 		};
-		06DCBD00196F060F00E8C9B2 /* Settings */ = {
+		06DCBD00196F060F00E8C9B2 /* Settings VC */ = {
 			isa = PBXGroup;
 			children = (
 				06DCBD0D196F404C00E8C9B2 /* SettingsShareView.xib */,
@@ -181,12 +180,13 @@
 				06DCBD10196F404C00E8C9B2 /* WebViewController.h */,
 				06DCBD11196F404C00E8C9B2 /* WebViewController.m */,
 			);
-			name = Settings;
+			name = "Settings VC";
 			sourceTree = "<group>";
 		};
 		06DCBD18196F42E800E8C9B2 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				06DCBD19196F42F500E8C9B2 /* Animations */,
 				06DCBD15196F421400E8C9B2 /* UIDevice-Hardware.h */,
 				06DCBD16196F421400E8C9B2 /* UIDevice-Hardware.m */,
 			);
@@ -204,13 +204,13 @@
 			name = Animations;
 			sourceTree = "<group>";
 		};
-		06DCBD1C196F9DB000E8C9B2 /* Login */ = {
+		06DCBD1C196F9DB000E8C9B2 /* Login VC */ = {
 			isa = PBXGroup;
 			children = (
 				06DCBCCE196E2AFF00E8C9B2 /* PGLoginViewController.h */,
 				06DCBCCF196E2AFF00E8C9B2 /* PGLoginViewController.m */,
 			);
-			name = Login;
+			name = "Login VC";
 			sourceTree = "<group>";
 		};
 		06DCBD1D196F9DBE00E8C9B2 /* View */ = {
@@ -222,14 +222,14 @@
 			name = View;
 			sourceTree = "<group>";
 		};
-		06DCBD1E196F9DCF00E8C9B2 /* Feed */ = {
+		06DCBD1E196F9DCF00E8C9B2 /* Feed VC */ = {
 			isa = PBXGroup;
 			children = (
 				06DCBD01196F063400E8C9B2 /* PGFeedViewController.h */,
 				06DCBD02196F063400E8C9B2 /* PGFeedViewController.m */,
 				06DCBD1F196F9DD800E8C9B2 /* Cell */,
 			);
-			name = Feed;
+			name = "Feed VC";
 			sourceTree = "<group>";
 		};
 		06DCBD1F196F9DD800E8C9B2 /* Cell */ = {
@@ -351,7 +351,7 @@
 				06DCBCFA196EE8EB00E8C9B2 /* PGPingViewController.m in Sources */,
 				06DCBD14196F404C00E8C9B2 /* WebViewController.m in Sources */,
 				06DCBCF4196EE40600E8C9B2 /* PGCamViewController.m in Sources */,
-				06DCBCF1196EDDFA00E8C9B2 /* PGMainViewController.m in Sources */,
+				06DCBCF1196EDDFA00E8C9B2 /* PGTabViewController.m in Sources */,
 				06DCBCF7196EE41800E8C9B2 /* AVCamPreviewView.m in Sources */,
 				06DCBD09196F2A5900E8C9B2 /* UIViewController+Transitions.m in Sources */,
 				06DCBD0C196F2E0500E8C9B2 /* UIView+Animate.m in Sources */,
@@ -403,7 +403,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: appikon software private limited (CEBY93VF85)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: appikon software private limited (CEBY93VF85)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -421,6 +422,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "6AE1C1C6-9770-43A1-9248-E4F2143A02D3";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -463,14 +465,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Rishabh Tayal (6X269LVTHH)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rishabh Tayal (6X269LVTHH)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ping/Ping-Prefix.pch";
 				INFOPLIST_FILE = "Ping/Ping-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1CA8FEBD-C5FF-46D5-AE6E-D5466D740E53";
+				PROVISIONING_PROFILE = "628DB765-688B-4F7A-833C-6641E118AB68";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;

@@ -19,8 +19,8 @@
     CALayer *layer = self.view.layer;
     [layer pop_removeAllAnimations];
     
-    NSLog(@"Layer frame X: %f", layer.frame.origin.x);
-    NSLog(@"Layer frame width: %f", layer.frame.size.width);
+    DLog(@"Layer frame X: %f", layer.frame.origin.x);
+    DLog(@"Layer frame width: %f", layer.frame.size.width);
     
     POPSpringAnimation *yAnim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
     POPSpringAnimation *sizeAnim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerSize];
@@ -33,8 +33,8 @@
 //    sizeAnim.toValue = [NSValue valueWithCGSize:CGSizeMake(100, 400)];
     
     yAnim.completionBlock = ^(POPAnimation *anim, BOOL finished) {
-        NSLog(@"Animation has completed.");
-        NSLog(@"Layer frame X: %f", layer.frame.origin.x);
+        DLog(@"Animation has completed.");
+        DLog(@"Layer frame X: %f", layer.frame.origin.x);
         [self dismissViewControllerAnimated:NO completion:nil];
     };
     

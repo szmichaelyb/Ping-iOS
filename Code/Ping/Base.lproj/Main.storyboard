@@ -45,10 +45,10 @@
             </objects>
             <point key="canvasLocation" x="789" y="-923"/>
         </scene>
-        <!--Main View Controller-->
+        <!--Tab View Controller-->
         <scene sceneID="vFK-1B-OXU">
             <objects>
-                <tabBarController restorationIdentifier="PGMainViewController" storyboardIdentifier="PGMainViewController" definesPresentationContext="YES" id="IEq-PX-ZJF" customClass="PGMainViewController" sceneMemberID="viewController">
+                <tabBarController restorationIdentifier="PGTabViewController" storyboardIdentifier="PGTabViewController" definesPresentationContext="YES" id="IEq-PX-ZJF" customClass="PGTabViewController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="ND5-Iw-jam">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
@@ -120,7 +120,7 @@
         <scene sceneID="wfy-ms-89x">
             <objects>
                 <navigationController definesPresentationContext="YES" id="WPs-iE-ZTp" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feed" id="z7h-6J-rkP"/>
+                    <tabBarItem key="tabBarItem" title="Feed" image="settings-off" id="z7h-6J-rkP"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="UQp-Vh-eVz">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -192,7 +192,7 @@
         <scene sceneID="wDL-vg-6FT">
             <objects>
                 <navigationController definesPresentationContext="YES" id="vGQ-xP-Zp9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Ping" id="tls-xH-5bM"/>
+                    <tabBarItem key="tabBarItem" title="Ping" image="settings-off" id="tls-xH-5bM"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eg9-9y-iQl">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -475,7 +475,7 @@
             </objects>
             <point key="canvasLocation" x="1314" y="626"/>
         </scene>
-        <!--Feed View Controller - Feed-->
+        <!--Feed View Controller-->
         <scene sceneID="09M-sL-HQQ">
             <objects>
                 <viewController restorationIdentifier="PGFeedViewController" storyboardIdentifier="PGFeedViewController" id="1cV-B3-Drv" customClass="PGFeedViewController" sceneMemberID="viewController">
@@ -496,22 +496,35 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="0Ig-fv-iOL">
-                                                    <rect key="frame" x="0.0" y="14" width="320" height="191"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="191"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="65P-4A-kiY">
-                                                    <rect key="frame" x="8" y="213" width="216" height="21"/>
+                                                    <rect key="frame" x="8" y="207" width="216" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2Y7-P5-afs">
-                                                    <rect key="frame" x="8" y="236" width="292" height="21"/>
+                                                    <rect key="frame" x="8" y="236" width="259" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="CfG-Nw-Zrf">
+                                                    <rect key="frame" x="275" y="236" width="40" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="MoreIcon">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="moreButtonClicked:" destination="1cV-B3-Drv" eventType="touchUpInside" id="psh-dF-phl"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="captionLabel" destination="65P-4A-kiY" id="9EP-yA-Jxj"/>
@@ -528,7 +541,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Feed" id="ItB-Qg-YCG"/>
                     <navigationItem key="navigationItem" id="bIG-s4-hve"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
@@ -543,6 +555,7 @@
     </scenes>
     <resources>
         <image name="CaptureButton-Normal" width="66" height="66"/>
+        <image name="MoreIcon" width="20" height="4"/>
         <image name="settings-off" width="23" height="23"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

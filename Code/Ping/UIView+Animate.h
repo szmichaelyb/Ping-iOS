@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <pop/POP.h>
 
 @interface UIView (Animate)
 
--(void)springAnimate;
+-(void)springAnimateCompletion:(void (^)(POPAnimation* anim, BOOL finished))block;
 
 @end

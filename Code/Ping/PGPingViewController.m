@@ -51,38 +51,38 @@
     //        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Enter a caption" message:nil delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
     //        [alert show];
     //    } else {
-    [sender springAnimate];
-    
-    PFObject* object = [PFObject objectWithClassName:kPFTableName_Selfies];
-    object[@"owner"] = [PFUser currentUser];
-    
-    //TODO: Change it to
-    NSData* imgData = UIImageJPEGRepresentation(self.imageView.image, 0.2);
-    PFFile* imageFile = [PFFile fileWithName:@"selfie.png" data:imgData];
-    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    [sender springAnimateCompletion:^(POPAnimation *anim, BOOL finished) {
         
-        object[@"selfie"] = imageFile;
-        object[@"caption"] = _captionTF.text;
-        [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        PFObject* object = [PFObject objectWithClassName:kPFTableName_Selfies];
+        object[@"owner"] = [PFUser currentUser];
+        
+        //TODO: Change it to
+        NSData* imgData = UIImageJPEGRepresentation(self.imageView.image, 0.2);
+        PFFile* imageFile = [PFFile fileWithName:@"selfie.png" data:imgData];
+        [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             
-            [self findRecieverBlock:^(PFObject *recieverObj) {
+            object[@"selfie"] = imageFile;
+            object[@"caption"] = _captionTF.text;
+            [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 
-                object[@"reciever"] = recieverObj[@"owner"];
-                [object saveEventually];
-                
-                [self sendPushToObject:recieverObj];
-                
-                PFObject* queueObject = [PFObject objectWithClassName:kPFTableQueue];
-                queueObject[@"owner"] = [PFUser currentUser];
-                [queueObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                [self findRecieverBlock:^(PFObject *recieverObj) {
+                    
+                    object[@"reciever"] = recieverObj[@"owner"];
+                    [object saveEventually];
+                    
+                    [self sendPushToObject:recieverObj];
+                    
+                    PFObject* queueObject = [PFObject objectWithClassName:kPFTableQueue];
+                    queueObject[@"owner"] = [PFUser currentUser];
+                    [queueObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                        
+                    }];
                     
                 }];
-                
             }];
+            [self dismissModalViewController];
         }];
-        [self dismissModalViewController];
     }];
-    //    }
 }
 
 -(IBAction)retakeClicked:(id)sender
@@ -98,7 +98,7 @@
     [query whereKey:@"owner" notEqualTo:[PFUser currentUser]];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSLog(@"%@", objects);
+        DLog(@"%@", objects);
         if (objects.count) {
             block(objects[0]);
         }
@@ -107,13 +107,17 @@
 
 -(void)sendPushToObject:(PFObject*)object
 {
-    
     PFQuery* pushQuery = [PFInstallation query];
     [pushQuery whereKey:@"owner" equalTo:object[@"owner"]];
     
     PFPush* push = [[PFPush alloc] init];
     [push setQuery:pushQuery];
-    [push setMessage:[NSString stringWithFormat:@"You have recieved a selfie from %@", [PFUser currentUser][kPFUser_Name]]];
+//    [push setMessage:[NSString stringWithFormat:@"You have recieved a selfie from %@", [PFUser currentUser][kPFUser_Name]]];
+    NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:
+                          [NSString stringWithFormat:@"You have recieved a selfie from %@", [PFUser currentUser][kPFUser_Name]], @"alert",
+                          @"Increment", @"badge"
+                          , nil];
+    [push setData:data];
     [push sendPushInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         
         //Remove object from queue

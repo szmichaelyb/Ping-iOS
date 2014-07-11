@@ -8,7 +8,7 @@
 
 #import "PGLoginViewController.h"
 #import "PGAppDelegate.h"
-#import "PGMainViewController.h"
+#import "PGTabViewController.h"
 
 @interface PGLoginViewController ()
 
@@ -33,11 +33,10 @@
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
     
     UIStoryboard* sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    PGMainViewController* mainVC = [sb instantiateViewControllerWithIdentifier:@"PGMainViewController"];
+    PGTabViewController* mainVC = [sb instantiateViewControllerWithIdentifier:@"PGTabViewController"];
     
     PGAppDelegate* appDelegate = (PGAppDelegate*) [UIApplication sharedApplication].delegate;
     appDelegate.window.rootViewController = mainVC;
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -100,7 +99,7 @@
                     
                     [[PFInstallation currentInstallation] setObject:[PFUser currentUser] forKey:@"owner"];
                     [[PFInstallation currentInstallation] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                        NSLog(@"%@", error);
+                        DLog(@"%@", error);
                     }];
                     //
                     //                    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:kUDKeyUserLoggedIn];

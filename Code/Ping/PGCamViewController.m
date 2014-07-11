@@ -94,7 +94,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
         
 		if (error)
 		{
-			NSLog(@"%@", error);
+			DLog(@"%@", error);
 		}
 		
 		if ([session canAddInput:videoDeviceInput])
@@ -116,7 +116,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
         //
         //		if (error)
         //		{
-        //			NSLog(@"%@", error);
+        //			DLog(@"%@", error);
         //		}
         //
         //		if ([session canAddInput:audioDeviceInput])
@@ -346,33 +346,34 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 
 - (IBAction)snapStillImage:(id)sender
 {
-//    [self animateButton:sender];
-    [sender springAnimate];
-    
-	dispatch_async([self sessionQueue], ^{
-		// Update the orientation on the still image output video connection before capturing.
-		[[[self stillImageOutput] connectionWithMediaType:AVMediaTypeVideo] setVideoOrientation:[[(AVCaptureVideoPreviewLayer *)[[self previewView] layer] connection] videoOrientation]];
-		
-		// Flash set to Auto for Still Capture
-		[PGCamViewController setFlashMode:AVCaptureFlashModeAuto forDevice:[[self videoDeviceInput] device]];
-		
-		// Capture a still image.
-		[[self stillImageOutput] captureStillImageAsynchronouslyFromConnection:[[self stillImageOutput] connectionWithMediaType:AVMediaTypeVideo] completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
-			
-			if (imageDataSampleBuffer)
-			{
-				NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
-				UIImage *image = [[UIImage alloc] initWithData:imageData];
+    //    [self animateButton:sender];
+    [sender springAnimateCompletion:^(POPAnimation *anim, BOOL finished) {
+        
+        dispatch_async([self sessionQueue], ^{
+            // Update the orientation on the still image output video connection before capturing.
+            [[[self stillImageOutput] connectionWithMediaType:AVMediaTypeVideo] setVideoOrientation:[[(AVCaptureVideoPreviewLayer *)[[self previewView] layer] connection] videoOrientation]];
+            
+            // Flash set to Auto for Still Capture
+            [PGCamViewController setFlashMode:AVCaptureFlashModeAuto forDevice:[[self videoDeviceInput] device]];
+            
+            // Capture a still image.
+            [[self stillImageOutput] captureStillImageAsynchronouslyFromConnection:[[self stillImageOutput] connectionWithMediaType:AVMediaTypeVideo] completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
                 
-                UIStoryboard* sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                PGPingViewController* pingVC = [sb instantiateViewControllerWithIdentifier:@"PGPingViewController"];
-                pingVC.image = image;
-                [self.navigationController presentViewController:pingVC animated:YES completion:nil];
-                
-                //				[[[ALAssetsLibrary alloc] init] writeImageToSavedPhotosAlbum:[image CGImage] orientation:(ALAssetOrientation)[image imageOrientation] completionBlock:nil];
-			}
-		}];
-	});
+                if (imageDataSampleBuffer)
+                {
+                    NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
+                    UIImage *image = [[UIImage alloc] initWithData:imageData];
+                    
+                    UIStoryboard* sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                    PGPingViewController* pingVC = [sb instantiateViewControllerWithIdentifier:@"PGPingViewController"];
+                    pingVC.image = image;
+                    [self.navigationController presentViewController:pingVC animated:YES completion:nil];
+                    
+                    //				[[[ALAssetsLibrary alloc] init] writeImageToSavedPhotosAlbum:[image CGImage] orientation:(ALAssetOrientation)[image imageOrientation] completionBlock:nil];
+                }
+            }];
+        });
+    }];
 }
 
 - (IBAction)focusAndExposeTap:(UIGestureRecognizer *)gestureRecognizer
@@ -392,7 +393,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 - (void)captureOutput:(AVCaptureFileOutput *)captureOutput didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL fromConnections:(NSArray *)connections error:(NSError *)error
 {
 	if (error)
-		NSLog(@"%@", error);
+		DLog(@"%@", error);
 	
 	[self setLockInterfaceRotation:NO];
 	
@@ -402,7 +403,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 	
 	[[[ALAssetsLibrary alloc] init] writeVideoAtPathToSavedPhotosAlbum:outputFileURL completionBlock:^(NSURL *assetURL, NSError *error) {
 		if (error)
-			NSLog(@"%@", error);
+			DLog(@"%@", error);
 		
 		[[NSFileManager defaultManager] removeItemAtURL:outputFileURL error:nil];
 		
@@ -435,7 +436,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 		}
 		else
 		{
-			NSLog(@"%@", error);
+			DLog(@"%@", error);
 		}
 	});
 }
@@ -452,7 +453,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 		}
 		else
 		{
-			NSLog(@"%@", error);
+			DLog(@"%@", error);
 		}
 	}
 }

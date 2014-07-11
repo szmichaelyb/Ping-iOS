@@ -9,6 +9,7 @@
 #import "PGFeedViewController.h"
 #import "PGFeedTableViewCell.h"
 #import <pop/POP.h>
+#import <UIActionSheet+Blocks/UIActionSheet+Blocks.h>
 
 @interface PGFeedViewController ()
 {
@@ -20,6 +21,8 @@
 
 @property (strong, nonatomic) NSMutableArray* datasource;
 @property (nonatomic, strong) STZPullToRefresh *pullToRefresh;
+
+- (IBAction)moreButtonClicked:(UIButton *)sender;
 
 @end
 
@@ -64,7 +67,7 @@
     [query includeKey:@"owner"];
     [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSLog(@"%@", objects);
+        DLog(@"%@", objects);
         [self.pullToRefresh finishRefresh];
         
         _datasource = [NSMutableArray arrayWithArray:objects];
@@ -164,13 +167,30 @@
     animation.toValue = [NSValue valueWithCGRect:frame];
     
     animation.completionBlock = ^(POPAnimation *anim, BOOL finished) {
-        NSLog(@"Animation has completed.");
+        DLog(@"Animation has completed.");
         if (completion) {
             completion(anim, finished);
         }
     };
     
     [view pop_addAnimation:animation forKey:@"fullscreen"];
+}
+
+- (IBAction)moreButtonClicked:(UIButton *)sender
+{
+    [UIActionSheet showInView:self.view.window withTitle:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@[@"Report this post"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+        DLog(@"%d", buttonIndex);
+        if (buttonIndex == 0) {
+            
+            CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tableView];
+            NSIndexPath* indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
+            
+            DLog(@"%@", _datasource[indexPath.row]);
+            PFObject* object = _datasource[indexPath.row];
+            object[@"abuse"] = [NSNumber numberWithBool:YES];
+            [object saveEventually];
+        }
+    }];
 }
 
 @end

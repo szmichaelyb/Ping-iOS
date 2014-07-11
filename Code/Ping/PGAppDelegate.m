@@ -26,12 +26,20 @@
     [currentInstallation setChannels:@[@"channel"]];
     [currentInstallation saveEventually:^(BOOL succeeded, NSError *error) {
         if (error) {
-//            DLog(@"Push Registration Error: %@", error);
-//            [GAI trackEventWithCategory:@"pf_installation" action:@"registration_error" label:error.description value:nil];
+            //            DLog(@"Push Registration Error: %@", error);
+            //            [GAI trackEventWithCategory:@"pf_installation" action:@"registration_error" label:error.description value:nil];
         }
     }];
 }
 
+-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    DLog(@"%@", self.window.rootViewController);
+    UITabBarController* tab = (UITabBarController*)self.window.rootViewController;
+    NSString* badge = [NSString stringWithFormat:@"%@", [userInfo[@"aps"] objectForKey:@"badge"]];
+    [tab.tabBar.items[0] setBadgeValue:badge];
+    //    [self.window.rootViewController.tabBarController.tabBar.items[0] setBadgeValue:@"2"];
+}
 
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
@@ -60,7 +68,13 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
-
+    
+    UITabBarController* tab = (UITabBarController*)self.window.rootViewController;
+    if ([UIApplication sharedApplication].applicationIconBadgeNumber == 0) {
+        [tab.tabBar.items[0] setBadgeValue:nil];
+    } else {
+        [tab.tabBar.items[0] setBadgeValue:[NSString stringWithFormat:@"%d", [UIApplication sharedApplication].applicationIconBadgeNumber]];
+    }
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 

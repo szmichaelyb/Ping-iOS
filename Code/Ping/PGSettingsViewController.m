@@ -250,7 +250,7 @@
                 MFMessageComposeViewController* messageVC = [[MFMessageComposeViewController alloc] init];
                 messageVC.messageComposeDelegate = self;
                 messageVC.view.tintColor = [UIColor whiteColor];
-                messageVC.body = @"Download vCinity app on AppStore to chat even with no Internet connection. https://itunes.apple.com/app/id875395391";
+                messageVC.body = @"Download vCinity app on AppStore to chat even with no Internet connection. https://itunes.apple.com/app/id898275446";
                 [self presentViewController:messageVC animated:YES completion:nil];
             }
         } else if (buttonIndex == 1) {
@@ -260,7 +260,7 @@
                 mailVC.mailComposeDelegate = self;
                 mailVC.view.tintColor = [UIColor whiteColor];
                 [mailVC setSubject:@"vCinity Chat App for iPhone"];
-                [mailVC setMessageBody:@"Hey, \n\nI just downloaded vCinity Chat on my iPhone. \n\nIt is a chat app which lets me chat with people around me. Even if there is no Internet connection. The signup is very easy and simple. You don't have to remember anything. \n\nDownload it now on the AppStore to start chatting. https://itunes.apple.com/app/id875395391" isHTML:NO];
+                [mailVC setMessageBody:@"Hey, \n\nI just downloaded vCinity Chat on my iPhone. \n\nIt is a chat app which lets me chat with people around me. Even if there is no Internet connection. The signup is very easy and simple. You don't have to remember anything. \n\nDownload it now on the AppStore to start chatting. https://itunes.apple.com/app/id898275446" isHTML:NO];
                 [self presentViewController:mailVC animated:YES completion:nil];
             }
         } else if (buttonIndex == 2) {
@@ -268,7 +268,7 @@
             if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
                 SLComposeViewController* sheet = [[SLComposeViewController alloc] init];
                 sheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-                [sheet setInitialText:@"Download vCinity app on AppStore to chat even with no Internet connection. https://itunes.apple.com/app/id875395391"];
+                [sheet setInitialText:@"Download vCinity app on AppStore to chat even with no Internet connection. https://itunes.apple.com/app/id898275446"];
                 [self presentViewController:sheet animated:YES completion:nil];
             }
         } else if (buttonIndex == 3) {
@@ -276,7 +276,7 @@
             if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
                 SLComposeViewController* sheet = [[SLComposeViewController alloc] init];
                 sheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-                [sheet setInitialText:@"Download vCinity app on AppStore to chat even with no Internet connection. https://itunes.apple.com/app/id875395391"];
+                [sheet setInitialText:@"Download vCinity app on AppStore to chat even with no Internet connection. https://itunes.apple.com/app/id898275446"];
                 [self presentViewController:sheet animated:YES completion:nil];
             }
         }

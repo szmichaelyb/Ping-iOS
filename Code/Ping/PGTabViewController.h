@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PGMainViewController : UITabBarController
+@interface PGTabViewController : UITabBarController<UITabBarControllerDelegate>
 
 @end
