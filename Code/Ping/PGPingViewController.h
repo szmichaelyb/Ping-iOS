@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PGPingViewController : UIViewController
+@interface PGPingViewController : UIViewController<CLLocationManagerDelegate>
 
 @property (strong, nonatomic) UIImage* image;
 

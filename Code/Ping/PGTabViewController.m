@@ -34,7 +34,6 @@
     paggingViewer.navigationController.navigationBar.translucent = NO;
     paggingViewer.viewControllers = @[feed1, feed2];
     
-    
     [self setSelectedIndex:1];
     // Do any additional setup after loading the view.
 }

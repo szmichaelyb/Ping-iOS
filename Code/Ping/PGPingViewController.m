@@ -16,6 +16,9 @@
 @property (nonatomic, strong) IBOutlet UIButton* sendButton;
 @property (nonatomic, strong) IBOutlet UIButton* retakeButton;
 @property (nonatomic, strong) IBOutlet UITextField* captionTF;
+@property (nonatomic, strong) IBOutlet UILabel* locationLabel;
+
+@property (strong, nonatomic) CLLocationManager* locationManager;
 
 -(IBAction)sendButtonClicked:(id)sender;
 -(IBAction)retakeClicked:(id)sender;
@@ -31,7 +34,11 @@
     
     UITapGestureRecognizer* dismissGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     [self.view addGestureRecognizer:dismissGesture];
-    // Do any additional setup after loading the view.
+
+    _locationManager = [[CLLocationManager alloc] init];
+    _locationManager.delegate = self;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    [_locationManager startUpdatingLocation];
 }
 
 - (void)didReceiveMemoryWarning
@@ -125,6 +132,24 @@
             
         }];
     }];
+}
+
+#pragma mark - CLLocationManager Delegate
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    DLog(@"%@", locations);
+    if (locations.count) {
+        [self.locationManager stopUpdatingLocation];
+        CLLocation* location = (CLLocation*)[locations lastObject];
+        CLGeocoder* geoCoder = [[CLGeocoder alloc] init];
+        [geoCoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+            NSString* city = ([placemarks count] > 0 ? [placemarks[0] locality] : @"N/A");
+            NSString* country = ([placemarks count] > 0 ? [placemarks[0] ISOcountryCode] : @"N/A");
+            DLog(@"City: %@", city);
+            self.locationLabel.text = [NSString stringWithFormat:@"%@, %@", city, country];
+        }];
+    }
 }
 
 @end

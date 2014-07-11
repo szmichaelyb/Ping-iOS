@@ -166,7 +166,7 @@
                                     <action selector="retakeClicked:" destination="Dvu-oQ-EJq" eventType="touchUpInside" id="fOw-L4-Ncc"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add a caption" textAlignment="center" minimumFontSize="17" id="Vio-AN-f35">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add a caption" textAlignment="center" minimumFontSize="17" id="Vio-AN-f35" userLabel="Caption Label">
                                 <rect key="frame" x="30" y="40" width="260" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -174,12 +174,20 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qDb-dg-dz1" userLabel="Location Label">
+                                <rect key="frame" x="20" y="65" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="captionTF" destination="Vio-AN-f35" id="Szd-Ev-22U"/>
                         <outlet property="imageView" destination="Vwc-lv-uq3" id="qGR-F7-6Pl"/>
+                        <outlet property="locationLabel" destination="qDb-dg-dz1" id="iDO-cI-S5J"/>
                         <outlet property="retakeButton" destination="QHl-Qf-TQe" id="muA-BQ-hck"/>
                         <outlet property="sendButton" destination="9bi-qT-dXP" id="P5z-JP-BRR"/>
                     </connections>
