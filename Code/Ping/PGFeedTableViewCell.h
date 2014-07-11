@@ -12,7 +12,5 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView* iv;
 @property (strong, nonatomic) IBOutlet UILabel* captionLabel;
-@property (strong, nonatomic) IBOutlet UILabel* senderLabel;
-@property (strong, nonatomic) IBOutlet UILabel* locationLabel;
 
 @end

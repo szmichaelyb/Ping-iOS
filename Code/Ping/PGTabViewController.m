@@ -23,11 +23,11 @@
     UIStoryboard* sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     PGFeedViewController* feed1 = [sb instantiateViewControllerWithIdentifier:@"PGFeedViewController"];
     feed1.feedType = FeedTypeOther;
-    feed1.title = @"Other";
+    feed1.title = @"Received";
     
     PGFeedViewController* feed2 = [sb instantiateViewControllerWithIdentifier:@"PGFeedViewController"];
     feed2.feedType = FeedTypeMine;
-    feed2.title = @"Mine";
+    feed2.title = @"Sent";
     
     UINavigationController* navC = self.viewControllers[0];
     XHTwitterPaggingViewer* paggingViewer = navC.viewControllers[0];

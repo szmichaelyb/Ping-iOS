@@ -28,6 +28,11 @@
 		06DCBD13196F404C00E8C9B2 /* PGSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBD0F196F404C00E8C9B2 /* PGSettingsViewController.m */; };
 		06DCBD14196F404C00E8C9B2 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBD11196F404C00E8C9B2 /* WebViewController.m */; };
 		06DCBD17196F421400E8C9B2 /* UIDevice-Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBD16196F421400E8C9B2 /* UIDevice-Hardware.m */; };
+		06DCBD24197079E300E8C9B2 /* PGFeedHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06DCBD23197079E300E8C9B2 /* PGFeedHeader.xib */; };
+		06DCBD2719707A1E00E8C9B2 /* PGFeedHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBD2619707A1E00E8C9B2 /* PGFeedHeader.m */; };
+		06DCBD2E1970886A00E8C9B2 /* InAppNotificationTapListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBD2A1970886A00E8C9B2 /* InAppNotificationTapListener.m */; };
+		06DCBD2F1970886A00E8C9B2 /* InAppNotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBD2C1970886A00E8C9B2 /* InAppNotificationView.m */; };
+		06DCBD301970886A00E8C9B2 /* InAppNotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06DCBD2D1970886A00E8C9B2 /* InAppNotificationView.xib */; };
 		B4D0781A6E87400B8846C0E9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 44403505DE314A23B874DE7D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +76,14 @@
 		06DCBD11196F404C00E8C9B2 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		06DCBD15196F421400E8C9B2 /* UIDevice-Hardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice-Hardware.h"; sourceTree = "<group>"; };
 		06DCBD16196F421400E8C9B2 /* UIDevice-Hardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice-Hardware.m"; sourceTree = "<group>"; };
+		06DCBD23197079E300E8C9B2 /* PGFeedHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGFeedHeader.xib; sourceTree = "<group>"; };
+		06DCBD2519707A1E00E8C9B2 /* PGFeedHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGFeedHeader.h; sourceTree = "<group>"; };
+		06DCBD2619707A1E00E8C9B2 /* PGFeedHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGFeedHeader.m; sourceTree = "<group>"; };
+		06DCBD291970886A00E8C9B2 /* InAppNotificationTapListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppNotificationTapListener.h; sourceTree = "<group>"; };
+		06DCBD2A1970886A00E8C9B2 /* InAppNotificationTapListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppNotificationTapListener.m; sourceTree = "<group>"; };
+		06DCBD2B1970886A00E8C9B2 /* InAppNotificationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppNotificationView.h; sourceTree = "<group>"; };
+		06DCBD2C1970886A00E8C9B2 /* InAppNotificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppNotificationView.m; sourceTree = "<group>"; };
+		06DCBD2D1970886A00E8C9B2 /* InAppNotificationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InAppNotificationView.xib; sourceTree = "<group>"; };
 		44403505DE314A23B874DE7D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3EC4F2809A54D8D8F1E8EBE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -132,6 +145,7 @@
 				06DCBCC8196E2AFF00E8C9B2 /* PGAppDelegate.h */,
 				06DCBCC9196E2AFF00E8C9B2 /* PGAppDelegate.m */,
 				06DCBCCB196E2AFF00E8C9B2 /* Main.storyboard */,
+				06DCBD311970886F00E8C9B2 /* In-app Notification */,
 				06DCBCC0196E2AFF00E8C9B2 /* Supporting Files */,
 			);
 			path = Ping;
@@ -235,10 +249,33 @@
 		06DCBD1F196F9DD800E8C9B2 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				06DCBD2819707AC900E8C9B2 /* Header */,
 				06DCBD04196F07C500E8C9B2 /* PGFeedTableViewCell.h */,
 				06DCBD05196F07C500E8C9B2 /* PGFeedTableViewCell.m */,
 			);
 			name = Cell;
+			sourceTree = "<group>";
+		};
+		06DCBD2819707AC900E8C9B2 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				06DCBD2519707A1E00E8C9B2 /* PGFeedHeader.h */,
+				06DCBD2619707A1E00E8C9B2 /* PGFeedHeader.m */,
+				06DCBD23197079E300E8C9B2 /* PGFeedHeader.xib */,
+			);
+			name = Header;
+			sourceTree = "<group>";
+		};
+		06DCBD311970886F00E8C9B2 /* In-app Notification */ = {
+			isa = PBXGroup;
+			children = (
+				06DCBD291970886A00E8C9B2 /* InAppNotificationTapListener.h */,
+				06DCBD2A1970886A00E8C9B2 /* InAppNotificationTapListener.m */,
+				06DCBD2B1970886A00E8C9B2 /* InAppNotificationView.h */,
+				06DCBD2C1970886A00E8C9B2 /* InAppNotificationView.m */,
+				06DCBD2D1970886A00E8C9B2 /* InAppNotificationView.xib */,
+			);
+			name = "In-app Notification";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,7 +338,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06DCBD24197079E300E8C9B2 /* PGFeedHeader.xib in Resources */,
 				06DCBCD2196E2AFF00E8C9B2 /* Images.xcassets in Resources */,
+				06DCBD301970886A00E8C9B2 /* InAppNotificationView.xib in Resources */,
 				06DCBD12196F404C00E8C9B2 /* SettingsShareView.xib in Resources */,
 				06DCBCC4196E2AFF00E8C9B2 /* InfoPlist.strings in Resources */,
 				06DCBCCD196E2AFF00E8C9B2 /* Main.storyboard in Resources */,
@@ -349,7 +388,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				06DCBCFA196EE8EB00E8C9B2 /* PGPingViewController.m in Sources */,
+				06DCBD2719707A1E00E8C9B2 /* PGFeedHeader.m in Sources */,
 				06DCBD14196F404C00E8C9B2 /* WebViewController.m in Sources */,
+				06DCBD2E1970886A00E8C9B2 /* InAppNotificationTapListener.m in Sources */,
+				06DCBD2F1970886A00E8C9B2 /* InAppNotificationView.m in Sources */,
 				06DCBCF4196EE40600E8C9B2 /* PGCamViewController.m in Sources */,
 				06DCBCF1196EDDFA00E8C9B2 /* PGTabViewController.m in Sources */,
 				06DCBCF7196EE41800E8C9B2 /* AVCamPreviewView.m in Sources */,

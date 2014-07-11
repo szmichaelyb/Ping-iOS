@@ -7,6 +7,9 @@
 //
 
 #import "PGAppDelegate.h"
+#import "InAppNotificationTapListener.h"
+#import "InAppNotificationView.h"
+#import "PGFeedViewController.h"
 
 @implementation PGAppDelegate
 
@@ -38,6 +41,28 @@
     UITabBarController* tab = (UITabBarController*)self.window.rootViewController;
     NSString* badge = [NSString stringWithFormat:@"%@", [userInfo[@"aps"] objectForKey:@"badge"]];
     [tab.tabBar.items[0] setBadgeValue:badge];
+    
+        
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"notification" object:nil userInfo:userInfo];
+    
+    if ([UIApplication sharedApplication].applicationState != UIApplicationStateActive) {
+        [PFPush handlePush:userInfo];
+        [[InAppNotificationTapListener sharedInAppNotificationTapListener] startObserving];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"notificationTapped" object:nil userInfo:userInfo];
+    } else {
+        [[InAppNotificationTapListener sharedInAppNotificationTapListener] startObserving];
+        UIViewController* currentVC = ((UINavigationController*)((UITabBarController*)self.window.rootViewController).selectedViewController).visibleViewController;
+        
+        if (![currentVC isKindOfClass:[PGFeedViewController class]]) {
+            
+            //                if (userInfo[kNotificationSender]) {
+            [[InAppNotificationView sharedInstance] notifyWithUserInfo:userInfo andTouchBlock:^(InAppNotificationView *view) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"notificationTapped" object:nil userInfo:userInfo];
+            }];
+            //                }
+        }
+        
+    }
     //    [self.window.rootViewController.tabBarController.tabBar.items[0] setBadgeValue:@"2"];
 }
 

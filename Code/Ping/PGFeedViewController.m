@@ -10,6 +10,7 @@
 #import "PGFeedTableViewCell.h"
 #import <pop/POP.h>
 #import <UIActionSheet+Blocks/UIActionSheet+Blocks.h>
+#import "PGFeedHeader.h"
 
 @interface PGFeedViewController ()
 {
@@ -33,7 +34,7 @@
     [super viewDidLoad];
     
     self.navigationController.navigationBar.translucent = NO;
-
+    
     /// Setup pull to refresh
     CGFloat refreshBarY = self.navigationController.navigationBar.bounds.size.height;
     STZPullToRefreshView *refreshView = [[STZPullToRefreshView alloc] initWithFrame:CGRectMake(0, refreshBarY, self.view.frame.size.width, 3)];
@@ -71,7 +72,8 @@
         [self.pullToRefresh finishRefresh];
         
         _datasource = [NSMutableArray arrayWithArray:objects];
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+        //        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView reloadData];
     }];
 }
 
@@ -80,14 +82,35 @@
     [self getObjectsFromParse];
 }
 
+#pragma mark - UITableView Datasource
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return _datasource.count;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 50;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    PGFeedHeader* view = [[NSBundle mainBundle] loadNibNamed:@"PGFeedHeader" owner:self options:nil][0];
+    PFUser* senderUser = _datasource[section][@"owner"];
+    view.nameLabel.text = senderUser[kPFUser_Name];
+    view.locationLabel.text = _datasource[section][@"location"];
+    
+    PFFile* file = senderUser[kPFUser_Picture];
+    [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        [view.thumbIV setImage:[UIImage imageWithData:data]];
+    }];
+    return view;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _datasource.count;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -103,25 +126,24 @@
 - (void)configureCell:(PGFeedTableViewCell *)cell
     forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PFFile* file = _datasource[indexPath.row][@"selfie"];
+    PFFile* file = _datasource[indexPath.section][@"selfie"];
     [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         UIImage* img = [UIImage imageWithData:data];
         cell.iv.image = img;
     }];
-    cell.captionLabel.text = _datasource[indexPath.row][@"caption"];
-    cell.locationLabel.text = _datasource[indexPath.row][@"location"];
-    PFUser* senderUser = _datasource[indexPath.row][@"owner"];
-    cell.senderLabel.text = senderUser[kPFUser_Name];
-
+    cell.captionLabel.text = _datasource[indexPath.section][@"caption"];
+    
     cell.iv.userInteractionEnabled = YES;
-    cell.iv.tag = indexPath.row;
+    cell.iv.tag = indexPath.section;
     UITapGestureRecognizer* gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(performFullScreenAnimation:)];
     [cell.iv addGestureRecognizer:gesture];
 }
 
+#pragma mark -
+
 -(void)performFullScreenAnimation:(UITapGestureRecognizer*)sender
 {
-    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:sender.view.tag inSection:0];
+    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:0 inSection:sender.view.tag];
     
     PGFeedTableViewCell* cell = (PGFeedTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
     UIImageView* iv = cell.iv;
@@ -177,19 +199,25 @@
     [view pop_addAnimation:animation forKey:@"fullscreen"];
 }
 
+#pragma mark -
+
 - (IBAction)moreButtonClicked:(UIButton *)sender
 {
     [UIActionSheet showInView:self.view.window withTitle:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@[@"Report this post"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
         DLog(@"%d", buttonIndex);
         if (buttonIndex == 0) {
             
-            CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tableView];
-            NSIndexPath* indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
-            
-            DLog(@"%@", _datasource[indexPath.row]);
-            PFObject* object = _datasource[indexPath.row];
-            object[@"abuse"] = [NSNumber numberWithBool:YES];
-            [object saveEventually];
+            [UIActionSheet showInView:self.view.window withTitle:@"Are you sure?" cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@[@"Yes"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+                if (buttonIndex == 0) {
+                    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tableView];
+                    NSIndexPath* indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
+                    
+                    DLog(@"%@", _datasource[indexPath.section]);
+                    PFObject* object = _datasource[indexPath.section];
+                    object[@"abuse"] = [NSNumber numberWithBool:YES];
+                    [object saveEventually];
+                }
+            }];
         }
     }];
 }
