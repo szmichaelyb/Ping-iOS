@@ -123,20 +123,16 @@
 		06DCBCBF196E2AFF00E8C9B2 /* Ping */ = {
 			isa = PBXGroup;
 			children = (
-				06DCBD18196F42E800E8C9B2 /* Utilities */,
 				06DCBD19196F42F500E8C9B2 /* Animations */,
+				06DCBD18196F42E800E8C9B2 /* Utilities */,
+				06DCBD1E196F9DCF00E8C9B2 /* Feed */,
+				06DCBD00196F060F00E8C9B2 /* Settings */,
+				06DCBD1C196F9DB000E8C9B2 /* Login */,
+				06DCBCFC196EF62000E8C9B2 /* Tab */,
+				06DCBCFB196EF61A00E8C9B2 /* Ping VC */,
 				06DCBCC8196E2AFF00E8C9B2 /* PGAppDelegate.h */,
 				06DCBCC9196E2AFF00E8C9B2 /* PGAppDelegate.m */,
 				06DCBCCB196E2AFF00E8C9B2 /* Main.storyboard */,
-				06DCBD01196F063400E8C9B2 /* PGFeedViewController.h */,
-				06DCBD02196F063400E8C9B2 /* PGFeedViewController.m */,
-				06DCBD04196F07C500E8C9B2 /* PGFeedTableViewCell.h */,
-				06DCBD05196F07C500E8C9B2 /* PGFeedTableViewCell.m */,
-				06DCBD00196F060F00E8C9B2 /* Settings */,
-				06DCBCCE196E2AFF00E8C9B2 /* PGLoginViewController.h */,
-				06DCBCCF196E2AFF00E8C9B2 /* PGLoginViewController.m */,
-				06DCBCFC196EF62000E8C9B2 /* Tab */,
-				06DCBCFB196EF61A00E8C9B2 /* Ping VC */,
 				06DCBCC0196E2AFF00E8C9B2 /* Supporting Files */,
 			);
 			path = Ping;
@@ -158,10 +154,9 @@
 		06DCBCFB196EF61A00E8C9B2 /* Ping VC */ = {
 			isa = PBXGroup;
 			children = (
+				06DCBD1D196F9DBE00E8C9B2 /* View */,
 				06DCBCF2196EE40600E8C9B2 /* PGCamViewController.h */,
 				06DCBCF3196EE40600E8C9B2 /* PGCamViewController.m */,
-				06DCBCF5196EE41800E8C9B2 /* AVCamPreviewView.h */,
-				06DCBCF6196EE41800E8C9B2 /* AVCamPreviewView.m */,
 				06DCBCF8196EE8EB00E8C9B2 /* PGPingViewController.h */,
 				06DCBCF9196EE8EB00E8C9B2 /* PGPingViewController.m */,
 			);
@@ -207,6 +202,43 @@
 				06DCBD0B196F2E0500E8C9B2 /* UIView+Animate.m */,
 			);
 			name = Animations;
+			sourceTree = "<group>";
+		};
+		06DCBD1C196F9DB000E8C9B2 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				06DCBCCE196E2AFF00E8C9B2 /* PGLoginViewController.h */,
+				06DCBCCF196E2AFF00E8C9B2 /* PGLoginViewController.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		06DCBD1D196F9DBE00E8C9B2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				06DCBCF5196EE41800E8C9B2 /* AVCamPreviewView.h */,
+				06DCBCF6196EE41800E8C9B2 /* AVCamPreviewView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		06DCBD1E196F9DCF00E8C9B2 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				06DCBD01196F063400E8C9B2 /* PGFeedViewController.h */,
+				06DCBD02196F063400E8C9B2 /* PGFeedViewController.m */,
+				06DCBD1F196F9DD800E8C9B2 /* Cell */,
+			);
+			name = Feed;
+			sourceTree = "<group>";
+		};
+		06DCBD1F196F9DD800E8C9B2 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				06DCBD04196F07C500E8C9B2 /* PGFeedTableViewCell.h */,
+				06DCBD05196F07C500E8C9B2 /* PGFeedTableViewCell.m */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

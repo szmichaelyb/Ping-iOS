@@ -13,6 +13,7 @@
 @interface PGFeedViewController ()
 {
     CGRect originalFrame;
+    UIImageView* tempIV;
 }
 
 @property (strong, nonatomic) IBOutlet UITableView* tableView;
@@ -28,14 +29,14 @@
 {
     [super viewDidLoad];
     
+    
+    
     /// Setup pull to refresh
     CGFloat refreshBarY = self.navigationController.navigationBar.bounds.size.height + [UIApplication sharedApplication].statusBarFrame.size.height;
     STZPullToRefreshView *refreshView = [[STZPullToRefreshView alloc] initWithFrame:CGRectMake(0, refreshBarY, self.view.frame.size.width, 3)];
     [self.view addSubview:refreshView];
     
-    self.pullToRefresh = [[STZPullToRefresh alloc] initWithTableView:self.tableView
-                                                         refreshView:refreshView
-                                                   tableViewDelegate:self];
+    self.pullToRefresh = [[STZPullToRefresh alloc] initWithTableView:self.tableView refreshView:refreshView tableViewDelegate:self];
     self.tableView.delegate = self.pullToRefresh;
     self.pullToRefresh.delegate = self;
     
@@ -53,7 +54,10 @@
 -(void)getObjectsFromParse
 {
     PFQuery* query = [PFQuery queryWithClassName:kPFTableName_Selfies];
-    [query whereKey:@"reciever" equalTo:[PFUser currentUser]];
+//        [query whereKey:@"reciever" equalTo:[PFUser currentUser]];
+  
+        [query whereKey:@"owner" equalTo:[PFUser currentUser]];
+  
     [query includeKey:@"owner"];
     [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -122,6 +126,7 @@
     ivExpand.clipsToBounds = YES;
     
     originalFrame = ivExpand.frame;
+    tempIV = cell.iv;
     
     [self.navigationController.view addSubview:ivExpand];
     self.tabBarController.tabBar.hidden = YES;
@@ -129,7 +134,9 @@
     UITapGestureRecognizer* tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeFullScreen:)];
     [ivExpand addGestureRecognizer:tgr];
     
-    [self animateView:ivExpand toFrame:self.view.bounds completion:nil];
+    [self animateView:ivExpand toFrame:self.view.bounds completion:^(POPAnimation *anim, bool finished) {
+        tempIV.hidden = YES;
+    }];
 }
 
 -(void)removeFullScreen:(UITapGestureRecognizer*)tgr
@@ -139,6 +146,7 @@
     
     [self animateView:tgr.view toFrame:frame completion:^(POPAnimation *anim, bool finished) {
         [tgr.view removeFromSuperview];
+        tempIV.hidden = NO;
     }];
 }
 
@@ -160,4 +168,5 @@
     
     [view pop_addAnimation:animation forKey:@"fullscreen"];
 }
+
 @end

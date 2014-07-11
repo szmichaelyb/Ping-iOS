@@ -35,16 +35,16 @@
             <objects>
                 <viewController restorationIdentifier="PGFeedViewController" storyboardIdentifier="PGFeedViewController" id="BCi-wY-6i3" customClass="PGFeedViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vnQ-G8-XGh">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="262" sectionHeaderHeight="22" sectionFooterHeight="22" id="xoX-Ij-vzJ">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="Psz-BO-JxK" customClass="PGFeedTableViewCell">
-                                        <rect key="frame" x="0.0" y="86" width="320" height="262"/>
+                                        <rect key="frame" x="0.0" y="22" width="320" height="262"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Psz-BO-JxK" id="AYF-tc-BzQ">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="261"/>
@@ -85,6 +85,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Feed" id="CW1-xk-tWR"/>
                     <navigationItem key="navigationItem" id="aas-mv-cQD"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="tableView" destination="xoX-Ij-vzJ" id="dAc-9Q-Od1"/>
                     </connections>
