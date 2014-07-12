@@ -294,7 +294,8 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 	[[self cameraButton] setEnabled:NO];
     //	[[self recordButton] setEnabled:NO];
 	[[self stillButton] setEnabled:NO];
-	
+ __block	BOOL selfieMode;
+    
 	dispatch_async([self sessionQueue], ^{
 		AVCaptureDevice *currentVideoDevice = [[self videoDeviceInput] device];
 		AVCaptureDevicePosition preferredPosition = AVCaptureDevicePositionUnspecified;
@@ -304,12 +305,16 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 		{
 			case AVCaptureDevicePositionUnspecified:
 				preferredPosition = AVCaptureDevicePositionBack;
+                selfieMode = NO;
+            
 				break;
 			case AVCaptureDevicePositionBack:
 				preferredPosition = AVCaptureDevicePositionFront;
+                selfieMode = YES;
 				break;
 			case AVCaptureDevicePositionFront:
 				preferredPosition = AVCaptureDevicePositionBack;
+                selfieMode = NO;
 				break;
 		}
 		
@@ -340,6 +345,11 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 			[[self cameraButton] setEnabled:YES];
             //			[[self recordButton] setEnabled:YES];
 			[[self stillButton] setEnabled:YES];
+            if (selfieMode) {
+                [self.cameraButton setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+            } else {
+                [self.cameraButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+            }
 		});
 	});
 }

@@ -80,7 +80,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="enB-7k-rQh">
                                         <rect key="frame" x="127" y="442" width="66" height="66"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <state key="normal" title="Snap" backgroundImage="CaptureButton-Normal">
+                                        <state key="normal" backgroundImage="CaptureButton-Normal">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="selected" image="CaptureButton-Normal"/>
@@ -94,6 +94,9 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <state key="normal" title="Selfie">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleColor" red="0.15576528279999999" green="1" blue="0.26873289230000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="changeCamera:" destination="vCX-ZW-3h4" eventType="touchUpInside" id="8X4-KR-8fK"/>
@@ -112,7 +115,7 @@
                     <navigationItem key="navigationItem" id="2yb-7b-unO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="cameraButton" destination="enB-7k-rQh" id="Gsd-3J-blR"/>
+                        <outlet property="cameraButton" destination="Ppu-OS-bx4" id="TMB-OF-Nbv"/>
                         <outlet property="previewView" destination="ix2-56-jni" id="cXw-RS-u5o"/>
                     </connections>
                 </viewController>

@@ -23,11 +23,10 @@
     DLog(@"Layer frame width: %f", layer.frame.size.width);
     
     POPSpringAnimation *yAnim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
-    POPSpringAnimation *sizeAnim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerSize];
-    
+//    POPSpringAnimation *sizeAnim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerSize];
     yAnim.toValue = @(-620);
-    yAnim.springBounciness = 16;
-    yAnim.springSpeed = 10;
+//    yAnim.springBounciness = 16;
+//    yAnim.springSpeed = 10;
     
     // About 20% of it's normal size
 //    sizeAnim.toValue = [NSValue valueWithCGSize:CGSizeMake(100, 400)];
@@ -35,11 +34,11 @@
     yAnim.completionBlock = ^(POPAnimation *anim, BOOL finished) {
         DLog(@"Animation has completed.");
         DLog(@"Layer frame X: %f", layer.frame.origin.x);
-        [self dismissViewControllerAnimated:NO completion:nil];
+     [self dismissViewControllerAnimated:NO completion:nil];
     };
-    
+
     [layer pop_addAnimation:yAnim forKey:@"position"];
-    [layer pop_addAnimation:sizeAnim forKey:@"size"];
+//    [layer pop_addAnimation:sizeAnim forKey:@"size"];
     
 //    [sourceViewController.navigationController pushViewController:destinationController animated:NO];
 }

@@ -34,7 +34,7 @@
     
     UITapGestureRecognizer* dismissGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     [self.view addGestureRecognizer:dismissGesture];
-
+    
     _locationManager = [[CLLocationManager alloc] init];
     _locationManager.delegate = self;
     _locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
@@ -75,21 +75,22 @@
                 
                 [self findRecieverBlock:^(PFObject *recieverObj) {
                     
-                    object[@"reciever"] = recieverObj[@"owner"];
-                    [object saveEventually];
-                    
-                    [self sendPushToObject:recieverObj];
+                    if (recieverObj) {
+                        object[@"reciever"] = recieverObj[@"owner"];
+                        [object saveEventually];
+                        
+                        [self sendPushToObject:recieverObj];
+                    }
                     
                     PFObject* queueObject = [PFObject objectWithClassName:kPFTableQueue];
                     queueObject[@"owner"] = [PFUser currentUser];
                     [queueObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                         
                     }];
-                    
                 }];
             }];
-        }];    [self dismissModalViewController];
-
+        }];
+        [self dismissModalViewController];
     }];
 }
 
@@ -109,6 +110,8 @@
         DLog(@"%@", objects);
         if (objects.count) {
             block(objects[0]);
+        } else {
+            block(nil);
         }
     }];
 }
@@ -120,7 +123,7 @@
     
     PFPush* push = [[PFPush alloc] init];
     [push setQuery:pushQuery];
-//    [push setMessage:[NSString stringWithFormat:@"You have recieved a selfie from %@", [PFUser currentUser][kPFUser_Name]]];
+    //    [push setMessage:[NSString stringWithFormat:@"You have recieved a selfie from %@", [PFUser currentUser][kPFUser_Name]]];
     NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:
                           [NSString stringWithFormat:@"You have recieved a selfie from %@", [PFUser currentUser][kPFUser_Name]], @"alert",
                           @"Increment", @"badge"
