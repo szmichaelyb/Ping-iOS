@@ -88,8 +88,8 @@
                     
                 }];
             }];
-            [self dismissModalViewController];
-        }];
+        }];    [self dismissModalViewController];
+
     }];
 }
 
