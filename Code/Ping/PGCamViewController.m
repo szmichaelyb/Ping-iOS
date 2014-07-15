@@ -403,8 +403,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
                     UIStoryboard* sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                     if (_overalayImage) {
                         
-                        //Create GIF from _overlayimage and image
-                        
+                        //Create GIF from _overlayimage and image                        
                         PGPingViewController* pingVC = [sb instantiateViewControllerWithIdentifier:@"PGPingViewController"];
                         pingVC.imageURL = [self saveGifWithImages:@[_overalayImage, image]];
                         pingVC.delegate = _delegate;
