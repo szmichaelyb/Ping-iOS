@@ -143,6 +143,8 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 			[self setStillImageOutput:stillImageOutput];
 		}
 	});
+    
+    [self changeCamera:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -290,12 +292,21 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 //	});
 //}
 
+-(IBAction)clocseClicked:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    if (_delegate) {
+        [_delegate didDismissCamViewController:self];
+    }
+    DLog(@"%@", self.tabBarController);
+}
+
 - (IBAction)changeCamera:(id)sender
 {
 	[[self cameraButton] setEnabled:NO];
     //	[[self recordButton] setEnabled:NO];
 	[[self stillButton] setEnabled:NO];
- __block	BOOL selfieMode;
+    __block	BOOL selfieMode;
     
 	dispatch_async([self sessionQueue], ^{
 		AVCaptureDevice *currentVideoDevice = [[self videoDeviceInput] device];

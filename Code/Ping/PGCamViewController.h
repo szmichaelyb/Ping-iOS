@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol PGCamViewControllerDelegate;
+
 @interface PGCamViewController : UIViewController
+
+@property(assign, nonatomic) id<PGCamViewControllerDelegate> delegate;
+
+@end
+
+@protocol PGCamViewControllerDelegate <NSObject>
+
+-(void)didDismissCamViewController:(PGCamViewController*)controller;
 
 @end
