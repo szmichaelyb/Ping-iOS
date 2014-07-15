@@ -543,7 +543,10 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
     // Resize image to 640x640
     // Resize image
     //    NSLog(@"Image size %@",NSStringFromCGSize(image.size));
-    
+    DLog(@"%d", [[self videoDeviceInput] device].position);
+    if ([[self videoDeviceInput].device position] == AVCaptureDevicePositionFront) {
+        image = [UIImage imageWithCGImage:image.CGImage scale:image.scale orientation:UIImageOrientationLeftMirrored];
+    }
     UIImage *smallImage = [self imageWithImage:image scaledToWidth:640.0f]; //UIGraphicsGetImageFromCurrentImageContext();
     
     CGRect cropRect = CGRectMake(0, 405, 640, 640);

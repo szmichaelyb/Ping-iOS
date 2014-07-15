@@ -54,16 +54,16 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"notificationTapped" object:nil userInfo:userInfo];
     } else {
         [[InAppNotificationTapListener sharedInAppNotificationTapListener] startObserving];
-        UIViewController* currentVC = ((UINavigationController*)((UITabBarController*)self.window.rootViewController).selectedViewController).visibleViewController;
-        
-        if (![currentVC isKindOfClass:[PGFeedViewController class]]) {
-            
-            //                if (userInfo[kNotificationSender]) {
-            [[InAppNotificationView sharedInstance] notifyWithUserInfo:userInfo andTouchBlock:^(InAppNotificationView *view) {
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"notificationTapped" object:nil userInfo:userInfo];
-            }];
-            //                }
-        }
+//        UIViewController* currentVC = ((UINavigationController*)((UITabBarController*)self.window.rootViewController).selectedViewController).visibleViewController;
+//        
+//        if (![currentVC isKindOfClass:[PGFeedViewController class]]) {
+//            
+//            //                if (userInfo[kNotificationSender]) {
+//            [[InAppNotificationView sharedInstance] notifyWithUserInfo:userInfo andTouchBlock:^(InAppNotificationView *view) {
+//                [[NSNotificationCenter defaultCenter] postNotificationName:@"notificationTapped" object:nil userInfo:userInfo];
+//            }];
+//            //                }
+//        }
         
     }
     //    [self.window.rootViewController.tabBarController.tabBar.items[0] setBadgeValue:@"2"];

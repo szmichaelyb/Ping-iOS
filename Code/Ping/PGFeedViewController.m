@@ -34,16 +34,16 @@
     [super viewDidLoad];
     
 //    self.navigationController.navigationBar.translucent = NO;
-    
+
     /// Setup pull to refresh
-    //    CGFloat refreshBarY = self.navigationController.navigationBar.bounds.size.height + [UIApplication sharedApplication].statusBarFrame.size.height;
+    CGFloat refreshBarY = self.navigationController.navigationBar.bounds.size.height + [UIApplication sharedApplication].statusBarFrame.size.height;
     
     self.tableView = [[PGFeedTableView alloc] initWithFrame:self.view.frame];
     self.tableView.myDelegate = self;
     self.tableView.feedType = FeedTypeOther;
     [self.view addSubview:self.tableView];
     
-    STZPullToRefreshView *refreshView = [[STZPullToRefreshView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 3)];
+    STZPullToRefreshView *refreshView = [[STZPullToRefreshView alloc] initWithFrame:CGRectMake(0, refreshBarY, self.view.frame.size.width, 3)];
     [self.view addSubview:refreshView];
     
     self.pullToRefresh = [[STZPullToRefresh alloc] initWithTableView:self.tableView refreshView:refreshView tableViewDelegate:self.tableView];

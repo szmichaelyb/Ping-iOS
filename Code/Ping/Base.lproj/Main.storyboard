@@ -149,7 +149,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Vwc-lv-uq3">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9bi-qT-dXP">
                                 <rect key="frame" x="127" y="480" width="66" height="66"/>
@@ -218,7 +218,7 @@
             </objects>
             <point key="canvasLocation" x="413" y="-155"/>
         </scene>
-        <!--Profile View Controller-->
+        <!--Profile View Controller - Profile-->
         <scene sceneID="Y4b-aU-VIk">
             <objects>
                 <viewController restorationIdentifier="PGProfileViewController" storyboardIdentifier="PGProfileViewController" id="LW4-3Y-UbR" customClass="PGProfileViewController" sceneMemberID="viewController">
@@ -227,7 +227,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="U9A-M3-EPF">
+                    <navigationItem key="navigationItem" title="Profile" id="U9A-M3-EPF">
                         <barButtonItem key="rightBarButtonItem" image="settings-off" id="cvR-5b-ykj">
                             <connections>
                                 <segue destination="eOu-L6-0z5" kind="modal" id="8cn-ok-2SU"/>
@@ -530,7 +530,7 @@
             </objects>
             <point key="canvasLocation" x="2221" y="626"/>
         </scene>
-        <!--Feed View Controller-->
+        <!--Feed View Controller - Feed-->
         <scene sceneID="09M-sL-HQQ">
             <objects>
                 <viewController restorationIdentifier="PGFeedViewController" storyboardIdentifier="PGFeedViewController" id="1cV-B3-Drv" customClass="PGFeedViewController" sceneMemberID="viewController">
@@ -539,7 +539,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="bIG-s4-hve"/>
+                    <navigationItem key="navigationItem" title="Feed" id="bIG-s4-hve"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tc9-FD-g6e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

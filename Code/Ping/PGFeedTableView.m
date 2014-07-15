@@ -26,6 +26,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.delegate = self;
         self.dataSource = self;
     }
