@@ -27,6 +27,9 @@
     PFInstallation* currentInstallation  = [PFInstallation currentInstallation];
     [currentInstallation setDeviceTokenFromData:deviceToken];
     [currentInstallation setChannels:@[@"channel"]];
+    if ([PFUser currentUser]) {
+        [currentInstallation setObject:[PFUser currentUser] forKey:kPFInstallation_Owner];
+    }
     [currentInstallation saveEventually:^(BOOL succeeded, NSError *error) {
         if (error) {
             //            DLog(@"Push Registration Error: %@", error);
