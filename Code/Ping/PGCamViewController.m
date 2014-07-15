@@ -71,6 +71,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 	[super viewDidLoad];
 	
     //    [self.navigationController setNavigationBarHidden:YES];
+    self.navigationController.navigationBar.translucent = NO;
     
     if (_overalayImage) {
         self.overlayImageView.image = _overalayImage;
@@ -193,10 +194,10 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 	});
 }
 
-- (BOOL)prefersStatusBarHidden
-{
-	return YES;
-}
+//- (BOOL)prefersStatusBarHidden
+//{
+//	return YES;
+//}
 
 - (BOOL)shouldAutorotate
 {

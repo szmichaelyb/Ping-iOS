@@ -32,7 +32,7 @@
 {
     [super viewDidLoad];
     //    UIImage* gifImage = [UIImage animatedImageWithAnimatedGIFURL:fileURL];
-
+    
     self.imageView.image = [UIImage animatedImageWithAnimatedGIFURL:_imageURL];
     
     UITapGestureRecognizer* dismissGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
@@ -57,52 +57,53 @@
 
 -(IBAction)sendButtonClicked:(id)sender
 {
-    //    if (_captionTF.text.length == 0) {
-    //        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Enter a caption" message:nil delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-    //        [alert show];
-    //    } else {
-    [sender springAnimateCompletion:^(POPAnimation *anim, BOOL finished) {
-        
-        PFObject* object = [PFObject objectWithClassName:kPFTableName_Selfies];
-        object[kPFSelfie_Owner] = [PFUser currentUser];
-        
-        //TODO: Change it to
-        NSData* imgData = [NSData dataWithContentsOfURL:_imageURL];
-//        NSData* imgData = UIImageJPEGRepresentation(self.imageView.image, 0.2);
-        PFFile* imageFile = [PFFile fileWithName:@"selfie.gif" data:imgData];
-        [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    if (_captionTF.text.length == 0) {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Caption" message:@"Write something funny." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alert show];
+    } else {
+        [sender springAnimateCompletion:^(POPAnimation *anim, BOOL finished) {
             
-            object[kPFSelfie_Selfie] = imageFile;
-            object[kPFSelfie_Caption] = _captionTF.text;
-            object[kPFSelfie_Location] = _locationLabel.text;
-            [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            PFObject* object = [PFObject objectWithClassName:kPFTableName_Selfies];
+            object[kPFSelfie_Owner] = [PFUser currentUser];
+            
+            //TODO: Change it to
+            NSData* imgData = [NSData dataWithContentsOfURL:_imageURL];
+            //        NSData* imgData = UIImageJPEGRepresentation(self.imageView.image, 0.2);
+            PFFile* imageFile = [PFFile fileWithName:@"selfie.gif" data:imgData];
+            [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 
-                [self findRecieverBlock:^(PFObject *recieverObj) {
+                object[kPFSelfie_Selfie] = imageFile;
+                object[kPFSelfie_Caption] = _captionTF.text;
+                object[kPFSelfie_Location] = _locationLabel.text;
+                [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     
-                    if (recieverObj) {
-                        [self findOldestUnusedSelfieObjectExcludingReciever:recieverObj completionBlock:^(PFObject *selfieObj) {
-                            
-                            if (selfieObj) {
-                                
-                                selfieObj[kPFSelfie_Receiver] = recieverObj[kPFQueue_Owner];
-                                [selfieObj saveEventually];
-                                
-                                [self sendPushToObject:recieverObj fromUser:selfieObj[kPFSelfie_Owner]];
-                            }
-                        }];
-                    }
-                    
-                    PFObject* queueObject = [PFObject objectWithClassName:kPFTableQueue];
-                    queueObject[kPFQueue_Owner] = [PFUser currentUser];
-                    [queueObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    [self findRecieverBlock:^(PFObject *recieverObj) {
                         
+                        if (recieverObj) {
+                            [self findOldestUnusedSelfieObjectExcludingReciever:recieverObj completionBlock:^(PFObject *selfieObj) {
+                                
+                                if (selfieObj) {
+                                    
+                                    selfieObj[kPFSelfie_Receiver] = recieverObj[kPFQueue_Owner];
+                                    [selfieObj saveEventually];
+                                    
+                                    [self sendPushToObject:recieverObj fromUser:selfieObj[kPFSelfie_Owner]];
+                                }
+                            }];
+                        }
+                        
+                        PFObject* queueObject = [PFObject objectWithClassName:kPFTableQueue];
+                        queueObject[kPFQueue_Owner] = [PFUser currentUser];
+                        [queueObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                            
+                        }];
                     }];
                 }];
             }];
+            [_delegate didDismissCamViewController:nil];
+            [self dismissModalViewController];
         }];
-        [_delegate didDismissCamViewController:nil];
-        [self dismissModalViewController];
-    }];
+    }
 }
 
 -(IBAction)retakeClicked:(id)sender
@@ -133,7 +134,7 @@
     PFQuery* query = [PFQuery queryWithClassName:kPFTableQueue];
     query.limit = 1;
     [query orderByAscending:@"createdAt"];
-//    [query whereKey:kPFQueue_Owner notEqualTo:[PFUser currentUser]];
+    //    [query whereKey:kPFQueue_Owner notEqualTo:[PFUser currentUser]];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         DLog(@"%@", objects);
