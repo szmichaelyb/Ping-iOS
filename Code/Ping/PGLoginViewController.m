@@ -72,7 +72,7 @@
                     //                        [self notifyFriendsViaEmailThatIJoined];
                     //                    }
                     [[PFUser currentUser] setObject:result[@"id"] forKey:kPFUser_FBID];
-                    [[PFUser currentUser] setObject:result[@"location"][@"name"] forKey:kPFUser_Location];
+//                    [[PFUser currentUser] setObject:result[@"location"][@"name"] forKey:kPFUser_Location];
                     
                     if (result[@"email"] != NULL) {
                         [[PFUser currentUser] setObject:result[@"email"] forKey:kPFUser_Email];
@@ -97,7 +97,7 @@
                         });
                     }
                     
-                    [[PFInstallation currentInstallation] setObject:[PFUser currentUser] forKey:@"owner"];
+                    [[PFInstallation currentInstallation] setObject:[PFUser currentUser] forKey:kPFInstallation_Owner];
                     [[PFInstallation currentInstallation] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                         DLog(@"%@", error);
                     }];

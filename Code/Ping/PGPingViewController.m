@@ -61,29 +61,35 @@
     [sender springAnimateCompletion:^(POPAnimation *anim, BOOL finished) {
         
         PFObject* object = [PFObject objectWithClassName:kPFTableName_Selfies];
-        object[@"owner"] = [PFUser currentUser];
+        object[kPFSelfie_Owner] = [PFUser currentUser];
         
         //TODO: Change it to
         NSData* imgData = UIImageJPEGRepresentation(self.imageView.image, 0.2);
         PFFile* imageFile = [PFFile fileWithName:@"selfie.png" data:imgData];
         [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             
-            object[@"selfie"] = imageFile;
-            object[@"caption"] = _captionTF.text;
-            object[@"location"] = _locationLabel.text;
+            object[kPFSelfie_Selfie] = imageFile;
+            object[kPFSelfie_Caption] = _captionTF.text;
+            object[kPFSelfie_Location] = _locationLabel.text;
             [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 
                 [self findRecieverBlock:^(PFObject *recieverObj) {
                     
                     if (recieverObj) {
-                        object[@"reciever"] = recieverObj[@"owner"];
-                        [object saveEventually];
-                        
-                        [self sendPushToObject:recieverObj];
+                        [self findOldestUnusedSelfieObjectExcludingReciever:recieverObj completionBlock:^(PFObject *selfieObj) {
+                            
+                            if (selfieObj) {
+                                
+                                selfieObj[kPFSelfie_Receiver] = recieverObj[kPFQueue_Owner];
+                                [selfieObj saveEventually];
+                                
+                                [self sendPushToObject:recieverObj fromUser:selfieObj[kPFSelfie_Owner]];
+                            }
+                        }];
                     }
                     
                     PFObject* queueObject = [PFObject objectWithClassName:kPFTableQueue];
-                    queueObject[@"owner"] = [PFUser currentUser];
+                    queueObject[kPFQueue_Owner] = [PFUser currentUser];
                     [queueObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                         
                     }];
@@ -99,12 +105,30 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+-(void)findOldestUnusedSelfieObjectExcludingReciever:(PFObject*)recieverObj completionBlock:(void (^) (PFObject* selfieObj))block
+{
+    PFQuery* query = [PFQuery queryWithClassName:kPFTableName_Selfies];
+    [query whereKeyDoesNotExist:kPFSelfie_Receiver];
+    [query whereKey:kPFSelfie_Owner notEqualTo:recieverObj[kPFQueue_Owner]];
+    query.limit = 1;
+    [query includeKey:kPFSelfie_Owner];
+    [query orderByAscending:@"createdAt"];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (objects.count) {
+            block(objects[0]);
+        } else {
+            block(nil);
+        }
+    }];
+}
+
 -(void)findRecieverBlock:(void (^)(PFObject* recieverObj))block
 {
     PFQuery* query = [PFQuery queryWithClassName:kPFTableQueue];
     query.limit = 1;
-    [query orderByDescending:@"createdAt"];
-    [query whereKey:@"owner" notEqualTo:[PFUser currentUser]];
+    [query orderByAscending:@"createdAt"];
+//    [query whereKey:kPFQueue_Owner notEqualTo:[PFUser currentUser]];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         DLog(@"%@", objects);
@@ -116,16 +140,16 @@
     }];
 }
 
--(void)sendPushToObject:(PFObject*)object
+-(void)sendPushToObject:(PFObject*)object fromUser:(PFUser*)user
 {
     PFQuery* pushQuery = [PFInstallation query];
-    [pushQuery whereKey:@"owner" equalTo:object[@"owner"]];
+    [pushQuery whereKey:kPFInstallation_Owner equalTo:object[kPFQueue_Owner]];
     
     PFPush* push = [[PFPush alloc] init];
     [push setQuery:pushQuery];
     //    [push setMessage:[NSString stringWithFormat:@"You have recieved a selfie from %@", [PFUser currentUser][kPFUser_Name]]];
     NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:
-                          [NSString stringWithFormat:@"You have recieved a selfie from %@", [PFUser currentUser][kPFUser_Name]], @"alert",
+                          [NSString stringWithFormat:@"You have recieved a selfie from %@", user[kPFUser_Name]], @"alert",
                           @"Increment", @"badge"
                           , nil];
     [push setData:data];

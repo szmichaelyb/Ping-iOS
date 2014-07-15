@@ -156,12 +156,6 @@
 #define COCOAPODS_VERSION_MINOR_UIActionSheet_Blocks 8
 #define COCOAPODS_VERSION_PATCH_UIActionSheet_Blocks 1
 
-// XHTwitterPaggingViewer
-#define COCOAPODS_POD_AVAILABLE_XHTwitterPaggingViewer
-#define COCOAPODS_VERSION_MAJOR_XHTwitterPaggingViewer 0
-#define COCOAPODS_VERSION_MINOR_XHTwitterPaggingViewer 1
-#define COCOAPODS_VERSION_PATCH_XHTwitterPaggingViewer 0
-
 // iRate
 #define COCOAPODS_POD_AVAILABLE_iRate
 #define COCOAPODS_VERSION_MAJOR_iRate 1

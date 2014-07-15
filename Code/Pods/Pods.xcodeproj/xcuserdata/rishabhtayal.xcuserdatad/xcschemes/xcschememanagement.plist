@@ -59,11 +59,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-XHTwitterPaggingViewer.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-iRate.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -82,77 +77,72 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>18546B7B538B4531B8E2D700</key>
+		<key>029A4B3C1DAF44EA80694926</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>290386E9CD5B4E57946D0BC3</key>
+		<key>13F99FC3E65E467EA1A3CD7A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2B1A0B62A7AB4E65A212DEE5</key>
+		<key>20B1373F2F874DE2BA0A9502</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4645053FD28B4BC19B32AEA0</key>
+		<key>20E2DF9D637E46B187DE25E4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4A66BA7B1C314C0CBA678E87</key>
+		<key>36744A35DB154295A0CBAE3E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6A10BBD382D242F0B724183B</key>
+		<key>4B3D0055673947F8AEB33986</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>70F459B132904E6D84123F7D</key>
+		<key>4E36505AC41A4D5BA5AEDCCC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8B770AE2BE46445AAAA0A6C1</key>
+		<key>526343ED3F214B2DA5B3AC0B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8CA9423ED77241E981D2592C</key>
+		<key>56A56CD202F04887AAC9F966</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>974335301C2F4728AE35AF98</key>
+		<key>61FBC0EB17EE42C8BF8EBB26</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9F7CB0353A9042BEBA9DC73A</key>
+		<key>A3D80131D89A4EB9939F3A5C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A09FCCD5A7E14ECA9DBCC020</key>
+		<key>AE576E0B21DA4DA2ACEF617E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CE873FA0958E4762BF6346C3</key>
+		<key>BEC128FD30024B7BADAC958C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DC583C3C1D004D5C89928444</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>ED06CF613C9240E996CFC893</key>
+		<key>CD1EA385732040EE82920C24</key>
 		<dict>
 			<key>primary</key>
 			<true/>

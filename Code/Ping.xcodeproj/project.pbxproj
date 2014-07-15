@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06B56151197423AE00E92A92 /* PGProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B56150197423AE00E92A92 /* PGProfileViewController.m */; };
+		06B561541974425D00E92A92 /* PGFeedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B561531974425D00E92A92 /* PGFeedTableView.m */; };
+		06B561581974467300E92A92 /* PGFeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B561571974467300E92A92 /* PGFeedTableViewCell.xib */; };
 		06DCBCBA196E2AFF00E8C9B2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06DCBCB9196E2AFF00E8C9B2 /* Foundation.framework */; };
 		06DCBCBC196E2AFF00E8C9B2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06DCBCBB196E2AFF00E8C9B2 /* CoreGraphics.framework */; };
 		06DCBCBE196E2AFF00E8C9B2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06DCBCBD196E2AFF00E8C9B2 /* UIKit.framework */; };
@@ -37,6 +40,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		06B5614F197423AE00E92A92 /* PGProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGProfileViewController.h; sourceTree = "<group>"; };
+		06B56150197423AE00E92A92 /* PGProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGProfileViewController.m; sourceTree = "<group>"; };
+		06B561521974425D00E92A92 /* PGFeedTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGFeedTableView.h; sourceTree = "<group>"; };
+		06B561531974425D00E92A92 /* PGFeedTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGFeedTableView.m; sourceTree = "<group>"; };
+		06B561571974467300E92A92 /* PGFeedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGFeedTableViewCell.xib; sourceTree = "<group>"; };
 		06DCBCB6196E2AFF00E8C9B2 /* Ping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ping.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06DCBCB9196E2AFF00E8C9B2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		06DCBCBB196E2AFF00E8C9B2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -103,6 +111,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06B5614E1974239200E92A92 /* Profile VC */ = {
+			isa = PBXGroup;
+			children = (
+				06B5614F197423AE00E92A92 /* PGProfileViewController.h */,
+				06B56150197423AE00E92A92 /* PGProfileViewController.m */,
+			);
+			name = "Profile VC";
+			sourceTree = "<group>";
+		};
 		06DCBCAD196E2AFF00E8C9B2 = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +155,7 @@
 			children = (
 				06DCBD18196F42E800E8C9B2 /* Utilities */,
 				06DCBD00196F060F00E8C9B2 /* Settings VC */,
+				06B5614E1974239200E92A92 /* Profile VC */,
 				06DCBD1E196F9DCF00E8C9B2 /* Feed VC */,
 				06DCBCFB196EF61A00E8C9B2 /* Ping VC */,
 				06DCBD1C196F9DB000E8C9B2 /* Login VC */,
@@ -146,6 +164,7 @@
 				06DCBCC9196E2AFF00E8C9B2 /* PGAppDelegate.m */,
 				06DCBCCB196E2AFF00E8C9B2 /* Main.storyboard */,
 				06DCBD311970886F00E8C9B2 /* In-app Notification */,
+				06DCBCD1196E2AFF00E8C9B2 /* Images.xcassets */,
 				06DCBCC0196E2AFF00E8C9B2 /* Supporting Files */,
 			);
 			path = Ping;
@@ -154,7 +173,6 @@
 		06DCBCC0196E2AFF00E8C9B2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				06DCBCD1196E2AFF00E8C9B2 /* Images.xcassets */,
 				06DCBCC1196E2AFF00E8C9B2 /* Ping-Info.plist */,
 				06DCBCC2196E2AFF00E8C9B2 /* InfoPlist.strings */,
 				06DCBCC5196E2AFF00E8C9B2 /* main.m */,
@@ -242,6 +260,8 @@
 				06DCBD01196F063400E8C9B2 /* PGFeedViewController.h */,
 				06DCBD02196F063400E8C9B2 /* PGFeedViewController.m */,
 				06DCBD1F196F9DD800E8C9B2 /* Cell */,
+				06B561521974425D00E92A92 /* PGFeedTableView.h */,
+				06B561531974425D00E92A92 /* PGFeedTableView.m */,
 			);
 			name = "Feed VC";
 			sourceTree = "<group>";
@@ -252,6 +272,7 @@
 				06DCBD2819707AC900E8C9B2 /* Header */,
 				06DCBD04196F07C500E8C9B2 /* PGFeedTableViewCell.h */,
 				06DCBD05196F07C500E8C9B2 /* PGFeedTableViewCell.m */,
+				06B561571974467300E92A92 /* PGFeedTableViewCell.xib */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -343,6 +364,7 @@
 				06DCBD301970886A00E8C9B2 /* InAppNotificationView.xib in Resources */,
 				06DCBD12196F404C00E8C9B2 /* SettingsShareView.xib in Resources */,
 				06DCBCC4196E2AFF00E8C9B2 /* InfoPlist.strings in Resources */,
+				06B561581974467300E92A92 /* PGFeedTableViewCell.xib in Resources */,
 				06DCBCCD196E2AFF00E8C9B2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -388,6 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06DCBCFA196EE8EB00E8C9B2 /* PGPingViewController.m in Sources */,
+				06B56151197423AE00E92A92 /* PGProfileViewController.m in Sources */,
 				06DCBD2719707A1E00E8C9B2 /* PGFeedHeader.m in Sources */,
 				06DCBD14196F404C00E8C9B2 /* WebViewController.m in Sources */,
 				06DCBD2E1970886A00E8C9B2 /* InAppNotificationTapListener.m in Sources */,
@@ -400,6 +423,7 @@
 				06DCBD03196F063400E8C9B2 /* PGFeedViewController.m in Sources */,
 				06DCBD06196F07C500E8C9B2 /* PGFeedTableViewCell.m in Sources */,
 				06DCBCC6196E2AFF00E8C9B2 /* main.m in Sources */,
+				06B561541974425D00E92A92 /* PGFeedTableView.m in Sources */,
 				06DCBCD0196E2AFF00E8C9B2 /* PGLoginViewController.m in Sources */,
 				06DCBCCA196E2AFF00E8C9B2 /* PGAppDelegate.m in Sources */,
 				06DCBD13196F404C00E8C9B2 /* PGSettingsViewController.m in Sources */,

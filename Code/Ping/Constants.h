@@ -23,13 +23,31 @@
 #endif
 #endif
 
-//PFUser currentUser Keys
+/**
+*  Parse Table Columns
+*/
+
+#define kPFInstallation_Owner @"owner"
+
 #define kPFUser_Name @"name"
 #define kPFUser_Email @"email"
 #define kPFUser_FBID @"fbID"
 #define kPFUser_Picture @"picture"
 #define kPFUser_Invited @"invited"
 #define kPFUser_Location @"location"
+
+#define kPFQueue_Owner @"owner"
+
+#define kPFSelfie_Owner @"owner"
+#define kPFSelfie_Receiver @"reciever"
+#define kPFSelfie_Selfie @"selfie"
+#define kPFSelfie_Caption @"caption"
+#define kPFSelfie_Location @"location"
+#define kPFSelfie_Abuse @"abuse"
+ 
+/**
+*
+*/
 
 //Setting UserDefaults
 #define kUDInAppVibrate @"inAppVibrate"

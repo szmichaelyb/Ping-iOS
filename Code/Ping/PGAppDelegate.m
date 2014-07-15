@@ -42,7 +42,7 @@
     NSString* badge = [NSString stringWithFormat:@"%@", [userInfo[@"aps"] objectForKey:@"badge"]];
     [tab.tabBar.items[0] setBadgeValue:badge];
     
-        
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"notification" object:nil userInfo:userInfo];
     
     if ([UIApplication sharedApplication].applicationState != UIApplicationStateActive) {
@@ -94,11 +94,14 @@
 {
     [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
     
-    UITabBarController* tab = (UITabBarController*)self.window.rootViewController;
-    if ([UIApplication sharedApplication].applicationIconBadgeNumber == 0) {
-        [tab.tabBar.items[0] setBadgeValue:nil];
-    } else {
-        [tab.tabBar.items[0] setBadgeValue:[NSString stringWithFormat:@"%d", [UIApplication sharedApplication].applicationIconBadgeNumber]];
+    if ([self.window.rootViewController isKindOfClass:[UITabBarController class]]) {
+        
+        UITabBarController* tab = (UITabBarController*)self.window.rootViewController;
+        if ([UIApplication sharedApplication].applicationIconBadgeNumber == 0) {
+            [tab.tabBar.items[0] setBadgeValue:nil];
+        } else {
+            [tab.tabBar.items[0] setBadgeValue:[NSString stringWithFormat:@"%d", [UIApplication sharedApplication].applicationIconBadgeNumber]];
+        }
     }
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }

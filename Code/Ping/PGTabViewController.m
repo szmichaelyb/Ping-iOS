@@ -7,7 +7,6 @@
 //
 
 #import "PGTabViewController.h"
-#import <XHTwitterPaggingViewer/XHTwitterPaggingViewer.h>
 #import "PGFeedViewController.h"
 
 @interface PGTabViewController ()
@@ -18,22 +17,7 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    
-    UIStoryboard* sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    PGFeedViewController* feed1 = [sb instantiateViewControllerWithIdentifier:@"PGFeedViewController"];
-    feed1.feedType = FeedTypeOther;
-    feed1.title = @"Received";
-    
-    PGFeedViewController* feed2 = [sb instantiateViewControllerWithIdentifier:@"PGFeedViewController"];
-    feed2.feedType = FeedTypeMine;
-    feed2.title = @"Sent";
-    
-    UINavigationController* navC = self.viewControllers[0];
-    XHTwitterPaggingViewer* paggingViewer = navC.viewControllers[0];
-    paggingViewer.navigationController.navigationBar.translucent = NO;
-    paggingViewer.viewControllers = @[feed1, feed2];
-    
+    [super viewDidLoad];    
     [self setSelectedIndex:1];
     // Do any additional setup after loading the view.
 }

@@ -9,13 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <STZPullToRefresh/STZPullToRefresh.h>
 
-typedef enum {
-    FeedTypeMine = 0,
-    FeedTypeOther
-}FeedType;
-
-@interface PGFeedViewController : UIViewController<UITableViewDataSource, STZPullToRefreshDelegate, UITableViewDelegate>
-
-@property (assign, nonatomic) FeedType feedType;
+@interface PGFeedViewController : UIViewController<STZPullToRefreshDelegate>
 
 @end

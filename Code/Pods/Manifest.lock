@@ -51,7 +51,6 @@ PODS:
   - STZPullToRefresh (0.0.1)
   - SVProgressHUD (1.0)
   - UIActionSheet+Blocks (0.8.1)
-  - XHTwitterPaggingViewer (0.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.2.3)
@@ -63,7 +62,6 @@ DEPENDENCIES:
   - pop (~> 1.0.4)
   - STZPullToRefresh (~> 0.0.1)
   - UIActionSheet+Blocks (~> 0.8.1)
-  - XHTwitterPaggingViewer
 
 SPEC CHECKSUMS:
   AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
@@ -79,6 +77,5 @@ SPEC CHECKSUMS:
   STZPullToRefresh: 1dc4ff1654b0a0384bc53e995eace3a782b5abf7
   SVProgressHUD: 5034c6e22b8c2ca3e09402e48d41ed0340aa1c50
   UIActionSheet+Blocks: c8b9c02f3d08964e8f7a4202f004a639c15eab80
-  XHTwitterPaggingViewer: 909e27cb5e8e48280dd6fa4d6f3c5921e2cf38aa
 
 COCOAPODS: 0.33.1
