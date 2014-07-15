@@ -73,7 +73,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 	
 	// Setup the preview view
 	[[self previewView] setSession:session];
-	
+
 	// Check for device authorization
 	[self checkDeviceAuthorizationStatus];
 	
@@ -108,6 +108,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 				// Note: As an exception to the above rule, it is not necessary to serialize video orientation changes on the AVCaptureVideoPreviewLayer’s connection with other session manipulation.
                 
 				[[(AVCaptureVideoPreviewLayer *)[[self previewView] layer] connection] setVideoOrientation:(AVCaptureVideoOrientation)[self interfaceOrientation]];
+                [(AVCaptureVideoPreviewLayer*) [[self previewView] layer] setVideoGravity:AVLayerVideoGravityResizeAspectFill];
 			});
 		}
         //
@@ -362,7 +363,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
         dispatch_async([self sessionQueue], ^{
             // Update the orientation on the still image output video connection before capturing.
             [[[self stillImageOutput] connectionWithMediaType:AVMediaTypeVideo] setVideoOrientation:[[(AVCaptureVideoPreviewLayer *)[[self previewView] layer] connection] videoOrientation]];
-            
+        
             // Flash set to Auto for Still Capture
             [PGCamViewController setFlashMode:AVCaptureFlashModeAuto forDevice:[[self videoDeviceInput] device]];
             
@@ -373,6 +374,8 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
                 {
                     NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
                     UIImage *image = [[UIImage alloc] initWithData:imageData];
+                    
+                  image = [self processImage:image];
                     
                     UIStoryboard* sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                     PGPingViewController* pingVC = [sb instantiateViewControllerWithIdentifier:@"PGPingViewController"];
@@ -511,8 +514,8 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 		{
 			//Not granted access to mediaType
 			dispatch_async(dispatch_get_main_queue(), ^{
-				[[[UIAlertView alloc] initWithTitle:@"AVCam!"
-											message:@"AVCam doesn't have permission to use Camera, please change privacy settings"
+				[[[UIAlertView alloc] initWithTitle:@"Ping!"
+											message:@"Ping doesn't have permission to use Camera, please change privacy settings"
 										   delegate:self
 								  cancelButtonTitle:@"OK"
 								  otherButtonTitles:nil] show];
@@ -522,8 +525,81 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 	}];
 }
 
-//-(void)animateButton:(UIButton*)sender
-//{
+- (UIImage*) processImage:(UIImage *)image { //process captured image, crop, resize and rotate
+//    haveImage = YES;
+//    photoFromCam = YES;
+    
+    // Resize image to 640x640
+    // Resize image
+    //    NSLog(@"Image size %@",NSStringFromCGSize(image.size));
+    
+    UIImage *smallImage = [self imageWithImage:image scaledToWidth:640.0f]; //UIGraphicsGetImageFromCurrentImageContext();
+    
+    CGRect cropRect = CGRectMake(0, 405, 640, 640);
+    CGImageRef imageRef = CGImageCreateWithImageInRect([smallImage CGImage], cropRect);
+    
+//    croppedImageWithoutOrientation = [[UIImage imageWithCGImage:imageRef] copy];
+    
+    UIImage *croppedImage = nil;
+    //    assetOrientation = ALAssetOrientationUp;
+    
+    // adjust image orientation
+//    NSLog(@"orientation: %d",orientationLast);
+//    orientationAfterProcess = orientationLast;
+//    switch (orientationLast) {
+//        case UIInterfaceOrientationPortrait:
+//            NSLog(@"UIInterfaceOrientationPortrait");
+            croppedImage = [UIImage imageWithCGImage:imageRef];
+//            break;
+//            
+//        case UIInterfaceOrientationPortraitUpsideDown:
+//            NSLog(@"UIInterfaceOrientationPortraitUpsideDown");
+//            croppedImage = [[[UIImage alloc] initWithCGImage: imageRef
+//                                                       scale: 1.0
+//                                                 orientation: UIImageOrientationDown] autorelease];
+//            break;
+//            
+//        case UIInterfaceOrientationLandscapeLeft:
+//            NSLog(@"UIInterfaceOrientationLandscapeLeft");
+//            croppedImage = [[[UIImage alloc] initWithCGImage: imageRef
+//                                                       scale: 1.0
+//                                                 orientation: UIImageOrientationRight] autorelease];
+//            break;
+//            
+//        case UIInterfaceOrientationLandscapeRight:
+//            NSLog(@"UIInterfaceOrientationLandscapeRight");
+//            croppedImage = [[[UIImage alloc] initWithCGImage: imageRef
+//                                                       scale: 1.0
+//                                                 orientation: UIImageOrientationLeft] autorelease];
+//            break;
+//    
+//        default:
+//            croppedImage = [UIImage imageWithCGImage:imageRef];
+//            break;
 //    }
+    
+    
+    CGImageRelease(imageRef);
+    
+    return croppedImage;
+//    [self.captureImage setImage:croppedImage];
+//    
+//    [self setCapturedImage];
+}
+
+- (UIImage*)imageWithImage:(UIImage *)sourceImage scaledToWidth:(float) i_width
+{
+    float oldWidth = sourceImage.size.width;
+    float scaleFactor = i_width / oldWidth;
+    
+    float newHeight = sourceImage.size.height * scaleFactor;
+    float newWidth = oldWidth * scaleFactor;
+    
+    UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight));
+    [sourceImage drawInRect:CGRectMake(0, 0, newWidth, newHeight)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
 
 @end
