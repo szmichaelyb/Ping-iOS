@@ -16,6 +16,9 @@
 #import "PGPingViewController.h"
 #import "UIView+Animate.h"
 
+#import <ImageIO/ImageIO.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+
 static void * CapturingStillImageContext = &CapturingStillImageContext;
 //static void * RecordingContext = &RecordingContext;
 static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDeviceAuthorizedContext;
@@ -24,6 +27,8 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 
 // For use in the storyboards.
 @property (nonatomic, weak) IBOutlet AVCamPreviewView *previewView;
+@property (strong, nonatomic) IBOutlet UIImageView* overlayImageView;
+
 //@property (nonatomic, weak) IBOutlet UIButton *recordButton;
 @property (nonatomic, weak) IBOutlet UIButton *cameraButton;
 @property (nonatomic, weak) IBOutlet UIButton *stillButton;
@@ -65,7 +70,13 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 {
 	[super viewDidLoad];
 	
-    [self.navigationController setNavigationBarHidden:YES];
+    //    [self.navigationController setNavigationBarHidden:YES];
+    
+    if (_overalayImage) {
+        self.overlayImageView.image = _overalayImage;
+    } else {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(clocseClicked:)];
+    }
     
 	// Create the AVCaptureSession
 	AVCaptureSession *session = [[AVCaptureSession alloc] init];
@@ -73,7 +84,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 	
 	// Setup the preview view
 	[[self previewView] setSession:session];
-
+    
 	// Check for device authorization
 	[self checkDeviceAuthorizationStatus];
 	
@@ -318,7 +329,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 			case AVCaptureDevicePositionUnspecified:
 				preferredPosition = AVCaptureDevicePositionBack;
                 selfieMode = NO;
-            
+                
 				break;
 			case AVCaptureDevicePositionBack:
 				preferredPosition = AVCaptureDevicePositionFront;
@@ -374,7 +385,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
         dispatch_async([self sessionQueue], ^{
             // Update the orientation on the still image output video connection before capturing.
             [[[self stillImageOutput] connectionWithMediaType:AVMediaTypeVideo] setVideoOrientation:[[(AVCaptureVideoPreviewLayer *)[[self previewView] layer] connection] videoOrientation]];
-        
+            
             // Flash set to Auto for Still Capture
             [PGCamViewController setFlashMode:AVCaptureFlashModeAuto forDevice:[[self videoDeviceInput] device]];
             
@@ -386,12 +397,23 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
                     NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
                     UIImage *image = [[UIImage alloc] initWithData:imageData];
                     
-                  image = [self processImage:image];
+                    image = [self processImage:image];
                     
                     UIStoryboard* sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                    PGPingViewController* pingVC = [sb instantiateViewControllerWithIdentifier:@"PGPingViewController"];
-                    pingVC.image = image;
-                    [self.navigationController presentViewController:pingVC animated:YES completion:nil];
+                    if (_overalayImage) {
+                        
+                        //Create GIF from _overlayimage and image
+                        
+                        PGPingViewController* pingVC = [sb instantiateViewControllerWithIdentifier:@"PGPingViewController"];
+                        pingVC.imageURL = [self saveGifWithImages:@[_overalayImage, image]];
+                        [self.navigationController pushViewController:pingVC animated:YES];
+                    } else {
+                        PGCamViewController* camVC = [sb instantiateViewControllerWithIdentifier:@"PGCamViewController"];
+                        camVC.overalayImage = image;
+                        camVC.delegate = _delegate;
+                        [self.navigationController pushViewController:camVC animated:YES];
+                    }
+                    //
                     
                     //				[[[ALAssetsLibrary alloc] init] writeImageToSavedPhotosAlbum:[image CGImage] orientation:(ALAssetOrientation)[image imageOrientation] completionBlock:nil];
                 }
@@ -537,8 +559,8 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 }
 
 - (UIImage*) processImage:(UIImage *)image { //process captured image, crop, resize and rotate
-//    haveImage = YES;
-//    photoFromCam = YES;
+    //    haveImage = YES;
+    //    photoFromCam = YES;
     
     // Resize image to 640x640
     // Resize image
@@ -552,53 +574,53 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
     CGRect cropRect = CGRectMake(0, 405, 640, 640);
     CGImageRef imageRef = CGImageCreateWithImageInRect([smallImage CGImage], cropRect);
     
-//    croppedImageWithoutOrientation = [[UIImage imageWithCGImage:imageRef] copy];
+    //    croppedImageWithoutOrientation = [[UIImage imageWithCGImage:imageRef] copy];
     
     UIImage *croppedImage = nil;
     //    assetOrientation = ALAssetOrientationUp;
     
     // adjust image orientation
-//    NSLog(@"orientation: %d",orientationLast);
-//    orientationAfterProcess = orientationLast;
-//    switch (orientationLast) {
-//        case UIInterfaceOrientationPortrait:
-//            NSLog(@"UIInterfaceOrientationPortrait");
-            croppedImage = [UIImage imageWithCGImage:imageRef];
-//            break;
-//            
-//        case UIInterfaceOrientationPortraitUpsideDown:
-//            NSLog(@"UIInterfaceOrientationPortraitUpsideDown");
-//            croppedImage = [[[UIImage alloc] initWithCGImage: imageRef
-//                                                       scale: 1.0
-//                                                 orientation: UIImageOrientationDown] autorelease];
-//            break;
-//            
-//        case UIInterfaceOrientationLandscapeLeft:
-//            NSLog(@"UIInterfaceOrientationLandscapeLeft");
-//            croppedImage = [[[UIImage alloc] initWithCGImage: imageRef
-//                                                       scale: 1.0
-//                                                 orientation: UIImageOrientationRight] autorelease];
-//            break;
-//            
-//        case UIInterfaceOrientationLandscapeRight:
-//            NSLog(@"UIInterfaceOrientationLandscapeRight");
-//            croppedImage = [[[UIImage alloc] initWithCGImage: imageRef
-//                                                       scale: 1.0
-//                                                 orientation: UIImageOrientationLeft] autorelease];
-//            break;
-//    
-//        default:
-//            croppedImage = [UIImage imageWithCGImage:imageRef];
-//            break;
-//    }
+    //    NSLog(@"orientation: %d",orientationLast);
+    //    orientationAfterProcess = orientationLast;
+    //    switch (orientationLast) {
+    //        case UIInterfaceOrientationPortrait:
+    //            NSLog(@"UIInterfaceOrientationPortrait");
+    croppedImage = [UIImage imageWithCGImage:imageRef];
+    //            break;
+    //
+    //        case UIInterfaceOrientationPortraitUpsideDown:
+    //            NSLog(@"UIInterfaceOrientationPortraitUpsideDown");
+    //            croppedImage = [[[UIImage alloc] initWithCGImage: imageRef
+    //                                                       scale: 1.0
+    //                                                 orientation: UIImageOrientationDown] autorelease];
+    //            break;
+    //
+    //        case UIInterfaceOrientationLandscapeLeft:
+    //            NSLog(@"UIInterfaceOrientationLandscapeLeft");
+    //            croppedImage = [[[UIImage alloc] initWithCGImage: imageRef
+    //                                                       scale: 1.0
+    //                                                 orientation: UIImageOrientationRight] autorelease];
+    //            break;
+    //
+    //        case UIInterfaceOrientationLandscapeRight:
+    //            NSLog(@"UIInterfaceOrientationLandscapeRight");
+    //            croppedImage = [[[UIImage alloc] initWithCGImage: imageRef
+    //                                                       scale: 1.0
+    //                                                 orientation: UIImageOrientationLeft] autorelease];
+    //            break;
+    //
+    //        default:
+    //            croppedImage = [UIImage imageWithCGImage:imageRef];
+    //            break;
+    //    }
     
     
     CGImageRelease(imageRef);
     
     return croppedImage;
-//    [self.captureImage setImage:croppedImage];
-//    
-//    [self setCapturedImage];
+    //    [self.captureImage setImage:croppedImage];
+    //
+    //    [self setCapturedImage];
 }
 
 - (UIImage*)imageWithImage:(UIImage *)sourceImage scaledToWidth:(float) i_width
@@ -614,6 +636,44 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return newImage;
+}
+
+-(NSURL*)saveGifWithImages:(NSArray*)images
+{
+    NSUInteger kFrameCount = images.count;
+    
+    NSDictionary *fileProperties = @{
+                                     (__bridge id)kCGImagePropertyGIFDictionary: @{
+                                             (__bridge id)kCGImagePropertyGIFLoopCount: @0, // 0 means loop forever
+                                             }
+                                     };
+    
+    NSDictionary *frameProperties = @{
+                                      (__bridge id)kCGImagePropertyGIFDictionary: @{
+                                              (__bridge id)kCGImagePropertyGIFDelayTime: @0.7f, // a float (not double!) in seconds, rounded to centiseconds in the GIF data
+                                              }
+                                      };
+    
+    NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
+    NSURL *fileURL = [documentsDirectoryURL URLByAppendingPathComponent:@"animated.gif"];
+
+    CGImageDestinationRef destination = CGImageDestinationCreateWithURL((__bridge CFURLRef)fileURL, kUTTypeGIF, kFrameCount, NULL);
+    CGImageDestinationSetProperties(destination, (__bridge CFDictionaryRef)fileProperties);
+    
+    for (NSUInteger i = 0; i < kFrameCount; i++) {
+        @autoreleasepool {
+//            UIImage *image = frameImage(CGSizeMake(320, 320), M_PI * 2 * i / kFrameCount);
+            CGImageDestinationAddImage(destination, ((UIImage*)images[i]).CGImage, (__bridge CFDictionaryRef)frameProperties);
+        }
+    }
+    
+    if (!CGImageDestinationFinalize(destination)) {
+        NSLog(@"failed to finalize image destination");
+    }
+    CFRelease(destination);
+
+    return fileURL;
+    NSLog(@"url=%@", fileURL);
 }
 
 @end

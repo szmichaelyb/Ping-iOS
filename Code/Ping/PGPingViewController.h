@@ -10,6 +10,6 @@
 
 @interface PGPingViewController : UIViewController<CLLocationManagerDelegate>
 
-@property (strong, nonatomic) UIImage* image;
+@property (strong, nonatomic) NSURL* imageURL;
 
 @end

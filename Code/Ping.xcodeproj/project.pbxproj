@@ -10,6 +10,9 @@
 		06B56151197423AE00E92A92 /* PGProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B56150197423AE00E92A92 /* PGProfileViewController.m */; };
 		06B561541974425D00E92A92 /* PGFeedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B561531974425D00E92A92 /* PGFeedTableView.m */; };
 		06B561581974467300E92A92 /* PGFeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B561571974467300E92A92 /* PGFeedTableViewCell.xib */; };
+		06B5615F1975AB9700E92A92 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06B5615E1975AB9700E92A92 /* MobileCoreServices.framework */; };
+		06B561611975AB9E00E92A92 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06B561601975AB9E00E92A92 /* ImageIO.framework */; };
+		06B561641975B04B00E92A92 /* UIImage+animatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B561631975B04B00E92A92 /* UIImage+animatedGIF.m */; };
 		06DCBCBA196E2AFF00E8C9B2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06DCBCB9196E2AFF00E8C9B2 /* Foundation.framework */; };
 		06DCBCBC196E2AFF00E8C9B2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06DCBCBB196E2AFF00E8C9B2 /* CoreGraphics.framework */; };
 		06DCBCBE196E2AFF00E8C9B2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06DCBCBD196E2AFF00E8C9B2 /* UIKit.framework */; };
@@ -45,6 +48,10 @@
 		06B561521974425D00E92A92 /* PGFeedTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGFeedTableView.h; sourceTree = "<group>"; };
 		06B561531974425D00E92A92 /* PGFeedTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGFeedTableView.m; sourceTree = "<group>"; };
 		06B561571974467300E92A92 /* PGFeedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGFeedTableViewCell.xib; sourceTree = "<group>"; };
+		06B5615E1975AB9700E92A92 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		06B561601975AB9E00E92A92 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		06B561621975B04B00E92A92 /* UIImage+animatedGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+animatedGIF.h"; sourceTree = "<group>"; };
+		06B561631975B04B00E92A92 /* UIImage+animatedGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+animatedGIF.m"; sourceTree = "<group>"; };
 		06DCBCB6196E2AFF00E8C9B2 /* Ping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ping.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06DCBCB9196E2AFF00E8C9B2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		06DCBCBB196E2AFF00E8C9B2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -101,6 +108,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06B561611975AB9E00E92A92 /* ImageIO.framework in Frameworks */,
+				06B5615F1975AB9700E92A92 /* MobileCoreServices.framework in Frameworks */,
 				06DCBCBC196E2AFF00E8C9B2 /* CoreGraphics.framework in Frameworks */,
 				06DCBCBE196E2AFF00E8C9B2 /* UIKit.framework in Frameworks */,
 				06DCBCBA196E2AFF00E8C9B2 /* Foundation.framework in Frameworks */,
@@ -141,6 +150,8 @@
 		06DCBCB8196E2AFF00E8C9B2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				06B561601975AB9E00E92A92 /* ImageIO.framework */,
+				06B5615E1975AB9700E92A92 /* MobileCoreServices.framework */,
 				06DCBCB9196E2AFF00E8C9B2 /* Foundation.framework */,
 				06DCBCBB196E2AFF00E8C9B2 /* CoreGraphics.framework */,
 				06DCBCBD196E2AFF00E8C9B2 /* UIKit.framework */,
@@ -218,6 +229,8 @@
 		06DCBD18196F42E800E8C9B2 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				06B561621975B04B00E92A92 /* UIImage+animatedGIF.h */,
+				06B561631975B04B00E92A92 /* UIImage+animatedGIF.m */,
 				06DCBD19196F42F500E8C9B2 /* Animations */,
 				06DCBD15196F421400E8C9B2 /* UIDevice-Hardware.h */,
 				06DCBD16196F421400E8C9B2 /* UIDevice-Hardware.m */,
@@ -422,6 +435,7 @@
 				06DCBD0C196F2E0500E8C9B2 /* UIView+Animate.m in Sources */,
 				06DCBD03196F063400E8C9B2 /* PGFeedViewController.m in Sources */,
 				06DCBD06196F07C500E8C9B2 /* PGFeedTableViewCell.m in Sources */,
+				06B561641975B04B00E92A92 /* UIImage+animatedGIF.m in Sources */,
 				06DCBCC6196E2AFF00E8C9B2 /* main.m in Sources */,
 				06B561541974425D00E92A92 /* PGFeedTableView.m in Sources */,
 				06DCBCD0196E2AFF00E8C9B2 /* PGLoginViewController.m in Sources */,

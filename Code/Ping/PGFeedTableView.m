@@ -11,6 +11,8 @@
 #import "PGFeedTableViewCell.h"
 #import <FormatterKit/TTTTimeIntervalFormatter.h>
 
+#import "UIImage+animatedGIF.h"
+
 @interface PGFeedTableView()
 
 @property (strong, nonatomic) NSMutableArray* datasource;
@@ -55,6 +57,9 @@
         [self reloadData];
     }];
 }
+
+#pragma mark - UITableView Datasource
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PGFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
@@ -105,7 +110,7 @@
 {
     PFFile* file = _datasource[indexPath.section][kPFSelfie_Selfie];
     [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-        UIImage* img = [UIImage imageWithData:data];
+        UIImage* img = [UIImage animatedImageWithAnimatedGIFData:data];
         cell.iv.image = img;
     }];
     cell.captionLabel.text = _datasource[indexPath.section][kPFSelfie_Caption];
@@ -115,6 +120,8 @@
     UITapGestureRecognizer* gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(performFullScreenAnimation:)];
     [cell.iv addGestureRecognizer:gesture];
 }
+
+#pragma mark -
 
 -(NSString*)friendlyDateTime:(NSDate*)dateTime
 {

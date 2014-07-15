@@ -9,6 +9,7 @@
 #import "PGPingViewController.h"
 #import "UIViewController+Transitions.h"
 #import "UIView+Animate.h"
+#import "UIImage+animatedGIF.h"
 
 @interface PGPingViewController ()
 
@@ -30,7 +31,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.imageView.image = self.image;
+    //    UIImage* gifImage = [UIImage animatedImageWithAnimatedGIFURL:fileURL];
+
+    self.imageView.image = [UIImage animatedImageWithAnimatedGIFURL:_imageURL];
     
     UITapGestureRecognizer* dismissGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     [self.view addGestureRecognizer:dismissGesture];
@@ -64,8 +67,9 @@
         object[kPFSelfie_Owner] = [PFUser currentUser];
         
         //TODO: Change it to
-        NSData* imgData = UIImageJPEGRepresentation(self.imageView.image, 0.2);
-        PFFile* imageFile = [PFFile fileWithName:@"selfie.png" data:imgData];
+        NSData* imgData = [NSData dataWithContentsOfURL:_imageURL];
+//        NSData* imgData = UIImageJPEGRepresentation(self.imageView.image, 0.2);
+        PFFile* imageFile = [PFFile fileWithName:@"selfie.gif" data:imgData];
         [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             
             object[kPFSelfie_Selfie] = imageFile;
