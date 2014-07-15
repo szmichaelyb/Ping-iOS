@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PGPingViewController : UIViewController<CLLocationManagerDelegate>
+#import "PGCamViewController.h"
 
+@interface PGPingViewController : UIViewController<CLLocationManagerDelegate, PGCamViewControllerDelegate>
+
+@property (assign, nonatomic) id<PGCamViewControllerDelegate> delegate;
 @property (strong, nonatomic) NSURL* imageURL;
 
 @end

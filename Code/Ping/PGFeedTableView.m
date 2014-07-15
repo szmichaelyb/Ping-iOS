@@ -73,50 +73,41 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 261;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 50;
+    return 440;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return _datasource.count;
-}
-
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    PGFeedHeader* view = [[NSBundle mainBundle] loadNibNamed:@"PGFeedHeader" owner:self options:nil][0];
-    PFUser* senderUser = _datasource[section][kPFSelfie_Owner];
-    view.nameLabel.text = senderUser[kPFUser_Name];
-    view.timeAndlocationLabel.text = [NSString stringWithFormat:@"%@ at %@", [self friendlyDateTime:((PFObject*)_datasource[section]).createdAt], _datasource[section][kPFSelfie_Location]];
-    
-    PFFile* file = senderUser[kPFUser_Picture];
-    [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-        [view.thumbIV setImage:[UIImage imageWithData:data]];
-    }];
-    return view;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return _datasource.count;
 }
 
 - (void)configureCell:(PGFeedTableViewCell *)cell
     forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PFFile* file = _datasource[indexPath.section][kPFSelfie_Selfie];
+    PFUser* senderUser = _datasource[indexPath.row][kPFSelfie_Owner];
+    cell.nameLabel.text = senderUser[kPFUser_Name];
+    cell.timeAndlocationLabel.text = [NSString stringWithFormat:@"%@ at %@", [self friendlyDateTime:((PFObject*)_datasource[indexPath.row]).createdAt], _datasource[indexPath.row][kPFSelfie_Location]];
+    
+    PFFile* thumbFile = senderUser[kPFUser_Picture];
+    [thumbFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        [cell.thumbIV setImage:[UIImage imageWithData:data]];
+    }];
+    
+    
+    PFFile* file = _datasource[indexPath.row][kPFSelfie_Selfie];
     [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         UIImage* img = [UIImage animatedImageWithAnimatedGIFData:data];
         cell.iv.image = img;
     }];
-    cell.captionLabel.text = _datasource[indexPath.section][kPFSelfie_Caption];
+    cell.captionLabel.text = _datasource[indexPath.row][kPFSelfie_Caption];
     
     cell.iv.userInteractionEnabled = YES;
-    cell.iv.tag = indexPath.section;
+    cell.iv.tag = indexPath.row;
     UITapGestureRecognizer* gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(performFullScreenAnimation:)];
     [cell.iv addGestureRecognizer:gesture];
 }
@@ -133,7 +124,7 @@
 
 -(void)performFullScreenAnimation:(UITapGestureRecognizer*)sender
 {
-    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:0 inSection:sender.view.tag];
+    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:sender.view.tag inSection:0];
     
     PGFeedTableViewCell* cell = (PGFeedTableViewCell*)[self cellForRowAtIndexPath:indexPath];
     

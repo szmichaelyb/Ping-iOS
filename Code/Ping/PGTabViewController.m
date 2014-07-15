@@ -22,6 +22,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.tabBar.translucent = NO;
     //    [self setSelectedIndex:1];
     //    [self tabBar:self.tabBar didSelectItem:self.tabBar.selectedItem];
     // Do any additional setup after loading the view.

@@ -406,6 +406,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
                         
                         PGPingViewController* pingVC = [sb instantiateViewControllerWithIdentifier:@"PGPingViewController"];
                         pingVC.imageURL = [self saveGifWithImages:@[_overalayImage, image]];
+                        pingVC.delegate = _delegate;
                         [self.navigationController pushViewController:pingVC animated:YES];
                     } else {
                         PGCamViewController* camVC = [sb instantiateViewControllerWithIdentifier:@"PGCamViewController"];

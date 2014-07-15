@@ -33,17 +33,20 @@
 {
     [super viewDidLoad];
     
-//    self.navigationController.navigationBar.translucent = NO;
-
+    self.navigationController.navigationBar.translucent = NO;
+    self.tabBarController.tabBar.translucent = NO;
+    
     /// Setup pull to refresh
     CGFloat refreshBarY = self.navigationController.navigationBar.bounds.size.height + [UIApplication sharedApplication].statusBarFrame.size.height;
     
-    self.tableView = [[PGFeedTableView alloc] initWithFrame:self.view.frame];
+    self.tableView = [[PGFeedTableView alloc] initWithFrame:self.view.bounds];
     self.tableView.myDelegate = self;
     self.tableView.feedType = FeedTypeOther;
+    DLog(@"%f", self.tabBarController.tabBar.frame.size.height);
+    self.tableView.contentInset=  UIEdgeInsetsMake(0, 0, self.tabBarController.tabBar.frame.size.height + refreshBarY, 0);
     [self.view addSubview:self.tableView];
     
-    STZPullToRefreshView *refreshView = [[STZPullToRefreshView alloc] initWithFrame:CGRectMake(0, refreshBarY, self.view.frame.size.width, 3)];
+    STZPullToRefreshView *refreshView = [[STZPullToRefreshView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 3)];
     [self.view addSubview:refreshView];
     
     self.pullToRefresh = [[STZPullToRefresh alloc] initWithTableView:self.tableView refreshView:refreshView tableViewDelegate:self.tableView];
@@ -93,27 +96,27 @@
 
 -(void)tableView:(PGFeedTableView *)tableView didTapOnImageView:(UIImageView *)imageView
 {
-    UIImageView* iv = imageView;
-    
-    UIImageView* ivExpand = [[UIImageView alloc] initWithImage:iv.image];
-    ivExpand.contentMode = iv.contentMode;
-    ivExpand.frame = [self.view convertRect:iv.frame fromView:iv.superview];
-    ivExpand.userInteractionEnabled = YES;
-    ivExpand.clipsToBounds = YES;
-    
-    originalFrame = ivExpand.frame;
-//    originalFrame.origin.y = originalFrame.origin.y + self.navigationController.navigationBar.bounds.size.height + [UIApplication sharedApplication].statusBarFrame.size.height;
-    tempIV = imageView;
-    
-    [self.navigationController.view addSubview:ivExpand];
-    self.tabBarController.tabBar.hidden = YES;
-    
-    UITapGestureRecognizer* tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeFullScreen:)];
-    [ivExpand addGestureRecognizer:tgr];
-    
-    [self animateView:ivExpand toFrame:self.view.bounds completion:^(POPAnimation *anim, bool finished) {
-        tempIV.hidden = YES;
-    }];
+//    UIImageView* iv = imageView;
+//    
+//    UIImageView* ivExpand = [[UIImageView alloc] initWithImage:iv.image];
+//    ivExpand.contentMode = iv.contentMode;
+//    ivExpand.frame = [self.view convertRect:iv.frame fromView:iv.superview];
+//    ivExpand.userInteractionEnabled = YES;
+//    ivExpand.clipsToBounds = YES;
+//    
+//    originalFrame = ivExpand.frame;
+////    originalFrame.origin.y = originalFrame.origin.y + self.navigationController.navigationBar.bounds.size.height + [UIApplication sharedApplication].statusBarFrame.size.height;
+//    tempIV = imageView;
+//    
+//    [self.navigationController.view addSubview:ivExpand];
+//    self.tabBarController.tabBar.hidden = YES;
+//    
+//    UITapGestureRecognizer* tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeFullScreen:)];
+//    [ivExpand addGestureRecognizer:tgr];
+//    
+//    [self animateView:ivExpand toFrame:self.view.bounds completion:^(POPAnimation *anim, bool finished) {
+//        tempIV.hidden = YES;
+//    }];
 }
 
 #pragma mark -

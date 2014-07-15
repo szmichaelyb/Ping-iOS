@@ -34,8 +34,8 @@
         <scene sceneID="vFK-1B-OXU">
             <objects>
                 <tabBarController restorationIdentifier="PGTabViewController" storyboardIdentifier="PGTabViewController" definesPresentationContext="YES" id="IEq-PX-ZJF" customClass="PGTabViewController" sceneMemberID="viewController">
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="ND5-Iw-jam">
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="ND5-Iw-jam">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -205,7 +205,7 @@
             <objects>
                 <viewController id="vCH-hg-Ps5" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7lA-GM-Gi2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -220,7 +220,7 @@
             <objects>
                 <viewController restorationIdentifier="PGProfileViewController" storyboardIdentifier="PGProfileViewController" id="LW4-3Y-UbR" customClass="PGProfileViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="otv-Rn-apK">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -532,7 +532,7 @@
             <objects>
                 <viewController restorationIdentifier="PGFeedViewController" storyboardIdentifier="PGFeedViewController" id="1cV-B3-Drv" customClass="PGFeedViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gaQ-7C-CVy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>

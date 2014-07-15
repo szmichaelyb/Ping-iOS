@@ -15,8 +15,8 @@
 - (void)drawRect:(CGRect)rect
 {
     // Drawing code
-    _thumbIV.layer.cornerRadius = _thumbIV.frame.size.width/2;
-    _thumbIV.layer.masksToBounds = YES;
+//    _thumbIV.layer.cornerRadius = _thumbIV.frame.size.width/2;
+//    _thumbIV.layer.masksToBounds = YES;
 }
 
 @end

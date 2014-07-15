@@ -22,6 +22,8 @@
 - (void)awakeFromNib
 {
     // Initialization code
+    self.thumbIV.layer.cornerRadius = self.thumbIV.frame.size.width/2;
+    self.thumbIV.layer.masksToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

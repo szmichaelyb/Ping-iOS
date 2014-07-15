@@ -100,6 +100,7 @@
                 }];
             }];
         }];
+        [_delegate didDismissCamViewController:nil];
         [self dismissModalViewController];
     }];
 }
