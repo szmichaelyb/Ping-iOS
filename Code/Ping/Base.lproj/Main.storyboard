@@ -184,12 +184,20 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.10000000000000001" minValue="0.10000000000000001" maxValue="1" id="ajh-ec-UDV">
+                                <rect key="frame" x="28" y="370" width="264" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="delaySliderChanged:" destination="Dvu-oQ-EJq" eventType="valueChanged" id="Xee-aP-vx8"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="captionTF" destination="Vio-AN-f35" id="Szd-Ev-22U"/>
+                        <outlet property="delaySlider" destination="ajh-ec-UDV" id="pEt-XJ-gLU"/>
                         <outlet property="imageView" destination="Vwc-lv-uq3" id="qGR-F7-6Pl"/>
                         <outlet property="locationLabel" destination="qDb-dg-dz1" id="iDO-cI-S5J"/>
                         <outlet property="retakeButton" destination="QHl-Qf-TQe" id="muA-BQ-hck"/>

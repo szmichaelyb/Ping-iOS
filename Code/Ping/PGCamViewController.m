@@ -16,9 +16,6 @@
 #import "PGPingViewController.h"
 #import "UIView+Animate.h"
 
-#import <ImageIO/ImageIO.h>
-#import <MobileCoreServices/MobileCoreServices.h>
-
 static void * CapturingStillImageContext = &CapturingStillImageContext;
 //static void * RecordingContext = &RecordingContext;
 static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDeviceAuthorizedContext;
@@ -405,7 +402,8 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
                         
                         //Create GIF from _overlayimage and image                        
                         PGPingViewController* pingVC = [sb instantiateViewControllerWithIdentifier:@"PGPingViewController"];
-                        pingVC.imageURL = [self saveGifWithImages:@[_overalayImage, image]];
+//                        pingVC.imageURL = [self saveGifWithImages:@[_overalayImage, image]];
+                        pingVC.images = @[_overalayImage, image];
                         pingVC.delegate = _delegate;
                         [self.navigationController pushViewController:pingVC animated:YES];
                     } else {
@@ -637,44 +635,6 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return newImage;
-}
-
--(NSURL*)saveGifWithImages:(NSArray*)images
-{
-    NSUInteger kFrameCount = images.count;
-    
-    NSDictionary *fileProperties = @{
-                                     (__bridge id)kCGImagePropertyGIFDictionary: @{
-                                             (__bridge id)kCGImagePropertyGIFLoopCount: @0, // 0 means loop forever
-                                             }
-                                     };
-    
-    NSDictionary *frameProperties = @{
-                                      (__bridge id)kCGImagePropertyGIFDictionary: @{
-                                              (__bridge id)kCGImagePropertyGIFDelayTime: @0.7f, // a float (not double!) in seconds, rounded to centiseconds in the GIF data
-                                              }
-                                      };
-    
-    NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
-    NSURL *fileURL = [documentsDirectoryURL URLByAppendingPathComponent:@"animated.gif"];
-
-    CGImageDestinationRef destination = CGImageDestinationCreateWithURL((__bridge CFURLRef)fileURL, kUTTypeGIF, kFrameCount, NULL);
-    CGImageDestinationSetProperties(destination, (__bridge CFDictionaryRef)fileProperties);
-    
-    for (NSUInteger i = 0; i < kFrameCount; i++) {
-        @autoreleasepool {
-            UIImage* image = images[i];
-            CGImageDestinationAddImage(destination, image.CGImage, (__bridge CFDictionaryRef)frameProperties);
-        }
-    }
-    
-    if (!CGImageDestinationFinalize(destination)) {
-        NSLog(@"failed to finalize image destination");
-    }
-    CFRelease(destination);
-
-    return fileURL;
-    DLog(@"url=%@", fileURL);
 }
 
 @end

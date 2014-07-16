@@ -11,18 +11,27 @@
 #import "UIView+Animate.h"
 #import "UIImage+animatedGIF.h"
 
+#import <ImageIO/ImageIO.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+
+const CGFloat kDefaultGifDelay = 0.7;
+
 @interface PGPingViewController ()
+
+@property (strong, nonatomic) NSURL* imageURL;
 
 @property (nonatomic, strong) IBOutlet UIImageView* imageView;
 @property (nonatomic, strong) IBOutlet UIButton* sendButton;
 @property (nonatomic, strong) IBOutlet UIButton* retakeButton;
 @property (nonatomic, strong) IBOutlet UITextField* captionTF;
 @property (nonatomic, strong) IBOutlet UILabel* locationLabel;
+@property (nonatomic, strong) IBOutlet UISlider* delaySlider;
 
 @property (strong, nonatomic) CLLocationManager* locationManager;
 
 -(IBAction)sendButtonClicked:(id)sender;
 -(IBAction)retakeClicked:(id)sender;
+-(IBAction)delaySliderChanged:(UISlider*)sender;
 
 @end
 
@@ -32,6 +41,9 @@
 {
     [super viewDidLoad];
     //    UIImage* gifImage = [UIImage animatedImageWithAnimatedGIFURL:fileURL];
+    _imageURL = [self saveGifWithImages:_images gifDelay:kDefaultGifDelay];
+    
+    _delaySlider.value = kDefaultGifDelay;
     
     self.imageView.image = [UIImage animatedImageWithAnimatedGIFURL:_imageURL];
     
@@ -53,6 +65,16 @@
 -(void)dismissKeyboard:(UIGestureRecognizer*)reco
 {
     [self.view endEditing:YES];
+}
+
+-(IBAction)delaySliderChanged:(UISlider*)sender
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        _imageURL = [self saveGifWithImages:_images gifDelay:sender.value];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            _imageView.image = [UIImage animatedImageWithAnimatedGIFURL:_imageURL];
+        });
+    });
 }
 
 -(IBAction)sendButtonClicked:(id)sender
@@ -184,6 +206,51 @@
             self.locationLabel.text = [NSString stringWithFormat:@"%@, %@", city, country];
         }];
     }
+}
+
+#pragma mark -
+
+-(NSURL*)saveGifWithImages:(NSArray*)images gifDelay:(CGFloat)delay
+{
+    NSUInteger kFrameCount = images.count;
+    
+    NSDictionary *fileProperties = @{
+                                     (__bridge id)kCGImagePropertyGIFDictionary: @{
+                                             (__bridge id)kCGImagePropertyGIFLoopCount: @0, // 0 means loop forever
+                                             }
+                                     };
+    
+    
+    if (delay == 0)
+        delay = 0.7f;
+    
+    NSDictionary* frameProperties = @{
+                                      (__bridge id)kCGImagePropertyGIFDictionary: @{
+                                              (__bridge id)kCGImagePropertyGIFDelayTime: @(delay), // a float (not double!) in seconds, rounded to centiseconds in the GIF data
+                                              }
+                                      };
+    
+    
+    NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
+    NSURL *fileURL = [documentsDirectoryURL URLByAppendingPathComponent:@"animated.gif"];
+    
+    CGImageDestinationRef destination = CGImageDestinationCreateWithURL((__bridge CFURLRef)fileURL, kUTTypeGIF, kFrameCount, NULL);
+    CGImageDestinationSetProperties(destination, (__bridge CFDictionaryRef)fileProperties);
+    
+    for (NSUInteger i = 0; i < kFrameCount; i++) {
+        @autoreleasepool {
+            UIImage* image = images[i];
+            CGImageDestinationAddImage(destination, image.CGImage, (__bridge CFDictionaryRef)frameProperties);
+        }
+    }
+    
+    if (!CGImageDestinationFinalize(destination)) {
+        NSLog(@"failed to finalize image destination");
+    }
+    CFRelease(destination);
+    
+    return fileURL;
+    DLog(@"url=%@", fileURL);
 }
 
 @end
