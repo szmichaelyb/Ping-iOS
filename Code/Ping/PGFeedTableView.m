@@ -49,7 +49,7 @@
     [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         DLog(@"%@", objects);
-//        [self.pullToRefresh finishRefresh];
+        //        [self.pullToRefresh finishRefresh];
         if (block) {
             block(YES);
         }
@@ -59,6 +59,13 @@
 }
 
 #pragma mark - UITableView Datasource
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (_myDelegate && [_myDelegate respondsToSelector:@selector(tableScrollViewDidScroll:)]) {
+        [_myDelegate tableScrollViewDidScroll:scrollView];
+    }
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

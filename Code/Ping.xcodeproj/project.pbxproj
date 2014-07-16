@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0683112B1976C8460099689D /* PGProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0683112A1976C8460099689D /* PGProfileHeaderView.xib */; };
 		06B56151197423AE00E92A92 /* PGProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B56150197423AE00E92A92 /* PGProfileViewController.m */; };
 		06B561541974425D00E92A92 /* PGFeedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B561531974425D00E92A92 /* PGFeedTableView.m */; };
 		06B561581974467300E92A92 /* PGFeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B561571974467300E92A92 /* PGFeedTableViewCell.xib */; };
@@ -43,6 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0683112A1976C8460099689D /* PGProfileHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGProfileHeaderView.xib; sourceTree = "<group>"; };
 		06B5614F197423AE00E92A92 /* PGProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGProfileViewController.h; sourceTree = "<group>"; };
 		06B56150197423AE00E92A92 /* PGProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGProfileViewController.m; sourceTree = "<group>"; };
 		06B561521974425D00E92A92 /* PGFeedTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGFeedTableView.h; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			children = (
 				06B5614F197423AE00E92A92 /* PGProfileViewController.h */,
 				06B56150197423AE00E92A92 /* PGProfileViewController.m */,
+				0683112A1976C8460099689D /* PGProfileHeaderView.xib */,
 			);
 			name = "Profile VC";
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				06DCBCD2196E2AFF00E8C9B2 /* Images.xcassets in Resources */,
 				06DCBD301970886A00E8C9B2 /* InAppNotificationView.xib in Resources */,
 				06DCBD12196F404C00E8C9B2 /* SettingsShareView.xib in Resources */,
+				0683112B1976C8460099689D /* PGProfileHeaderView.xib in Resources */,
 				06DCBCC4196E2AFF00E8C9B2 /* InfoPlist.strings in Resources */,
 				06B561581974467300E92A92 /* PGFeedTableViewCell.xib in Resources */,
 				06DCBCCD196E2AFF00E8C9B2 /* Main.storyboard in Resources */,

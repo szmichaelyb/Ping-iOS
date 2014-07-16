@@ -48,12 +48,6 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 2
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 4
 
-// APParallaxHeader
-#define COCOAPODS_POD_AVAILABLE_APParallaxHeader
-#define COCOAPODS_VERSION_MAJOR_APParallaxHeader 0
-#define COCOAPODS_VERSION_MINOR_APParallaxHeader 1
-#define COCOAPODS_VERSION_PATCH_APParallaxHeader 3
-
 // Bolts
 #define COCOAPODS_POD_AVAILABLE_Bolts
 #define COCOAPODS_VERSION_MAJOR_Bolts 1
@@ -69,8 +63,8 @@
 // Facebook-iOS-SDK
 #define COCOAPODS_POD_AVAILABLE_Facebook_iOS_SDK
 #define COCOAPODS_VERSION_MAJOR_Facebook_iOS_SDK 3
-#define COCOAPODS_VERSION_MINOR_Facebook_iOS_SDK 15
-#define COCOAPODS_VERSION_PATCH_Facebook_iOS_SDK 1
+#define COCOAPODS_VERSION_MINOR_Facebook_iOS_SDK 16
+#define COCOAPODS_VERSION_PATCH_Facebook_iOS_SDK 0
 
 // FormatterKit
 #define COCOAPODS_POD_AVAILABLE_FormatterKit
@@ -155,6 +149,12 @@
 #define COCOAPODS_VERSION_MAJOR_UIActionSheet_Blocks 0
 #define COCOAPODS_VERSION_MINOR_UIActionSheet_Blocks 8
 #define COCOAPODS_VERSION_PATCH_UIActionSheet_Blocks 1
+
+// ZGParallelView
+#define COCOAPODS_POD_AVAILABLE_ZGParallelView
+#define COCOAPODS_VERSION_MAJOR_ZGParallelView 0
+#define COCOAPODS_VERSION_MINOR_ZGParallelView 1
+#define COCOAPODS_VERSION_PATCH_ZGParallelView 6
 
 // iRate
 #define COCOAPODS_POD_AVAILABLE_iRate

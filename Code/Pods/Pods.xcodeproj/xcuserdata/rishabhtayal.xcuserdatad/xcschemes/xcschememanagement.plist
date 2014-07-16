@@ -9,11 +9,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-APParallaxHeader.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-Bolts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -59,6 +54,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-ZGParallelView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-iRate.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -77,72 +77,72 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>029A4B3C1DAF44EA80694926</key>
+		<key>04912887823E42549BF9B147</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>13F99FC3E65E467EA1A3CD7A</key>
+		<key>053FD8392CEA4E94B57905DF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>20B1373F2F874DE2BA0A9502</key>
+		<key>14CC35817D504973AB94DA76</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>20E2DF9D637E46B187DE25E4</key>
+		<key>32B372CBCD2D456AA99DE7CF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>36744A35DB154295A0CBAE3E</key>
+		<key>35428DF095844C2B85B71EFE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4B3D0055673947F8AEB33986</key>
+		<key>3A6FE1CE6AB84FA38142633B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4E36505AC41A4D5BA5AEDCCC</key>
+		<key>3BEB41B440B048F0BD6626A4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>526343ED3F214B2DA5B3AC0B</key>
+		<key>502D7BB6B72E4735836D06F3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>56A56CD202F04887AAC9F966</key>
+		<key>54B34158947B4DA5BB018246</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>61FBC0EB17EE42C8BF8EBB26</key>
+		<key>83C5C9B243684E7C88194B9A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A3D80131D89A4EB9939F3A5C</key>
+		<key>9AF397634C314583BB5EC123</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AE576E0B21DA4DA2ACEF617E</key>
+		<key>B1FCEB00ABBB464AB7EA1FC4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BEC128FD30024B7BADAC958C</key>
+		<key>E9090302D8534639A10CDF4F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CD1EA385732040EE82920C24</key>
+		<key>E93DDE4830EA43EAB1A3202C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
