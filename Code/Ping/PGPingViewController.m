@@ -69,12 +69,8 @@ const CGFloat kDefaultGifDelay = 0.7;
 
 -(IBAction)delaySliderChanged:(UISlider*)sender
 {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        _imageURL = [self saveGifWithImages:_images gifDelay:sender.value];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            _imageView.image = [UIImage animatedImageWithAnimatedGIFURL:_imageURL];
-        });
-    });
+    _imageURL = [self saveGifWithImages:_images gifDelay:sender.value];
+    _imageView.image = [UIImage animatedImageWithAnimatedGIFURL:_imageURL];
 }
 
 -(IBAction)sendButtonClicked:(id)sender
