@@ -28,6 +28,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        self.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1];
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.delegate = self;
         self.dataSource = self;
@@ -58,18 +59,30 @@
     }];
 }
 
-#pragma mark - UITableView Datasource
+#pragma mark - UIScrollView Delegate
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (_myDelegate && [_myDelegate respondsToSelector:@selector(tableScrollViewDidScroll:)]) {
         [_myDelegate tableScrollViewDidScroll:scrollView];
     }
-    
-    NSArray* visibleCell = [self visibleCells];
-    for (PGFeedTableViewCell* cell in visibleCell) {
-        [cell cellOnTableView:self didScrollOnView:self.superview];
-    }
+}
+
+#pragma mark - UITableView Datasource
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 459;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return _datasource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -83,23 +96,7 @@
     return cell;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 440;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return _datasource.count;
-}
-
-- (void)configureCell:(PGFeedTableViewCell *)cell
-    forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(PGFeedTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PFUser* senderUser = _datasource[indexPath.row][kPFSelfie_Owner];
     cell.nameLabel.text = senderUser[kPFUser_Name];

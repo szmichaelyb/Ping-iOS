@@ -16,6 +16,4 @@
 @property (strong, nonatomic) IBOutlet UILabel* timeAndlocationLabel;
 @property (strong, nonatomic) IBOutlet UIImageView* thumbIV;
 
-- (void)cellOnTableView:(UITableView *)tableView didScrollOnView:(UIView *)view;
-
 @end

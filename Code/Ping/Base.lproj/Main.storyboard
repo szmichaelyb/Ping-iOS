@@ -34,7 +34,7 @@
         <scene sceneID="vFK-1B-OXU">
             <objects>
                 <tabBarController restorationIdentifier="PGTabViewController" storyboardIdentifier="PGTabViewController" definesPresentationContext="YES" id="IEq-PX-ZJF" customClass="PGTabViewController" sceneMemberID="viewController">
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="ND5-Iw-jam">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -460,7 +460,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="CoA-4m-Gg8">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ICR-Vd-rLk">
+                        <barButtonItem key="leftBarButtonItem" title="Close" id="ICR-Vd-rLk">
                             <connections>
                                 <action selector="cancelClicked:" destination="cfo-ZM-QAj" id="8Ec-jo-ww6"/>
                             </connections>

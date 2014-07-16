@@ -663,8 +663,8 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
     
     for (NSUInteger i = 0; i < kFrameCount; i++) {
         @autoreleasepool {
-//            UIImage *image = frameImage(CGSizeMake(320, 320), M_PI * 2 * i / kFrameCount);
-            CGImageDestinationAddImage(destination, ((UIImage*)images[i]).CGImage, (__bridge CFDictionaryRef)frameProperties);
+            UIImage* image = images[i];
+            CGImageDestinationAddImage(destination, image.CGImage, (__bridge CFDictionaryRef)frameProperties);
         }
     }
     
@@ -674,7 +674,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
     CFRelease(destination);
 
     return fileURL;
-    NSLog(@"url=%@", fileURL);
+    DLog(@"url=%@", fileURL);
 }
 
 @end
