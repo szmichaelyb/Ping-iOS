@@ -42,8 +42,10 @@
     
     if (_feedType == FeedTypeMine) {
         [query whereKey:kPFSelfie_Owner equalTo:[PFUser currentUser]];
-    } else {
+    } else if (_feedType == FeedTypeOther) {
         [query whereKey:kPFSelfie_Receiver equalTo:[PFUser currentUser]];
+    } else {
+        [query whereKey:kPFSelfie_Featured equalTo:[NSNumber numberWithBool:YES]];
     }
     
     [query includeKey:kPFSelfie_Owner];

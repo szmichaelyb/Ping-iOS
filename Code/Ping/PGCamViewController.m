@@ -15,6 +15,7 @@
 
 #import "PGPingViewController.h"
 #import "UIView+Animate.h"
+#import "UIImagePickerController+DelegateBlocks.h"
 
 static void * CapturingStillImageContext = &CapturingStillImageContext;
 //static void * RecordingContext = &RecordingContext;
@@ -33,6 +34,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 //- (IBAction)toggleMovieRecording:(id)sender;
 - (IBAction)changeCamera:(id)sender;
 - (IBAction)snapStillImage:(id)sender;
+-(IBAction)pickFromLibary:(id)sender;
 - (IBAction)focusAndExposeTap:(UIGestureRecognizer *)gestureRecognizer;
 
 // Session management.
@@ -397,21 +399,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
                     
                     image = [self processImage:image];
                     
-                    UIStoryboard* sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                    if (_overalayImage) {
-                        
-                        //Create GIF from _overlayimage and image                        
-                        PGPingViewController* pingVC = [sb instantiateViewControllerWithIdentifier:@"PGPingViewController"];
-//                        pingVC.imageURL = [self saveGifWithImages:@[_overalayImage, image]];
-                        pingVC.images = @[_overalayImage, image];
-                        pingVC.delegate = _delegate;
-                        [self.navigationController pushViewController:pingVC animated:YES];
-                    } else {
-                        PGCamViewController* camVC = [sb instantiateViewControllerWithIdentifier:@"PGCamViewController"];
-                        camVC.overalayImage = image;
-                        camVC.delegate = _delegate;
-                        [self.navigationController pushViewController:camVC animated:YES];
-                    }
+                    [self userDidPickImage:image];
                     //
                     
                     //				[[[ALAssetsLibrary alloc] init] writeImageToSavedPhotosAlbum:[image CGImage] orientation:(ALAssetOrientation)[image imageOrientation] completionBlock:nil];
@@ -419,6 +407,37 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
             }];
         });
     }];
+}
+
+-(IBAction)pickFromLibary:(id)sender
+{
+    UIImagePickerController* imagePicker = [[UIImagePickerController alloc] init];
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [self presentViewController:imagePicker animated:YES completion:nil];
+    [imagePicker useBlocksForDelegate];
+    [imagePicker onDidFinishPickingMediaWithInfo:^(UIImagePickerController *picker, NSDictionary *info) {
+        DLog(@"%@", info);
+        [imagePicker dismissViewControllerAnimated:YES completion:nil];
+//        [self userDidPickImage:info[]
+    }];
+}
+
+-(void)userDidPickImage:(UIImage*)image
+{
+    UIStoryboard* sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    if (_overalayImage) {
+        
+        //Create GIF from _overlayimage and image
+        PGPingViewController* pingVC = [sb instantiateViewControllerWithIdentifier:@"PGPingViewController"];
+        pingVC.images = @[_overalayImage, image];
+        pingVC.delegate = _delegate;
+        [self.navigationController pushViewController:pingVC animated:YES];
+    } else {
+        PGCamViewController* camVC = [sb instantiateViewControllerWithIdentifier:@"PGCamViewController"];
+        camVC.overalayImage = image;
+        camVC.delegate = _delegate;
+        [self.navigationController pushViewController:camVC animated:YES];
+    }
 }
 
 - (IBAction)focusAndExposeTap:(UIGestureRecognizer *)gestureRecognizer

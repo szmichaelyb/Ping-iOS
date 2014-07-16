@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 typedef enum {
     FeedTypeOther = 0,
-    FeedTypeMine
+    FeedTypeMine,
+    FeedTypeFeatured
 }FeedType;
 
 @protocol PGFeedTableViewDelegate;

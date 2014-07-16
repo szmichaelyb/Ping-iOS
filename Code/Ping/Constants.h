@@ -44,7 +44,8 @@
 #define kPFSelfie_Caption @"caption"
 #define kPFSelfie_Location @"location"
 #define kPFSelfie_Abuse @"abuse"
- 
+#define kPFSelfie_Featured @"featured"
+
 /**
 *
 */
