@@ -65,6 +65,11 @@
     if (_myDelegate && [_myDelegate respondsToSelector:@selector(tableScrollViewDidScroll:)]) {
         [_myDelegate tableScrollViewDidScroll:scrollView];
     }
+    
+    NSArray* visibleCell = [self visibleCells];
+    for (PGFeedTableViewCell* cell in visibleCell) {
+        [cell cellOnTableView:self didScrollOnView:self.superview];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -111,6 +116,7 @@
         UIImage* img = [UIImage animatedImageWithAnimatedGIFData:data];
         cell.iv.image = img;
     }];
+    
     cell.captionLabel.text = _datasource[indexPath.row][kPFSelfie_Caption];
     
     cell.iv.userInteractionEnabled = YES;
