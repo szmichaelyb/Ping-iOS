@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) IBOutlet UILabel* nameLabel;
 @property (assign, nonatomic) id<PGSearchTableViewCellDelegate> delegate;
+@property (strong, nonatomic) IBOutlet UIButton *followButton;
 
 @end
 
