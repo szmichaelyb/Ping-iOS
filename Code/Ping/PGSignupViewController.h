@@ -1,5 +1,5 @@
 //
-//  PGLoginViewController.h
+//  PGSignupViewController.h
 //  Ping
 //
 //  Created by Rishabh Tayal on 7/17/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PGLoginViewController : UIViewController
+@interface PGSignupViewController : UIViewController
 
 @end

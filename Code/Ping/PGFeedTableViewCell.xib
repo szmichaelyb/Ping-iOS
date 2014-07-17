@@ -57,6 +57,13 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Featured" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nWY-gb-0DS">
+                                <rect key="frame" x="225" y="8" width="80" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.15576528279999999" green="1" blue="0.26873289230000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -64,6 +71,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="captionLabel" destination="irR-07-Dmb" id="kWF-yz-xqQ"/>
+                <outlet property="featuredLabel" destination="nWY-gb-0DS" id="Oqs-If-bkR"/>
                 <outlet property="iv" destination="KRd-Oh-xCu" id="JJG-H2-kG6"/>
                 <outlet property="nameLabel" destination="20G-7z-3fd" id="qOU-jp-7OU"/>
                 <outlet property="thumbIV" destination="iMY-Ww-For" id="o8D-QT-ccM"/>

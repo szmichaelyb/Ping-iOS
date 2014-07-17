@@ -12,6 +12,7 @@
 #import <FormatterKit/TTTTimeIntervalFormatter.h>
 
 #import "UIImage+animatedGIF.h"
+#import <UITableView-NXEmptyView/UITableView+NXEmptyView.h>
 
 @interface PGFeedTableView()
 
@@ -32,20 +33,27 @@
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.delegate = self;
         self.dataSource = self;
+        self.nxEV_hideSeparatorLinesWheyShowingEmptyView = YES;
     }
     return self;
 }
 
 -(void)getObjectsFromParseCompletion:(void (^) (bool finished))block
 {
+    self.nxEV_emptyView = self.emptyView;
+
     PFQuery* query = [PFQuery queryWithClassName:kPFTableName_Selfies];
     
     if (_feedType == FeedTypeMine) {
         [query whereKey:kPFSelfie_Owner equalTo:[PFUser currentUser]];
     } else if (_feedType == FeedTypeOther) {
-        [query whereKey:kPFSelfie_Receiver equalTo:[PFUser currentUser]];
-    } else {
-        [query whereKey:kPFSelfie_Featured equalTo:[NSNumber numberWithBool:YES]];
+        PFQuery* featuredList = [PFQuery queryWithClassName:kPFTableName_Selfies];
+        [featuredList whereKey:kPFSelfie_Featured equalTo:[NSNumber numberWithBool:YES]];
+        
+        PFQuery* othersList = [PFQuery queryWithClassName:kPFTableName_Selfies];
+        [othersList whereKey:kPFSelfie_Receiver equalTo:[PFUser currentUser]];
+        
+        query = [PFQuery orQueryWithSubqueries:@[featuredList, othersList]];
     }
     
     [query includeKey:kPFSelfie_Owner];
@@ -118,6 +126,11 @@
     
     cell.captionLabel.text = _datasource[indexPath.row][kPFSelfie_Caption];
     
+    if (_datasource[indexPath.row][kPFSelfie_Featured]) {
+        cell.featuredLabel.hidden = NO;
+    } else {
+        cell.featuredLabel.hidden = YES;
+    }
     cell.iv.userInteractionEnabled = YES;
     cell.iv.tag = indexPath.row;
     UITapGestureRecognizer* gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(performFullScreenAnimation:)];

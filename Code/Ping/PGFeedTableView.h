@@ -19,6 +19,7 @@ typedef enum {
 
 @property (assign, nonatomic) FeedType feedType;
 @property (assign, nonatomic) id<PGFeedTableViewDelegate> myDelegate;
+@property (strong, nonatomic) UIView* emptyView;
 
 -(void)getObjectsFromParseCompletion:(void (^) (bool finished))block;
 

@@ -42,7 +42,7 @@
     
     self.tableView = [[PGFeedTableView alloc] initWithFrame:self.view.bounds];
     self.tableView.myDelegate = self;
-    self.tableView.feedType = FeedTypeFeatured;
+    self.tableView.feedType = FeedTypeOther;
     DLog(@"%f", self.tabBarController.tabBar.frame.size.height);
     self.tableView.contentInset=  UIEdgeInsetsMake(0, 0, self.tabBarController.tabBar.frame.size.height + refreshBarY, 0);
     [self.view addSubview:self.tableView];

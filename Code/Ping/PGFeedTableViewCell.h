@@ -15,5 +15,6 @@
 @property (strong, nonatomic) IBOutlet UILabel* nameLabel;
 @property (strong, nonatomic) IBOutlet UILabel* timeAndlocationLabel;
 @property (strong, nonatomic) IBOutlet UIImageView* thumbIV;
+@property (strong, nonatomic) IBOutlet UILabel* featuredLabel;
 
 @end

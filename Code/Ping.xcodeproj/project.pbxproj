@@ -10,6 +10,8 @@
 		0683112B1976C8460099689D /* PGProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0683112A1976C8460099689D /* PGProfileHeaderView.xib */; };
 		0683409C19770B88007A1AEC /* UIImagePickerController+DelegateBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 0683409B19770B88007A1AEC /* UIImagePickerController+DelegateBlocks.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0683409F19774AD4007A1AEC /* PGProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0683409E19774AD4007A1AEC /* PGProgressHUD.m */; };
+		068340A4197810A9007A1AEC /* PGSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 068340A3197810A9007A1AEC /* PGSignupViewController.m */; };
+		068340A7197810B0007A1AEC /* PGLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 068340A6197810B0007A1AEC /* PGLoginViewController.m */; };
 		06B56151197423AE00E92A92 /* PGProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B56150197423AE00E92A92 /* PGProfileViewController.m */; };
 		06B561541974425D00E92A92 /* PGFeedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B561531974425D00E92A92 /* PGFeedTableView.m */; };
 		06B561581974467300E92A92 /* PGFeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B561571974467300E92A92 /* PGFeedTableViewCell.xib */; };
@@ -23,7 +25,7 @@
 		06DCBCC6196E2AFF00E8C9B2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBCC5196E2AFF00E8C9B2 /* main.m */; };
 		06DCBCCA196E2AFF00E8C9B2 /* PGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBCC9196E2AFF00E8C9B2 /* PGAppDelegate.m */; };
 		06DCBCCD196E2AFF00E8C9B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06DCBCCB196E2AFF00E8C9B2 /* Main.storyboard */; };
-		06DCBCD0196E2AFF00E8C9B2 /* PGLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBCCF196E2AFF00E8C9B2 /* PGLoginViewController.m */; };
+		06DCBCD0196E2AFF00E8C9B2 /* PGTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBCCF196E2AFF00E8C9B2 /* PGTutorialViewController.m */; };
 		06DCBCD2196E2AFF00E8C9B2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06DCBCD1196E2AFF00E8C9B2 /* Images.xcassets */; };
 		06DCBCF1196EDDFA00E8C9B2 /* PGTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBCF0196EDDFA00E8C9B2 /* PGTabViewController.m */; };
 		06DCBCF4196EE40600E8C9B2 /* PGCamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBCF3196EE40600E8C9B2 /* PGCamViewController.m */; };
@@ -51,6 +53,10 @@
 		0683409B19770B88007A1AEC /* UIImagePickerController+DelegateBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImagePickerController+DelegateBlocks.m"; sourceTree = "<group>"; };
 		0683409D19774AD4007A1AEC /* PGProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGProgressHUD.h; sourceTree = "<group>"; };
 		0683409E19774AD4007A1AEC /* PGProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGProgressHUD.m; sourceTree = "<group>"; };
+		068340A2197810A9007A1AEC /* PGSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSignupViewController.h; sourceTree = "<group>"; };
+		068340A3197810A9007A1AEC /* PGSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSignupViewController.m; sourceTree = "<group>"; };
+		068340A5197810B0007A1AEC /* PGLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGLoginViewController.h; sourceTree = "<group>"; };
+		068340A6197810B0007A1AEC /* PGLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGLoginViewController.m; sourceTree = "<group>"; };
 		06B5614F197423AE00E92A92 /* PGProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGProfileViewController.h; sourceTree = "<group>"; };
 		06B56150197423AE00E92A92 /* PGProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGProfileViewController.m; sourceTree = "<group>"; };
 		06B561521974425D00E92A92 /* PGFeedTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGFeedTableView.h; sourceTree = "<group>"; };
@@ -71,8 +77,8 @@
 		06DCBCC8196E2AFF00E8C9B2 /* PGAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGAppDelegate.h; sourceTree = "<group>"; };
 		06DCBCC9196E2AFF00E8C9B2 /* PGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGAppDelegate.m; sourceTree = "<group>"; };
 		06DCBCCC196E2AFF00E8C9B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		06DCBCCE196E2AFF00E8C9B2 /* PGLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGLoginViewController.h; sourceTree = "<group>"; };
-		06DCBCCF196E2AFF00E8C9B2 /* PGLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PGLoginViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		06DCBCCE196E2AFF00E8C9B2 /* PGTutorialViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGTutorialViewController.h; sourceTree = "<group>"; };
+		06DCBCCF196E2AFF00E8C9B2 /* PGTutorialViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PGTutorialViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		06DCBCD1196E2AFF00E8C9B2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		06DCBCD8196E2AFF00E8C9B2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		06DCBCEE196EDD5100E8C9B2 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Constants.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -265,8 +271,12 @@
 		06DCBD1C196F9DB000E8C9B2 /* Login VC */ = {
 			isa = PBXGroup;
 			children = (
-				06DCBCCE196E2AFF00E8C9B2 /* PGLoginViewController.h */,
-				06DCBCCF196E2AFF00E8C9B2 /* PGLoginViewController.m */,
+				06DCBCCE196E2AFF00E8C9B2 /* PGTutorialViewController.h */,
+				06DCBCCF196E2AFF00E8C9B2 /* PGTutorialViewController.m */,
+				068340A2197810A9007A1AEC /* PGSignupViewController.h */,
+				068340A3197810A9007A1AEC /* PGSignupViewController.m */,
+				068340A5197810B0007A1AEC /* PGLoginViewController.h */,
+				068340A6197810B0007A1AEC /* PGLoginViewController.m */,
 			);
 			name = "Login VC";
 			sourceTree = "<group>";
@@ -442,6 +452,7 @@
 				06DCBD2719707A1E00E8C9B2 /* PGFeedHeader.m in Sources */,
 				06DCBD14196F404C00E8C9B2 /* WebViewController.m in Sources */,
 				06DCBD2E1970886A00E8C9B2 /* InAppNotificationTapListener.m in Sources */,
+				068340A4197810A9007A1AEC /* PGSignupViewController.m in Sources */,
 				06DCBD2F1970886A00E8C9B2 /* InAppNotificationView.m in Sources */,
 				06DCBCF4196EE40600E8C9B2 /* PGCamViewController.m in Sources */,
 				06DCBCF1196EDDFA00E8C9B2 /* PGTabViewController.m in Sources */,
@@ -452,8 +463,9 @@
 				06DCBD06196F07C500E8C9B2 /* PGFeedTableViewCell.m in Sources */,
 				06B561641975B04B00E92A92 /* UIImage+animatedGIF.m in Sources */,
 				06DCBCC6196E2AFF00E8C9B2 /* main.m in Sources */,
+				068340A7197810B0007A1AEC /* PGLoginViewController.m in Sources */,
 				06B561541974425D00E92A92 /* PGFeedTableView.m in Sources */,
-				06DCBCD0196E2AFF00E8C9B2 /* PGLoginViewController.m in Sources */,
+				06DCBCD0196E2AFF00E8C9B2 /* PGTutorialViewController.m in Sources */,
 				06DCBCCA196E2AFF00E8C9B2 /* PGAppDelegate.m in Sources */,
 				06DCBD13196F404C00E8C9B2 /* PGSettingsViewController.m in Sources */,
 				0683409C19770B88007A1AEC /* UIImagePickerController+DelegateBlocks.m in Sources */,

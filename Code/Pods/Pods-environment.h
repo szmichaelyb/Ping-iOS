@@ -156,6 +156,12 @@
 #define COCOAPODS_VERSION_MINOR_UIActionSheet_Blocks 8
 #define COCOAPODS_VERSION_PATCH_UIActionSheet_Blocks 1
 
+// UITableView-NXEmptyView
+#define COCOAPODS_POD_AVAILABLE_UITableView_NXEmptyView
+#define COCOAPODS_VERSION_MAJOR_UITableView_NXEmptyView 0
+#define COCOAPODS_VERSION_MINOR_UITableView_NXEmptyView 1
+#define COCOAPODS_VERSION_PATCH_UITableView_NXEmptyView 6
+
 // ZGParallelView
 #define COCOAPODS_POD_AVAILABLE_ZGParallelView
 #define COCOAPODS_VERSION_MAJOR_ZGParallelView 0

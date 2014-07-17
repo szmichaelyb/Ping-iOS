@@ -379,7 +379,7 @@
     PGAppDelegate* appDelegate = (PGAppDelegate*)[UIApplication sharedApplication].delegate;
     UIStoryboard* sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
-    appDelegate.window.rootViewController = [sb instantiateViewControllerWithIdentifier:@"PGLoginViewController"];
+    appDelegate.window.rootViewController = [sb instantiateViewControllerWithIdentifier:@"PGTutorialViewController"];
 }
 
 @end

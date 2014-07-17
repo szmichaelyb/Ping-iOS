@@ -29,6 +29,7 @@
 
 #define kPFInstallation_Owner @"owner"
 
+#define kPFUser_Username @"username"
 #define kPFUser_Name @"name"
 #define kPFUser_Email @"email"
 #define kPFUser_FBID @"fbID"

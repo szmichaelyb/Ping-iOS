@@ -37,6 +37,11 @@
     self.tableView = [[PGFeedTableView alloc] initWithFrame:self.view.bounds];
     self.tableView.myDelegate = self;
     self.tableView.feedType = FeedTypeMine;
+    UILabel* emptyView = [[UILabel alloc] initWithFrame:self.tableView.frame];
+    emptyView.text = @"No Ping yet. Create one now.";
+    emptyView.textAlignment = NSTextAlignmentCenter;
+    emptyView.textColor = [UIColor lightGrayColor];
+    self.tableView.emptyView = emptyView;
     self.tableView.contentInset=  UIEdgeInsetsMake(0, 0, self.tabBarController.tabBar.frame.size.height + refreshBarY, 0);
     [self.view addSubview:self.tableView];
     
