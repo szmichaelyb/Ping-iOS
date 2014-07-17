@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PGActivityViewController : UIViewController
+@interface PGActivityViewController : PFQueryTableViewController
 
 @end

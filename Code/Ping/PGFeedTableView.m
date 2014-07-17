@@ -59,7 +59,6 @@
     [query includeKey:kPFSelfie_Owner];
     [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        DLog(@"%@", objects);
         //        [self.pullToRefresh finishRefresh];
         if (block) {
             block(YES);

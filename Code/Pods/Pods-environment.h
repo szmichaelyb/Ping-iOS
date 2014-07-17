@@ -60,6 +60,24 @@
 #define COCOAPODS_VERSION_MINOR_DACircularProgress 2
 #define COCOAPODS_VERSION_PATCH_DACircularProgress 0
 
+// DZNEmptyDataSet
+#define COCOAPODS_POD_AVAILABLE_DZNEmptyDataSet
+#define COCOAPODS_VERSION_MAJOR_DZNEmptyDataSet 1
+#define COCOAPODS_VERSION_MINOR_DZNEmptyDataSet 3
+#define COCOAPODS_VERSION_PATCH_DZNEmptyDataSet 3
+
+// DZNPhotoPickerController
+#define COCOAPODS_POD_AVAILABLE_DZNPhotoPickerController
+#define COCOAPODS_VERSION_MAJOR_DZNPhotoPickerController 1
+#define COCOAPODS_VERSION_MINOR_DZNPhotoPickerController 4
+#define COCOAPODS_VERSION_PATCH_DZNPhotoPickerController 5
+
+// DZNPhotoPickerController/UIImagePickerControllerExtended
+#define COCOAPODS_POD_AVAILABLE_DZNPhotoPickerController_UIImagePickerControllerExtended
+#define COCOAPODS_VERSION_MAJOR_DZNPhotoPickerController_UIImagePickerControllerExtended 1
+#define COCOAPODS_VERSION_MINOR_DZNPhotoPickerController_UIImagePickerControllerExtended 4
+#define COCOAPODS_VERSION_PATCH_DZNPhotoPickerController_UIImagePickerControllerExtended 5
+
 // Facebook-iOS-SDK
 #define COCOAPODS_POD_AVAILABLE_Facebook_iOS_SDK
 #define COCOAPODS_VERSION_MAJOR_Facebook_iOS_SDK 3
@@ -137,6 +155,18 @@
 #define COCOAPODS_VERSION_MAJOR_Parse 1
 #define COCOAPODS_VERSION_MINOR_Parse 2
 #define COCOAPODS_VERSION_PATCH_Parse 20
+
+// SDWebImage
+#define COCOAPODS_POD_AVAILABLE_SDWebImage
+#define COCOAPODS_VERSION_MAJOR_SDWebImage 3
+#define COCOAPODS_VERSION_MINOR_SDWebImage 7
+#define COCOAPODS_VERSION_PATCH_SDWebImage 0
+
+// SDWebImage/Core
+#define COCOAPODS_POD_AVAILABLE_SDWebImage_Core
+#define COCOAPODS_VERSION_MAJOR_SDWebImage_Core 3
+#define COCOAPODS_VERSION_MINOR_SDWebImage_Core 7
+#define COCOAPODS_VERSION_PATCH_SDWebImage_Core 0
 
 // STZPullToRefresh
 #define COCOAPODS_POD_AVAILABLE_STZPullToRefresh

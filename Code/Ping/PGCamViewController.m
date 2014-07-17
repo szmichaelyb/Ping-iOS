@@ -15,7 +15,8 @@
 
 #import "PGPingViewController.h"
 #import "UIView+Animate.h"
-#import "UIImagePickerController+DelegateBlocks.h"
+#import <DZNPhotoPickerController.h>
+#import "UIImagePickerControllerExtended.h"
 
 static void * CapturingStillImageContext = &CapturingStillImageContext;
 //static void * RecordingContext = &RecordingContext;
@@ -397,8 +398,8 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
                     NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
                     UIImage *image = [[UIImage alloc] initWithData:imageData];
                     
-                    image = [self processImage:image];
-                    
+                    image = [self scaleAndCropImage:image];
+
                     [self userDidPickImage:image];
                     //
                     
@@ -411,15 +412,30 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 
 -(IBAction)pickFromLibary:(id)sender
 {
-    UIImagePickerController* imagePicker = [[UIImagePickerController alloc] init];
-    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    [self presentViewController:imagePicker animated:YES completion:nil];
-    [imagePicker useBlocksForDelegate];
-    [imagePicker onDidFinishPickingMediaWithInfo:^(UIImagePickerController *picker, NSDictionary *info) {
-        DLog(@"%@", info);
-        [imagePicker dismissViewControllerAnimated:YES completion:nil];
-//        [self userDidPickImage:info[]
-    }];
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    picker.allowsEditing = YES;
+    picker.cropMode = DZNPhotoEditorViewControllerCropModeSquare;
+    
+    picker.finalizationBlock = ^(UIImagePickerController *picker, NSDictionary *info) {
+        if (picker.cropMode != DZNPhotoEditorViewControllerCropModeNone) {
+            
+            UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+            
+            DZNPhotoEditorViewController *editor = [[DZNPhotoEditorViewController alloc] initWithImage:image cropMode:picker.cropMode];
+            [picker pushViewController:editor animated:YES];
+        }
+        else {
+            [self userDidPickImage:info[UIImagePickerControllerEditedImage]];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+    };
+    
+    picker.cancellationBlock = ^(UIImagePickerController *picker) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    };
+    
+    [self presentViewController:picker animated:YES completion:nil];
 }
 
 -(void)userDidPickImage:(UIImage*)image
@@ -576,7 +592,8 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 	}];
 }
 
-- (UIImage*) processImage:(UIImage *)image { //process captured image, crop, resize and rotate
+- (UIImage*)scaleAndCropImage:(UIImage *)image
+{ //process captured image, crop, resize and rotate
     //    haveImage = YES;
     //    photoFromCam = YES;
     

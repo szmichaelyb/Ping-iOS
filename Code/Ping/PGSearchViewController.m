@@ -84,29 +84,15 @@
 
 - (void)configureCell:(PGSearchTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DLog(@"%@", _datasource[indexPath.row]);
     PFObject* object = _datasource[indexPath.row];
     cell.nameLabel.text = object[kPFUser_Name];
-    
-    DLog(@"%@", [_followStatusArray valueForKeyPath:kPFActivity_ToUser]);
     
     NSArray* folloingUsers = [_followStatusArray valueForKeyPath:kPFActivity_ToUser];
     if ([[folloingUsers valueForKey:kPFUser_FBID] containsObject:_datasource[indexPath.row][kPFUser_FBID]]) {
         [cell.followButton setTitle:@"Following" forState:UIControlStateNormal];
+    } else {
+        [cell.followButton setTitle:@"Follow" forState:UIControlStateNormal];
     }
-//    if () {
-//
-//    }
-//    if (_isFiltered) {
-//        
-//        //use filtered datasource
-//    }
-//    else
-//    {
-    
-        //Use datasource
-        
-//    }
 }
 
 #pragma mark - UITablveView Delegate
@@ -160,7 +146,6 @@
         PFQuery *finalQuery = [PFQuery orQueryWithSubqueries:[NSArray arrayWithObjects:queryCapitalizedString,queryLowerCaseString, querySearchBarString,nil]];
         finalQuery.limit = 10;
         [finalQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            DLog(@"%@", objects);
             _datasource = [[NSMutableArray alloc] initWithArray:objects];
             [self getFollowStatusCompletion:^(NSArray *array) {
                 _followStatusArray = [NSMutableArray arrayWithArray:array];
@@ -204,7 +189,6 @@
 -(void)buttonTappedOnCell:(PGSearchTableViewCell *)cell
 {
     NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
-    DLog(@"%@", _datasource[indexPath.row]);
     PFUser* followUser = _datasource[indexPath.row];
     [PGParseHelper followUser:followUser];
 }
@@ -218,7 +202,6 @@
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         block(objects);
-        DLog(@"%@", objects);
     }];
 }
 

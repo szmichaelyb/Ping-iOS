@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0683112B1976C8460099689D /* PGProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0683112A1976C8460099689D /* PGProfileHeaderView.xib */; };
-		0683409C19770B88007A1AEC /* UIImagePickerController+DelegateBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 0683409B19770B88007A1AEC /* UIImagePickerController+DelegateBlocks.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0683409F19774AD4007A1AEC /* PGProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0683409E19774AD4007A1AEC /* PGProgressHUD.m */; };
 		068340A4197810A9007A1AEC /* PGSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 068340A3197810A9007A1AEC /* PGSignupViewController.m */; };
 		068340A7197810B0007A1AEC /* PGLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 068340A6197810B0007A1AEC /* PGLoginViewController.m */; };
@@ -16,6 +15,7 @@
 		068340AD19782FC2007A1AEC /* PGSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 068340AC19782FC2007A1AEC /* PGSearchTableViewCell.m */; };
 		068340B119783750007A1AEC /* PGParseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 068340B019783750007A1AEC /* PGParseHelper.m */; };
 		068340B519784572007A1AEC /* PGActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 068340B419784572007A1AEC /* PGActivityViewController.m */; };
+		068340B8197850AF007A1AEC /* PGActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 068340B7197850AF007A1AEC /* PGActivityTableViewCell.m */; };
 		06B56151197423AE00E92A92 /* PGProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B56150197423AE00E92A92 /* PGProfileViewController.m */; };
 		06B561541974425D00E92A92 /* PGFeedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B561531974425D00E92A92 /* PGFeedTableView.m */; };
 		06B561581974467300E92A92 /* PGFeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B561571974467300E92A92 /* PGFeedTableViewCell.xib */; };
@@ -53,8 +53,6 @@
 
 /* Begin PBXFileReference section */
 		0683112A1976C8460099689D /* PGProfileHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGProfileHeaderView.xib; sourceTree = "<group>"; };
-		0683409A19770B88007A1AEC /* UIImagePickerController+DelegateBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImagePickerController+DelegateBlocks.h"; sourceTree = "<group>"; };
-		0683409B19770B88007A1AEC /* UIImagePickerController+DelegateBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImagePickerController+DelegateBlocks.m"; sourceTree = "<group>"; };
 		0683409D19774AD4007A1AEC /* PGProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGProgressHUD.h; sourceTree = "<group>"; };
 		0683409E19774AD4007A1AEC /* PGProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGProgressHUD.m; sourceTree = "<group>"; };
 		068340A2197810A9007A1AEC /* PGSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSignupViewController.h; sourceTree = "<group>"; };
@@ -69,6 +67,8 @@
 		068340B019783750007A1AEC /* PGParseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGParseHelper.m; sourceTree = "<group>"; };
 		068340B319784572007A1AEC /* PGActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGActivityViewController.h; sourceTree = "<group>"; };
 		068340B419784572007A1AEC /* PGActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGActivityViewController.m; sourceTree = "<group>"; };
+		068340B6197850AF007A1AEC /* PGActivityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGActivityTableViewCell.h; sourceTree = "<group>"; };
+		068340B7197850AF007A1AEC /* PGActivityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGActivityTableViewCell.m; sourceTree = "<group>"; };
 		06B5614F197423AE00E92A92 /* PGProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGProfileViewController.h; sourceTree = "<group>"; };
 		06B56150197423AE00E92A92 /* PGProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGProfileViewController.m; sourceTree = "<group>"; };
 		06B561521974425D00E92A92 /* PGFeedTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGFeedTableView.h; sourceTree = "<group>"; };
@@ -162,6 +162,8 @@
 			children = (
 				068340B319784572007A1AEC /* PGActivityViewController.h */,
 				068340B419784572007A1AEC /* PGActivityViewController.m */,
+				068340B6197850AF007A1AEC /* PGActivityTableViewCell.h */,
+				068340B7197850AF007A1AEC /* PGActivityTableViewCell.m */,
 			);
 			name = "Activity VC";
 			sourceTree = "<group>";
@@ -278,8 +280,6 @@
 		06DCBD18196F42E800E8C9B2 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				0683409A19770B88007A1AEC /* UIImagePickerController+DelegateBlocks.h */,
-				0683409B19770B88007A1AEC /* UIImagePickerController+DelegateBlocks.m */,
 				06B561621975B04B00E92A92 /* UIImage+animatedGIF.h */,
 				06B561631975B04B00E92A92 /* UIImage+animatedGIF.m */,
 				06DCBD19196F42F500E8C9B2 /* Animations */,
@@ -497,6 +497,7 @@
 				06DCBCF1196EDDFA00E8C9B2 /* PGTabViewController.m in Sources */,
 				06DCBCF7196EE41800E8C9B2 /* AVCamPreviewView.m in Sources */,
 				06DCBD09196F2A5900E8C9B2 /* UIViewController+Transitions.m in Sources */,
+				068340B8197850AF007A1AEC /* PGActivityTableViewCell.m in Sources */,
 				06DCBD0C196F2E0500E8C9B2 /* UIView+Animate.m in Sources */,
 				06DCBD03196F063400E8C9B2 /* PGFeedViewController.m in Sources */,
 				06DCBD06196F07C500E8C9B2 /* PGFeedTableViewCell.m in Sources */,
@@ -508,7 +509,6 @@
 				06DCBCD0196E2AFF00E8C9B2 /* PGTutorialViewController.m in Sources */,
 				06DCBCCA196E2AFF00E8C9B2 /* PGAppDelegate.m in Sources */,
 				06DCBD13196F404C00E8C9B2 /* PGSettingsViewController.m in Sources */,
-				0683409C19770B88007A1AEC /* UIImagePickerController+DelegateBlocks.m in Sources */,
 				06DCBD17196F421400E8C9B2 /* UIDevice-Hardware.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
