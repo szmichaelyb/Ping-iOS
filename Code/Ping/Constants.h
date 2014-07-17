@@ -36,6 +36,7 @@
 #define kPFUser_Picture @"picture"
 #define kPFUser_Invited @"invited"
 #define kPFUser_Location @"location"
+//#define kPFUser_Follow @"follow"
 
 #define kPFQueue_Owner @"owner"
 
@@ -46,6 +47,17 @@
 #define kPFSelfie_Location @"location"
 #define kPFSelfie_Abuse @"abuse"
 #define kPFSelfie_Featured @"featured"
+
+#define kPFActivity_Type @"type"
+#define kPFActivity_FromUser @"fromUser"
+#define kPFActivity_ToUser @"toUser"
+#define kPFActivity_Content @"content"
+#define kPFActivity_Photo @"photo"
+
+#define kPFActivity_Type_Like @"like"
+#define kPFActivity_Type_Follow @"follow"
+#define kPFActivity_Type_Comment @"comment"
+#define kPFActivity_Type_Joined @"joined"
 
 /**
 *
@@ -59,5 +71,6 @@
 #define kPFTableName_Selfies @"Selfies"
 #define kPFTableUser @"User"
 #define kPFTableQueue @"Queue"
+#define kPFTableActivity @"Activity"
 
 #endif

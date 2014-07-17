@@ -73,10 +73,16 @@
         //        }
     }
     if ([[tabBar items] indexOfObject:item] == 1) {
-        [self showCreatePingViewController];
+        lastSelectedIndex = 1;
     }
     if ([[tabBar items] indexOfObject:item] == 2) {
-        lastSelectedIndex = 2;
+        [self showCreatePingViewController];
+    }
+    if ([[tabBar items] indexOfObject:item] == 3) {
+        lastSelectedIndex = 3;
+    }
+    if ([[tabBar items] indexOfObject:item] == 4) {
+        lastSelectedIndex = 4;
     }
 }
 

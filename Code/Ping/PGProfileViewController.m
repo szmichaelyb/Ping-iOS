@@ -19,6 +19,8 @@
 @property (nonatomic, strong) IBOutlet UIImageView* headerView;
 @property (nonatomic, strong) IBOutlet UIImageView* profileIV;
 @property (nonatomic, strong) IBOutlet UILabel* nameLabel;
+@property (nonatomic, strong) IBOutlet UILabel* followingLabel;
+@property (nonatomic, strong) IBOutlet UILabel* followersLabel;
 
 @end
 
@@ -53,6 +55,7 @@
     _profileIV.layer.borderWidth = 4;
     _profileIV.layer.masksToBounds = YES;
     _nameLabel.text = [PFUser currentUser][kPFUser_Name];
+ 
     _headerView.image = [self blur:_profileIV.image];
     [self.tableView addParallelViewWithUIView:view withDisplayRadio:0.5 headerViewStyle:ZGScrollViewStyleDefault];
 }
@@ -61,6 +64,18 @@
 {
     [super viewDidAppear:animated];
     [self getData];
+    
+    PFQuery* followerCountQuery = [PFQuery queryWithClassName:kPFTableActivity];
+    [followerCountQuery whereKey:kPFActivity_Type equalTo:kPFActivity_Type_Follow];
+    [followerCountQuery whereKey:kPFActivity_ToUser equalTo:[PFUser currentUser]];
+    
+    _followersLabel.text = [NSString stringWithFormat:@"%d follower", [followerCountQuery countObjects]];
+    
+    PFQuery* followingCountQuery = [PFQuery queryWithClassName:kPFTableActivity];
+    [followingCountQuery whereKey:kPFActivity_Type equalTo:kPFActivity_Type_Follow];
+    [followingCountQuery whereKey:kPFActivity_FromUser equalTo:[PFUser currentUser]];
+    
+    _followingLabel.text = [NSString stringWithFormat:@"%d following", [followingCountQuery countObjects]];
 }
 
 -(void)tableScrollViewDidScroll:(UIScrollView *)scrollView
