@@ -12,6 +12,7 @@
 #import <UIActionSheet+Blocks/UIActionSheet+Blocks.h>
 #import "PGFeedHeader.h"
 #import "PGFeedTableView.h"
+#import "PGProgressHUD.h"
 
 @interface PGFeedViewController ()<PGFeedTableViewDelegate>
 {
@@ -21,7 +22,7 @@
 
 @property (strong, nonatomic) PGFeedTableView* tableView;
 
-@property (strong, nonatomic) NSMutableArray* datasource;
+//@property (strong, nonatomic) NSMutableArray* datasource;
 @property (nonatomic, strong) STZPullToRefresh *pullToRefresh;
 
 
@@ -74,18 +75,23 @@
 
 #pragma mark - PGFeedTableView Delegate
 
--(void)tableView:(PGFeedTableView *)tableView moreButtonClicked:(NSIndexPath*)indexPath
+-(void)tableView:(PGFeedTableView *)tableView moreButtonClicked:(NSIndexPath*)indexPath dataObject:(id)object
 {
-    [UIActionSheet showInView:self.view.window withTitle:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@[@"Report this post"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+    [UIActionSheet showInView:self.view.window withTitle:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Report inappropriate" otherButtonTitles:nil tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
         DLog(@"%d", buttonIndex);
         if (buttonIndex == 0) {
             
             [UIActionSheet showInView:self.view.window withTitle:@"Are you sure?" cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@[@"Yes"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
                 if (buttonIndex == 0) {
-                    DLog(@"%@", _datasource[indexPath.section]);
-                    PFObject* object = _datasource[indexPath.section];
+//                    DLog(@"%@", _datasource[indexPath.row]);
+                    
+//                    PFObject* object = object;
                     object[kPFSelfie_Abuse] = [NSNumber numberWithBool:YES];
-                    [object saveEventually];
+                    [object saveEventually:^(BOOL succeeded, NSError *error) {
+                        if (succeeded) {
+                            [[PGProgressHUD sharedInstance] showInView:self.navigationController.view withText:@"Reported"];
+                        }
+                    }];
                 }
             }];
         }

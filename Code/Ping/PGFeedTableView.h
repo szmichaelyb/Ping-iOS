@@ -27,7 +27,7 @@ typedef enum {
 @protocol PGFeedTableViewDelegate<NSObject>
 
 -(void)tableView:(PGFeedTableView*)tableView didTapOnImageView:(UIImageView*)imageView;
--(void)tableView:(PGFeedTableView *)tableView moreButtonClicked:(NSIndexPath*)indexPath;
+-(void)tableView:(PGFeedTableView *)tableView moreButtonClicked:(NSIndexPath*)indexPath dataObject:(id)object;
 
 @optional
 -(void)tableScrollViewDidScroll:(UIScrollView*)scrollView;

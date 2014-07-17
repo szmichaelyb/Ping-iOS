@@ -9,6 +9,8 @@
 #import "PGProfileViewController.h"
 #import "PGFeedTableView.h"
 #import <UITableView+ZGParallelView.h>
+#import <UIActionSheet+Blocks/UIActionSheet+Blocks.h>
+#import "PGProgressHUD.h"
 
 @interface PGProfileViewController ()<PGFeedTableViewDelegate>
 
@@ -84,9 +86,25 @@
     
 }
 
--(void)tableView:(PGFeedTableView *)tableView moreButtonClicked:(NSIndexPath *)indexPath
+-(void)tableView:(PGFeedTableView *)tableView moreButtonClicked:(NSIndexPath *)indexPath dataObject:(id)object
 {
-    
+    [UIActionSheet showInView:self.view.window withTitle:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles:nil tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+        DLog(@"tapped");
+        if (buttonIndex == 0) {
+            //Delete
+            [UIActionSheet showInView:self.view.window withTitle:@"Are you sure?" cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@[@"Yes"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+                if (buttonIndex == 0) {
+                    //Yes
+                    [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                        if (succeeded) {
+                            [[PGProgressHUD sharedInstance] showInView:self.navigationController.view withText:@"Deleted"];
+                        }
+                        [self getData];
+                    }];
+                }
+            }];
+        }
+    }];
 }
 
 #pragma mark -

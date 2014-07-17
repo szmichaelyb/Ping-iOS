@@ -151,7 +151,8 @@
     NSIndexPath* indexPath = [self indexPathForRowAtPoint:buttonPosition];
     
     if (_myDelegate) {
-        [_myDelegate tableView:self moreButtonClicked:indexPath];
+        [_myDelegate tableView:self moreButtonClicked:indexPath dataObject:_datasource[indexPath.row]];
+//        [_myDelegate tableView:self moreButtonClicked:indexPath] ;
     }
 }
 
