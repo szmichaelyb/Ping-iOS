@@ -59,9 +59,6 @@
     
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LogoNavigationBar.png"]];
     
-    // Add Settings button
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Setting" style:UIBarButtonItemStyleBordered target:self action:@selector(settingsButtonAction:)];
-    
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidReceiveRemoteNotification:) name:PAPAppDelegateApplicationDidReceiveRemoteNotification object:nil];
     
     self.blankTimelineView = [[UIView alloc] initWithFrame:self.tableView.bounds];
@@ -195,24 +192,6 @@
     cell.activityType.text = object[kPFActivity_Type];
     cell.activityPerformer.text = object[kPFActivity_FromUser][kPFUser_Name];
     return cell;
-//    PAPActivityCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//    if (cell == nil) {
-//        cell = [[PAPActivityCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-//        [cell setDelegate:self];
-//        [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
-//    }
-//    
-//    [cell setActivity:object];
-//    
-//    if ([lastRefresh compare:[object createdAt]] == NSOrderedAscending) {
-//        [cell setIsNew:YES];
-//    } else {
-//        [cell setIsNew:NO];
-//    }
-//    
-//    [cell hideSeparator:(indexPath.row == self.objects.count - 1)];
-//    
-//    return cell;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForNextPageAtIndexPath:(NSIndexPath *)indexPath {
@@ -268,19 +247,8 @@
 
 #pragma mark - ()
 
-- (void)settingsButtonAction:(id)sender {
-//    settingsActionSheetDelegate = [[PAPSettingsActionSheetDelegate alloc] initWithNavigationController:self.navigationController];
-//    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:settingsActionSheetDelegate cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"My Profile", nil), NSLocalizedString(@"Find Friends", nil), NSLocalizedString(@"Log Out", nil), nil];
-//    
-//    [actionSheet showFromTabBar:self.tabBarController.tabBar];
-}
-
-- (void)inviteFriendsButtonAction:(id)sender {
-//    PAPFindFriendsViewController *detailViewController = [[PAPFindFriendsViewController alloc] init];
-//    [self.navigationController pushViewController:detailViewController animated:YES];
-}
-
-- (void)applicationDidReceiveRemoteNotification:(NSNotification *)note {
+- (void)applicationDidReceiveRemoteNotification:(NSNotification *)note
+{
     [self loadObjects];
 }
 
