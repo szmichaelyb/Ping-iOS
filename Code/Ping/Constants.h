@@ -52,7 +52,7 @@
 #define kPFActivity_FromUser @"fromUser"
 #define kPFActivity_ToUser @"toUser"
 #define kPFActivity_Content @"content"
-#define kPFActivity_Photo @"photo"
+#define kPFActivity_Selfie @"selfie"
 
 #define kPFActivity_Type_Like @"like"
 #define kPFActivity_Type_Follow @"follow"

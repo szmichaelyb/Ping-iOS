@@ -16,6 +16,7 @@
 		068340B119783750007A1AEC /* PGParseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 068340B019783750007A1AEC /* PGParseHelper.m */; };
 		068340B519784572007A1AEC /* PGActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 068340B419784572007A1AEC /* PGActivityViewController.m */; };
 		068340B8197850AF007A1AEC /* PGActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 068340B7197850AF007A1AEC /* PGActivityTableViewCell.m */; };
+		068340BB1979688B007A1AEC /* UIImage+MyUIImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 068340BA1979688B007A1AEC /* UIImage+MyUIImage.m */; };
 		06B56151197423AE00E92A92 /* PGProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B56150197423AE00E92A92 /* PGProfileViewController.m */; };
 		06B561541974425D00E92A92 /* PGFeedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B561531974425D00E92A92 /* PGFeedTableView.m */; };
 		06B561581974467300E92A92 /* PGFeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B561571974467300E92A92 /* PGFeedTableViewCell.xib */; };
@@ -64,15 +65,17 @@
 		068340AB19782FC2007A1AEC /* PGSearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSearchTableViewCell.h; sourceTree = "<group>"; };
 		068340AC19782FC2007A1AEC /* PGSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSearchTableViewCell.m; sourceTree = "<group>"; };
 		068340AF19783750007A1AEC /* PGParseHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGParseHelper.h; sourceTree = "<group>"; };
-		068340B019783750007A1AEC /* PGParseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGParseHelper.m; sourceTree = "<group>"; };
+		068340B019783750007A1AEC /* PGParseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PGParseHelper.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		068340B319784572007A1AEC /* PGActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGActivityViewController.h; sourceTree = "<group>"; };
-		068340B419784572007A1AEC /* PGActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGActivityViewController.m; sourceTree = "<group>"; };
+		068340B419784572007A1AEC /* PGActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PGActivityViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		068340B6197850AF007A1AEC /* PGActivityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGActivityTableViewCell.h; sourceTree = "<group>"; };
 		068340B7197850AF007A1AEC /* PGActivityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGActivityTableViewCell.m; sourceTree = "<group>"; };
+		068340B91979688B007A1AEC /* UIImage+MyUIImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MyUIImage.h"; sourceTree = "<group>"; };
+		068340BA1979688B007A1AEC /* UIImage+MyUIImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MyUIImage.m"; sourceTree = "<group>"; };
 		06B5614F197423AE00E92A92 /* PGProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGProfileViewController.h; sourceTree = "<group>"; };
 		06B56150197423AE00E92A92 /* PGProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGProfileViewController.m; sourceTree = "<group>"; };
 		06B561521974425D00E92A92 /* PGFeedTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGFeedTableView.h; sourceTree = "<group>"; };
-		06B561531974425D00E92A92 /* PGFeedTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGFeedTableView.m; sourceTree = "<group>"; };
+		06B561531974425D00E92A92 /* PGFeedTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PGFeedTableView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		06B561571974467300E92A92 /* PGFeedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGFeedTableViewCell.xib; sourceTree = "<group>"; };
 		06B5615E1975AB9700E92A92 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		06B561601975AB9E00E92A92 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -168,6 +171,15 @@
 			name = "Activity VC";
 			sourceTree = "<group>";
 		};
+		068340BC19797102007A1AEC /* PARSE HELPER */ = {
+			isa = PBXGroup;
+			children = (
+				068340AF19783750007A1AEC /* PGParseHelper.h */,
+				068340B019783750007A1AEC /* PGParseHelper.m */,
+			);
+			name = "PARSE HELPER";
+			sourceTree = "<group>";
+		};
 		06B5614E1974239200E92A92 /* Profile VC */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +225,7 @@
 		06DCBCBF196E2AFF00E8C9B2 /* Ping */ = {
 			isa = PBXGroup;
 			children = (
+				068340BC19797102007A1AEC /* PARSE HELPER */,
 				06DCBD18196F42E800E8C9B2 /* Utilities */,
 				06DCBD00196F060F00E8C9B2 /* Settings VC */,
 				06B5614E1974239200E92A92 /* Profile VC */,
@@ -287,8 +300,8 @@
 				06DCBD16196F421400E8C9B2 /* UIDevice-Hardware.m */,
 				0683409D19774AD4007A1AEC /* PGProgressHUD.h */,
 				0683409E19774AD4007A1AEC /* PGProgressHUD.m */,
-				068340AF19783750007A1AEC /* PGParseHelper.h */,
-				068340B019783750007A1AEC /* PGParseHelper.m */,
+				068340B91979688B007A1AEC /* UIImage+MyUIImage.h */,
+				068340BA1979688B007A1AEC /* UIImage+MyUIImage.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -505,6 +518,7 @@
 				06DCBCC6196E2AFF00E8C9B2 /* main.m in Sources */,
 				068340A7197810B0007A1AEC /* PGLoginViewController.m in Sources */,
 				06B561541974425D00E92A92 /* PGFeedTableView.m in Sources */,
+				068340BB1979688B007A1AEC /* UIImage+MyUIImage.m in Sources */,
 				068340B119783750007A1AEC /* PGParseHelper.m in Sources */,
 				06DCBCD0196E2AFF00E8C9B2 /* PGTutorialViewController.m in Sources */,
 				06DCBCCA196E2AFF00E8C9B2 /* PGAppDelegate.m in Sources */,
@@ -620,7 +634,7 @@
 				INFOPLIST_FILE = "Ping/Ping-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "E6738508-49BA-4823-9D29-5EFAD6C0555E";
+				PROVISIONING_PROFILE = "628DB765-688B-4F7A-833C-6641E118AB68";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;

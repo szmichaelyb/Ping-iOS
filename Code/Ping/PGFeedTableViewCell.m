@@ -8,6 +8,13 @@
 
 #import "PGFeedTableViewCell.h"
 
+@interface PGFeedTableViewCell()
+
+- (IBAction)moreButtonClicked:(id)sender;
+- (IBAction)likeButtonClicked:(id)sender;
+
+@end
+
 @implementation PGFeedTableViewCell
 
 - (void)awakeFromNib
@@ -23,6 +30,18 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (IBAction)moreButtonClicked:(id)sender {
+    if (_delegate) {
+        [_delegate cellDidTapOnMoreButton:self];
+    }
+}
+
+- (IBAction)likeButtonClicked:(id)sender {
+    if (_delegate) {
+        [_delegate cellDidTapOnLikeButton:self];
+    }
 }
 
 @end

@@ -8,17 +8,16 @@
 
 #import "PGFeedTableView.h"
 #import "PGFeedHeader.h"
-#import "PGFeedTableViewCell.h"
 #import <FormatterKit/TTTTimeIntervalFormatter.h>
 
 #import "UIImage+animatedGIF.h"
 #import <UITableView-NXEmptyView/UITableView+NXEmptyView.h>
+#import "UIImage+MyUIImage.h"
 
 @interface PGFeedTableView()
 
 @property (strong, nonatomic) NSMutableArray* datasource;
-
-- (IBAction)moreButtonClicked:(UIButton *)sender;
+@property (strong, nonatomic) NSMutableArray* activityArray;
 
 @end
 
@@ -38,10 +37,12 @@
     return self;
 }
 
+#pragma mark -
+
 -(void)getObjectsFromParseCompletion:(void (^) (bool finished))block
 {
     self.nxEV_emptyView = self.emptyView;
-
+    
     PFQuery* query = [PFQuery queryWithClassName:kPFTableName_Selfies];
     
     if (_feedType == FeedTypeMine) {
@@ -64,6 +65,10 @@
             block(YES);
         }
         _datasource = [NSMutableArray arrayWithArray:objects];
+        [PGParseHelper getLikeActivityForSelfies:_datasource fromUser:[PFUser currentUser] completion:^(BOOL finished, NSArray *objects) {
+            _activityArray = [NSMutableArray arrayWithArray:objects];
+            [self reloadData];
+        }];
         [self reloadData];
     }];
 }
@@ -100,6 +105,7 @@
     if (!cell) {
         cell = [[NSBundle mainBundle] loadNibNamed:@"PGFeedTableViewCell" owner:self options:nil][0];
     }
+    cell.delegate = self;
     [self configureCell:cell forRowAtIndexPath:indexPath];
     
     return cell;
@@ -116,7 +122,6 @@
         [cell.thumbIV setImage:[UIImage imageWithData:data]];
     }];
     
-    
     PFFile* file = _datasource[indexPath.row][kPFSelfie_Selfie];
     [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         UIImage* img = [UIImage animatedImageWithAnimatedGIFData:data];
@@ -130,6 +135,15 @@
     } else {
         cell.featuredLabel.hidden = YES;
     }
+    
+    if ([[[_activityArray valueForKey:kPFActivity_Selfie] valueForKey:@"objectId"] containsObject:[_datasource[indexPath.row] valueForKey:@"objectId"]]) {
+        [cell.likeButton setImage:[UIImage imageNamed:@"like"] forState:UIControlStateNormal];
+        [cell.likeButton setImage:[[cell.likeButton imageForState:UIControlStateNormal] imageWithOverlayColor:[UIColor redColor]] forState:UIControlStateNormal];
+    } else {
+        [cell.likeButton setImage:[UIImage imageNamed:@"like_empty"] forState:UIControlStateNormal];
+        [cell.likeButton setImage:[[cell.likeButton imageForState:UIControlStateNormal] imageWithOverlayColor:[UIColor whiteColor]] forState:UIControlStateNormal];
+    }    
+    
     cell.iv.userInteractionEnabled = YES;
     cell.iv.tag = indexPath.row;
     UITapGestureRecognizer* gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(performFullScreenAnimation:)];
@@ -157,15 +171,25 @@
     }
 }
 
--(void)moreButtonClicked:(UIButton *)sender
+#pragma mark - PGFeedTableViewCell Delegate
+
+-(void)cellDidTapOnMoreButton:(PGFeedTableViewCell *)cell
 {
-    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self];
-    NSIndexPath* indexPath = [self indexPathForRowAtPoint:buttonPosition];
+    NSIndexPath* indexPath = [self indexPathForCell:cell];
     
     if (_myDelegate) {
         [_myDelegate tableView:self moreButtonClicked:indexPath dataObject:_datasource[indexPath.row]];
-//        [_myDelegate tableView:self moreButtonClicked:indexPath] ;
     }
+}
+
+-(void)cellDidTapOnLikeButton:(PGFeedTableViewCell *)cell
+{
+    NSIndexPath* indexPath = [self indexPathForCell:cell];
+    PFObject* object = _datasource[indexPath.row];
+    [PGParseHelper likeSelfie:object fromUser:[PFUser currentUser] completion:^(BOOL finished) {
+        DLog(@"Liked");
+        [self reloadData];
+    }];
 }
 
 @end

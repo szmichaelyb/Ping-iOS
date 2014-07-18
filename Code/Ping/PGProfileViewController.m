@@ -21,6 +21,7 @@
 @property (nonatomic, strong) IBOutlet UILabel* nameLabel;
 @property (nonatomic, strong) IBOutlet UILabel* followingLabel;
 @property (nonatomic, strong) IBOutlet UILabel* followersLabel;
+@property (strong, nonatomic) IBOutlet UILabel *postCountLabel;
 
 @end
 
@@ -57,7 +58,7 @@
     _nameLabel.text = [PFUser currentUser][kPFUser_Name];
  
     _headerView.image = [self blur:_profileIV.image];
-    [self.tableView addParallelViewWithUIView:view withDisplayRadio:0.5 headerViewStyle:ZGScrollViewStyleDefault];
+    [self.tableView addParallelViewWithUIView:view withDisplayRadio:0.6 headerViewStyle:ZGScrollViewStyleDefault];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -76,6 +77,10 @@
     [followingCountQuery whereKey:kPFActivity_FromUser equalTo:[PFUser currentUser]];
     
     _followingLabel.text = [NSString stringWithFormat:@"%d following", [followingCountQuery countObjects]];
+    
+    PFQuery* postsCountQuery = [PFQuery queryWithClassName:kPFTableName_Selfies];
+    [postsCountQuery whereKey:kPFSelfie_Owner equalTo:[PFUser currentUser]];
+    _postCountLabel.text = [NSString stringWithFormat:@"%d posts", [postsCountQuery countObjects]];
 }
 
 -(void)tableScrollViewDidScroll:(UIScrollView *)scrollView

@@ -32,4 +32,35 @@
     }];
 }
 
+#pragma mark -
+
++(void)getLikeActivityForSelfies:(NSArray *)selfies fromUser:(PFUser *)user completion:(void (^)(BOOL, NSArray *))block
+{
+    PFQuery* query = [PFQuery queryWithClassName:kPFTableActivity];
+    [query whereKey:kPFActivity_Type equalTo:kPFActivity_Type_Like];
+    [query whereKey:kPFActivity_FromUser equalTo:user];
+    [query whereKey:kPFActivity_Selfie containedIn:selfies];
+    [query includeKey:kPFActivity_Selfie];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        block(YES, objects);
+    }];
+}
+
++(void)likeSelfie:(PFObject *)selfie fromUser:(PFUser *)user completion:(void (^)(BOOL))block
+{
+    PFObject* likeActivity = [PFObject objectWithClassName:kPFTableActivity];
+    [likeActivity setObject:user forKey:kPFActivity_FromUser];
+    [likeActivity setObject:selfie forKey:kPFActivity_Selfie];
+    [likeActivity setObject:kPFActivity_Type_Like forKey:kPFActivity_Type];
+    
+    PFACL* likeACL = [PFACL ACLWithUser:user];
+    [likeACL setPublicReadAccess:YES];
+    likeActivity.ACL = likeACL;
+    
+    [likeActivity saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        block(succeeded);
+    }];
+}
+
 @end

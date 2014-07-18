@@ -21,6 +21,10 @@
                                 <rect key="frame" x="0.0" y="62" width="320" height="320"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gradient_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="04r-Uy-uAF">
+                                <rect key="frame" x="0.0" y="62" width="320" height="320"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="298" translatesAutoresizingMaskIntoConstraints="NO" id="irR-07-Dmb">
                                 <rect key="frame" x="7" y="390" width="298" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -36,7 +40,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="moreButtonClicked:" destination="-1" eventType="touchUpInside" id="y93-Et-eX6"/>
+                                    <action selector="moreButtonClicked:" destination="gHt-sc-vFx" eventType="touchUpInside" id="xjR-LM-MXI"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iMY-Ww-For">
@@ -64,6 +68,17 @@
                                 <color key="textColor" red="0.15576528279999999" green="1" blue="0.26873289230000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JX1-H8-lES">
+                                <rect key="frame" x="280" y="344" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="like_empty">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="likeButtonClicked:" destination="gHt-sc-vFx" eventType="touchUpInside" id="zHf-e0-TNd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -73,6 +88,7 @@
                 <outlet property="captionLabel" destination="irR-07-Dmb" id="kWF-yz-xqQ"/>
                 <outlet property="featuredLabel" destination="nWY-gb-0DS" id="Oqs-If-bkR"/>
                 <outlet property="iv" destination="KRd-Oh-xCu" id="JJG-H2-kG6"/>
+                <outlet property="likeButton" destination="JX1-H8-lES" id="L2g-0a-uBq"/>
                 <outlet property="nameLabel" destination="20G-7z-3fd" id="qOU-jp-7OU"/>
                 <outlet property="thumbIV" destination="iMY-Ww-For" id="o8D-QT-ccM"/>
                 <outlet property="timeAndlocationLabel" destination="o4o-nj-gQE" id="iN1-pP-19k"/>
@@ -81,5 +97,7 @@
     </objects>
     <resources>
         <image name="MoreIcon" width="20" height="4"/>
+        <image name="gradient_bottom" width="320" height="230"/>
+        <image name="like_empty" width="25" height="25"/>
     </resources>
 </document>

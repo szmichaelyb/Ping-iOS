@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PGFeedTableViewCell.h"
+
 typedef enum {
     FeedTypeOther = 0,
     FeedTypeMine,
@@ -15,7 +17,7 @@ typedef enum {
 
 @protocol PGFeedTableViewDelegate;
 
-@interface PGFeedTableView : UITableView<UITableViewDataSource, UITableViewDelegate>
+@interface PGFeedTableView : UITableView<UITableViewDataSource, UITableViewDelegate, PGFeedTableViewCellDelegate>
 
 @property (assign, nonatomic) FeedType feedType;
 @property (assign, nonatomic) id<PGFeedTableViewDelegate> myDelegate;

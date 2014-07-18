@@ -100,7 +100,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row < self.objects.count) {
         PFObject *activity = [self.objects objectAtIndex:indexPath.row];
-        if ([activity objectForKey:kPFActivity_Photo]) {
+        if ([activity objectForKey:kPFActivity_Selfie]) {
 //            PAPPhotoDetailsViewController *detailViewController = [[PAPPhotoDetailsViewController alloc] initWithPhoto:[activity objectForKey:kPAPActivityPhotoKey]];
 //            [self.navigationController pushViewController:detailViewController animated:YES];
         } else if ([activity objectForKey:kPFActivity_FromUser]) {
@@ -129,7 +129,7 @@
     [query whereKey:kPFActivity_FromUser notEqualTo:[PFUser currentUser]];
     [query whereKeyExists:kPFActivity_FromUser];
     [query includeKey:kPFActivity_FromUser];
-    [query includeKey:kPFActivity_Photo];
+    [query includeKey:kPFActivity_Selfie];
     [query orderByDescending:@"createdAt"];
     
     [query setCachePolicy:kPFCachePolicyNetworkOnly];
