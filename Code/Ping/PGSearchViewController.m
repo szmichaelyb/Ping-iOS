@@ -128,10 +128,7 @@
     }
     else
     {
-        
         //Get objects from parse
-        
-        
         PFQuery *queryCapitalizedString = [PFUser query];
         [queryCapitalizedString whereKey:kPFUser_Name containsString:[searchBar.text capitalizedString]];
         
@@ -152,7 +149,6 @@
                 [self.tableView reloadData];
             }];
         }];
-        
     }
 }
 

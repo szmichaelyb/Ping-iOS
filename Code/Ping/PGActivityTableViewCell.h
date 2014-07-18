@@ -10,7 +10,7 @@
 
 @interface PGActivityTableViewCell : UITableViewCell
 
-@property (strong, nonatomic) IBOutlet UILabel *activityPerformer;
-@property (strong, nonatomic) IBOutlet UILabel *activityType;
+@property (strong, nonatomic) IBOutlet UILabel *activityLabel;
+@property (strong, nonatomic) IBOutlet UILabel *activityDate;
 
 @end

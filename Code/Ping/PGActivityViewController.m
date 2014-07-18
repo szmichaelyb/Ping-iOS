@@ -8,13 +8,14 @@
 
 #import "PGActivityViewController.h"
 #import "PGActivityTableViewCell.h"
+#import <TTTTimeIntervalFormatter.h>
 
 @interface PGActivityViewController ()
 
 //@property (nonatomic, strong) IBOutlet UITableView* tableView;
 //@property (nonatomic, strong) PAPSettingsActionSheetDelegate *settingsActionSheetDelegate;
 //@property (nonatomic, strong) NSDate *lastRefresh;
-@property (nonatomic, strong) UIView *blankTimelineView;
+//@property (nonatomic, strong) UIView *blankTimelineView;
 
 @end
 
@@ -61,13 +62,13 @@
     
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidReceiveRemoteNotification:) name:PAPAppDelegateApplicationDidReceiveRemoteNotification object:nil];
     
-    self.blankTimelineView = [[UIView alloc] initWithFrame:self.tableView.bounds];
+//    self.blankTimelineView = [[UIView alloc] initWithFrame:self.tableView.bounds];
     
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setBackgroundImage:[UIImage imageNamed:@"ActivityFeedBlank.png"] forState:UIControlStateNormal];
-    [button setFrame:CGRectMake(24.0f, 113.0f, 271.0f, 140.0f)];
-    [button addTarget:self action:@selector(inviteFriendsButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self.blankTimelineView addSubview:button];
+//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [button setBackgroundImage:[UIImage imageNamed:@"ActivityFeedBlank.png"] forState:UIControlStateNormal];
+//    [button setFrame:CGRectMake(24.0f, 113.0f, 271.0f, 140.0f)];
+//    [button addTarget:self action:@selector(inviteFriendsButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.blankTimelineView addSubview:button];
     
 //    _lastRefresh = [[NSUserDefaults standardUserDefaults] objectForKey:kPAPUserDefaultsActivityFeedViewControllerLastRefreshKey];
 }
@@ -158,14 +159,14 @@
         self.tableView.scrollEnabled = NO;
         self.navigationController.tabBarItem.badgeValue = nil;
         
-        if (!self.blankTimelineView.superview) {
-            self.blankTimelineView.alpha = 0.0f;
-            self.tableView.tableHeaderView = self.blankTimelineView;
-            
-            [UIView animateWithDuration:0.200f animations:^{
-                self.blankTimelineView.alpha = 1.0f;
-            }];
-        }
+//        if (!self.blankTimelineView.superview) {
+//            self.blankTimelineView.alpha = 0.0f;
+//            self.tableView.tableHeaderView = self.blankTimelineView;
+//            
+//            [UIView animateWithDuration:0.200f animations:^{
+//                self.blankTimelineView.alpha = 1.0f;
+//            }];
+//        }
     } else {
         self.tableView.tableHeaderView = nil;
         self.tableView.scrollEnabled = YES;
@@ -189,8 +190,12 @@
     static NSString *CellIdentifier = @"ActivityCell";
     PGActivityTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    cell.activityType.text = object[kPFActivity_Type];
-    cell.activityPerformer.text = object[kPFActivity_FromUser][kPFUser_Name];
+    cell.activityLabel.text = [NSString stringWithFormat:@"%@ followed you." , object[kPFActivity_FromUser][kPFUser_Name]];
+
+    TTTTimeIntervalFormatter* tif = [[TTTTimeIntervalFormatter alloc] init];
+    NSString* str = [tif stringForTimeInterval:[object.updatedAt timeIntervalSinceNow]];
+    cell.activityDate.text = str;
+    
     return cell;
 }
 
@@ -227,7 +232,6 @@
 //    [self.navigationController pushViewController:accountViewController animated:YES];
 //}
 
-
 #pragma mark - PAPActivityFeedViewController
 
 + (NSString *)stringForActivityType:(NSString *)activityType {
@@ -243,7 +247,6 @@
         return nil;
     }
 }
-
 
 #pragma mark - ()
 
