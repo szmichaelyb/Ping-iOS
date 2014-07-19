@@ -10,7 +10,7 @@
 
 @implementation PGParseHelper
 
-+(void)followUser:(PFUser *)followUser
++(void)followUserInBackground:(PFUser *)followUser completion:(void (^) (bool finished))block
 {
     if ([[followUser objectId] isEqualToString:[[PFUser currentUser] objectId]]) {
         return;
@@ -26,9 +26,33 @@
     followActivity.ACL = followACL;
     
     [followActivity saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (block) {
+            block(succeeded);
+        }
 //        if (completionBlock) {
 //            completionBlock(succeeded, error);
 //        }
+    }];
+}
+
++(void)unfollowUserInBackground:(PFUser *)user completion:(void (^)(bool))block
+{
+    PFQuery *query = [PFQuery queryWithClassName:kPFTableActivity];
+    [query whereKey:kPFActivity_FromUser equalTo:[PFUser currentUser]];
+    [query whereKey:kPFActivity_ToUser equalTo:user];
+    [query whereKey:kPFActivity_Type equalTo:kPFActivity_Type_Follow];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *followActivities, NSError *error) {
+        // While normally there should only be one follow activity returned, we can't guarantee that.
+        
+        if (!error) {
+            for (PFObject *followActivity in followActivities) {
+                [followActivity deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (block) {
+                        block(succeeded);
+                    }
+                }];
+            }
+        }
     }];
 }
 

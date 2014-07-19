@@ -10,7 +10,9 @@
 
 @interface PGParseHelper : NSObject
 
-+(void)followUser:(PFUser*)followUser;
++(void)followUserInBackground:(PFUser *)followUser completion:(void (^) (bool finished))block;
++(void)unfollowUserInBackground:(PFUser*)user completion:(void (^) (bool finished))block;
+
 +(void)getLikeActivityForSelfies:(NSArray*)selfies fromUser:(PFUser*)user completion:(void (^) (BOOL finished, NSArray* objects))block;
 +(void)likeSelfie:(PFObject*)selfie fromUser:(PFUser*)user completion:(void (^) (BOOL finished))block;
 

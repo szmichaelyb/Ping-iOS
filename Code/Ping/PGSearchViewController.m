@@ -7,6 +7,7 @@
 //
 
 #import "PGSearchViewController.h"
+#import <UIActionSheet+Blocks/UIActionSheet+Blocks.h>
 
 @interface PGSearchViewController ()
 
@@ -65,11 +66,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    if (_isFiltered) {
-//        return _filteredDatasource.count;
-//    } else {
-        return [_datasource count];
-//    }
+    return [_datasource count];
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -89,9 +86,11 @@
     
     NSArray* folloingUsers = [_followStatusArray valueForKeyPath:kPFActivity_ToUser];
     if ([[folloingUsers valueForKey:kPFUser_FBID] containsObject:_datasource[indexPath.row][kPFUser_FBID]]) {
-        [cell.followButton setTitle:@"Following" forState:UIControlStateNormal];
+        [cell setFollowButtonStatus:FollowButtonStateFollowing];
+        //        [cell.followButton setTitle:@"Following" forState:UIControlStateNormal];
     } else {
-        [cell.followButton setTitle:@"Follow" forState:UIControlStateNormal];
+        [cell setFollowButtonStatus:FollowButtonStateNotFollowing];
+        //        [cell.followButton setTitle:@"Follow" forState:UIControlStateNormal];
     }
 }
 
@@ -99,14 +98,14 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    if (_isFiltered)
-//    {
-//        //        _orderDetailVC = [[JPWOrderDetailViewController alloc] initWithOrderNum:[[_filteredDatasource objectAtIndex:indexPath.row] objectForKey:@"Order_Num"][@"text"] PONumber:[[_filteredDatasource objectAtIndex:indexPath.row] objectForKey:@"PO_Num"][@"text"]];
-//    }
-//    else
-//    {
-        //        _orderDetailVC = [[JPWOrderDetailViewController alloc] initWithOrderNum:[[_datasource objectAtIndex:indexPath.row] objectForKey:@"Order_Num"][@"text"] PONumber:[[_datasource objectAtIndex:indexPath.row] objectForKey:@"PO_Num"][@"text"]];
-//    }
+    //    if (_isFiltered)
+    //    {
+    //        //        _orderDetailVC = [[JPWOrderDetailViewController alloc] initWithOrderNum:[[_filteredDatasource objectAtIndex:indexPath.row] objectForKey:@"Order_Num"][@"text"] PONumber:[[_filteredDatasource objectAtIndex:indexPath.row] objectForKey:@"PO_Num"][@"text"]];
+    //    }
+    //    else
+    //    {
+    //        _orderDetailVC = [[JPWOrderDetailViewController alloc] initWithOrderNum:[[_datasource objectAtIndex:indexPath.row] objectForKey:@"Order_Num"][@"text"] PONumber:[[_datasource objectAtIndex:indexPath.row] objectForKey:@"PO_Num"][@"text"]];
+    //    }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     //Push anotherVC
 }
@@ -123,7 +122,7 @@
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
     if (searchText.length == 0){
-//        _isFiltered = false;
+        //        _isFiltered = false;
         [_tableView reloadData];
     }
     else
@@ -185,8 +184,21 @@
 -(void)buttonTappedOnCell:(PGSearchTableViewCell *)cell
 {
     NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
-    PFUser* followUser = _datasource[indexPath.row];
-    [PGParseHelper followUser:followUser];
+    PFUser* user = _datasource[indexPath.row];
+    
+    if ([cell followButtonStatus] == FollowButtonStateFollowing) {
+        [UIActionSheet showInView:self.view.window withTitle:user[kPFUser_Name] cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Unfollow" otherButtonTitles:nil tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+            if (buttonIndex == 0) {
+                [PGParseHelper unfollowUserInBackground:user completion:^(bool finished) {
+                    [cell setFollowButtonStatus:FollowButtonStateNotFollowing];
+                }];
+            }
+        }];
+    } else {
+        [PGParseHelper followUserInBackground:user completion:^(bool finished) {
+            [cell setFollowButtonStatus:FollowButtonStateFollowing];
+        }];
+    }
 }
 
 -(void)getFollowStatusCompletion:(void (^)(NSArray* array))block

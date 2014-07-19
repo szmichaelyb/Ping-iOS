@@ -8,6 +8,12 @@
 
 #import "PGSearchTableViewCell.h"
 
+@interface PGSearchTableViewCell()
+
+@property (strong, nonatomic) IBOutlet UIButton *followButton;
+
+@end
+
 @implementation PGSearchTableViewCell
 
 - (void)awakeFromNib
@@ -25,6 +31,23 @@
 - (IBAction)inviteTapped:(id)sender {
     if (_delegate) {
         [_delegate buttonTappedOnCell:self];
+    }
+}
+
+-(FollowButtonStatus)followButtonStatus
+{
+    if ([[_followButton titleForState:UIControlStateNormal] isEqualToString:@"Follow"]) {
+        return FollowButtonStateNotFollowing;
+    }
+    return FollowButtonStateFollowing;
+}
+
+-(void)setFollowButtonStatus:(FollowButtonStatus)status
+{
+    if (status == FollowButtonStateFollowing) {
+        [_followButton setTitle:@"Following" forState:UIControlStateNormal];
+    } else {
+        [_followButton setTitle:@"Follow" forState:UIControlStateNormal];
     }
 }
 
