@@ -18,9 +18,11 @@
 @property (strong, nonatomic) IBOutlet UILabel* timeAndlocationLabel;
 @property (strong, nonatomic) IBOutlet UIImageView* thumbIV;
 @property (strong, nonatomic) IBOutlet UILabel* featuredLabel;
-@property (strong, nonatomic) IBOutlet UIButton *likeButton;
 
 @property (assign, nonatomic) id<PGFeedTableViewCellDelegate> delegate;
+
+-(void)setLikeButtonState:(BOOL)liked;
+-(BOOL)likeButtonState;
 
 @end
 

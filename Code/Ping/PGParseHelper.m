@@ -87,4 +87,59 @@
     }];
 }
 
++(void)unlikeSelfie:(PFObject *)selfie compltion:(void (^)(BOOL))block
+{
+    PFQuery *queryExistingLikes = [PFQuery queryWithClassName:kPFTableActivity];
+    [queryExistingLikes whereKey:kPFActivity_Selfie equalTo:selfie];
+    [queryExistingLikes whereKey:kPFActivity_Type equalTo:kPFActivity_Type_Like];
+    [queryExistingLikes whereKey:kPFActivity_FromUser equalTo:[PFUser currentUser]];
+    [queryExistingLikes setCachePolicy:kPFCachePolicyNetworkOnly];
+    [queryExistingLikes findObjectsInBackgroundWithBlock:^(NSArray *activities, NSError *error) {
+        if (!error) {
+            for (PFObject *activity in activities) {
+                [activity delete];
+            }
+            
+            if (block) {
+                block(YES);
+            }
+            
+            // refresh cache
+//            PFQuery *query = [PAPUtility queryForActivitiesOnPhoto:photo cachePolicy:kPFCachePolicyNetworkOnly];
+//            [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//                if (!error) {
+//                    
+//                    NSMutableArray *likers = [NSMutableArray array];
+//                    NSMutableArray *commenters = [NSMutableArray array];
+//                    
+//                    BOOL isLikedByCurrentUser = NO;
+//                    
+//                    for (PFObject *activity in objects) {
+//                        if ([[activity objectForKey:kPAPActivityTypeKey] isEqualToString:kPAPActivityTypeLike]) {
+//                            [likers addObject:[activity objectForKey:kPAPActivityFromUserKey]];
+//                        } else if ([[activity objectForKey:kPAPActivityTypeKey] isEqualToString:kPAPActivityTypeComment]) {
+//                            [commenters addObject:[activity objectForKey:kPAPActivityFromUserKey]];
+//                        }
+//                        
+//                        if ([[[activity objectForKey:kPAPActivityFromUserKey] objectId] isEqualToString:[[PFUser currentUser] objectId]]) {
+//                            if ([[activity objectForKey:kPAPActivityTypeKey] isEqualToString:kPAPActivityTypeLike]) {
+//                                isLikedByCurrentUser = YES;
+//                            }
+//                        }
+//                    }
+//                    
+//                    [[PAPCache sharedCache] setAttributesForPhoto:photo likers:likers commenters:commenters likedByCurrentUser:isLikedByCurrentUser];
+//                }
+//                
+//                [[NSNotificationCenter defaultCenter] postNotificationName:PAPUtilityUserLikedUnlikedPhotoCallbackFinishedNotification object:photo userInfo:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:PAPPhotoDetailsViewControllerUserLikedUnlikedPhotoNotificationUserInfoLikedKey]];
+//            }];
+//            
+        } else {
+            if (block) {
+                block(NO);
+            }
+        }
+    }];
+}
+
 @end

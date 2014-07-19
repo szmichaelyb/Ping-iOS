@@ -15,5 +15,5 @@
 
 +(void)getLikeActivityForSelfies:(NSArray*)selfies fromUser:(PFUser*)user completion:(void (^) (BOOL finished, NSArray* objects))block;
 +(void)likeSelfie:(PFObject*)selfie fromUser:(PFUser*)user completion:(void (^) (BOOL finished))block;
-
++(void)unlikeSelfie:(PFObject*)selfie compltion:(void (^) (BOOL finished))block;
 @end

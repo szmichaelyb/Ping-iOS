@@ -137,11 +137,9 @@
     }
     
     if ([[[_activityArray valueForKey:kPFActivity_Selfie] valueForKey:@"objectId"] containsObject:[_datasource[indexPath.row] valueForKey:@"objectId"]]) {
-        [cell.likeButton setImage:[UIImage imageNamed:@"like"] forState:UIControlStateNormal];
-        [cell.likeButton setImage:[[cell.likeButton imageForState:UIControlStateNormal] imageWithOverlayColor:[UIColor redColor]] forState:UIControlStateNormal];
+        [cell setLikeButtonState:YES];
     } else {
-        [cell.likeButton setImage:[UIImage imageNamed:@"like_empty"] forState:UIControlStateNormal];
-        [cell.likeButton setImage:[[cell.likeButton imageForState:UIControlStateNormal] imageWithOverlayColor:[UIColor whiteColor]] forState:UIControlStateNormal];
+        [cell setLikeButtonState:NO];
     }    
     
     cell.iv.userInteractionEnabled = YES;
@@ -186,10 +184,18 @@
 {
     NSIndexPath* indexPath = [self indexPathForCell:cell];
     PFObject* object = _datasource[indexPath.row];
+    DLog(@"%d", cell.likeButtonState);
+    BOOL alreadyLike = cell.likeButtonState;
+    if (alreadyLike) {
+        [PGParseHelper unlikeSelfie:object compltion:^(BOOL finished) {
+            [cell setLikeButtonState:NO];
+        }];
+    } else {
     [PGParseHelper likeSelfie:object fromUser:[PFUser currentUser] completion:^(BOOL finished) {
         DLog(@"Liked");
-        [self reloadData];
+        [cell setLikeButtonState:YES];
     }];
+    }
 }
 
 @end
