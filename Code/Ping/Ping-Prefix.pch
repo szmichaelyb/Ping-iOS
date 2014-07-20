@@ -17,5 +17,6 @@
 #import <Parse/Parse.h>
 #import "Constants.h"
 #import "PGParseHelper.h"
+#import "UIImage+animatedGIF.h"
 
 #endif

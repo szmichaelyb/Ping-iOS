@@ -10,7 +10,6 @@
 #import "PGFeedHeader.h"
 #import <FormatterKit/TTTTimeIntervalFormatter.h>
 
-#import "UIImage+animatedGIF.h"
 #import <UITableView-NXEmptyView/UITableView+NXEmptyView.h>
 #import "UIImage+MyUIImage.h"
 
@@ -116,10 +115,9 @@
     PFUser* senderUser = _datasource[indexPath.row][kPFSelfie_Owner];
     cell.nameLabel.text = senderUser[kPFUser_Name];
     cell.timeAndlocationLabel.text = [NSString stringWithFormat:@"%@ at %@", [self friendlyDateTime:((PFObject*)_datasource[indexPath.row]).createdAt], _datasource[indexPath.row][kPFSelfie_Location]];
-    
-    PFFile* thumbFile = senderUser[kPFUser_Picture];
-    [thumbFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-        [cell.thumbIV setImage:[UIImage imageWithData:data]];
+
+    [PGParseHelper profilePhotoUser:senderUser completion:^(UIImage *image) {
+        cell.thumbIV.image = image;
     }];
     
     PFFile* file = _datasource[indexPath.row][kPFSelfie_Selfie];
@@ -140,7 +138,7 @@
         [cell setLikeButtonState:YES];
     } else {
         [cell setLikeButtonState:NO];
-    }    
+    }
     
     cell.iv.userInteractionEnabled = YES;
     cell.iv.tag = indexPath.row;
@@ -191,10 +189,10 @@
             [cell setLikeButtonState:NO];
         }];
     } else {
-    [PGParseHelper likeSelfie:object fromUser:[PFUser currentUser] completion:^(BOOL finished) {
-        DLog(@"Liked");
-        [cell setLikeButtonState:YES];
-    }];
+        [PGParseHelper likeSelfie:object fromUser:[PFUser currentUser] completion:^(BOOL finished) {
+            DLog(@"Liked");
+            [cell setLikeButtonState:YES];
+        }];
     }
 }
 

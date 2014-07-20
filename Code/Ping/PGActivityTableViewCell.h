@@ -12,5 +12,6 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *activityLabel;
 @property (strong, nonatomic) IBOutlet UILabel *activityDate;
+@property (strong, nonatomic) IBOutlet UIImageView *thumbIV;
 
 @end

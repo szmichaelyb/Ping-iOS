@@ -810,7 +810,7 @@
             </objects>
             <point key="canvasLocation" x="413" y="580"/>
         </scene>
-        <!--Activity View Controller-->
+        <!--Activity View Controller - Activity-->
         <scene sceneID="AbY-Di-5Nc">
             <objects>
                 <tableViewController restorationIdentifier="PGActivityViewController" storyboardIdentifier="PGActivityViewController" id="0EW-Uz-loC" customClass="PGActivityViewController" sceneMemberID="viewController">
@@ -826,14 +826,18 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Dr6-M0-aoS">
+                                            <rect key="frame" x="6" y="8" width="43" height="43"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cCZ-83-nfp">
-                                            <rect key="frame" x="38" y="6" width="262" height="33"/>
+                                            <rect key="frame" x="57" y="3" width="250" height="33"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Nzi-yn-nBt">
-                                            <rect key="frame" x="38" y="38" width="262" height="21"/>
+                                            <rect key="frame" x="57" y="35" width="250" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -844,6 +848,7 @@
                                 <connections>
                                     <outlet property="activityDate" destination="Nzi-yn-nBt" id="a0k-Ho-gpN"/>
                                     <outlet property="activityLabel" destination="cCZ-83-nfp" id="pUW-Nb-Cb5"/>
+                                    <outlet property="thumbIV" destination="Dr6-M0-aoS" id="6Zy-At-vV6"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -852,7 +857,7 @@
                             <outlet property="delegate" destination="0EW-Uz-loC" id="PHI-XR-fBV"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Nwd-U5-sWm"/>
+                    <navigationItem key="navigationItem" title="Activity" id="Nwd-U5-sWm"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NYd-b4-gXk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

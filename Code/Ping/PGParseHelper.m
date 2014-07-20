@@ -142,4 +142,14 @@
     }];
 }
 
++(void)profilePhotoUser:(PFUser *)user completion:(void (^)(UIImage *))block
+{
+    PFFile* thumbFile = user[kPFUser_Picture];
+    [thumbFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        UIImage* img = [UIImage imageWithData:data];
+        block(img);
+//        [cell.thumbIV setImage:[UIImage imageWithData:data]];
+    }];
+}
+
 @end

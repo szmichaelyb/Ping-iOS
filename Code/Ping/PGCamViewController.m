@@ -381,33 +381,32 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 - (IBAction)snapStillImage:(id)sender
 {
     //    [self animateButton:sender];
-    [sender springAnimateCompletion:^(POPAnimation *anim, BOOL finished) {
+    [sender springAnimate];
+    
+    dispatch_async([self sessionQueue], ^{
+        // Update the orientation on the still image output video connection before capturing.
+        [[[self stillImageOutput] connectionWithMediaType:AVMediaTypeVideo] setVideoOrientation:[[(AVCaptureVideoPreviewLayer *)[[self previewView] layer] connection] videoOrientation]];
         
-        dispatch_async([self sessionQueue], ^{
-            // Update the orientation on the still image output video connection before capturing.
-            [[[self stillImageOutput] connectionWithMediaType:AVMediaTypeVideo] setVideoOrientation:[[(AVCaptureVideoPreviewLayer *)[[self previewView] layer] connection] videoOrientation]];
+        // Flash set to Auto for Still Capture
+        [PGCamViewController setFlashMode:AVCaptureFlashModeAuto forDevice:[[self videoDeviceInput] device]];
+        
+        // Capture a still image.
+        [[self stillImageOutput] captureStillImageAsynchronouslyFromConnection:[[self stillImageOutput] connectionWithMediaType:AVMediaTypeVideo] completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
             
-            // Flash set to Auto for Still Capture
-            [PGCamViewController setFlashMode:AVCaptureFlashModeAuto forDevice:[[self videoDeviceInput] device]];
-            
-            // Capture a still image.
-            [[self stillImageOutput] captureStillImageAsynchronouslyFromConnection:[[self stillImageOutput] connectionWithMediaType:AVMediaTypeVideo] completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
+            if (imageDataSampleBuffer)
+            {
+                NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
+                UIImage *image = [[UIImage alloc] initWithData:imageData];
                 
-                if (imageDataSampleBuffer)
-                {
-                    NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
-                    UIImage *image = [[UIImage alloc] initWithData:imageData];
-                    
-                    image = [self scaleAndCropImage:image];
-
-                    [self userDidPickImage:image];
-                    //
-                    
-                    //				[[[ALAssetsLibrary alloc] init] writeImageToSavedPhotosAlbum:[image CGImage] orientation:(ALAssetOrientation)[image imageOrientation] completionBlock:nil];
-                }
-            }];
-        });
-    }];
+                image = [self scaleAndCropImage:image];
+                
+                [self userDidPickImage:image];
+                //
+                
+                //				[[[ALAssetsLibrary alloc] init] writeImageToSavedPhotosAlbum:[image CGImage] orientation:(ALAssetOrientation)[image imageOrientation] completionBlock:nil];
+            }
+        }];
+    });
 }
 
 -(IBAction)pickFromLibary:(id)sender
@@ -559,12 +558,12 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 
 - (void)runStillImageCaptureAnimation
 {
-	dispatch_async(dispatch_get_main_queue(), ^{
-		[[[self previewView] layer] setOpacity:0.0];
-		[UIView animateWithDuration:.25 animations:^{
-			[[[self previewView] layer] setOpacity:1.0];
-		}];
-	});
+//	dispatch_async(dispatch_get_main_queue(), ^{
+//		[[[self previewView] layer] setOpacity:0.0];
+//		[UIView animateWithDuration:.25 animations:^{
+//			[[[self previewView] layer] setOpacity:1.0];
+//		}];
+//	});
 }
 
 - (void)checkDeviceAuthorizationStatus

@@ -11,6 +11,6 @@
 
 @interface UIView (Animate)
 
--(void)springAnimateCompletion:(void (^)(POPAnimation* anim, BOOL finished))block;
+-(void)springAnimate;
 
 @end

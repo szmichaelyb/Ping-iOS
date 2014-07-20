@@ -90,10 +90,10 @@
         if (user && [user objectForKey:kPFUser_Name] && [[user objectForKey:kPFUser_Name] length] > 0) {
             nameString = [user objectForKey:kPFUser_Name];
         }
-        return 44;
+        return 60;
 //        return [PAPActivityCell heightForCellWithName:nameString contentString:activityString];
     } else {
-        return 44.0f;
+        return 60.0f;
     }
 }
 
@@ -190,13 +190,22 @@
     static NSString *CellIdentifier = @"ActivityCell";
     PGActivityTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    cell.activityLabel.text = [NSString stringWithFormat:@"%@ followed you." , object[kPFActivity_FromUser][kPFUser_Name]];
+    [self configureCell:cell atIndexPath:indexPath object:object];
+    
+    return cell;
+}
 
+-(void)configureCell:(PGActivityTableViewCell*)cell atIndexPath:(NSIndexPath*)indexPath object:(PFObject*)object
+{
+    cell.activityLabel.text = [NSString stringWithFormat:@"%@ followed you." , object[kPFActivity_FromUser][kPFUser_Name]];
+    
     TTTTimeIntervalFormatter* tif = [[TTTTimeIntervalFormatter alloc] init];
     NSString* str = [tif stringForTimeInterval:[object.updatedAt timeIntervalSinceNow]];
     cell.activityDate.text = str;
     
-    return cell;
+    [PGParseHelper profilePhotoUser:object[kPFActivity_FromUser] completion:^(UIImage *image) {
+        cell.thumbIV.image = image;
+    }];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForNextPageAtIndexPath:(NSIndexPath *)indexPath {

@@ -113,7 +113,7 @@
 
 -(void)tableView:(PGFeedTableView *)tableView moreButtonClicked:(NSIndexPath *)indexPath dataObject:(id)object
 {
-    [UIActionSheet showInView:self.view.window withTitle:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles:nil tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+    [UIActionSheet showInView:self.view.window withTitle:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles:@[@"Share"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
         DLog(@"tapped");
         if (buttonIndex == 0) {
             //Delete
@@ -129,7 +129,35 @@
                 }
             }];
         }
+        if (buttonIndex == 1) {
+            //Share
+            PFObject* pfObject = (PFObject*)object;
+            PFFile* file = pfObject[kPFSelfie_Selfie];
+            DLog(@"%@",file.url);
+            [self shareText:pfObject[kPFSelfie_Caption] andImage:nil andUrl:nil andData:[file getData]];
+//            [self shareText:pfObject[kPFSelfie_Caption] andImage:[UIImage animatedImageWithAnimatedGIFURL:[NSURL URLWithString:file.url]] andUrl:nil];
+        }
     }];
+}
+
+- (void)shareText:(NSString *)text andImage:(UIImage *)image andUrl:(NSURL *)url andData:(NSData*)data
+{
+    NSMutableArray *sharingItems = [NSMutableArray new];
+    
+    if (text) {
+        [sharingItems addObject:text];
+    }
+    if (image) {
+        [sharingItems addObject:image];
+    }
+    if (url) {
+        [sharingItems addObject:url];
+    }
+    if (data) {
+        [sharingItems addObject:data];
+    }
+    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:sharingItems applicationActivities:nil];
+    [self presentViewController:activityController animated:YES completion:nil];
 }
 
 #pragma mark -

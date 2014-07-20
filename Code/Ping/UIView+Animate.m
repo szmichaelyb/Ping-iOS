@@ -10,7 +10,7 @@
 
 @implementation UIView (Animate)
 
--(void)springAnimateCompletion:(void (^)(POPAnimation* anim, BOOL finished))block
+-(void)springAnimate
 {
     CALayer *layer = self.layer;
     
@@ -23,7 +23,7 @@
     anim1.springBounciness = 20;
     anim1.springSpeed = 16;
     anim1.completionBlock = ^(POPAnimation* anim, BOOL finished) {
-        block(anim, finished);
+//        block(anim, finished);
     };
     
     anim2.toValue = [NSValue valueWithCGSize:CGSizeMake(self.frame.size.width + 10, self.frame.size.height + 10)];
@@ -35,7 +35,6 @@
         [layer pop_addAnimation:anim1 forKey:@"size"];
     };
     [layer pop_addAnimation:anim2 forKey:@"size"];
-
 }
 
 @end

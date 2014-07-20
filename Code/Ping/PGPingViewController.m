@@ -9,7 +9,6 @@
 #import "PGPingViewController.h"
 #import "UIViewController+Transitions.h"
 #import "UIView+Animate.h"
-#import "UIImage+animatedGIF.h"
 
 #import <ImageIO/ImageIO.h>
 #import <MobileCoreServices/MobileCoreServices.h>
@@ -79,48 +78,47 @@ const CGFloat kDefaultGifDelay = 0.7;
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Caption" message:@"Write something funny." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         [alert show];
     } else {
-        [sender springAnimateCompletion:^(POPAnimation *anim, BOOL finished) {
+        [sender springAnimate];
+        
+        PFObject* object = [PFObject objectWithClassName:kPFTableName_Selfies];
+        object[kPFSelfie_Owner] = [PFUser currentUser];
+        
+        //TODO: Change it to
+        NSData* imgData = [NSData dataWithContentsOfURL:_imageURL];
+        //        NSData* imgData = UIImageJPEGRepresentation(self.imageView.image, 0.2);
+        PFFile* imageFile = [PFFile fileWithName:@"selfie.gif" data:imgData];
+        [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             
-            PFObject* object = [PFObject objectWithClassName:kPFTableName_Selfies];
-            object[kPFSelfie_Owner] = [PFUser currentUser];
-            
-            //TODO: Change it to
-            NSData* imgData = [NSData dataWithContentsOfURL:_imageURL];
-            //        NSData* imgData = UIImageJPEGRepresentation(self.imageView.image, 0.2);
-            PFFile* imageFile = [PFFile fileWithName:@"selfie.gif" data:imgData];
-            [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            object[kPFSelfie_Selfie] = imageFile;
+            object[kPFSelfie_Caption] = _captionTF.text;
+            object[kPFSelfie_Location] = _locationLabel.text;
+            [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 
-                object[kPFSelfie_Selfie] = imageFile;
-                object[kPFSelfie_Caption] = _captionTF.text;
-                object[kPFSelfie_Location] = _locationLabel.text;
-                [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                [self findRecieverBlock:^(PFObject *recieverObj) {
                     
-                    [self findRecieverBlock:^(PFObject *recieverObj) {
-                        
-                        if (recieverObj) {
-                            [self findOldestUnusedSelfieObjectExcludingReciever:recieverObj completionBlock:^(PFObject *selfieObj) {
-                                
-                                if (selfieObj) {
-                                    
-                                    selfieObj[kPFSelfie_Receiver] = recieverObj[kPFQueue_Owner];
-                                    [selfieObj saveEventually];
-                                    
-                                    [self sendPushToObject:recieverObj fromUser:selfieObj[kPFSelfie_Owner]];
-                                }
-                            }];
-                        }
-                        
-                        PFObject* queueObject = [PFObject objectWithClassName:kPFTableQueue];
-                        queueObject[kPFQueue_Owner] = [PFUser currentUser];
-                        [queueObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (recieverObj) {
+                        [self findOldestUnusedSelfieObjectExcludingReciever:recieverObj completionBlock:^(PFObject *selfieObj) {
                             
+                            if (selfieObj) {
+                                
+                                selfieObj[kPFSelfie_Receiver] = recieverObj[kPFQueue_Owner];
+                                [selfieObj saveEventually];
+                                
+                                [self sendPushToObject:recieverObj fromUser:selfieObj[kPFSelfie_Owner]];
+                            }
                         }];
+                    }
+                    
+                    PFObject* queueObject = [PFObject objectWithClassName:kPFTableQueue];
+                    queueObject[kPFQueue_Owner] = [PFUser currentUser];
+                    [queueObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                        
                     }];
                 }];
             }];
-            [_delegate didDismissCamViewController:nil];
-            [self dismissModalViewController];
         }];
+        [_delegate didDismissCamViewController:nil];
+        [self dismissModalViewController];
     }
 }
 
