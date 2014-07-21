@@ -30,13 +30,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-   
+    
     self.navigationController.navigationBar.translucent = NO;
     self.tabBarController.tabBar.translucent = NO;
     
+    if (!_profileUser) {
+        _profileUser = [PFUser currentUser];
+    } else {
+        self.navigationItem.rightBarButtonItem = nil;
+    }
+    
     /// Setup pull to refresh
     CGFloat refreshBarY = self.navigationController.navigationBar.bounds.size.height + [UIApplication sharedApplication].statusBarFrame.size.height;
-
+    
     self.tableView = [[PGFeedTableView alloc] initWithFrame:self.view.bounds];
     self.tableView.myDelegate = self;
     self.tableView.feedType = FeedTypeMine;
@@ -49,37 +55,45 @@
     [self.view addSubview:self.tableView];
     
     UIView* view = [[NSBundle mainBundle] loadNibNamed:@"PGProfileHeaderView" owner:self options:nil][0];
-    PFFile* file = [PFUser currentUser][kPFUser_Picture];
-    _profileIV.image = [UIImage imageWithData:[file getData]];
+    PFFile* file = _profileUser[kPFUser_Picture];
+    if (file) {
+        _profileIV.image = [UIImage imageWithData:[file getData]];
+    } else {
+#warning chagne the placeholder image
+        _profileIV.image = [UIImage imageNamed:@"example"];
+    }
     _profileIV.layer.cornerRadius = _profileIV.frame.size.width/2;
     _profileIV.layer.borderColor = [UIColor whiteColor].CGColor;
     _profileIV.layer.borderWidth = 4;
     _profileIV.layer.masksToBounds = YES;
-    _nameLabel.text = [PFUser currentUser][kPFUser_Name];
- 
+    _nameLabel.text = _profileUser[kPFUser_Name];
+    
     _headerView.image = [self blur:_profileIV.image];
     [self.tableView addParallelViewWithUIView:view withDisplayRadio:0.6 headerViewStyle:ZGScrollViewStyleDefault];
 }
 
--(void)viewDidAppear:(BOOL)animated
+-(void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+    [super viewWillAppear:animated];
     [self getData];
     
     PFQuery* followerCountQuery = [PFQuery queryWithClassName:kPFTableActivity];
     [followerCountQuery whereKey:kPFActivity_Type equalTo:kPFActivity_Type_Follow];
-    [followerCountQuery whereKey:kPFActivity_ToUser equalTo:[PFUser currentUser]];
+    [followerCountQuery whereKey:kPFActivity_ToUser equalTo:_profileUser];
     
-    _followersLabel.text = [NSString stringWithFormat:@"%d follower", [followerCountQuery countObjects]];
+    _followersLabel.text = @"0 followers";
+    [followerCountQuery countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
+        _followersLabel.text = [NSString stringWithFormat:@"%d follower", number];
+    }];
     
     PFQuery* followingCountQuery = [PFQuery queryWithClassName:kPFTableActivity];
     [followingCountQuery whereKey:kPFActivity_Type equalTo:kPFActivity_Type_Follow];
-    [followingCountQuery whereKey:kPFActivity_FromUser equalTo:[PFUser currentUser]];
+    [followingCountQuery whereKey:kPFActivity_FromUser equalTo:_profileUser];
     
     _followingLabel.text = [NSString stringWithFormat:@"%d following", [followingCountQuery countObjects]];
     
     PFQuery* postsCountQuery = [PFQuery queryWithClassName:kPFTableName_Selfies];
-    [postsCountQuery whereKey:kPFSelfie_Owner equalTo:[PFUser currentUser]];
+    [postsCountQuery whereKey:kPFSelfie_Owner equalTo:_profileUser];
     _postCountLabel.text = [NSString stringWithFormat:@"%d posts", [postsCountQuery countObjects]];
 }
 
@@ -89,7 +103,6 @@
         [self.tableView updateParallelViewWithOffset:scrollView.contentOffset];
     } else {
     }
-    
 }
 
 -(void)getData
@@ -135,7 +148,7 @@
             PFFile* file = pfObject[kPFSelfie_Selfie];
             DLog(@"%@",file.url);
             [self shareText:pfObject[kPFSelfie_Caption] andImage:nil andUrl:nil andData:[file getData]];
-//            [self shareText:pfObject[kPFSelfie_Caption] andImage:[UIImage animatedImageWithAnimatedGIFURL:[NSURL URLWithString:file.url]] andUrl:nil];
+            //            [self shareText:pfObject[kPFSelfie_Caption] andImage:[UIImage animatedImageWithAnimatedGIFURL:[NSURL URLWithString:file.url]] andUrl:nil];
         }
     }];
 }

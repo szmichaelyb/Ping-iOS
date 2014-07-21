@@ -19,6 +19,8 @@ typedef enum
 @interface PGSearchTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) IBOutlet UILabel* nameLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *thumbIV;
+
 @property (assign, nonatomic) id<PGSearchTableViewCellDelegate> delegate;
 
 -(FollowButtonStatus)followButtonStatus;

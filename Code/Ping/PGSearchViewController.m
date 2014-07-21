@@ -8,6 +8,7 @@
 
 #import "PGSearchViewController.h"
 #import <UIActionSheet+Blocks/UIActionSheet+Blocks.h>
+#import "PGProfileViewController.h"
 
 @interface PGSearchViewController ()
 
@@ -32,6 +33,12 @@
     UITapGestureRecognizer* reco = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     reco.delegate = self;
     [self.view addGestureRecognizer:reco];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -81,7 +88,7 @@
 
 - (void)configureCell:(PGSearchTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PFObject* object = _datasource[indexPath.row];
+    PFUser* object = _datasource[indexPath.row];
     cell.nameLabel.text = object[kPFUser_Name];
     
     NSArray* folloingUsers = [_followStatusArray valueForKeyPath:kPFActivity_ToUser];
@@ -92,6 +99,9 @@
         [cell setFollowButtonStatus:FollowButtonStateNotFollowing];
         //        [cell.followButton setTitle:@"Follow" forState:UIControlStateNormal];
     }
+    [PGParseHelper profilePhotoUser:object completion:^(UIImage *image) {
+        cell.thumbIV.image = image;
+    }];
 }
 
 #pragma mark - UITablveView Delegate
@@ -106,7 +116,11 @@
     //    {
     //        _orderDetailVC = [[JPWOrderDetailViewController alloc] initWithOrderNum:[[_datasource objectAtIndex:indexPath.row] objectForKey:@"Order_Num"][@"text"] PONumber:[[_datasource objectAtIndex:indexPath.row] objectForKey:@"PO_Num"][@"text"]];
     //    }
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    PGProfileViewController* profileVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PGProfileViewController"];
+    profileVC.profileUser = _datasource[indexPath.row];
+    [self.navigationController pushViewController:profileVC animated:YES];
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     //Push anotherVC
 }
 

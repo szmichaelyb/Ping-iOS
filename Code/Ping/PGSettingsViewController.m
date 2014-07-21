@@ -14,6 +14,7 @@
 #import "WebViewController.h"
 #import <iRate/iRate.h>
 #import "UIDevice-Hardware.h"
+#import <UIActionSheet+Blocks/UIActionSheet+Blocks.h>
 
 @interface PGSettingsViewController ()
 
@@ -41,16 +42,16 @@
     [super viewDidLoad];
     
     self.navigationController.navigationBar.translucent = NO;
-//    self.edgesForExtendedLayout = UIRectEdgeAll;
-//    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, CGRectGetHeight(self.tabBarController.tabBar.frame), 0);
+    //    self.edgesForExtendedLayout = UIRectEdgeAll;
+    //    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, CGRectGetHeight(self.tabBarController.tabBar.frame), 0);
     
     //    [MenuButton setupLeftMenuBarButtonOnViewController:self];
     
     _nameLabel.text = [PFUser currentUser][kPFUser_Name];
     
     //Add tap gesture to Parallax View
-//    UITapGestureRecognizer* tapGestuere = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(parallaxHeaderTapped:)];
-//    [self.tableView.parallaxView addGestureRecognizer:tapGestuere];
+    //    UITapGestureRecognizer* tapGestuere = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(parallaxHeaderTapped:)];
+    //    [self.tableView.parallaxView addGestureRecognizer:tapGestuere];
     
     self.title = NSLocalizedString(@"Settings", nil);
     
@@ -233,7 +234,11 @@
         [self presentViewController:mailVC animated:YES completion:nil];
     }
     if (indexPath.section == 4) {
-        [self performLogout];
+        [UIActionSheet showInView:self.view.window withTitle:@"Logout" cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Yes" otherButtonTitles:nil tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+            if (buttonIndex == 0) {
+                [self performLogout];
+            }
+        }];
     }
 }
 
@@ -280,44 +285,44 @@
             }
         }
     } else if (actionSheet.tag == ActionSheetTypeHeaderPhoto) {
-//        if (buttonIndex == 0) {
-//            //View
-//            
-//            IDMPhoto* photo = [IDMPhoto photoWithImage:self.tableView.parallaxView.imageView.image];
-//            IDMPhotoBrowser* photoBrowser = [[IDMPhotoBrowser alloc] initWithPhotos:@[photo] animatedFromView:self.tableView.parallaxView];
-//            photoBrowser.scaleImage = self.tableView.parallaxView.imageView.image;
-//            [self presentViewController:photoBrowser animated:YES completion:nil];
-//            
-//        } else if (buttonIndex == 1) {
-//            //Take photo
-//            UIImagePickerController* imagePicker = [[UIImagePickerController alloc] init];
-//            imagePicker.delegate = self;
-//            [imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
-//            [self presentViewController:imagePicker animated:YES completion:nil];
-//            
-//        } else if (buttonIndex == 2) {
-//            //Choose from library
-//            UIImagePickerController* imagePicker = [[UIImagePickerController alloc] init];
-//            imagePicker.delegate = self;
-//            [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
-//            [self presentViewController:imagePicker animated:YES completion:nil];
-//        } else if (buttonIndex == 3) {
-//            //Import from Facebook
-//            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-//                NSData* imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://graph.facebook.com/%@/picture?width=500", [PFUser currentUser][kPFUser_FBID]]]];
-//                
-//                dispatch_async(dispatch_get_main_queue(), ^{
-//                    self.tableView.parallaxView.imageView.image = [UIImage imageWithData:imgData];
-//                });
-//                
-//                PFFile* imageFile = [PFFile fileWithName:@"profile.jpg" data:imgData];
-//                [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//                    
-//                    [[PFUser currentUser] setObject:imageFile forKey:kPFUser_Picture];
-//                    [[PFUser currentUser] saveInBackground];
-//                }];
-//            });
-//        }
+        //        if (buttonIndex == 0) {
+        //            //View
+        //
+        //            IDMPhoto* photo = [IDMPhoto photoWithImage:self.tableView.parallaxView.imageView.image];
+        //            IDMPhotoBrowser* photoBrowser = [[IDMPhotoBrowser alloc] initWithPhotos:@[photo] animatedFromView:self.tableView.parallaxView];
+        //            photoBrowser.scaleImage = self.tableView.parallaxView.imageView.image;
+        //            [self presentViewController:photoBrowser animated:YES completion:nil];
+        //
+        //        } else if (buttonIndex == 1) {
+        //            //Take photo
+        //            UIImagePickerController* imagePicker = [[UIImagePickerController alloc] init];
+        //            imagePicker.delegate = self;
+        //            [imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
+        //            [self presentViewController:imagePicker animated:YES completion:nil];
+        //
+        //        } else if (buttonIndex == 2) {
+        //            //Choose from library
+        //            UIImagePickerController* imagePicker = [[UIImagePickerController alloc] init];
+        //            imagePicker.delegate = self;
+        //            [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+        //            [self presentViewController:imagePicker animated:YES completion:nil];
+        //        } else if (buttonIndex == 3) {
+        //            //Import from Facebook
+        //            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        //                NSData* imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://graph.facebook.com/%@/picture?width=500", [PFUser currentUser][kPFUser_FBID]]]];
+        //
+        //                dispatch_async(dispatch_get_main_queue(), ^{
+        //                    self.tableView.parallaxView.imageView.image = [UIImage imageWithData:imgData];
+        //                });
+        //
+        //                PFFile* imageFile = [PFFile fileWithName:@"profile.jpg" data:imgData];
+        //                [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        //
+        //                    [[PFUser currentUser] setObject:imageFile forKey:kPFUser_Picture];
+        //                    [[PFUser currentUser] saveInBackground];
+        //                }];
+        //            });
+        //        }
     }
 }
 
@@ -325,17 +330,17 @@
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-//    [self dismissViewControllerAnimated:YES completion:^{
-//        self.tableView.parallaxView.imageView.image = info[UIImagePickerControllerOriginalImage];
-//        
-//        NSData* imgData = UIImageJPEGRepresentation(info[UIImagePickerControllerOriginalImage], 0.7);
-//        PFFile* imageFile = [PFFile fileWithName:@"profile.jpg" data:imgData];
-//        [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//            
-//            [[PFUser currentUser] setObject:imageFile forKey:kPFUser_Picture];
-//            [[PFUser currentUser] saveInBackground];
-//        }];
-//    }];
+    //    [self dismissViewControllerAnimated:YES completion:^{
+    //        self.tableView.parallaxView.imageView.image = info[UIImagePickerControllerOriginalImage];
+    //
+    //        NSData* imgData = UIImageJPEGRepresentation(info[UIImagePickerControllerOriginalImage], 0.7);
+    //        PFFile* imageFile = [PFFile fileWithName:@"profile.jpg" data:imgData];
+    //        [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    //
+    //            [[PFUser currentUser] setObject:imageFile forKey:kPFUser_Picture];
+    //            [[PFUser currentUser] saveInBackground];
+    //        }];
+    //    }];
 }
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker

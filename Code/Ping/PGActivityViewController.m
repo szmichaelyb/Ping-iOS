@@ -9,6 +9,7 @@
 #import "PGActivityViewController.h"
 #import "PGActivityTableViewCell.h"
 #import <TTTTimeIntervalFormatter.h>
+#import <UITableView-NXEmptyView/UITableView+NXEmptyView.h>
 
 @interface PGActivityViewController ()
 
@@ -54,13 +55,20 @@
     
     [super viewDidLoad];
     
-    UIView *texturedBackgroundView = [[UIView alloc] initWithFrame:self.view.bounds];
-    [texturedBackgroundView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundLeather.png"]]];
-    self.tableView.backgroundView = texturedBackgroundView;
+//    UIView *texturedBackgroundView = [[UIView alloc] initWithFrame:self.view.bounds];
+//    [texturedBackgroundView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundLeather.png"]]];
+//    self.tableView.backgroundView = texturedBackgroundView;
+//    
+//    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LogoNavigationBar.png"]];
     
-    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LogoNavigationBar.png"]];
-    
+    self.tableView.nxEV_hideSeparatorLinesWheyShowingEmptyView = YES;
+    UILabel* label = [[UILabel alloc] initWithFrame:self.view.frame];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.text = @"No activity yet.";
+    label.textColor = [UIColor lightGrayColor];
+    self.tableView.nxEV_emptyView = label;
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidReceiveRemoteNotification:) name:PAPAppDelegateApplicationDidReceiveRemoteNotification object:nil];
+    
     
 //    self.blankTimelineView = [[UIView alloc] initWithFrame:self.tableView.bounds];
     
