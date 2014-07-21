@@ -10,8 +10,20 @@
 #import "InAppNotificationTapListener.h"
 #import "InAppNotificationView.h"
 #import "PGFeedViewController.h"
+#import <iRate/iRate.h>
 
 @implementation PGAppDelegate
+
++(void)initialize
+{
+    [iRate sharedInstance].onlyPromptIfLatestVersion = NO;
+    
+    [iRate sharedInstance].eventsUntilPrompt = 5;
+    
+    [iRate sharedInstance].daysUntilPrompt = 0;
+    [iRate sharedInstance].remindPeriod = 0;
+    [iRate sharedInstance].previewMode = DEBUGMODE;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
