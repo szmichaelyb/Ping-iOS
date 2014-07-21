@@ -38,7 +38,7 @@
 
 #pragma mark -
 
--(void)getObjectsFromParseCompletion:(void (^) (bool finished))block
+-(void)getFeedForUser:(PFUser *)user completion:(void (^)(bool))block
 {
     self.nxEV_emptyView = self.emptyView;
     
@@ -54,6 +54,8 @@
         [othersList whereKey:kPFSelfie_Receiver equalTo:[PFUser currentUser]];
         
         query = [PFQuery orQueryWithSubqueries:@[featuredList, othersList]];
+    } else if (_feedType == FeedTypeFriends) {
+        [query whereKey:kPFSelfie_Owner equalTo:user];
     }
     
     [query includeKey:kPFSelfie_Owner];

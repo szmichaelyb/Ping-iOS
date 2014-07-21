@@ -10,6 +10,7 @@
 #import "PGActivityTableViewCell.h"
 #import <TTTTimeIntervalFormatter.h>
 #import <UITableView-NXEmptyView/UITableView+NXEmptyView.h>
+#import "PGProfileViewController.h"
 
 @interface PGActivityViewController ()
 
@@ -113,6 +114,11 @@
 //            PAPPhotoDetailsViewController *detailViewController = [[PAPPhotoDetailsViewController alloc] initWithPhoto:[activity objectForKey:kPAPActivityPhotoKey]];
 //            [self.navigationController pushViewController:detailViewController animated:YES];
         } else if ([activity objectForKey:kPFActivity_FromUser]) {
+            
+            PGProfileViewController* profileVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PGProfileViewController"];
+            profileVC.profileUser = activity[kPFActivity_FromUser];
+            [self.navigationController pushViewController:profileVC animated:YES];
+            
 //            PAPAccountViewController *detailViewController = [[PAPAccountViewController alloc] initWithStyle:UITableViewStylePlain];
 //            [detailViewController setUser:[activity objectForKey:kPAPActivityFromUserKey]];
 //            [self.navigationController pushViewController:detailViewController animated:YES];

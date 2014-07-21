@@ -25,6 +25,7 @@
 //@property (strong, nonatomic) NSMutableArray* datasource;
 @property (nonatomic, strong) STZPullToRefresh *pullToRefresh;
 
+@property (nonatomic, strong) PFUser* feedUser;
 
 @end
 
@@ -68,7 +69,7 @@
 
 -(void)pullToRefreshDidStart
 {
-    [self.tableView getObjectsFromParseCompletion:^(bool finished) {
+    [self.tableView getFeedForUser:_feedUser completion:^(bool finished) {
         [self.pullToRefresh finishRefresh];
     }];
 }

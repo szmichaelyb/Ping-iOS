@@ -33,26 +33,30 @@
     
     self.navigationController.navigationBar.translucent = NO;
     self.tabBarController.tabBar.translucent = NO;
-    
-    if (!_profileUser) {
-        _profileUser = [PFUser currentUser];
-    } else {
-        self.navigationItem.rightBarButtonItem = nil;
-    }
-    
+   
     /// Setup pull to refresh
     CGFloat refreshBarY = self.navigationController.navigationBar.bounds.size.height + [UIApplication sharedApplication].statusBarFrame.size.height;
     
     self.tableView = [[PGFeedTableView alloc] initWithFrame:self.view.bounds];
     self.tableView.myDelegate = self;
-    self.tableView.feedType = FeedTypeMine;
     UILabel* emptyView = [[UILabel alloc] initWithFrame:self.tableView.frame];
-    emptyView.text = @"No Ping yet. Create one now.";
+    emptyView.text = @"No Ping yet.";
     emptyView.textAlignment = NSTextAlignmentCenter;
     emptyView.textColor = [UIColor lightGrayColor];
     self.tableView.emptyView = emptyView;
     self.tableView.contentInset=  UIEdgeInsetsMake(0, 0, self.tabBarController.tabBar.frame.size.height + refreshBarY, 0);
     [self.view addSubview:self.tableView];
+    
+    if (!_profileUser) {
+        //My profile
+        _profileUser = [PFUser currentUser];
+        self.tableView.feedType = FeedTypeMine;
+    } else {
+        //Friends Profile
+        self.navigationItem.rightBarButtonItem = nil;
+        self.navigationItem.leftBarButtonItem = nil;
+        self.tableView.feedType = FeedTypeFriends;
+    }
     
     UIView* view = [[NSBundle mainBundle] loadNibNamed:@"PGProfileHeaderView" owner:self options:nil][0];
     PFFile* file = _profileUser[kPFUser_Picture];
@@ -107,7 +111,8 @@
 
 -(void)getData
 {
-    [self.tableView getObjectsFromParseCompletion:^(bool finished) {
+    [self.tableView getFeedForUser:_profileUser completion:^(bool finished) {
+        
     }];
 }
 

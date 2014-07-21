@@ -12,7 +12,7 @@
 typedef enum {
     FeedTypeOther = 0,
     FeedTypeMine,
-    FeedTypeFeatured
+    FeedTypeFriends
 }FeedType;
 
 @protocol PGFeedTableViewDelegate;
@@ -23,7 +23,7 @@ typedef enum {
 @property (assign, nonatomic) id<PGFeedTableViewDelegate> myDelegate;
 @property (strong, nonatomic) UIView* emptyView;
 
--(void)getObjectsFromParseCompletion:(void (^) (bool finished))block;
+-(void)getFeedForUser:(PFUser*)user completion:(void (^) (bool finished))block;
 
 @end
 
