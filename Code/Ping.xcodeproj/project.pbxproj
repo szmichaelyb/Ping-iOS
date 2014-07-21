@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		06654AE0197DB1860014FA74 /* PGFramesButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 06654ADF197DB1860014FA74 /* PGFramesButton.m */; };
+		06654AE6197DBABA0014FA74 /* PGFindFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06654AE5197DBABA0014FA74 /* PGFindFriendsViewController.m */; };
+		06654AE9197DBE740014FA74 /* PGFindFriendsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06654AE8197DBE740014FA74 /* PGFindFriendsTableViewCell.m */; };
 		0683112B1976C8460099689D /* PGProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0683112A1976C8460099689D /* PGProfileHeaderView.xib */; };
 		0683409F19774AD4007A1AEC /* PGProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0683409E19774AD4007A1AEC /* PGProgressHUD.m */; };
 		068340A4197810A9007A1AEC /* PGSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 068340A3197810A9007A1AEC /* PGSignupViewController.m */; };
@@ -56,6 +58,10 @@
 /* Begin PBXFileReference section */
 		06654ADE197DB1860014FA74 /* PGFramesButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGFramesButton.h; sourceTree = "<group>"; };
 		06654ADF197DB1860014FA74 /* PGFramesButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGFramesButton.m; sourceTree = "<group>"; };
+		06654AE4197DBABA0014FA74 /* PGFindFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGFindFriendsViewController.h; sourceTree = "<group>"; };
+		06654AE5197DBABA0014FA74 /* PGFindFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGFindFriendsViewController.m; sourceTree = "<group>"; };
+		06654AE7197DBE740014FA74 /* PGFindFriendsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGFindFriendsTableViewCell.h; sourceTree = "<group>"; };
+		06654AE8197DBE740014FA74 /* PGFindFriendsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGFindFriendsTableViewCell.m; sourceTree = "<group>"; };
 		0683112A1976C8460099689D /* PGProfileHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGProfileHeaderView.xib; sourceTree = "<group>"; };
 		0683409D19774AD4007A1AEC /* PGProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGProgressHUD.h; sourceTree = "<group>"; };
 		0683409E19774AD4007A1AEC /* PGProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGProgressHUD.m; sourceTree = "<group>"; };
@@ -152,6 +158,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06654AE3197DBAA30014FA74 /* Find Friends VC */ = {
+			isa = PBXGroup;
+			children = (
+				06654AE4197DBABA0014FA74 /* PGFindFriendsViewController.h */,
+				06654AE5197DBABA0014FA74 /* PGFindFriendsViewController.m */,
+				06654AE7197DBE740014FA74 /* PGFindFriendsTableViewCell.h */,
+				06654AE8197DBE740014FA74 /* PGFindFriendsTableViewCell.m */,
+			);
+			name = "Find Friends VC";
+			sourceTree = "<group>";
+		};
 		068340AE1978306E007A1AEC /* Search VC */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,6 +248,7 @@
 				068340BC19797102007A1AEC /* PARSE HELPER */,
 				06DCBD18196F42E800E8C9B2 /* Utilities */,
 				06DCBD00196F060F00E8C9B2 /* Settings VC */,
+				06654AE3197DBAA30014FA74 /* Find Friends VC */,
 				06B5614E1974239200E92A92 /* Profile VC */,
 				068340B219784559007A1AEC /* Activity VC */,
 				06DCBCFB196EF61A00E8C9B2 /* Ping VC */,
@@ -504,6 +522,7 @@
 				0683409F19774AD4007A1AEC /* PGProgressHUD.m in Sources */,
 				06B56151197423AE00E92A92 /* PGProfileViewController.m in Sources */,
 				06DCBD2719707A1E00E8C9B2 /* PGFeedHeader.m in Sources */,
+				06654AE6197DBABA0014FA74 /* PGFindFriendsViewController.m in Sources */,
 				06DCBD14196F404C00E8C9B2 /* WebViewController.m in Sources */,
 				06DCBD2E1970886A00E8C9B2 /* InAppNotificationTapListener.m in Sources */,
 				068340A4197810A9007A1AEC /* PGSignupViewController.m in Sources */,
@@ -528,6 +547,7 @@
 				068340B119783750007A1AEC /* PGParseHelper.m in Sources */,
 				06DCBCD0196E2AFF00E8C9B2 /* PGTutorialViewController.m in Sources */,
 				06DCBCCA196E2AFF00E8C9B2 /* PGAppDelegate.m in Sources */,
+				06654AE9197DBE740014FA74 /* PGFindFriendsTableViewCell.m in Sources */,
 				06DCBD13196F404C00E8C9B2 /* PGSettingsViewController.m in Sources */,
 				06DCBD17196F421400E8C9B2 /* UIDevice-Hardware.m in Sources */,
 			);

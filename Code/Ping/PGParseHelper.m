@@ -29,9 +29,6 @@
         if (block) {
             block(succeeded);
         }
-//        if (completionBlock) {
-//            completionBlock(succeeded, error);
-//        }
     }];
 }
 

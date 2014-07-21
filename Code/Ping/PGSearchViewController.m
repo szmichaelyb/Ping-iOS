@@ -220,6 +220,7 @@
     PFQuery* query = [PFQuery queryWithClassName:kPFTableActivity];
     [query whereKey:kPFActivity_Type equalTo:kPFActivity_Type_Follow];
     [query whereKey:kPFActivity_ToUser containedIn:self.datasource];
+    [query whereKey:kPFActivity_FromUser equalTo:[PFUser currentUser]];
     [query includeKey:kPFActivity_ToUser];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {

@@ -471,6 +471,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="U9A-M3-EPF">
+                        <barButtonItem key="leftBarButtonItem" title="Invite" id="pd9-44-jsQ">
+                            <connections>
+                                <segue destination="eKY-XE-dNj" kind="modal" id="veL-FX-kvv"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="settings-off" id="cvR-5b-ykj">
                             <connections>
                                 <segue destination="eOu-L6-0z5" kind="modal" id="8cn-ok-2SU"/>
@@ -481,6 +486,100 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bAO-Iq-gVq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="860" y="1338"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="nek-B4-frt">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="eKY-XE-dNj" sceneMemberID="viewController">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="lH6-JR-k9X">
+                        <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="FNA-UQ-P0N" kind="relationship" relationship="rootViewController" id="HwD-0d-uqp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ynM-TE-tfr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1366" y="1155"/>
+        </scene>
+        <!--Find Friends View Controller - Find Friends-->
+        <scene sceneID="agk-Ph-5es">
+            <objects>
+                <viewController restorationIdentifier="PGFindFriendsViewController" storyboardIdentifier="PGFindFriendsViewController" id="FNA-UQ-P0N" customClass="PGFindFriendsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="L2j-Ch-jAE">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="IUl-Ni-MfE">
+                                <rect key="frame" x="36" y="8" width="234" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Phone"/>
+                                    <segment title="Facebook"/>
+                                    <segment title="Search"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentChanged:" destination="FNA-UQ-P0N" eventType="valueChanged" id="P6V-48-pii"/>
+                                </connections>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ufZ-uc-lbK">
+                                <rect key="frame" x="0.0" y="44" width="320" height="460"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="jSw-Or-h0C" customClass="PGFindFriendsTableViewCell">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jSw-Or-h0C" id="JZp-c9-ija">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oo3-WN-Vhp">
+                                                    <rect key="frame" x="20" y="11" width="221" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MwF-Jo-xtk">
+                                                    <rect key="frame" x="254" y="7" width="46" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Button">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="actionButton" destination="MwF-Jo-xtk" id="yDq-Om-58F"/>
+                                            <outlet property="nameLabel" destination="oo3-WN-Vhp" id="DSe-cR-gWA"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="FNA-UQ-P0N" id="38K-Zi-c4C"/>
+                                    <outlet property="delegate" destination="FNA-UQ-P0N" id="E3M-hE-TpB"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Find Friends" id="kEn-nv-MPa">
+                        <barButtonItem key="leftBarButtonItem" title="Close" id="lou-ve-GhD">
+                            <connections>
+                                <action selector="closeButtonClicked:" destination="FNA-UQ-P0N" id="4LY-x4-sV7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="ufZ-uc-lbK" id="nI8-uS-XYl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SqO-Pq-oaF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1870" y="1141"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2zG-ud-tw4">
@@ -495,7 +594,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="88E-jj-3rc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1314" y="1338"/>
+            <point key="canvasLocation" x="1386" y="1916"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="MGW-hu-tVM">
@@ -724,7 +823,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m1C-y4-82E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1749" y="1338"/>
+            <point key="canvasLocation" x="1857" y="1916"/>
         </scene>
         <!--Navigation Controller - Search-->
         <scene sceneID="OxM-Wb-Uh2">
@@ -942,7 +1041,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Fi-8M-fhx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2221" y="1338"/>
+            <point key="canvasLocation" x="2329" y="1916"/>
         </scene>
         <!--Feed View Controller - Feed-->
         <scene sceneID="09M-sL-HQQ">
