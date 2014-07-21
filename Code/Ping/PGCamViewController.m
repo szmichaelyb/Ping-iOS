@@ -18,9 +18,13 @@
 #import <DZNPhotoPickerController.h>
 #import "UIImagePickerControllerExtended.h"
 
+#import "PGFramesButton.h"
+
 static void * CapturingStillImageContext = &CapturingStillImageContext;
 //static void * RecordingContext = &RecordingContext;
 static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDeviceAuthorizedContext;
+
+static float kDefaultCaptureDelay = 1.0f;
 
 @interface PGCamViewController () <AVCaptureFileOutputRecordingDelegate>
 
@@ -32,6 +36,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 @property (nonatomic, weak) IBOutlet UIButton *cameraButton;
 @property (nonatomic, weak) IBOutlet UIButton *stillButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *thumbScrollView;
+@property (strong, nonatomic) IBOutlet PGFramesButton *framesButton;
 
 //- (IBAction)toggleMovieRecording:(id)sender;
 - (IBAction)changeCamera:(id)sender;
@@ -78,7 +83,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 //    if (_overalayImage) {
 //        self.overlayImageView.image = _overalayImage;
 //    } else {
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(clocseClicked:)];
+//        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(clocseClicked:)];
 //    }
     
 	// Create the AVCaptureSession
@@ -306,15 +311,6 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 //	});
 //}
 
--(IBAction)clocseClicked:(id)sender
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-    if (_delegate) {
-        [_delegate didDismissCamViewController:self];
-    }
-    DLog(@"%@", self.tabBarController);
-}
-
 - (IBAction)changeCamera:(id)sender
 {
 	[[self cameraButton] setEnabled:NO];
@@ -382,20 +378,23 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 
 -(IBAction)captureButtonClicked:(id)sender
 {
+    for (UIView* subviews in _thumbScrollView.subviews) {
+        [subviews removeFromSuperview];
+    }
     _images = [NSMutableArray new];
-    for (int i = 0; i <= 10; i++) {
+    for (int i = 0; i < _framesButton.buttonState; i++) {
         [self performblock:^(int blockI, UIImage* image) {
             UIImageView* iv = [[UIImageView alloc]initWithImage:image];
-            iv.frame = CGRectMake(blockI * _thumbScrollView.frame.size.height, 0, _thumbScrollView.frame.size.height, _thumbScrollView.frame.size.height);
+            iv.frame = CGRectMake((blockI * _thumbScrollView.frame.size.height), 0, _thumbScrollView.frame.size.height, _thumbScrollView.frame.size.height);
             
             [_thumbScrollView addSubview:iv];
-            [_thumbScrollView setContentSize:CGSizeMake((blockI + 1) * iv.frame.size.width, _thumbScrollView.frame.size.height)];
+            [_thumbScrollView setContentSize:CGSizeMake((blockI + 1) * (iv.frame.size.width), _thumbScrollView.frame.size.height)];
             DLog(@"%@", NSStringFromCGRect(iv.frame));
             [_thumbScrollView scrollRectToVisible:iv.frame animated:YES];
-            if (blockI == 10) {
+            if (blockI == _framesButton.buttonState - 1) {
                 [self userDidPickImages];
             }
-        } afterDelay:1.0*i];
+        } afterDelay: kDefaultCaptureDelay * i];
     }
 //    [self userDidPickImages];
 }
@@ -403,14 +402,12 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 -(void)performblock:(void (^) (int blockI, UIImage* image))block afterDelay:(NSTimeInterval)delay
 {
     block = [block copy];
+    
     [self performSelector:@selector(snapStillImage:) withObject:block afterDelay:delay];
 }
 
 - (void)snapStillImage:(void (^) (int blockI, UIImage* image))block
 {
-    //    [self animateButton:sender];
-//    [sender springAnimate];
-    
     dispatch_async([self sessionQueue], ^{
         // Update the orientation on the still image output video connection before capturing.
         [[[self stillImageOutput] connectionWithMediaType:AVMediaTypeVideo] setVideoOrientation:[[(AVCaptureVideoPreviewLayer *)[[self previewView] layer] connection] videoOrientation]];
@@ -494,8 +491,13 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 	[self focusWithMode:AVCaptureFocusModeAutoFocus exposeWithMode:AVCaptureExposureModeAutoExpose atDevicePoint:devicePoint monitorSubjectAreaChange:YES];
 }
 
-- (IBAction)dismissButtonClicked:(id)sender {
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+- (IBAction)dismissButtonClicked:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    if (_delegate) {
+        [_delegate didDismissCamViewController:self];
+    }
+    DLog(@"%@", self.tabBarController);
 }
 
 - (void)subjectAreaDidChange:(NSNotification *)notification

@@ -14,7 +14,7 @@
 
 //@property (strong, nonatomic) UIImage* overalayImage;
 @property (assign, nonatomic) id<PGCamViewControllerDelegate> delegate;
-@property (strong, nonatomic) IBOutlet UIButton* closeButton;
+//@property (strong, nonatomic) IBOutlet UIButton* closeButton;
 
 @end
 
