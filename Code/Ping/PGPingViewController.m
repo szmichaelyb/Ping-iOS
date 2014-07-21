@@ -13,7 +13,7 @@
 #import <ImageIO/ImageIO.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 
-const CGFloat kDefaultGifDelay = 0.7;
+const CGFloat kDefaultGifDelay = 0.5;
 
 @interface PGPingViewController ()
 
@@ -31,6 +31,7 @@ const CGFloat kDefaultGifDelay = 0.7;
 -(IBAction)sendButtonClicked:(id)sender;
 -(IBAction)retakeClicked:(id)sender;
 -(IBAction)delaySliderChanged:(UISlider*)sender;
+- (IBAction)backbuttonClicked:(id)sender;
 
 @end
 
@@ -70,6 +71,10 @@ const CGFloat kDefaultGifDelay = 0.7;
 {
     _imageURL = [self saveGifWithImages:_images gifDelay:sender.value];
     _imageView.image = [UIImage animatedImageWithAnimatedGIFURL:_imageURL];
+}
+
+- (IBAction)backbuttonClicked:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(IBAction)sendButtonClicked:(id)sender
