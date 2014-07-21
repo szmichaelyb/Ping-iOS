@@ -26,17 +26,19 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 
 // For use in the storyboards.
 @property (nonatomic, weak) IBOutlet AVCamPreviewView *previewView;
-@property (strong, nonatomic) IBOutlet UIImageView* overlayImageView;
 
-//@property (nonatomic, weak) IBOutlet UIButton *recordButton;
+@property (nonatomic, strong) NSMutableArray* images;
+
 @property (nonatomic, weak) IBOutlet UIButton *cameraButton;
 @property (nonatomic, weak) IBOutlet UIButton *stillButton;
+@property (strong, nonatomic) IBOutlet UIScrollView *thumbScrollView;
 
 //- (IBAction)toggleMovieRecording:(id)sender;
 - (IBAction)changeCamera:(id)sender;
-- (IBAction)snapStillImage:(id)sender;
+-(IBAction)captureButtonClicked:(id)sender;
 -(IBAction)pickFromLibary:(id)sender;
 - (IBAction)focusAndExposeTap:(UIGestureRecognizer *)gestureRecognizer;
+- (IBAction)dismissButtonClicked:(id)sender;
 
 // Session management.
 @property (nonatomic) dispatch_queue_t sessionQueue; // Communicate with the session and other session objects on this queue.
@@ -70,14 +72,14 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 {
 	[super viewDidLoad];
 	
-    //    [self.navigationController setNavigationBarHidden:YES];
+    [self.navigationController setNavigationBarHidden:YES];
     self.navigationController.navigationBar.translucent = NO;
     
-    if (_overalayImage) {
-        self.overlayImageView.image = _overalayImage;
-    } else {
+//    if (_overalayImage) {
+//        self.overlayImageView.image = _overalayImage;
+//    } else {
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(clocseClicked:)];
-    }
+//    }
     
 	// Create the AVCaptureSession
 	AVCaptureSession *session = [[AVCaptureSession alloc] init];
@@ -352,7 +354,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 		{
             //			[[NSNotificationCenter defaultCenter] removeObserver:self name:AVCaptureDeviceSubjectAreaDidChangeNotification object:currentVideoDevice];
 			
-			[PGCamViewController setFlashMode:AVCaptureFlashModeAuto forDevice:videoDevice];
+			[PGCamViewController setFlashMode:AVCaptureFlashModeOff forDevice:videoDevice];
 			[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(subjectAreaDidChange:) name:AVCaptureDeviceSubjectAreaDidChangeNotification object:videoDevice];
 			
 			[[self session] addInput:videoDeviceInput];
@@ -378,17 +380,43 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 	});
 }
 
-- (IBAction)snapStillImage:(id)sender
+-(IBAction)captureButtonClicked:(id)sender
+{
+    _images = [NSMutableArray new];
+    for (int i = 0; i <= 10; i++) {
+        [self performblock:^(int blockI, UIImage* image) {
+            UIImageView* iv = [[UIImageView alloc]initWithImage:image];
+            iv.frame = CGRectMake(blockI * _thumbScrollView.frame.size.height, 0, _thumbScrollView.frame.size.height, _thumbScrollView.frame.size.height);
+            
+            [_thumbScrollView addSubview:iv];
+            [_thumbScrollView setContentSize:CGSizeMake((blockI + 1) * iv.frame.size.width, _thumbScrollView.frame.size.height)];
+            DLog(@"%@", NSStringFromCGRect(iv.frame));
+            [_thumbScrollView scrollRectToVisible:iv.frame animated:YES];
+            if (blockI == 10) {
+                [self userDidPickImages];
+            }
+        } afterDelay:1.0*i];
+    }
+//    [self userDidPickImages];
+}
+
+-(void)performblock:(void (^) (int blockI, UIImage* image))block afterDelay:(NSTimeInterval)delay
+{
+    block = [block copy];
+    [self performSelector:@selector(snapStillImage:) withObject:block afterDelay:delay];
+}
+
+- (void)snapStillImage:(void (^) (int blockI, UIImage* image))block
 {
     //    [self animateButton:sender];
-    [sender springAnimate];
+//    [sender springAnimate];
     
     dispatch_async([self sessionQueue], ^{
         // Update the orientation on the still image output video connection before capturing.
         [[[self stillImageOutput] connectionWithMediaType:AVMediaTypeVideo] setVideoOrientation:[[(AVCaptureVideoPreviewLayer *)[[self previewView] layer] connection] videoOrientation]];
         
         // Flash set to Auto for Still Capture
-        [PGCamViewController setFlashMode:AVCaptureFlashModeAuto forDevice:[[self videoDeviceInput] device]];
+        [PGCamViewController setFlashMode:AVCaptureFlashModeOff forDevice:[[self videoDeviceInput] device]];
         
         // Capture a still image.
         [[self stillImageOutput] captureStillImageAsynchronouslyFromConnection:[[self stillImageOutput] connectionWithMediaType:AVMediaTypeVideo] completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
@@ -400,7 +428,10 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
                 
                 image = [self scaleAndCropImage:image];
                 
-                [self userDidPickImage:image];
+                [_images addObject:image];
+                
+                block([_images indexOfObject:image], image);
+//                [self userDidPickImage:image];
                 //
                 
                 //				[[[ALAssetsLibrary alloc] init] writeImageToSavedPhotosAlbum:[image CGImage] orientation:(ALAssetOrientation)[image imageOrientation] completionBlock:nil];
@@ -425,7 +456,8 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
             [picker pushViewController:editor animated:YES];
         }
         else {
-            [self userDidPickImage:info[UIImagePickerControllerEditedImage]];
+//            [self userDidPickImage:info[UIImagePickerControllerEditedImage]];
+            
             [self dismissViewControllerAnimated:YES completion:nil];
         }
     };
@@ -437,28 +469,33 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
     [self presentViewController:picker animated:YES completion:nil];
 }
 
--(void)userDidPickImage:(UIImage*)image
+-(void)userDidPickImages
 {
     UIStoryboard* sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    if (_overalayImage) {
-        
+//    if (_overalayImage) {
+    
         //Create GIF from _overlayimage and image
         PGPingViewController* pingVC = [sb instantiateViewControllerWithIdentifier:@"PGPingViewController"];
-        pingVC.images = @[_overalayImage, image];
+//        pingVC.images = @[_overalayImage, image];
+    pingVC.images = _images;
         pingVC.delegate = _delegate;
         [self.navigationController pushViewController:pingVC animated:YES];
-    } else {
-        PGCamViewController* camVC = [sb instantiateViewControllerWithIdentifier:@"PGCamViewController"];
-        camVC.overalayImage = image;
-        camVC.delegate = _delegate;
-        [self.navigationController pushViewController:camVC animated:YES];
-    }
+//    } else {
+//        PGCamViewController* camVC = [sb instantiateViewControllerWithIdentifier:@"PGCamViewController"];
+//        camVC.overalayImage = image;
+//        camVC.delegate = _delegate;
+//        [self.navigationController pushViewController:camVC animated:YES];
+//    }
 }
 
 - (IBAction)focusAndExposeTap:(UIGestureRecognizer *)gestureRecognizer
 {
 	CGPoint devicePoint = [(AVCaptureVideoPreviewLayer *)[[self previewView] layer] captureDevicePointOfInterestForPoint:[gestureRecognizer locationInView:[gestureRecognizer view]]];
 	[self focusWithMode:AVCaptureFocusModeAutoFocus exposeWithMode:AVCaptureExposureModeAutoExpose atDevicePoint:devicePoint monitorSubjectAreaChange:YES];
+}
+
+- (IBAction)dismissButtonClicked:(id)sender {
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)subjectAreaDidChange:(NSNotification *)notification

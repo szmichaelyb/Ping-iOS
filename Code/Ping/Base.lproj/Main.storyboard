@@ -254,17 +254,23 @@
             <objects>
                 <viewController restorationIdentifier="PGCamViewController" storyboardIdentifier="PGCamViewController" id="vCX-ZW-3h4" customClass="PGCamViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QAW-2X-S4O">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="ix2-56-jni" customClass="AVCamPreviewView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="136"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="188"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" alpha="0.29999999999999966" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="dnb-gY-KHP">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yiu-e6-LjW">
+                                        <rect key="frame" x="13" y="13" width="40" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
+                                        <state key="normal" image="chevron">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="dismissButtonClicked:" destination="vCX-ZW-3h4" eventType="touchUpInside" id="h5T-1D-CeN"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
@@ -273,7 +279,7 @@
                                 </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="enB-7k-rQh">
-                                <rect key="frame" x="121" y="381" width="93" height="93"/>
+                                <rect key="frame" x="127" y="482" width="66" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <state key="normal" backgroundImage="CaptureButton-Normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -281,11 +287,11 @@
                                 <state key="selected" image="CaptureButton-Normal"/>
                                 <state key="highlighted" image="CaptureButton-Normal"/>
                                 <connections>
-                                    <action selector="snapStillImage:" destination="vCX-ZW-3h4" eventType="touchUpInside" id="79s-Kp-Sm1"/>
+                                    <action selector="captureButtonClicked:" destination="vCX-ZW-3h4" eventType="touchUpInside" id="xb3-Cr-RSl"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ppu-OS-bx4">
-                                <rect key="frame" x="262" y="413" width="38" height="30"/>
+                                <rect key="frame" x="262" y="500" width="38" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <state key="normal" title="Selfie">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -297,8 +303,8 @@
                                     <action selector="changeCamera:" destination="vCX-ZW-3h4" eventType="touchUpInside" id="8X4-KR-8fK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ZX5-gE-b4e">
-                                <rect key="frame" x="20" y="413" width="48" height="30"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ZX5-gE-b4e">
+                                <rect key="frame" x="20" y="500" width="48" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Library">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -307,16 +313,20 @@
                                     <action selector="pickFromLibary:" destination="vCX-ZW-3h4" eventType="touchUpInside" id="bES-tI-FkT"/>
                                 </connections>
                             </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="UXW-o3-m69">
+                                <rect key="frame" x="0.0" y="362" width="320" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="2yb-7b-unO"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="cameraButton" destination="Ppu-OS-bx4" id="TMB-OF-Nbv"/>
-                        <outlet property="overlayImageView" destination="dnb-gY-KHP" id="oWk-xA-XfG"/>
                         <outlet property="previewView" destination="ix2-56-jni" id="cXw-RS-u5o"/>
+                        <outlet property="thumbScrollView" destination="UXW-o3-m69" id="jhX-aR-ckV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qIB-TM-Ach" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -349,7 +359,7 @@
             <objects>
                 <viewController restorationIdentifier="PGPingViewController" storyboardIdentifier="PGPingViewController" id="Dvu-oQ-EJq" customClass="PGPingViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CKY-kV-llJ">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Vwc-lv-uq3">
@@ -357,7 +367,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9bi-qT-dXP">
-                                <rect key="frame" x="127" y="416" width="66" height="66"/>
+                                <rect key="frame" x="127" y="480" width="66" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <state key="normal" title="Send" backgroundImage="CaptureButton-Normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -369,7 +379,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QHl-Qf-TQe">
-                                <rect key="frame" x="20" y="434" width="48" height="30"/>
+                                <rect key="frame" x="20" y="498" width="48" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <state key="normal" title="Retake">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -394,16 +404,26 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.10000000000000001" minValue="0.10000000000000001" maxValue="1" continuous="NO" id="ajh-ec-UDV">
-                                <rect key="frame" x="28" y="370" width="264" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="28" y="442" width="264" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <action selector="delaySliderChanged:" destination="Dvu-oQ-EJq" eventType="valueChanged" id="Xee-aP-vx8"/>
                                 </connections>
                             </slider>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4Wd-Sb-2l2">
+                                <rect key="frame" x="9" y="9" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="nav_back_arrow">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backbuttonClicked:" destination="Dvu-oQ-EJq" eventType="touchUpInside" id="HC0-vT-rP6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="captionTF" destination="Vio-AN-f35" id="Szd-Ev-22U"/>
                         <outlet property="delaySlider" destination="ajh-ec-UDV" id="pEt-XJ-gLU"/>
@@ -928,6 +948,8 @@
     </scenes>
     <resources>
         <image name="CaptureButton-Normal" width="66" height="66"/>
+        <image name="chevron" width="25" height="25"/>
+        <image name="nav_back_arrow" width="40" height="40"/>
         <image name="settings-off" width="23" height="23"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
