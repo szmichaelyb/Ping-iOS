@@ -18,11 +18,6 @@
 
 @interface PGSettingsViewController ()
 
-@property (strong) IBOutlet UILabel* nameLabel;
-
-@property (strong) IBOutlet UISwitch* inAppVibrateSwitch;
-@property (strong) IBOutlet UISwitch* soundSwitch;
-
 @property (strong) IBOutlet UIButton* facebookButton;
 @property (strong) IBOutlet UIButton* twitterButton;
 @property (strong) IBOutlet UIButton* appstoreButton;
@@ -42,28 +37,13 @@
     [super viewDidLoad];
     
     self.navigationController.navigationBar.translucent = NO;
-    //    self.edgesForExtendedLayout = UIRectEdgeAll;
-    //    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, CGRectGetHeight(self.tabBarController.tabBar.frame), 0);
-    
-    //    [MenuButton setupLeftMenuBarButtonOnViewController:self];
-    
-    _nameLabel.text = [PFUser currentUser][kPFUser_Name];
-    
+   
     //Add tap gesture to Parallax View
     //    UITapGestureRecognizer* tapGestuere = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(parallaxHeaderTapped:)];
     //    [self.tableView.parallaxView addGestureRecognizer:tapGestuere];
     
     self.title = NSLocalizedString(@"Settings", nil);
-    
-    [_inAppVibrateSwitch setOn:[[[NSUserDefaults standardUserDefaults] objectForKey:kUDInAppVibrate] boolValue]];
-    [_soundSwitch setOn:[[[NSUserDefaults standardUserDefaults] objectForKey:kUDInAppSound] boolValue]];
-    
     // Do any additional setup after loading the view.
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -77,35 +57,18 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-//
-//-(void)leftSideMenuButtonPressed:(id)sender
-//{
-//    [self.menuContainerViewController toggleLeftSideMenuCompletion:nil];
-//}
 
 -(IBAction)cancelClicked:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(IBAction)toggleInAppVibrate:(UISwitch*)sender
-{
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:sender.isOn] forKey:kUDInAppVibrate];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
--(IBAction)toggleSound:(UISwitch*)sender
-{
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:sender.isOn] forKey:kUDInAppSound];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
--(void)parallaxHeaderTapped:(UIGestureRecognizer*)reco
-{
-    UIActionSheet* sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"View Profile Photo", nil), NSLocalizedString(@"Take Photo", nil), NSLocalizedString(@"Choose Exisiting Photo", nil), NSLocalizedString(@"Import from Facebook", nil), nil];
-    sheet.tag = ActionSheetTypeHeaderPhoto;
-    [sheet showInView:self.view.window];
-}
+//-(void)parallaxHeaderTapped:(UIGestureRecognizer*)reco
+//{
+//    UIActionSheet* sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"View Profile Photo", nil), NSLocalizedString(@"Take Photo", nil), NSLocalizedString(@"Choose Exisiting Photo", nil), NSLocalizedString(@"Import from Facebook", nil), nil];
+//    sheet.tag = ActionSheetTypeHeaderPhoto;
+//    [sheet showInView:self.view.window];
+//}
 
 #pragma mark - Facebook, Twitter, App Store Review
 
@@ -199,7 +162,7 @@
 {
 #warning change
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.section == 1) {
+    if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             //Tell a friend
             UIActionSheet* sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Message", nil), NSLocalizedString(@"Mail", nil), NSLocalizedString(@"Facebook", nil), NSLocalizedString(@"Twitter", nil), nil];
@@ -225,7 +188,7 @@
             [self presentViewController:issueVC animated:YES completion:nil];
         }
     }
-    if (indexPath.section == 2) {
+    if (indexPath.section == 1) {
         MFMailComposeViewController* mailVC = [[MFMailComposeViewController alloc] init];
         mailVC.mailComposeDelegate = self;
         mailVC.view.tintColor = [UIColor whiteColor];
@@ -233,7 +196,7 @@
         [mailVC setToRecipients:@[@"feedback@appikon.com"]];
         [self presentViewController:mailVC animated:YES completion:nil];
     }
-    if (indexPath.section == 4) {
+    if (indexPath.section == 3) {
         [UIActionSheet showInView:self.view.window withTitle:@"Logout" cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Yes" otherButtonTitles:nil tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
             if (buttonIndex == 0) {
                 [self performLogout];

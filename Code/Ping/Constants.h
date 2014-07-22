@@ -64,8 +64,6 @@
 */
 
 //Setting UserDefaults
-#define kUDInAppVibrate @"inAppVibrate"
-#define kUDInAppSound @"inAppSound"
 
 //Parse Table Names
 #define kPFTableName_Selfies @"Selfies"

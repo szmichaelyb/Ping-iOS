@@ -41,6 +41,10 @@
 
 - (IBAction)segmentChanged:(UISegmentedControl*)seg
 {
+    if (seg.selectedSegmentIndex == 0) {
+        _datasource = [NSMutableArray new];
+        [self.tableView reloadData];
+    }
     if (seg.selectedSegmentIndex == 1) {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Follow All" style:UIBarButtonItemStylePlain target:self action:@selector(followAll:)];
         [[FBRequest requestForMyFriends] startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
@@ -59,7 +63,8 @@
         }];
     }
     if (seg.selectedSegmentIndex == 2) {
-        
+        _datasource = [NSMutableArray new];
+        [self.tableView reloadData];
     }
 }
 
