@@ -10,6 +10,7 @@
 		06654AE0197DB1860014FA74 /* PGFramesButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 06654ADF197DB1860014FA74 /* PGFramesButton.m */; };
 		06654AE6197DBABA0014FA74 /* PGFindFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06654AE5197DBABA0014FA74 /* PGFindFriendsViewController.m */; };
 		06654AE9197DBE740014FA74 /* PGFindFriendsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06654AE8197DBE740014FA74 /* PGFindFriendsTableViewCell.m */; };
+		06654AEC197EBBDF0014FA74 /* PGSendPingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06654AEB197EBBDF0014FA74 /* PGSendPingViewController.m */; };
 		0683112B1976C8460099689D /* PGProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0683112A1976C8460099689D /* PGProfileHeaderView.xib */; };
 		0683409F19774AD4007A1AEC /* PGProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0683409E19774AD4007A1AEC /* PGProgressHUD.m */; };
 		068340A4197810A9007A1AEC /* PGSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 068340A3197810A9007A1AEC /* PGSignupViewController.m */; };
@@ -62,6 +63,8 @@
 		06654AE5197DBABA0014FA74 /* PGFindFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGFindFriendsViewController.m; sourceTree = "<group>"; };
 		06654AE7197DBE740014FA74 /* PGFindFriendsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGFindFriendsTableViewCell.h; sourceTree = "<group>"; };
 		06654AE8197DBE740014FA74 /* PGFindFriendsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGFindFriendsTableViewCell.m; sourceTree = "<group>"; };
+		06654AEA197EBBDE0014FA74 /* PGSendPingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSendPingViewController.h; sourceTree = "<group>"; };
+		06654AEB197EBBDF0014FA74 /* PGSendPingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSendPingViewController.m; sourceTree = "<group>"; };
 		0683112A1976C8460099689D /* PGProfileHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGProfileHeaderView.xib; sourceTree = "<group>"; };
 		0683409D19774AD4007A1AEC /* PGProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGProgressHUD.h; sourceTree = "<group>"; };
 		0683409E19774AD4007A1AEC /* PGProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGProgressHUD.m; sourceTree = "<group>"; };
@@ -286,6 +289,8 @@
 				06DCBCF3196EE40600E8C9B2 /* PGCamViewController.m */,
 				06DCBCF8196EE8EB00E8C9B2 /* PGPingViewController.h */,
 				06DCBCF9196EE8EB00E8C9B2 /* PGPingViewController.m */,
+				06654AEA197EBBDE0014FA74 /* PGSendPingViewController.h */,
+				06654AEB197EBBDF0014FA74 /* PGSendPingViewController.m */,
 			);
 			name = "Ping VC";
 			sourceTree = "<group>";
@@ -530,6 +535,7 @@
 				068340B519784572007A1AEC /* PGActivityViewController.m in Sources */,
 				068340AD19782FC2007A1AEC /* PGSearchTableViewCell.m in Sources */,
 				068340AA197826FD007A1AEC /* PGSearchViewController.m in Sources */,
+				06654AEC197EBBDF0014FA74 /* PGSendPingViewController.m in Sources */,
 				06DCBCF4196EE40600E8C9B2 /* PGCamViewController.m in Sources */,
 				06DCBCF1196EDDFA00E8C9B2 /* PGTabViewController.m in Sources */,
 				06DCBCF7196EE41800E8C9B2 /* AVCamPreviewView.m in Sources */,
@@ -660,7 +666,7 @@
 				INFOPLIST_FILE = "Ping/Ping-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "628DB765-688B-4F7A-833C-6641E118AB68";
+				PROVISIONING_PROFILE = "0A90FB03-D628-4041-B4B9-105259FD950D";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;

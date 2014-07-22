@@ -1,18 +1,17 @@
 //
-//  PGPingViewController.h
+//  PGSendPingViewController.h
 //  Ping
 //
-//  Created by Rishabh Tayal on 7/10/14.
+//  Created by Rishabh Tayal on 7/22/14.
 //  Copyright (c) 2014 Appikon Mobile. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-
 #import "PGCamViewController.h"
 
-@interface PGPingViewController : UIViewController
+@interface PGSendPingViewController : UIViewController<CLLocationManagerDelegate>
 
 @property (assign, nonatomic) id<PGCamViewControllerDelegate> delegate;
-@property (strong, nonatomic) NSArray* images;
+@property (strong, nonatomic) NSURL* gifUrl;
 
 @end

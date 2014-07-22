@@ -11,6 +11,6 @@
 
 @interface UIView (Animate)
 
--(void)springAnimate;
+//-(void)springAnimate;
 
 @end

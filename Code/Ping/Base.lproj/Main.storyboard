@@ -378,13 +378,13 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9bi-qT-dXP">
                                 <rect key="frame" x="127" y="480" width="66" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <state key="normal" title="Send" backgroundImage="CaptureButton-Normal">
+                                <state key="normal" title="Next" backgroundImage="CaptureButton-Normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="selected" image="CaptureButton-Normal"/>
                                 <state key="highlighted" image="CaptureButton-Normal"/>
                                 <connections>
-                                    <action selector="sendButtonClicked:" destination="Dvu-oQ-EJq" eventType="touchUpInside" id="AEQ-rq-KUl"/>
+                                    <segue destination="omH-ax-muh" kind="push" identifier="PGSendPingSegue" id="xcz-id-4WZ"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QHl-Qf-TQe">
@@ -397,21 +397,6 @@
                                     <action selector="retakeClicked:" destination="Dvu-oQ-EJq" eventType="touchUpInside" id="fOw-L4-Ncc"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add a caption" textAlignment="center" minimumFontSize="17" id="Vio-AN-f35" userLabel="Caption Label">
-                                <rect key="frame" x="30" y="40" width="260" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" red="0.97647058819999999" green="0.62352941179999999" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qDb-dg-dz1" userLabel="Location Label">
-                                <rect key="frame" x="20" y="65" width="280" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.10000000000000001" minValue="0.10000000000000001" maxValue="1" continuous="NO" id="ajh-ec-UDV">
                                 <rect key="frame" x="28" y="442" width="264" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -434,10 +419,8 @@
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="captionTF" destination="Vio-AN-f35" id="Szd-Ev-22U"/>
                         <outlet property="delaySlider" destination="ajh-ec-UDV" id="pEt-XJ-gLU"/>
                         <outlet property="imageView" destination="Vwc-lv-uq3" id="qGR-F7-6Pl"/>
-                        <outlet property="locationLabel" destination="qDb-dg-dz1" id="iDO-cI-S5J"/>
                         <outlet property="retakeButton" destination="QHl-Qf-TQe" id="muA-BQ-hck"/>
                         <outlet property="sendButton" destination="9bi-qT-dXP" id="P5z-JP-BRR"/>
                     </connections>
@@ -445,6 +428,83 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fsq-kc-bsh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1314" y="-155"/>
+        </scene>
+        <!--Send Ping View Controller-->
+        <scene sceneID="dxP-8g-5u1">
+            <objects>
+                <viewController restorationIdentifier="PGSendPingViewController" storyboardIdentifier="PGSendPingViewController" id="omH-ax-muh" customClass="PGSendPingViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KVS-Vb-EQX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="OfV-ww-jSD">
+                                <rect key="frame" x="20" y="55" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Qrl-Gb-Joo">
+                                <rect key="frame" x="127" y="482" width="66" height="66"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <state key="normal" title="Post" backgroundImage="CaptureButton-Normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" image="CaptureButton-Normal"/>
+                                <state key="highlighted" image="CaptureButton-Normal"/>
+                                <connections>
+                                    <action selector="sendButtonClicked:" destination="omH-ax-muh" eventType="touchUpInside" id="ZIw-f8-zGp"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" id="yvo-HC-Cv1">
+                                <rect key="frame" x="138" y="55" width="162" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0j4-d8-kO0">
+                                <rect key="frame" x="20" y="174" width="280" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Rzy-M3-wyZ">
+                                <rect key="frame" x="20" y="217" width="113" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.33333333329999998" green="0.67450980390000004" blue="0.93333333330000001" alpha="1" colorSpace="deviceRGB"/>
+                                <state key="normal" title="Facebook">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="shareOnFacebookClicked:" destination="omH-ax-muh" eventType="touchUpInside" id="Dj6-y0-epR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ioM-4a-4o5">
+                                <rect key="frame" x="147" y="217" width="153" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Twitter">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="shareOnTwitterClicked:" destination="omH-ax-muh" eventType="touchUpInside" id="z1R-Sr-Q18"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="TV9-sp-rrL"/>
+                    <connections>
+                        <outlet property="captionTF" destination="yvo-HC-Cv1" id="reL-H0-Hht"/>
+                        <outlet property="facebookButton" destination="Rzy-M3-wyZ" id="Ody-jE-biC"/>
+                        <outlet property="imageView" destination="OfV-ww-jSD" id="kAD-3x-f8H"/>
+                        <outlet property="locationLabel" destination="0j4-d8-kO0" id="FTh-oN-QxF"/>
+                        <outlet property="twitterButton" destination="ioM-4a-4o5" id="DQl-G6-Z8U"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GZn-yZ-2LP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1737" y="-155"/>
         </scene>
         <!--View Controller - Ping-->
         <scene sceneID="X8v-66-vPv">
