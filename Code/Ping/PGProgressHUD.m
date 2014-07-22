@@ -18,7 +18,7 @@
     return instance;
 }
 
--(void)showInView:(UIView*)view withText:(NSString *)text
+-(void)showInView:(UIView *)view withText:(NSString *)text hideAfter:(CGFloat)delay
 {
     MBProgressHUD* HUD = [[MBProgressHUD alloc] initWithView:view];
 	[view addSubview:HUD];
@@ -34,7 +34,7 @@
 	HUD.labelText = text;
 	
 	[HUD show:YES];
-	[HUD hide:YES afterDelay:3];
+	[HUD hide:YES afterDelay:delay];
 }
 
 -(void)hudWasHidden:(MBProgressHUD *)hud

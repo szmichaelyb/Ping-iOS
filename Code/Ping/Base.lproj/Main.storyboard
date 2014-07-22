@@ -397,11 +397,12 @@
                                     <action selector="retakeClicked:" destination="Dvu-oQ-EJq" eventType="touchUpInside" id="fOw-L4-Ncc"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.10000000000000001" minValue="0.10000000000000001" maxValue="1" continuous="NO" id="ajh-ec-UDV">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.10000000000000001" minValue="0.10000000000000001" maxValue="1" id="ajh-ec-UDV">
                                 <rect key="frame" x="28" y="442" width="264" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <action selector="delaySliderChanged:" destination="Dvu-oQ-EJq" eventType="valueChanged" id="Xee-aP-vx8"/>
+                                    <action selector="sliderDidFinishChanging:" destination="Dvu-oQ-EJq" eventType="touchUpInside" id="TKF-re-gmH"/>
                                 </connections>
                             </slider>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4Wd-Sb-2l2">
@@ -414,12 +415,20 @@
                                     <action selector="backbuttonClicked:" destination="Dvu-oQ-EJq" eventType="touchUpInside" id="HC0-vT-rP6"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YGz-kV-OKa">
+                                <rect key="frame" x="101" y="404" width="118" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="delaySlider" destination="ajh-ec-UDV" id="pEt-XJ-gLU"/>
+                        <outlet property="durationLabel" destination="YGz-kV-OKa" id="ane-Br-HqI"/>
                         <outlet property="imageView" destination="Vwc-lv-uq3" id="qGR-F7-6Pl"/>
                         <outlet property="retakeButton" destination="QHl-Qf-TQe" id="muA-BQ-hck"/>
                         <outlet property="sendButton" destination="9bi-qT-dXP" id="P5z-JP-BRR"/>

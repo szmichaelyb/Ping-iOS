@@ -140,7 +140,7 @@
                     //Yes
                     [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                         if (succeeded) {
-                            [[PGProgressHUD sharedInstance] showInView:self.navigationController.view withText:@"Deleted"];
+                            [[PGProgressHUD sharedInstance] showInView:self.navigationController.view withText:@"Deleted" hideAfter:2];
                         }
                         [self getData];
                     }];
