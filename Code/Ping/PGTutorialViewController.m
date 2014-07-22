@@ -50,16 +50,16 @@
 {
     NSArray* permissions = @[@"email", @"user_friends"];
     
-//    [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Logging in"];
+    //    [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Logging in"];
     [PFFacebookUtils logInWithPermissions:permissions block:^(PFUser *user, NSError *error) {
         //        [ActivityView hide];
         if (!user) {
             UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Facebook error" message:@"To use you Facebook account with this app, open Settings > Facebook and make sure this app is turned on." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];
         } else {
-//            [[FBRequest requestForMe] startWithCompletionHandler:^(FBRequestConnection *connection, id<FBGraphUser> result, NSError *error) {
-//                DLog(@"%@", result);
-//            }];
+            //            [[FBRequest requestForMe] startWithCompletionHandler:^(FBRequestConnection *connection, id<FBGraphUser> result, NSError *error) {
+            //                DLog(@"%@", result);
+            //            }];
             
             [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
                 
@@ -69,13 +69,13 @@
                     
                     [self setMainView];
                     
-//                    [[PFUser currentUser] setObject:result[@""] forKey:kPFUser_Username];
+                    //                    [[PFUser currentUser] setObject:result[@""] forKey:kPFUser_Username];
                     [[PFUser currentUser] setObject:result[@"name"] forKey:kPFUser_Name];
-                    //                    if ([[PFUser currentUser] objectForKey:kPFUser_FBID] == NULL) {
-                    //                        DLog(@"First Time");
-                    //                        [self notifyFriendsViaPushThatIJoined];
-                    //                        [self notifyFriendsViaEmailThatIJoined];
-                    //                    }
+                    if ([[PFUser currentUser] objectForKey:kPFUser_FBID] == NULL) {
+                        DLog(@"First Time");
+                        [self notifyFriendsViaPushThatIJoined];
+                        //                        [self notifyFriendsViaEmailThatIJoined];
+                    }
                     [[PFUser currentUser] setObject:result[@"id"] forKey:kPFUser_FBID];
                     if (result[@"email"] != NULL) {
                         [[PFUser currentUser] setObject:result[@"email"] forKey:kPFUser_Email];
@@ -106,6 +106,35 @@
                     }];
                 }
             }];
+        }
+    }];
+}
+
+-(void)notifyFriendsViaPushThatIJoined
+{
+    FBRequest* request = [FBRequest requestWithGraphPath:@"me/friends" parameters:@{@"fields":@"name,first_name"} HTTPMethod:@"GET"];
+    [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+        NSArray* friendsUsingApp = [NSMutableArray arrayWithArray:result[@"data"]];
+        
+        NSArray* recipients = [friendsUsingApp valueForKey:@"id"];
+        
+        if (recipients.count != 0) {
+            
+            PFQuery* userQuery = [PFUser query];
+            [userQuery whereKey:kPFUser_FBID containedIn:recipients];
+            [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                
+                PFQuery* installationQuery = [PFInstallation query];
+                [installationQuery whereKey:@"owner" containedIn:objects];
+                
+                PFPush *push = [[PFPush alloc] init];
+                [push setQuery:installationQuery];
+                
+#warning Change the app name
+                [push setMessage:[NSString stringWithFormat:@"Your friend %@ just joined Ping!", [PFUser currentUser][kPFUser_Name]]];
+                [push sendPushInBackground];
+                
+            }];            
         }
     }];
 }
