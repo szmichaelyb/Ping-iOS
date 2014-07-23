@@ -33,7 +33,7 @@
     
     self.navigationController.navigationBar.translucent = NO;
     self.tabBarController.tabBar.translucent = NO;
-   
+    
     /// Setup pull to refresh
     CGFloat refreshBarY = self.navigationController.navigationBar.bounds.size.height + [UIApplication sharedApplication].statusBarFrame.size.height;
     
@@ -131,31 +131,40 @@
 
 -(void)tableView:(PGFeedTableView *)tableView moreButtonClicked:(NSIndexPath *)indexPath dataObject:(id)object
 {
-    [UIActionSheet showInView:self.view.window withTitle:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles:@[@"Share"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
-        DLog(@"tapped");
-        if (buttonIndex == 0) {
-            //Delete
-            [UIActionSheet showInView:self.view.window withTitle:@"Are you sure?" cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@[@"Yes"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
-                if (buttonIndex == 0) {
-                    //Yes
-                    [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                        if (succeeded) {
-                            [[PGProgressHUD sharedInstance] showInView:self.navigationController.view withText:@"Deleted" hideAfter:2];
-                        }
-                        [self getData];
-                    }];
-                }
-            }];
-        }
-        if (buttonIndex == 1) {
-            //Share
-            PFObject* pfObject = (PFObject*)object;
-            PFFile* file = pfObject[kPFSelfie_Selfie];
-            DLog(@"%@",file.url);
-            [self shareText:pfObject[kPFSelfie_Caption] andImage:nil andUrl:nil andData:[file getData]];
-            //            [self shareText:pfObject[kPFSelfie_Caption] andImage:[UIImage animatedImageWithAnimatedGIFURL:[NSURL URLWithString:file.url]] andUrl:nil];
-        }
-    }];
+    if ([object[kPFSelfie_Owner][@"objectId"] isEqualToString:[PFUser currentUser].objectId]) {
+        
+        [UIActionSheet showInView:self.view.window withTitle:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles:@[@"Share"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+            DLog(@"tapped");
+            if (buttonIndex == 0) {
+                //Delete
+                [UIActionSheet showInView:self.view.window withTitle:@"Are you sure?" cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@[@"Yes"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+                    if (buttonIndex == 0) {
+                        //Yes
+                        [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                            if (succeeded) {
+                                [[PGProgressHUD sharedInstance] showInView:self.navigationController.view withText:@"Deleted" hideAfter:2];
+                            }
+                            [self getData];
+                        }];
+                    }
+                }];
+            }
+            if (buttonIndex == 1) {
+                //Share
+                PFObject* pfObject = (PFObject*)object;
+                PFFile* file = pfObject[kPFSelfie_Selfie];
+                DLog(@"%@",file.url);
+                [self shareText:pfObject[kPFSelfie_Caption] andImage:nil andUrl:nil andData:[file getData]];
+            }
+        }];
+    } else {
+        [UIActionSheet showInView:self.view.window withTitle:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@[@"Share"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+            if (buttonIndex == 0) {
+                PFFile* file = object[kPFSelfie_Selfie];
+                [self shareText:object[kPFSelfie_Caption] andImage:nil andUrl:nil andData:[file getData]];
+            }
+        }];
+    }
 }
 
 - (void)shareText:(NSString *)text andImage:(UIImage *)image andUrl:(NSURL *)url andData:(NSData*)data
