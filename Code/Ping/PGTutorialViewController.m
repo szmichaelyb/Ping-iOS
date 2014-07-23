@@ -129,9 +129,7 @@
                 
                 PFPush *push = [[PFPush alloc] init];
                 [push setQuery:installationQuery];
-                
-#warning Change the app name
-                [push setMessage:[NSString stringWithFormat:@"Your friend %@ just joined Ping!", [PFUser currentUser][kPFUser_Name]]];
+                [push setMessage:[NSString stringWithFormat:@"Your friend %@ just joined GoCandid!", [PFUser currentUser][kPFUser_Name]]];
                 [push sendPushInBackground];
                 
             }];            

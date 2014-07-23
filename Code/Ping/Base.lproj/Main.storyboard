@@ -515,7 +515,7 @@
             </objects>
             <point key="canvasLocation" x="1737" y="-155"/>
         </scene>
-        <!--View Controller - Ping-->
+        <!--View Controller - GoCandid-->
         <scene sceneID="X8v-66-vPv">
             <objects>
                 <viewController id="vCH-hg-Ps5" sceneMemberID="viewController">
@@ -524,7 +524,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Ping" image="settings-off" id="aJo-Mp-YvV"/>
+                    <tabBarItem key="tabBarItem" title="GoCandid" image="settings-off" id="aJo-Mp-YvV"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v2K-ez-G1Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

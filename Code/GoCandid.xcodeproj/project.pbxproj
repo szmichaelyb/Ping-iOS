@@ -94,14 +94,14 @@
 		06B561601975AB9E00E92A92 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		06B561621975B04B00E92A92 /* UIImage+animatedGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+animatedGIF.h"; sourceTree = "<group>"; };
 		06B561631975B04B00E92A92 /* UIImage+animatedGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+animatedGIF.m"; sourceTree = "<group>"; };
-		06DCBCB6196E2AFF00E8C9B2 /* Ping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ping.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		06DCBCB6196E2AFF00E8C9B2 /* GoCandid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoCandid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06DCBCB9196E2AFF00E8C9B2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		06DCBCBB196E2AFF00E8C9B2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		06DCBCBD196E2AFF00E8C9B2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		06DCBCC1196E2AFF00E8C9B2 /* Ping-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ping-Info.plist"; sourceTree = "<group>"; };
+		06DCBCC1196E2AFF00E8C9B2 /* GoCandid-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoCandid-Info.plist"; sourceTree = "<group>"; };
 		06DCBCC3196E2AFF00E8C9B2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		06DCBCC5196E2AFF00E8C9B2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		06DCBCC7196E2AFF00E8C9B2 /* Ping-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ping-Prefix.pch"; sourceTree = "<group>"; };
+		06DCBCC7196E2AFF00E8C9B2 /* GoCandid-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GoCandid-Prefix.pch"; sourceTree = "<group>"; };
 		06DCBCC8196E2AFF00E8C9B2 /* PGAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGAppDelegate.h; sourceTree = "<group>"; };
 		06DCBCC9196E2AFF00E8C9B2 /* PGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGAppDelegate.m; sourceTree = "<group>"; };
 		06DCBCCC196E2AFF00E8C9B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -229,7 +229,7 @@
 		06DCBCB7196E2AFF00E8C9B2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				06DCBCB6196E2AFF00E8C9B2 /* Ping.app */,
+				06DCBCB6196E2AFF00E8C9B2 /* GoCandid.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -276,10 +276,10 @@
 		06DCBCC0196E2AFF00E8C9B2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				06DCBCC1196E2AFF00E8C9B2 /* Ping-Info.plist */,
+				06DCBCC1196E2AFF00E8C9B2 /* GoCandid-Info.plist */,
 				06DCBCC2196E2AFF00E8C9B2 /* InfoPlist.strings */,
 				06DCBCC5196E2AFF00E8C9B2 /* main.m */,
-				06DCBCC7196E2AFF00E8C9B2 /* Ping-Prefix.pch */,
+				06DCBCC7196E2AFF00E8C9B2 /* GoCandid-Prefix.pch */,
 				06DCBCEE196EDD5100E8C9B2 /* Constants.h */,
 			);
 			name = "Supporting Files";
@@ -419,9 +419,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		06DCBCB5196E2AFF00E8C9B2 /* Ping */ = {
+		06DCBCB5196E2AFF00E8C9B2 /* GoCandid */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 06DCBCE8196E2AFF00E8C9B2 /* Build configuration list for PBXNativeTarget "Ping" */;
+			buildConfigurationList = 06DCBCE8196E2AFF00E8C9B2 /* Build configuration list for PBXNativeTarget "GoCandid" */;
 			buildPhases = (
 				35CBE7C6359E48F89243C485 /* Check Pods Manifest.lock */,
 				06DCBCB2196E2AFF00E8C9B2 /* Sources */,
@@ -434,9 +434,9 @@
 			);
 			dependencies = (
 			);
-			name = Ping;
+			name = GoCandid;
 			productName = Ping;
-			productReference = 06DCBCB6196E2AFF00E8C9B2 /* Ping.app */;
+			productReference = 06DCBCB6196E2AFF00E8C9B2 /* GoCandid.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -454,7 +454,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 06DCBCB1196E2AFF00E8C9B2 /* Build configuration list for PBXProject "Ping" */;
+			buildConfigurationList = 06DCBCB1196E2AFF00E8C9B2 /* Build configuration list for PBXProject "GoCandid" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -467,7 +467,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				06DCBCB5196E2AFF00E8C9B2 /* Ping */,
+				06DCBCB5196E2AFF00E8C9B2 /* GoCandid */,
 			);
 		};
 /* End PBXProject section */
@@ -684,10 +684,10 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Ping/Ping-Prefix.pch";
-				INFOPLIST_FILE = "Ping/Ping-Info.plist";
+				GCC_PREFIX_HEADER = "Ping/GoCandid-Prefix.pch";
+				INFOPLIST_FILE = "Ping/GoCandid-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GoCandid;
 				PROVISIONING_PROFILE = "628DB765-688B-4F7A-833C-6641E118AB68";
 				WRAPPER_EXTENSION = app;
 			};
@@ -706,10 +706,10 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Ping/Ping-Prefix.pch";
-				INFOPLIST_FILE = "Ping/Ping-Info.plist";
+				GCC_PREFIX_HEADER = "Ping/GoCandid-Prefix.pch";
+				INFOPLIST_FILE = "Ping/GoCandid-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GoCandid;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -718,7 +718,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		06DCBCB1196E2AFF00E8C9B2 /* Build configuration list for PBXProject "Ping" */ = {
+		06DCBCB1196E2AFF00E8C9B2 /* Build configuration list for PBXProject "GoCandid" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				06DCBCE6196E2AFF00E8C9B2 /* Debug */,
@@ -727,7 +727,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		06DCBCE8196E2AFF00E8C9B2 /* Build configuration list for PBXNativeTarget "Ping" */ = {
+		06DCBCE8196E2AFF00E8C9B2 /* Build configuration list for PBXNativeTarget "GoCandid" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				06DCBCE9196E2AFF00E8C9B2 /* Debug */,

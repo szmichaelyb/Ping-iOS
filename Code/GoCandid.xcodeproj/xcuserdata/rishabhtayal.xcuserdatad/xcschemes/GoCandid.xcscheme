@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "06DCBCB5196E2AFF00E8C9B2"
-               BuildableName = "Ping.app"
-               BlueprintName = "Ping"
-               ReferencedContainer = "container:Ping.xcodeproj">
+               BuildableName = "GoCandid.app"
+               BlueprintName = "GoCandid"
+               ReferencedContainer = "container:GoCandid.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,24 +28,14 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "06DCBCD6196E2AFF00E8C9B2"
-               BuildableName = "PingTests.xctest"
-               BlueprintName = "PingTests"
-               ReferencedContainer = "container:Ping.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "06DCBCB5196E2AFF00E8C9B2"
-            BuildableName = "Ping.app"
-            BlueprintName = "Ping"
-            ReferencedContainer = "container:Ping.xcodeproj">
+            BuildableName = "GoCandid.app"
+            BlueprintName = "GoCandid"
+            ReferencedContainer = "container:GoCandid.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -62,9 +52,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "06DCBCB5196E2AFF00E8C9B2"
-            BuildableName = "Ping.app"
-            BlueprintName = "Ping"
-            ReferencedContainer = "container:Ping.xcodeproj">
+            BuildableName = "GoCandid.app"
+            BlueprintName = "GoCandid"
+            ReferencedContainer = "container:GoCandid.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -80,9 +70,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "06DCBCB5196E2AFF00E8C9B2"
-            BuildableName = "Ping.app"
-            BlueprintName = "Ping"
-            ReferencedContainer = "container:Ping.xcodeproj">
+            BuildableName = "GoCandid.app"
+            BlueprintName = "GoCandid"
+            ReferencedContainer = "container:GoCandid.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
