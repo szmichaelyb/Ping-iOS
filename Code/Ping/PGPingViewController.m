@@ -145,8 +145,6 @@ const CGFloat kDefaultGifDelay = 0.5;
 
 -(CGFloat)loopDurationForDelay:(CGFloat)delay imagesCount:(NSInteger)imagesCount
 {
-    DLog(@"Gif Loop duration: %f", (float)delay * imagesCount);
-    
     CGFloat duration = (float)delay * imagesCount;
     
     return duration;

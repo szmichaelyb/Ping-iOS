@@ -11,6 +11,7 @@
 #import "InAppNotificationView.h"
 #import "PGFeedViewController.h"
 #import <iRate/iRate.h>
+#import <Crashlytics/Crashlytics.h>
 
 @implementation PGAppDelegate
 
@@ -30,6 +31,8 @@
     [Parse setApplicationId:@"RjjejatHY8BsqER68vg48jtr9nRv0FVAfKqryjja" clientKey:@"hTwjS9Ng9azIQoOfpQ6xeYX3Ah8mesiCWGt0gz3b"];
     
     [PFFacebookUtils initializeFacebook];
+ 
+    [Crashlytics startWithAPIKey:@"02d3f7db22ac1a3e538528547a694d5230eb8278"];
     
     return YES;
 }

@@ -53,6 +53,7 @@
 		06DCBD2E1970886A00E8C9B2 /* InAppNotificationTapListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBD2A1970886A00E8C9B2 /* InAppNotificationTapListener.m */; };
 		06DCBD2F1970886A00E8C9B2 /* InAppNotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBD2C1970886A00E8C9B2 /* InAppNotificationView.m */; };
 		06DCBD301970886A00E8C9B2 /* InAppNotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06DCBD2D1970886A00E8C9B2 /* InAppNotificationView.xib */; };
+		06E79447198037CB00E7B143 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E79446198037CB00E7B143 /* Crashlytics.framework */; };
 		B4D0781A6E87400B8846C0E9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 44403505DE314A23B874DE7D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -140,6 +141,7 @@
 		06DCBD2B1970886A00E8C9B2 /* InAppNotificationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppNotificationView.h; sourceTree = "<group>"; };
 		06DCBD2C1970886A00E8C9B2 /* InAppNotificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppNotificationView.m; sourceTree = "<group>"; };
 		06DCBD2D1970886A00E8C9B2 /* InAppNotificationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InAppNotificationView.xib; sourceTree = "<group>"; };
+		06E79446198037CB00E7B143 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		44403505DE314A23B874DE7D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3EC4F2809A54D8D8F1E8EBE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -155,6 +157,7 @@
 				06DCBCBE196E2AFF00E8C9B2 /* UIKit.framework in Frameworks */,
 				06DCBCBA196E2AFF00E8C9B2 /* Foundation.framework in Frameworks */,
 				B4D0781A6E87400B8846C0E9 /* libPods.a in Frameworks */,
+				06E79447198037CB00E7B143 /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,6 +237,7 @@
 		06DCBCB8196E2AFF00E8C9B2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				06E79446198037CB00E7B143 /* Crashlytics.framework */,
 				06B561601975AB9E00E92A92 /* ImageIO.framework */,
 				06B5615E1975AB9700E92A92 /* MobileCoreServices.framework */,
 				06DCBCB9196E2AFF00E8C9B2 /* Foundation.framework */,
@@ -424,6 +428,7 @@
 				06DCBCB3196E2AFF00E8C9B2 /* Frameworks */,
 				06DCBCB4196E2AFF00E8C9B2 /* Resources */,
 				BAC4277C51214E4CBAF16E3B /* Copy Pods Resources */,
+				06E794451980378400E7B143 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -486,6 +491,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		06E794451980378400E7B143 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 02d3f7db22ac1a3e538528547a694d5230eb8278 af6ede98bc0742057c556b0ed733e4c57ae435cd7cc81f516bb2b4e456b7e234";
+		};
 		35CBE7C6359E48F89243C485 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -661,6 +679,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ping/Ping-Prefix.pch";
 				INFOPLIST_FILE = "Ping/Ping-Info.plist";
@@ -679,6 +701,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ping/Ping-Prefix.pch";
 				INFOPLIST_FILE = "Ping/Ping-Info.plist";
