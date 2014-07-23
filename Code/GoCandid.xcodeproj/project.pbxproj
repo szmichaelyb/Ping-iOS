@@ -219,7 +219,7 @@
 		06DCBCAD196E2AFF00E8C9B2 = {
 			isa = PBXGroup;
 			children = (
-				06DCBCBF196E2AFF00E8C9B2 /* Ping */,
+				06DCBCBF196E2AFF00E8C9B2 /* GoCandid */,
 				06DCBCB8196E2AFF00E8C9B2 /* Frameworks */,
 				06DCBCB7196E2AFF00E8C9B2 /* Products */,
 				C3EC4F2809A54D8D8F1E8EBE /* Pods.xcconfig */,
@@ -249,7 +249,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		06DCBCBF196E2AFF00E8C9B2 /* Ping */ = {
+		06DCBCBF196E2AFF00E8C9B2 /* GoCandid */ = {
 			isa = PBXGroup;
 			children = (
 				068340BC19797102007A1AEC /* PARSE HELPER */,
@@ -270,7 +270,7 @@
 				06DCBCD1196E2AFF00E8C9B2 /* Images.xcassets */,
 				06DCBCC0196E2AFF00E8C9B2 /* Supporting Files */,
 			);
-			path = Ping;
+			path = GoCandid;
 			sourceTree = "<group>";
 		};
 		06DCBCC0196E2AFF00E8C9B2 /* Supporting Files */ = {
@@ -684,8 +684,8 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Ping/GoCandid-Prefix.pch";
-				INFOPLIST_FILE = "Ping/GoCandid-Info.plist";
+				GCC_PREFIX_HEADER = "GoCandid/GoCandid-Prefix.pch";
+				INFOPLIST_FILE = "GoCandid/GoCandid-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = GoCandid;
 				PROVISIONING_PROFILE = "F0FBD470-245E-46E4-B771-6DC5F97797D0";
@@ -706,8 +706,8 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Ping/GoCandid-Prefix.pch";
-				INFOPLIST_FILE = "Ping/GoCandid-Info.plist";
+				GCC_PREFIX_HEADER = "GoCandid/GoCandid-Prefix.pch";
+				INFOPLIST_FILE = "GoCandid/GoCandid-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = GoCandid;
 				PROVISIONING_PROFILE = "";
