@@ -129,6 +129,7 @@
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     [_searchBar resignFirstResponder];
+    [self.searchBar setShowsCancelButton:NO animated:YES];
 }
 
 #pragma mark - UISearchBar Delegate
@@ -136,7 +137,7 @@
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
     if (searchText.length == 0){
-        //        _isFiltered = false;
+        _datasource = [NSMutableArray new];
         [_tableView reloadData];
     }
     else
@@ -192,6 +193,7 @@
     searchBar.text = @"";
     [searchBar setShowsCancelButton:NO animated:YES];
     [searchBar resignFirstResponder];
+    _datasource = [NSMutableArray new];
     [_tableView reloadData];
 }
 

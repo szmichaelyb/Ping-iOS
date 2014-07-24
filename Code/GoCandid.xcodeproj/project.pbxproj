@@ -445,7 +445,7 @@
 		06DCBCAE196E2AFF00E8C9B2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = PG;
+				CLASSPREFIX = GC;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Appikon Mobile";
 				TargetAttributes = {
