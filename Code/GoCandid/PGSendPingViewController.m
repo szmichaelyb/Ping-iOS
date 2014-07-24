@@ -54,6 +54,11 @@
     [self.view endEditing:YES];
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    NSUInteger newLength = [textField.text length] + [string length] - range.length;
+    return (newLength > 25) ? NO : YES;
+}
+
 -(IBAction)sendButtonClicked:(id)sender
 {
     if (_captionTF.text.length == 0) {

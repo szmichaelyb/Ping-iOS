@@ -79,6 +79,9 @@
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PGSearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if (!cell) {
+        cell = [[NSBundle mainBundle] loadNibNamed:@"PGSearchTableViewCell" owner:nil options:nil][0];
+    }
     cell.contentView.tag = 1;
     cell.delegate = self;
     [self configureCell:cell
@@ -108,20 +111,9 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //    if (_isFiltered)
-    //    {
-    //        //        _orderDetailVC = [[JPWOrderDetailViewController alloc] initWithOrderNum:[[_filteredDatasource objectAtIndex:indexPath.row] objectForKey:@"Order_Num"][@"text"] PONumber:[[_filteredDatasource objectAtIndex:indexPath.row] objectForKey:@"PO_Num"][@"text"]];
-    //    }
-    //    else
-    //    {
-    //        _orderDetailVC = [[JPWOrderDetailViewController alloc] initWithOrderNum:[[_datasource objectAtIndex:indexPath.row] objectForKey:@"Order_Num"][@"text"] PONumber:[[_datasource objectAtIndex:indexPath.row] objectForKey:@"PO_Num"][@"text"]];
-    //    }
-    
     PGProfileViewController* profileVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PGProfileViewController"];
     profileVC.profileUser = _datasource[indexPath.row];
     [self.navigationController pushViewController:profileVC animated:YES];
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    //Push anotherVC
 }
 
 #pragma mark - UIScrollView Delegate

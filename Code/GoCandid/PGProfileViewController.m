@@ -11,6 +11,7 @@
 #import <UITableView+ZGParallelView.h>
 #import <UIActionSheet+Blocks/UIActionSheet+Blocks.h>
 #import "PGProgressHUD.h"
+#import "GCUsersListViewController.h"
 
 @interface PGProfileViewController ()<PGFeedTableViewDelegate>
 
@@ -19,9 +20,12 @@
 @property (nonatomic, strong) IBOutlet UIImageView* headerView;
 @property (nonatomic, strong) IBOutlet UIImageView* profileIV;
 @property (nonatomic, strong) IBOutlet UILabel* nameLabel;
-@property (nonatomic, strong) IBOutlet UILabel* followingLabel;
-@property (nonatomic, strong) IBOutlet UILabel* followersLabel;
+@property (nonatomic, strong) IBOutlet UIButton* followingButton;
+@property (nonatomic, strong) IBOutlet UIButton* followersButton;
 @property (strong, nonatomic) IBOutlet UILabel *postCountLabel;
+
+-(IBAction)followingButtonClicked:(id)sender;
+-(IBAction)followersButtonClickedd:(id)sender;
 
 @end
 
@@ -74,6 +78,10 @@
     
     _headerView.image = [self blur:_profileIV.image];
     [self.tableView addParallelViewWithUIView:view withDisplayRadio:0.6 headerViewStyle:ZGScrollViewStyleDefault];
+    
+    [_followersButton setTitle:@"0 followers" forState:UIControlStateNormal];
+    [_followingButton setTitle:@"0 following" forState:UIControlStateNormal];
+    _postCountLabel.text = @"0 post";
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -84,22 +92,19 @@
     PFQuery* followerCountQuery = [PFQuery queryWithClassName:kPFTableActivity];
     [followerCountQuery whereKey:kPFActivity_Type equalTo:kPFActivity_Type_Follow];
     [followerCountQuery whereKey:kPFActivity_ToUser equalTo:_profileUser];
-    _followersLabel.text = @"0 followers";
     [followerCountQuery countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
-        _followersLabel.text = [NSString stringWithFormat:@"%d follower", number];
+        [_followersButton setTitle:[NSString stringWithFormat:@"%d follower", number]  forState:UIControlStateNormal];
     }];
     
     PFQuery* followingCountQuery = [PFQuery queryWithClassName:kPFTableActivity];
     [followingCountQuery whereKey:kPFActivity_Type equalTo:kPFActivity_Type_Follow];
     [followingCountQuery whereKey:kPFActivity_FromUser equalTo:_profileUser];
-    _followingLabel.text = @"0 following";
     [followingCountQuery countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
-        _followingLabel.text = [NSString stringWithFormat:@"%d following", number];
+        [_followingButton setTitle:[NSString stringWithFormat:@"%d following", number]  forState:UIControlStateNormal];
     }];
     
     PFQuery* postsCountQuery = [PFQuery queryWithClassName:kPFTableName_Selfies];
     [postsCountQuery whereKey:kPFSelfie_Owner equalTo:_profileUser];
-    _postCountLabel.text = @"0 post";
     [postsCountQuery countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
         _postCountLabel.text = [NSString stringWithFormat:@"%d posts", number];
     }];
@@ -124,6 +129,20 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(IBAction)followingButtonClicked:(id)sender
+{
+    GCUsersListViewController* users = [[GCUsersListViewController alloc] init];
+    users.listType = GCListTypeFollowing;
+    [self.navigationController pushViewController:users animated:YES];
+}
+
+-(IBAction)followersButtonClickedd:(id)sender
+{
+    GCUsersListViewController* users = [[GCUsersListViewController alloc] init];
+    users.listType = GCListTypeFollowers;
+    [self.navigationController pushViewController:users animated:YES];
 }
 
 #pragma mark - PGFeedTableView Delegate
