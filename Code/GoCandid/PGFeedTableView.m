@@ -124,7 +124,8 @@
     
     PFFile* file = _datasource[indexPath.row][kPFSelfie_Selfie];
     [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-        UIImage* img = [UIImage animatedImageWithAnimatedGIFData:data];
+//        UIImage* img = [UIImage animatedImageWithAnimatedGIFData:data];
+        UIImage* img = [UIImage imageWithData:data];
         cell.iv.image = img;
     }];
     
@@ -170,6 +171,28 @@
 }
 
 #pragma mark - PGFeedTableViewCell Delegate
+
+-(void)cellDidStartTap:(PGFeedTableViewCell *)cell
+{
+    NSIndexPath* indexPath = [self indexPathForCell:cell];
+    PFFile* file = _datasource[indexPath.row][kPFSelfie_Selfie];
+    [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        //        UIImage* img = [UIImage animatedImageWithAnimatedGIFData:data];
+        UIImage* img = [UIImage animatedImageWithAnimatedGIFData:data];
+        cell.iv.image = img;
+    }];
+}
+
+-(void)cellDidStopTap:(PGFeedTableViewCell *)cell
+{
+    NSIndexPath* indexPath = [self indexPathForCell:cell];
+    PFFile* file = _datasource[indexPath.row][kPFSelfie_Selfie];
+    [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        //        UIImage* img = [UIImage animatedImageWithAnimatedGIFData:data];
+        UIImage* img = [UIImage imageWithData:data];
+        cell.iv.image = img;
+    }];
+}
 
 -(void)cellDidTapOnMoreButton:(PGFeedTableViewCell *)cell
 {

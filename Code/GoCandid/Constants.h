@@ -38,8 +38,6 @@
 #define kPFUser_Location @"location"
 //#define kPFUser_Follow @"follow"
 
-#define kPFQueue_Owner @"owner"
-
 #define kPFSelfie_Owner @"owner"
 #define kPFSelfie_Receiver @"reciever"
 #define kPFSelfie_Selfie @"selfie"
@@ -68,7 +66,6 @@
 //Parse Table Names
 #define kPFTableName_Selfies @"Selfies"
 #define kPFTableUser @"User"
-#define kPFTableQueue @"Queue"
 #define kPFTableActivity @"Activity"
 
 #endif
