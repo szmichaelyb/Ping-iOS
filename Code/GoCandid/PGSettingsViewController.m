@@ -74,13 +74,11 @@
 
 -(IBAction)likeOnFacebook:(id)sender
 {
-#warning change
-    NSURL *facebookURL = [NSURL URLWithString:@"fb://profile/755584617827598"];
+    NSURL *facebookURL = [NSURL URLWithString:@"fb://profile/735947206471497"];
     if ([[UIApplication sharedApplication] canOpenURL:facebookURL]) {
         [[UIApplication sharedApplication] openURL:facebookURL];
     } else {
-#warning change
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://facebook.com/vCinityChat"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://facebook.com/gocandidapp"]];
     }
 }
 
@@ -102,9 +100,8 @@
                      nil];
     
     UIApplication *application = [UIApplication sharedApplication];
-#warning change
     for (NSString *candidate in urls) {
-        NSURL *url = [NSURL URLWithString:[candidate stringByReplacingOccurrencesOfString:@"{handle}" withString:@"vCinityChat"]];
+        NSURL *url = [NSURL URLWithString:[candidate stringByReplacingOccurrencesOfString:@"{handle}" withString:@"gocandidapp"]];
         if ([application canOpenURL:url]) {
             [application openURL:url];
             // Stop trying after the first URL that succeeds

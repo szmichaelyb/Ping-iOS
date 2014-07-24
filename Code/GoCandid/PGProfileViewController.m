@@ -84,7 +84,6 @@
     PFQuery* followerCountQuery = [PFQuery queryWithClassName:kPFTableActivity];
     [followerCountQuery whereKey:kPFActivity_Type equalTo:kPFActivity_Type_Follow];
     [followerCountQuery whereKey:kPFActivity_ToUser equalTo:_profileUser];
-    
     _followersLabel.text = @"0 followers";
     [followerCountQuery countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
         _followersLabel.text = [NSString stringWithFormat:@"%d follower", number];
@@ -93,12 +92,17 @@
     PFQuery* followingCountQuery = [PFQuery queryWithClassName:kPFTableActivity];
     [followingCountQuery whereKey:kPFActivity_Type equalTo:kPFActivity_Type_Follow];
     [followingCountQuery whereKey:kPFActivity_FromUser equalTo:_profileUser];
-    
-    _followingLabel.text = [NSString stringWithFormat:@"%d following", [followingCountQuery countObjects]];
+    _followingLabel.text = @"0 following";
+    [followingCountQuery countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
+        _followingLabel.text = [NSString stringWithFormat:@"%d following", number];
+    }];
     
     PFQuery* postsCountQuery = [PFQuery queryWithClassName:kPFTableName_Selfies];
     [postsCountQuery whereKey:kPFSelfie_Owner equalTo:_profileUser];
-    _postCountLabel.text = [NSString stringWithFormat:@"%d posts", [postsCountQuery countObjects]];
+    _postCountLabel.text = @"0 post";
+    [postsCountQuery countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
+        _postCountLabel.text = [NSString stringWithFormat:@"%d posts", number];
+    }];
 }
 
 -(void)tableScrollViewDidScroll:(UIScrollView *)scrollView
@@ -131,7 +135,7 @@
 
 -(void)tableView:(PGFeedTableView *)tableView moreButtonClicked:(NSIndexPath *)indexPath dataObject:(id)object
 {
-    if ([object[kPFSelfie_Owner][@"objectId"] isEqualToString:[PFUser currentUser].objectId]) {
+    if ([[object[kPFSelfie_Owner] valueForKey:@"objectId"] isEqualToString:[PFUser currentUser].objectId]) {
         
         [UIActionSheet showInView:self.view.window withTitle:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles:@[@"Share"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
             DLog(@"tapped");

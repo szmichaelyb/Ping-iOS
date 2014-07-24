@@ -154,7 +154,7 @@
         [querySearchBarString whereKey:kPFUser_Name containsString:searchBar.text];
         
         PFQuery *finalQuery = [PFQuery orQueryWithSubqueries:[NSArray arrayWithObjects:queryCapitalizedString,queryLowerCaseString, querySearchBarString,nil]];
-        finalQuery.limit = 10;
+        finalQuery.limit = 15;
         [finalQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             _datasource = [[NSMutableArray alloc] initWithArray:objects];
             [self getFollowStatusCompletion:^(NSArray *array) {
