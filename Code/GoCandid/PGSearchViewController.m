@@ -29,6 +29,11 @@
     [super viewDidLoad];
     
     self.navigationController.navigationBar.translucent = NO;
+    self.tabBarController.tabBar.translucent = NO;
+
+    self.title = @"Search users";
+    
+    _datasource = [NSMutableArray new];
     
     UITapGestureRecognizer* reco = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     reco.delegate = self;
@@ -107,6 +112,13 @@
     }];
 }
 
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == _datasource.count - 1) {
+        [self loadFromParseText:_searchBar.text];
+    }
+}
+
 #pragma mark - UITablveView Delegate
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -124,6 +136,37 @@
     [self.searchBar setShowsCancelButton:NO animated:YES];
 }
 
+-(void)loadFromParseText:(NSString*)text
+{
+    //Get objects from parse
+    PFQuery *queryCapitalizedString = [PFUser query];
+    [queryCapitalizedString whereKey:kPFUser_Name containsString:[text capitalizedString]];
+    
+    //query converted user text to lowercase
+    PFQuery *queryLowerCaseString = [PFUser query];
+    [queryLowerCaseString whereKey:kPFUser_Name containsString:[text lowercaseString]];
+    
+    //query real user text
+    PFQuery *querySearchBarString = [PFUser query];
+    [querySearchBarString whereKey:kPFUser_Name containsString:text];
+    
+    PFQuery *finalQuery = [PFQuery orQueryWithSubqueries:[NSArray arrayWithObjects:queryCapitalizedString,queryLowerCaseString, querySearchBarString,nil]];
+    finalQuery.limit = 15;
+    finalQuery.skip = _datasource.count;
+    [finalQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        [_datasource addObjectsFromArray:objects];
+//        _datasource = [[NSMutableArray alloc] initWithArray:objects];
+        DLog(@"%@", objects);
+        DLog(@"%@", _datasource);
+        [self getFollowStatusCompletion:^(NSArray *array) {
+            _followStatusArray = [NSMutableArray arrayWithArray:array];
+            if (objects.count != 0) {
+                [self.tableView reloadData];
+            }
+        }];
+    }];
+}
+
 #pragma mark - UISearchBar Delegate
 
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
@@ -131,30 +174,8 @@
     if (searchText.length == 0){
         _datasource = [NSMutableArray new];
         [_tableView reloadData];
-    }
-    else
-    {
-        //Get objects from parse
-        PFQuery *queryCapitalizedString = [PFUser query];
-        [queryCapitalizedString whereKey:kPFUser_Name containsString:[searchBar.text capitalizedString]];
-        
-        //query converted user text to lowercase
-        PFQuery *queryLowerCaseString = [PFUser query];
-        [queryLowerCaseString whereKey:kPFUser_Name containsString:[searchBar.text lowercaseString]];
-        
-        //query real user text
-        PFQuery *querySearchBarString = [PFUser query];
-        [querySearchBarString whereKey:kPFUser_Name containsString:searchBar.text];
-        
-        PFQuery *finalQuery = [PFQuery orQueryWithSubqueries:[NSArray arrayWithObjects:queryCapitalizedString,queryLowerCaseString, querySearchBarString,nil]];
-        finalQuery.limit = 15;
-        [finalQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            _datasource = [[NSMutableArray alloc] initWithArray:objects];
-            [self getFollowStatusCompletion:^(NSArray *array) {
-                _followStatusArray = [NSMutableArray arrayWithArray:array];
-                [self.tableView reloadData];
-            }];
-        }];
+    } else {
+        [self loadFromParseText:searchBar.text];
     }
 }
 
