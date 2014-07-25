@@ -32,6 +32,8 @@
         self.delegate = self;
         self.dataSource = self;
         self.nxEV_hideSeparatorLinesWheyShowingEmptyView = YES;
+        self.datasource = [NSMutableArray new];
+        self.activityArray = [NSMutableArray new];
     }
     return self;
 }
@@ -58,19 +60,22 @@
         [query whereKey:kPFSelfie_Owner equalTo:user];
     }
     
+    query.limit = 5;
+    query.skip = _datasource.count;
     [query includeKey:kPFSelfie_Owner];
     [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        //        [self.pullToRefresh finishRefresh];
         if (block) {
             block(YES);
         }
-        _datasource = [NSMutableArray arrayWithArray:objects];
-        [PGParseHelper getLikeActivityForSelfies:_datasource fromUser:[PFUser currentUser] completion:^(BOOL finished, NSArray *objects) {
-            _activityArray = [NSMutableArray arrayWithArray:objects];
-            [self reloadData];
+        [_datasource addObjectsFromArray:objects];
+        [PGParseHelper getLikeActivityForSelfies:_datasource fromUser:[PFUser currentUser] completion:^(BOOL finished, NSArray *likeObjects) {
+            [_activityArray addObjectsFromArray:likeObjects];
+            if (objects.count != 0) {
+                [self reloadData];
+            }
+            
         }];
-        [self reloadData];
     }];
 }
 
@@ -117,14 +122,14 @@
     PFUser* senderUser = _datasource[indexPath.row][kPFSelfie_Owner];
     cell.nameLabel.text = senderUser[kPFUser_Name];
     cell.timeAndlocationLabel.text = [NSString stringWithFormat:@"%@ at %@", [self friendlyDateTime:((PFObject*)_datasource[indexPath.row]).createdAt], _datasource[indexPath.row][kPFSelfie_Location]];
-
+    
     [PGParseHelper profilePhotoUser:senderUser completion:^(UIImage *image) {
         cell.thumbIV.image = image;
     }];
     
     PFFile* file = _datasource[indexPath.row][kPFSelfie_Selfie];
     [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-//        UIImage* img = [UIImage animatedImageWithAnimatedGIFData:data];
+        //        UIImage* img = [UIImage animatedImageWithAnimatedGIFData:data];
         UIImage* img = [UIImage imageWithData:data];
         cell.iv.image = img;
     }];
@@ -147,6 +152,15 @@
     cell.iv.tag = indexPath.row;
     UITapGestureRecognizer* gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(performFullScreenAnimation:)];
     [cell.iv addGestureRecognizer:gesture];
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == _datasource.count - 1) {
+        if (_myDelegate) {
+            [_myDelegate tableView:self willDisplayLastCell:cell];
+        }
+    }
 }
 
 #pragma mark -
@@ -207,7 +221,6 @@
 {
     NSIndexPath* indexPath = [self indexPathForCell:cell];
     PFObject* object = _datasource[indexPath.row];
-    DLog(@"%d", cell.likeButtonState);
     BOOL alreadyLike = cell.likeButtonState;
     if (alreadyLike) {
         [PGParseHelper unlikeSelfie:object compltion:^(BOOL finished) {

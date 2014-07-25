@@ -118,6 +118,11 @@
     }
 }
 
+-(void)tableView:(PGFeedTableView *)tableView willDisplayLastCell:(UITableViewCell *)cell
+{
+    [self getData];
+}
+
 -(void)getData
 {
     [self.tableView getFeedForUser:_profileUser completion:^(bool finished) {

@@ -76,6 +76,11 @@
 
 #pragma mark - PGFeedTableView Delegate
 
+-(void)tableView:(PGFeedTableView *)tableView willDisplayLastCell:(UITableViewCell *)cell
+{
+    [self.tableView getFeedForUser:_feedUser completion:nil];
+}
+
 -(void)tableView:(PGFeedTableView *)tableView moreButtonClicked:(NSIndexPath*)indexPath dataObject:(id)object
 {
     [UIActionSheet showInView:self.view.window withTitle:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Report inappropriate" otherButtonTitles:nil tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
