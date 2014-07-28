@@ -35,6 +35,7 @@ static float kDefaultCaptureDelay = 1.0f;
 
 @property (nonatomic, weak) IBOutlet UIButton *cameraButton;
 @property (nonatomic, weak) IBOutlet UIButton *stillButton;
+@property (nonatomic, strong) IBOutlet UIButton* manualButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *thumbScrollView;
 @property (strong, nonatomic) IBOutlet PGFramesButton *framesButton;
 
@@ -44,6 +45,7 @@ static float kDefaultCaptureDelay = 1.0f;
 -(IBAction)pickFromLibary:(id)sender;
 - (IBAction)focusAndExposeTap:(UIGestureRecognizer *)gestureRecognizer;
 - (IBAction)dismissButtonClicked:(id)sender;
+-(IBAction)manualButtonClicked:(id)sender;
 
 // Session management.
 @property (nonatomic) dispatch_queue_t sessionQueue; // Communicate with the session and other session objects on this queue.
@@ -80,11 +82,11 @@ static float kDefaultCaptureDelay = 1.0f;
     [self.navigationController setNavigationBarHidden:YES];
     self.navigationController.navigationBar.translucent = NO;
     
-//    if (_overalayImage) {
-//        self.overlayImageView.image = _overalayImage;
-//    } else {
-//        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(clocseClicked:)];
-//    }
+    //    if (_overalayImage) {
+    //        self.overlayImageView.image = _overalayImage;
+    //    } else {
+    //        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(clocseClicked:)];
+    //    }
     
 	// Create the AVCaptureSession
 	AVCaptureSession *session = [[AVCaptureSession alloc] init];
@@ -163,6 +165,7 @@ static float kDefaultCaptureDelay = 1.0f;
 		}
 	});
     
+    _images = [NSMutableArray new];
     [self changeCamera:nil];
 }
 
@@ -376,27 +379,46 @@ static float kDefaultCaptureDelay = 1.0f;
 	});
 }
 
--(IBAction)captureButtonClicked:(id)sender
+-(IBAction)manualButtonClicked:(id)sender
 {
     for (UIView* subviews in _thumbScrollView.subviews) {
         [subviews removeFromSuperview];
     }
     _images = [NSMutableArray new];
-    for (int i = 0; i < _framesButton.buttonState; i++) {
-        [self performblock:^(int blockI, UIImage* image) {
-            UIImageView* iv = [[UIImageView alloc]initWithImage:image];
-            iv.frame = CGRectMake((blockI * _thumbScrollView.frame.size.height), 0, _thumbScrollView.frame.size.height, _thumbScrollView.frame.size.height);
-            
-            [_thumbScrollView addSubview:iv];
-            [_thumbScrollView setContentSize:CGSizeMake((blockI + 1) * (iv.frame.size.width), _thumbScrollView.frame.size.height)];
-            DLog(@"%@", NSStringFromCGRect(iv.frame));
-            [_thumbScrollView scrollRectToVisible:iv.frame animated:YES];
-            if (blockI == _framesButton.buttonState - 1) {
-                [self userDidPickImages];
-            }
-        } afterDelay: kDefaultCaptureDelay * i];
+    
+    [self.manualButton setSelected:!self.manualButton.isSelected];
+}
+
+-(IBAction)captureButtonClicked:(id)sender
+{
+    if (self.manualButton.isSelected) {
+        [self takePhoto];
+    } else {
+        for (UIView* subviews in _thumbScrollView.subviews) {
+            [subviews removeFromSuperview];
+        }
+        _images = [NSMutableArray new];
+
+        for (int i = 0; i < _framesButton.buttonState; i++) {
+            [self takePhoto];
+        }
     }
-//    [self userDidPickImages];
+}
+
+-(void)takePhoto
+{
+    [self performblock:^(int blockI, UIImage *image) {
+        UIImageView* iv = [[UIImageView alloc]initWithImage:image];
+        iv.frame = CGRectMake((blockI * _thumbScrollView.frame.size.height), 0, _thumbScrollView.frame.size.height, _thumbScrollView.frame.size.height);
+        
+        [_thumbScrollView addSubview:iv];
+        [_thumbScrollView setContentSize:CGSizeMake((blockI + 1) * (iv.frame.size.width), _thumbScrollView.frame.size.height)];
+        DLog(@"%@", NSStringFromCGRect(iv.frame));
+        [_thumbScrollView scrollRectToVisible:iv.frame animated:YES];
+        if (blockI == _framesButton.buttonState - 1) {
+            [self userDidPickImages];
+        }
+    } afterDelay:0];
 }
 
 -(void)performblock:(void (^) (int blockI, UIImage* image))block afterDelay:(NSTimeInterval)delay
@@ -428,7 +450,7 @@ static float kDefaultCaptureDelay = 1.0f;
                 [_images addObject:image];
                 
                 block([_images indexOfObject:image], image);
-//                [self userDidPickImage:image];
+                //                [self userDidPickImage:image];
                 //
                 
                 //				[[[ALAssetsLibrary alloc] init] writeImageToSavedPhotosAlbum:[image CGImage] orientation:(ALAssetOrientation)[image imageOrientation] completionBlock:nil];
@@ -453,7 +475,7 @@ static float kDefaultCaptureDelay = 1.0f;
             [picker pushViewController:editor animated:YES];
         }
         else {
-//            [self userDidPickImage:info[UIImagePickerControllerEditedImage]];
+            //            [self userDidPickImage:info[UIImagePickerControllerEditedImage]];
             
             [self dismissViewControllerAnimated:YES completion:nil];
         }
@@ -469,20 +491,20 @@ static float kDefaultCaptureDelay = 1.0f;
 -(void)userDidPickImages
 {
     UIStoryboard* sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    if (_overalayImage) {
+    //    if (_overalayImage) {
     
-        //Create GIF from _overlayimage and image
-        PGPingViewController* pingVC = [sb instantiateViewControllerWithIdentifier:@"PGPingViewController"];
-//        pingVC.images = @[_overalayImage, image];
+    //Create GIF from _overlayimage and image
+    PGPingViewController* pingVC = [sb instantiateViewControllerWithIdentifier:@"PGPingViewController"];
+    //        pingVC.images = @[_overalayImage, image];
     pingVC.images = _images;
-        pingVC.delegate = _delegate;
-        [self.navigationController pushViewController:pingVC animated:YES];
-//    } else {
-//        PGCamViewController* camVC = [sb instantiateViewControllerWithIdentifier:@"PGCamViewController"];
-//        camVC.overalayImage = image;
-//        camVC.delegate = _delegate;
-//        [self.navigationController pushViewController:camVC animated:YES];
-//    }
+    pingVC.delegate = _delegate;
+    [self.navigationController pushViewController:pingVC animated:YES];
+    //    } else {
+    //        PGCamViewController* camVC = [sb instantiateViewControllerWithIdentifier:@"PGCamViewController"];
+    //        camVC.overalayImage = image;
+    //        camVC.delegate = _delegate;
+    //        [self.navigationController pushViewController:camVC animated:YES];
+    //    }
 }
 
 - (IBAction)focusAndExposeTap:(UIGestureRecognizer *)gestureRecognizer
@@ -597,12 +619,12 @@ static float kDefaultCaptureDelay = 1.0f;
 
 - (void)runStillImageCaptureAnimation
 {
-//	dispatch_async(dispatch_get_main_queue(), ^{
-//		[[[self previewView] layer] setOpacity:0.0];
-//		[UIView animateWithDuration:.25 animations:^{
-//			[[[self previewView] layer] setOpacity:1.0];
-//		}];
-//	});
+    //	dispatch_async(dispatch_get_main_queue(), ^{
+    //		[[[self previewView] layer] setOpacity:0.0];
+    //		[UIView animateWithDuration:.25 animations:^{
+    //			[[[self previewView] layer] setOpacity:1.0];
+    //		}];
+    //	});
 }
 
 - (void)checkDeviceAuthorizationStatus

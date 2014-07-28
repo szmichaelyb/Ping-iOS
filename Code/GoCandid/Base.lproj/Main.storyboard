@@ -325,6 +325,19 @@
                                 <rect key="frame" x="0.0" y="321" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Iui-DC-Yvu">
+                                <rect key="frame" x="244" y="500" width="51" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Manual">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected">
+                                    <color key="titleColor" red="0.97647058819999999" green="0.62352941179999999" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="manualButtonClicked:" destination="vCX-ZW-3h4" eventType="touchUpInside" id="OxK-Dz-dQ3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -334,6 +347,7 @@
                     <connections>
                         <outlet property="cameraButton" destination="Ppu-OS-bx4" id="TMB-OF-Nbv"/>
                         <outlet property="framesButton" destination="7cA-oj-knA" id="UNS-bJ-MGx"/>
+                        <outlet property="manualButton" destination="Iui-DC-Yvu" id="Zjl-hN-rGB"/>
                         <outlet property="previewView" destination="ix2-56-jni" id="cXw-RS-u5o"/>
                         <outlet property="thumbScrollView" destination="UXW-o3-m69" id="jhX-aR-ckV"/>
                     </connections>
