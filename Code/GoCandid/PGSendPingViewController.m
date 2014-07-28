@@ -80,13 +80,13 @@
             object[kPFSelfie_Location] = _locationLabel.text;
             [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 
-                [self postOnFacebookSuccesful:^(bool success) {
+                [self postOnFacebookObject:object succesful:^(bool success) {
                     if (success) {
                         
                     } else {
                         [self facebookPermissionHandle:^(bool granted) {
                             if (granted) {
-                                [self postOnFacebookSuccesful:nil];
+                                [self postOnFacebookObject:object succesful:nil];
                             }
                         }];
                     }
@@ -151,16 +151,13 @@
     }];
 }
 
--(void)postOnFacebookSuccesful:(void (^) (bool success))block
+-(void)postOnFacebookObject:(PFObject*)object succesful:(void (^) (bool success))block
 {
     if (self.facebookButton.isSelected) {
         //Share
-        
-        NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys: @"Sharing Tutorial", @"name",
-                                       @"Build great social apps and get more installs.", @"caption",
-                                       @"Allow your users to share stories on Facebook from your app using the iOS SDK.", @"description",
-                                       @"https://developers.facebook.com/docs/ios/share/", @"link",
-                                       @"http://i.imgur.com/g3Qc1HN.png", @"picture",
+        PFFile* file = object[kPFSelfie_Selfie];
+        NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:object[kPFSelfie_Caption], @"caption",
+                                       file.url, @"picture",
                                        nil];
         
         [FBRequestConnection startWithGraphPath:@"/me/feed" parameters:params HTTPMethod:@"POST" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {

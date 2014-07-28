@@ -39,6 +39,9 @@
         self.title = @"Followers";
         [self getFollowersList];
     }
+    if (!_listForUser) {
+        _listForUser = [PFUser currentUser];
+    }
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -51,20 +54,22 @@
 -(void)getFollowingList
 {
     PFQuery* query = [PFQuery queryWithClassName:kPFTableActivity];
-    [query whereKey:kPFActivity_FromUser equalTo:[PFUser currentUser]];
+    [query whereKey:kPFActivity_FromUser equalTo:_listForUser];
     [query whereKey:kPFActivity_Type equalTo:kPFActivity_Type_Follow];
     [query includeKey:kPFActivity_ToUser];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         _datasource = [NSMutableArray arrayWithArray:[objects valueForKey:kPFActivity_ToUser]];
-        _followStatusArray = [NSMutableArray arrayWithArray:objects];
-        [self.tableView reloadData];
+        [self getFollowStatusArrayCompletion:^(NSArray *array) {
+            _followStatusArray = [NSMutableArray arrayWithArray:array];
+            [self.tableView reloadData];
+        }];
     }];
 }
 
 -(void)getFollowersList
 {
     PFQuery* query = [PFQuery queryWithClassName:kPFTableActivity];
-    [query whereKey:kPFActivity_ToUser equalTo:[PFUser currentUser]];
+    [query whereKey:kPFActivity_ToUser equalTo:_listForUser];
     [query whereKey:kPFActivity_Type equalTo:kPFActivity_Type_Follow];
     [query includeKey:kPFActivity_FromUser];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -104,7 +109,7 @@
     PFUser* user = _datasource[indexPath.row];
     cell.nameLabel.text = user[kPFUser_Name];
     cell.delegate = self;
-    if ([[_followStatusArray valueForKey:kPFActivity_ToUser] containsObject:user]) {
+    if ([[[_followStatusArray valueForKey:kPFActivity_ToUser] valueForKey:kPFObjectId] containsObject:user.objectId]) {
         [cell setFollowButtonStatus:FollowButtonStateFollowing];
     } else {
     [cell setFollowButtonStatus:FollowButtonStateNotFollowing];

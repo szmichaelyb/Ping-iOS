@@ -17,6 +17,7 @@ typedef enum
 
 @interface GCUsersListViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, PGSearchTableViewCellDelegate>
 
+@property (nonatomic, strong) PFUser* listForUser;
 @property (nonatomic, assign) GCListType listType;
 
 @end

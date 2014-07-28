@@ -129,8 +129,8 @@
     
     PFFile* file = _datasource[indexPath.row][kPFSelfie_Selfie];
     [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-        //        UIImage* img = [UIImage animatedImageWithAnimatedGIFData:data];
-        UIImage* img = [UIImage imageWithData:data];
+        UIImage* img = [UIImage animatedImageWithAnimatedGIFData:data];
+//        UIImage* img = [UIImage imageWithData:data];
         cell.iv.image = img;
     }];
     
@@ -142,7 +142,7 @@
         cell.featuredLabel.hidden = YES;
     }
     
-    if ([[[_activityArray valueForKey:kPFActivity_Selfie] valueForKey:@"objectId"] containsObject:[_datasource[indexPath.row] valueForKey:@"objectId"]]) {
+    if ([[[_activityArray valueForKey:kPFActivity_Selfie] valueForKey:kPFObjectId] containsObject:[_datasource[indexPath.row] valueForKey:kPFObjectId]]) {
         [cell setLikeButtonState:YES];
     } else {
         [cell setLikeButtonState:NO];
@@ -154,13 +154,19 @@
     [cell.iv addGestureRecognizer:gesture];
 }
 
--(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)tableView:(UITableView *)tableView willDisplayCell:(PGFeedTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == _datasource.count - 1) {
         if (_myDelegate) {
             [_myDelegate tableView:self willDisplayLastCell:cell];
         }
     }
+    [cell.iv startAnimating];
+}
+
+-(void)tableView:(UITableView *)tableView didEndDisplayingCell:(PGFeedTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [cell.iv stopAnimating];
 }
 
 #pragma mark -
@@ -188,24 +194,24 @@
 
 -(void)cellDidStartTap:(PGFeedTableViewCell *)cell
 {
-    NSIndexPath* indexPath = [self indexPathForCell:cell];
-    PFFile* file = _datasource[indexPath.row][kPFSelfie_Selfie];
-    [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-        //        UIImage* img = [UIImage animatedImageWithAnimatedGIFData:data];
-        UIImage* img = [UIImage animatedImageWithAnimatedGIFData:data];
-        cell.iv.image = img;
-    }];
+//    NSIndexPath* indexPath = [self indexPathForCell:cell];
+//    PFFile* file = _datasource[indexPath.row][kPFSelfie_Selfie];
+//    [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+//        //        UIImage* img = [UIImage animatedImageWithAnimatedGIFData:data];
+//        UIImage* img = [UIImage animatedImageWithAnimatedGIFData:data];
+//        cell.iv.image = img;
+//    }];
 }
 
 -(void)cellDidStopTap:(PGFeedTableViewCell *)cell
 {
-    NSIndexPath* indexPath = [self indexPathForCell:cell];
-    PFFile* file = _datasource[indexPath.row][kPFSelfie_Selfie];
-    [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-        //        UIImage* img = [UIImage animatedImageWithAnimatedGIFData:data];
-        UIImage* img = [UIImage imageWithData:data];
-        cell.iv.image = img;
-    }];
+//    NSIndexPath* indexPath = [self indexPathForCell:cell];
+//    PFFile* file = _datasource[indexPath.row][kPFSelfie_Selfie];
+//    [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+//        //        UIImage* img = [UIImage animatedImageWithAnimatedGIFData:data];
+//        UIImage* img = [UIImage imageWithData:data];
+//        cell.iv.image = img;
+//    }];
 }
 
 -(void)cellDidTapOnMoreButton:(PGFeedTableViewCell *)cell

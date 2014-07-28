@@ -110,18 +110,7 @@
     }];
 }
 
--(void)tableScrollViewDidScroll:(UIScrollView *)scrollView
-{
-    if (scrollView == self.tableView) {
-        [self.tableView updateParallelViewWithOffset:scrollView.contentOffset];
-    } else {
-    }
-}
-
--(void)tableView:(PGFeedTableView *)tableView willDisplayLastCell:(UITableViewCell *)cell
-{
-    [self getData];
-}
+#pragma mark -
 
 -(void)getData
 {
@@ -136,10 +125,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark -
+
 -(IBAction)followingButtonClicked:(id)sender
 {
     GCUsersListViewController* users = [[GCUsersListViewController alloc] init];
     users.listType = GCListTypeFollowing;
+    users.listForUser = _profileUser;
     [self.navigationController pushViewController:users animated:YES];
 }
 
@@ -147,10 +139,24 @@
 {
     GCUsersListViewController* users = [[GCUsersListViewController alloc] init];
     users.listType = GCListTypeFollowers;
+    users.listForUser = _profileUser;
     [self.navigationController pushViewController:users animated:YES];
 }
 
 #pragma mark - PGFeedTableView Delegate
+
+-(void)tableScrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (scrollView == self.tableView) {
+        [self.tableView updateParallelViewWithOffset:scrollView.contentOffset];
+    } else {
+    }
+}
+
+-(void)tableView:(PGFeedTableView *)tableView willDisplayLastCell:(UITableViewCell *)cell
+{
+    [self getData];
+}
 
 -(void)tableView:(PGFeedTableView *)tableView didTapOnImageView:(UIImageView *)imageView
 {
@@ -159,7 +165,7 @@
 
 -(void)tableView:(PGFeedTableView *)tableView moreButtonClicked:(NSIndexPath *)indexPath dataObject:(id)object
 {
-    if ([[object[kPFSelfie_Owner] valueForKey:@"objectId"] isEqualToString:[PFUser currentUser].objectId]) {
+    if ([[object[kPFSelfie_Owner] valueForKey:kPFObjectId] isEqualToString:[PFUser currentUser].objectId]) {
         
         [UIActionSheet showInView:self.view.window withTitle:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles:@[@"Share"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
             DLog(@"tapped");

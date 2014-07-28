@@ -27,6 +27,8 @@
 *  Parse Table Columns
 */
 
+#define kPFObjectId @"objectId"
+
 #define kPFInstallation_Owner @"owner"
 
 #define kPFUser_Username @"username"
