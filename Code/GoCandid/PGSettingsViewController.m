@@ -9,7 +9,6 @@
 #import "PGSettingsViewController.h"
 #import "PGAppDelegate.h"
 #import <Parse/Parse.h>
-//#import <UIScrollView+APParallaxHeader.h>
 #import <IDMPhotoBrowser.h>
 #import "WebViewController.h"
 #import <iRate/iRate.h>
@@ -168,7 +167,7 @@
         } else if (indexPath.row == 1) {
             MFMailComposeViewController* mailVC = [[MFMailComposeViewController alloc] init];
             mailVC.mailComposeDelegate = self;
-            mailVC.view.tintColor = [UIColor whiteColor];
+//            mailVC.view.tintColor = [UIColor whiteColor];
             [mailVC setSubject:@"vCinity App Support"];
             [mailVC setToRecipients:@[@"helpme@appikon.com"]];
             
@@ -179,7 +178,7 @@
             //Report an abuse
             MFMailComposeViewController* issueVC = [[MFMailComposeViewController alloc] init];
             issueVC.mailComposeDelegate = self;
-            issueVC.view.tintColor = [UIColor whiteColor];
+//            issueVC.view.tintColor = [UIColor whiteColor];
             [issueVC setSubject:@"Reporting abuse content from vCinity"];
             [issueVC setToRecipients:@[@"reportabuse@appikon.com"]];
             [self presentViewController:issueVC animated:YES completion:nil];
@@ -188,7 +187,7 @@
     if (indexPath.section == 1) {
         MFMailComposeViewController* mailVC = [[MFMailComposeViewController alloc] init];
         mailVC.mailComposeDelegate = self;
-        mailVC.view.tintColor = [UIColor whiteColor];
+//        mailVC.view.tintColor = [UIColor whiteColor];
         [mailVC setSubject:@"Feedback for vCinity App."];
         [mailVC setToRecipients:@[@"feedback@appikon.com"]];
         [self presentViewController:mailVC animated:YES completion:nil];
@@ -213,7 +212,7 @@
             if ([MFMessageComposeViewController canSendText]) {
                 MFMessageComposeViewController* messageVC = [[MFMessageComposeViewController alloc] init];
                 messageVC.messageComposeDelegate = self;
-                messageVC.view.tintColor = [UIColor whiteColor];
+//                messageVC.view.tintColor = [UIColor whiteColor];
                 messageVC.body = @"Download vCinity app on AppStore to chat even with no Internet connection. https://itunes.apple.com/app/id898275446";
                 [self presentViewController:messageVC animated:YES completion:nil];
             }
@@ -222,7 +221,7 @@
             if ([MFMailComposeViewController canSendMail]) {
                 MFMailComposeViewController* mailVC = [[MFMailComposeViewController alloc] init];
                 mailVC.mailComposeDelegate = self;
-                mailVC.view.tintColor = [UIColor whiteColor];
+//                mailVC.view.tintColor = [UIColor whiteColor];
                 [mailVC setSubject:@"vCinity Chat App for iPhone"];
                 [mailVC setMessageBody:@"Hey, \n\nI just downloaded vCinity Chat on my iPhone. \n\nIt is a chat app which lets me chat with people around me. Even if there is no Internet connection. The signup is very easy and simple. You don't have to remember anything. \n\nDownload it now on the AppStore to start chatting. https://itunes.apple.com/app/id898275446" isHTML:NO];
                 [self presentViewController:mailVC animated:YES completion:nil];
@@ -327,7 +326,7 @@
     if ([segue.identifier isEqualToString:@"termsSegue"]) {
         WebViewController* webViewContr = segue.destinationViewController;
         webViewContr.title = @"Terms of Use";
-        webViewContr.url = [NSURL URLWithString:@"http://appikon.com/vCinityChat/ToS.html"];
+        webViewContr.url = [NSURL URLWithString:@"http://appikon.com/GoCandid/ToS.html"];
     }
 }
 

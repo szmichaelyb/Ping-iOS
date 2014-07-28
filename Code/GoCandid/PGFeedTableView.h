@@ -35,5 +35,6 @@ typedef enum {
 
 @optional
 -(void)tableScrollViewDidScroll:(UIScrollView*)scrollView;
+-(void)tablescrollViewDidScrollToTop:(UIScrollView*)scrollView;
 
 @end

@@ -13,6 +13,7 @@
 #import "PGFeedHeader.h"
 #import "PGFeedTableView.h"
 #import "PGProgressHUD.h"
+#import <GTScrollNavigationBar/GTScrollNavigationBar.h>
 
 @interface PGFeedViewController ()<PGFeedTableViewDelegate>
 {
@@ -61,6 +62,18 @@
     // Do any additional setup after loading the view.
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.scrollNavigationBar.scrollView = self.tableView;
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.navigationController.scrollNavigationBar.scrollView = nil;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -75,6 +88,11 @@
 }
 
 #pragma mark - PGFeedTableView Delegate
+
+-(void)tablescrollViewDidScrollToTop:(UIScrollView *)scrollView
+{
+    [self.navigationController.scrollNavigationBar resetToDefaultPosition:YES];
+}
 
 -(void)tableView:(PGFeedTableView *)tableView willDisplayLastCell:(UITableViewCell *)cell
 {

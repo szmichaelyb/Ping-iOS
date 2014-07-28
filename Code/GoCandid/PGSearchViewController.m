@@ -171,8 +171,8 @@
 
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
+    _datasource = [NSMutableArray new];
     if (searchText.length == 0){
-        _datasource = [NSMutableArray new];
         [_tableView reloadData];
     } else {
         [self loadFromParseText:searchBar.text];

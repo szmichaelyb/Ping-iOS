@@ -352,7 +352,7 @@
             <objects>
                 <navigationController definesPresentationContext="YES" id="WPs-iE-ZTp" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Feed" image="settings-off" id="z7h-6J-rkP"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UQp-Vh-eVz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UQp-Vh-eVz" customClass="GTScrollNavigationBar">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>

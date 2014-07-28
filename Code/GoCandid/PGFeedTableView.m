@@ -88,6 +88,13 @@
     }
 }
 
+-(void)scrollViewDidScrollToTop:(UIScrollView *)scrollView
+{
+    if (_myDelegate && [_myDelegate respondsToSelector:@selector(tablescrollViewDidScrollToTop:)]) {
+        [_myDelegate tablescrollViewDidScrollToTop:scrollView];
+    }
+}
+
 #pragma mark - UITableView Datasource
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
