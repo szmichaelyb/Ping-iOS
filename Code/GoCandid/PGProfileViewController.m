@@ -87,7 +87,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self getData];
+    [self getDataAppend:NO];
     
     PFQuery* followerCountQuery = [PFQuery queryWithClassName:kPFTableActivity];
     [followerCountQuery whereKey:kPFActivity_Type equalTo:kPFActivity_Type_Follow];
@@ -112,8 +112,11 @@
 
 #pragma mark -
 
--(void)getData
+-(void)getDataAppend:(BOOL)append
 {
+    if (!append) {
+        [self.tableView refreshDatasource];
+    }
     [self.tableView getFeedForUser:_profileUser completion:^(bool finished) {
         
     }];
@@ -155,7 +158,7 @@
 
 -(void)tableView:(PGFeedTableView *)tableView willDisplayLastCell:(UITableViewCell *)cell
 {
-    [self getData];
+    [self getDataAppend:YES];
 }
 
 -(void)tableView:(PGFeedTableView *)tableView didTapOnImageView:(UIImageView *)imageView
@@ -178,7 +181,7 @@
                             if (succeeded) {
                                 [[PGProgressHUD sharedInstance] showInView:self.navigationController.view withText:@"Deleted" hideAfter:2];
                             }
-                            [self getData];
+                            [self getDataAppend:NO];
                         }];
                     }
                 }];

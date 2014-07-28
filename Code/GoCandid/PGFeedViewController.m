@@ -82,6 +82,7 @@
 
 -(void)pullToRefreshDidStart
 {
+    [self.tableView refreshDatasource];
     [self.tableView getFeedForUser:_feedUser completion:^(bool finished) {
         [self.pullToRefresh finishRefresh];
     }];

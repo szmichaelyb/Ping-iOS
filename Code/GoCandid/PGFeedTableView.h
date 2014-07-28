@@ -23,6 +23,7 @@ typedef enum {
 @property (assign, nonatomic) id<PGFeedTableViewDelegate> myDelegate;
 @property (strong, nonatomic) UIView* emptyView;
 
+-(void)refreshDatasource;
 -(void)getFeedForUser:(PFUser*)user completion:(void (^) (bool finished))block;
 
 @end

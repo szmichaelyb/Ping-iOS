@@ -392,7 +392,7 @@ static float kDefaultCaptureDelay = 1.0f;
 -(IBAction)captureButtonClicked:(id)sender
 {
     if (self.manualButton.isSelected) {
-        [self takePhoto];
+        [self takePhotoDelay:0];
     } else {
         for (UIView* subviews in _thumbScrollView.subviews) {
             [subviews removeFromSuperview];
@@ -400,12 +400,12 @@ static float kDefaultCaptureDelay = 1.0f;
         _images = [NSMutableArray new];
 
         for (int i = 0; i < _framesButton.buttonState; i++) {
-            [self takePhoto];
+            [self takePhotoDelay:kDefaultCaptureDelay * i];
         }
     }
 }
 
--(void)takePhoto
+-(void)takePhotoDelay:(int)delay
 {
     [self performblock:^(int blockI, UIImage *image) {
         UIImageView* iv = [[UIImageView alloc]initWithImage:image];
@@ -418,7 +418,7 @@ static float kDefaultCaptureDelay = 1.0f;
         if (blockI == _framesButton.buttonState - 1) {
             [self userDidPickImages];
         }
-    } afterDelay:0];
+    } afterDelay:delay];
 }
 
 -(void)performblock:(void (^) (int blockI, UIImage* image))block afterDelay:(NSTimeInterval)delay

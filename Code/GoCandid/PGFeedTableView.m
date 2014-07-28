@@ -40,6 +40,11 @@
 
 #pragma mark -
 
+-(void)refreshDatasource
+{
+    _datasource = [NSMutableArray new];
+}
+
 -(void)getFeedForUser:(PFUser *)user completion:(void (^)(bool))block
 {
     self.nxEV_emptyView = self.emptyView;
