@@ -557,7 +557,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="U9A-M3-EPF">
-                        <barButtonItem key="leftBarButtonItem" title="Invite" id="pd9-44-jsQ">
+                        <barButtonItem key="leftBarButtonItem" title="+" id="pd9-44-jsQ">
                             <connections>
                                 <segue destination="eKY-XE-dNj" kind="modal" id="veL-FX-kvv"/>
                             </connections>
@@ -604,7 +604,6 @@
                                 <segments>
                                     <segment title="Phone"/>
                                     <segment title="Facebook"/>
-                                    <segment title="Search"/>
                                 </segments>
                                 <connections>
                                     <action selector="segmentChanged:" destination="FNA-UQ-P0N" eventType="valueChanged" id="P6V-48-pii"/>
@@ -635,6 +634,9 @@
                                                     <state key="normal" title="Button">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="actionButtonClicked:" destination="jSw-Or-h0C" eventType="touchUpInside" id="db3-qq-FwH"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -660,6 +662,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="segControl" destination="IUl-Ni-MfE" id="adO-si-bRj"/>
                         <outlet property="tableView" destination="ufZ-uc-lbK" id="nI8-uS-XYl"/>
                     </connections>
                 </viewController>

@@ -58,6 +58,7 @@
 #define kPFActivity_Type_Follow @"follow"
 #define kPFActivity_Type_Comment @"comment"
 #define kPFActivity_Type_Joined @"joined"
+#define kPGActivity_Type_Invited @"invited"
 
 /**
 *

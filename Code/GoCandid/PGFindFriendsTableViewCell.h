@@ -11,14 +11,26 @@
 typedef enum
 {
     FollowButtonStateNotFollowing,
-    FollowButtonStateFollowing
+    FollowButtonStateFollowing,
+    FollowButtonStateInvite,
+    FollowButtonStateInvited
 }FollowButtonStatus;
+
+@protocol PGFindFriendsCellDelegate;
 
 @interface PGFindFriendsTableViewCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
+@property (nonatomic, assign, readonly) FollowButtonStatus followButtonStatus;
+@property (nonatomic, strong) id<PGFindFriendsCellDelegate> delegate;
 
--(FollowButtonStatus)followButtonStatus;
+//-(FollowButtonStatus)followButtonStatus;
 -(void)setFollowButtonStatus:(FollowButtonStatus)status;
+
+@end
+
+@protocol PGFindFriendsCellDelegate <NSObject>
+
+-(void)cell:(PGFindFriendsTableViewCell*)cell didClickOnButton:(UIButton*)button;
 
 @end

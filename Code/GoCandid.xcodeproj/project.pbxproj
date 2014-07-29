@@ -30,6 +30,7 @@
 		06B5615F1975AB9700E92A92 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06B5615E1975AB9700E92A92 /* MobileCoreServices.framework */; };
 		06B561611975AB9E00E92A92 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06B561601975AB9E00E92A92 /* ImageIO.framework */; };
 		06B561641975B04B00E92A92 /* UIImage+animatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B561631975B04B00E92A92 /* UIImage+animatedGIF.m */; };
+		06B58A80198807F10020D01E /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06B58A7F198807F10020D01E /* AddressBook.framework */; };
 		06DCBCBA196E2AFF00E8C9B2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06DCBCB9196E2AFF00E8C9B2 /* Foundation.framework */; };
 		06DCBCBC196E2AFF00E8C9B2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06DCBCBB196E2AFF00E8C9B2 /* CoreGraphics.framework */; };
 		06DCBCBE196E2AFF00E8C9B2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06DCBCBD196E2AFF00E8C9B2 /* UIKit.framework */; };
@@ -101,6 +102,7 @@
 		06B561601975AB9E00E92A92 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		06B561621975B04B00E92A92 /* UIImage+animatedGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+animatedGIF.h"; sourceTree = "<group>"; };
 		06B561631975B04B00E92A92 /* UIImage+animatedGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+animatedGIF.m"; sourceTree = "<group>"; };
+		06B58A7F198807F10020D01E /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		06DCBCB6196E2AFF00E8C9B2 /* GoCandid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoCandid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06DCBCB9196E2AFF00E8C9B2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		06DCBCBB196E2AFF00E8C9B2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -158,6 +160,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06B58A80198807F10020D01E /* AddressBook.framework in Frameworks */,
 				06B561611975AB9E00E92A92 /* ImageIO.framework in Frameworks */,
 				06B5615F1975AB9700E92A92 /* MobileCoreServices.framework in Frameworks */,
 				06DCBCBC196E2AFF00E8C9B2 /* CoreGraphics.framework in Frameworks */,
@@ -264,6 +267,7 @@
 		06DCBCB8196E2AFF00E8C9B2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				06B58A7F198807F10020D01E /* AddressBook.framework */,
 				06E79446198037CB00E7B143 /* Crashlytics.framework */,
 				06B561601975AB9E00E92A92 /* ImageIO.framework */,
 				06B5615E1975AB9700E92A92 /* MobileCoreServices.framework */,
@@ -303,11 +307,11 @@
 		06DCBCC0196E2AFF00E8C9B2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				06DCBCEE196EDD5100E8C9B2 /* Constants.h */,
 				06DCBCC1196E2AFF00E8C9B2 /* GoCandid-Info.plist */,
 				06DCBCC2196E2AFF00E8C9B2 /* InfoPlist.strings */,
 				06DCBCC5196E2AFF00E8C9B2 /* main.m */,
 				06DCBCC7196E2AFF00E8C9B2 /* GoCandid-Prefix.pch */,
-				06DCBCEE196EDD5100E8C9B2 /* Constants.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";

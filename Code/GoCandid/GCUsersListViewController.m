@@ -8,6 +8,7 @@
 
 #import "GCUsersListViewController.h"
 #import "PGSearchTableViewCell.h"
+#import "PGProfileViewController.h"
 
 @interface GCUsersListViewController ()
 
@@ -43,6 +44,12 @@
         _listForUser = [PFUser currentUser];
     }
     // Do any additional setup after loading the view from its nib.
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -81,6 +88,8 @@
     }];
 }
 
+#pragma mark - UITableView Datasource
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -118,6 +127,15 @@
         cell.thumbIV.image = image;
     }];
 }
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    PGProfileViewController* profileVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PGProfileViewController"];
+    profileVC.profileUser = _datasource[indexPath.row];
+    [self.navigationController pushViewController:profileVC animated:YES];
+}
+
+#pragma mark -
 
 -(void)buttonTappedOnCell:(PGSearchTableViewCell *)cell
 {

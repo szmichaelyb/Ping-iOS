@@ -12,6 +12,8 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *actionButton;
 
+- (IBAction)actionButtonClicked:(UIButton *)sender;
+
 @end
 
 @implementation PGFindFriendsTableViewCell
@@ -37,20 +39,31 @@
     // Configure the view for the selected state
 }
 
--(FollowButtonStatus)followButtonStatus
-{
-    if ([[_actionButton titleForState:UIControlStateNormal] isEqualToString:@"Follow"]) {
-        return FollowButtonStateNotFollowing;
-    }
-    return FollowButtonStateFollowing;
-}
+//-(FollowButtonStatus)followButtonStatus
+//{
+//    if ([[_actionButton titleForState:UIControlStateNormal] isEqualToString:@"Follow"]) {
+//        return FollowButtonStateNotFollowing;
+//    } else if ([[_actionButton titleForState:UIControlStateNormal] i])
+//    return FollowButtonStateFollowing;
+//}
 
 -(void)setFollowButtonStatus:(FollowButtonStatus)status
 {
     if (status == FollowButtonStateFollowing) {
         [_actionButton setTitle:@"Following" forState:UIControlStateNormal];
-    } else {
+    } else if (status == FollowButtonStateNotFollowing) {
         [_actionButton setTitle:@"Follow" forState:UIControlStateNormal];
+    } else if (status == FollowButtonStateInvite) {
+        [_actionButton setTitle:@"Invite" forState:UIControlStateNormal];
+    } else {
+        [_actionButton setTitle:@"Invited" forState:UIControlStateNormal];
+    }
+    _followButtonStatus = status;
+}
+
+- (IBAction)actionButtonClicked:(UIButton *)sender {
+    if (_delegate) {
+        [_delegate cell:self didClickOnButton:sender];
     }
 }
 
