@@ -46,6 +46,11 @@ const CGFloat kDefaultGifDelay = 0.5;
     self.imageView.image = [UIImage animatedImageWithAnimatedGIFURL:_imageURL];
 }
 
+-(BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

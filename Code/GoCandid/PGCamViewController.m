@@ -169,6 +169,11 @@ static float kDefaultCaptureDelay = 1.0f;
     [self changeCamera:nil];
 }
 
+-(BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
 	dispatch_async([self sessionQueue], ^{
