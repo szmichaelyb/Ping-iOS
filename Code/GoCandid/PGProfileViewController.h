@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PGProfileViewController : UIViewController
+@interface PGProfileViewController : UIViewController< UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) PFUser* profileUser;
 

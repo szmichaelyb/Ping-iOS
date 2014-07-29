@@ -12,6 +12,7 @@
 #import <UIActionSheet+Blocks/UIActionSheet+Blocks.h>
 #import "PGProgressHUD.h"
 #import "GCUsersListViewController.h"
+#import <IDMPhotoBrowser.h>
 
 @interface PGProfileViewController ()<PGFeedTableViewDelegate>
 
@@ -74,6 +75,13 @@
     _profileIV.layer.borderColor = [UIColor whiteColor].CGColor;
     _profileIV.layer.borderWidth = 4;
     _profileIV.layer.masksToBounds = YES;
+    _profileIV.userInteractionEnabled = YES;
+    
+    if ([_profileUser.objectId isEqualToString:[PFUser currentUser].objectId]) {
+        UITapGestureRecognizer* tapGestuere = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(profileIVClicked:)];
+        [_profileIV addGestureRecognizer:tapGestuere];
+    }
+    
     _nameLabel.text = _profileUser[kPFUser_Name];
     
     _headerView.image = [self blur:_profileIV.image];
@@ -108,6 +116,72 @@
     [postsCountQuery countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
         _postCountLabel.text = [NSString stringWithFormat:@"%d posts", number];
     }];
+}
+
+-(void)profileIVClicked:(id)sender
+{
+    [UIActionSheet showInView:self.view.window withTitle:nil cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:nil otherButtonTitles:@[@"View Profile Photo", @"Take Photo", @"Choose Exisiting Photo", @"Import from Facebook"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+        if (buttonIndex == 0) {
+            //View
+            
+            IDMPhoto* photo = [IDMPhoto photoWithImage:_profileIV.image];
+            IDMPhotoBrowser* photoBrowser = [[IDMPhotoBrowser alloc] initWithPhotos:@[photo] animatedFromView:_profileIV];
+            photoBrowser.scaleImage = _profileIV.image;
+            [self presentViewController:photoBrowser animated:YES completion:nil];
+            
+        } else if (buttonIndex == 1) {
+            //Take photo
+            UIImagePickerController* imagePicker = [[UIImagePickerController alloc] init];
+            imagePicker.delegate = self;
+            [imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
+            [self presentViewController:imagePicker animated:YES completion:nil];
+            
+        } else if (buttonIndex == 2) {
+            //Choose from library
+            UIImagePickerController* imagePicker = [[UIImagePickerController alloc] init];
+            imagePicker.delegate = self;
+            [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+            [self presentViewController:imagePicker animated:YES completion:nil];
+        } else if (buttonIndex == 3) {
+            //Import from Facebook
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                NSData* imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://graph.facebook.com/%@/picture?width=500", [PFUser currentUser][kPFUser_FBID]]]];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    _profileIV.image = [UIImage imageWithData:imgData];
+                });
+                
+                PFFile* imageFile = [PFFile fileWithName:@"profile.jpg" data:imgData];
+                [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    
+                    [[PFUser currentUser] setObject:imageFile forKey:kPFUser_Picture];
+                    [[PFUser currentUser] saveInBackground];
+                }];
+            });
+        }
+    }];
+}
+
+#pragma mark - UIImagePickerController Delegate
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        _profileIV.image = info[UIImagePickerControllerOriginalImage];
+        
+        NSData* imgData = UIImageJPEGRepresentation(info[UIImagePickerControllerOriginalImage], 0.7);
+        PFFile* imageFile = [PFFile fileWithName:@"profile.jpg" data:imgData];
+        [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            
+            [[PFUser currentUser] setObject:imageFile forKey:kPFUser_Picture];
+            [[PFUser currentUser] saveInBackground];
+        }];
+    }];
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark -

@@ -26,6 +26,7 @@
 
 - (IBAction)segmentChanged:(UISegmentedControl*)seg;
 - (IBAction)closeButtonClicked:(id)sender;
+- (IBAction)inviteFacebookFriendsClicked:(id)sender;
 
 @end
 
@@ -46,8 +47,6 @@
     
     [NSThread detachNewThreadSelector:@selector(loadDeviceContacts) toTarget:self withObject:nil];
     [NSThread detachNewThreadSelector:@selector(loadFacebookFriends) toTarget:self withObject:nil];
-    
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
@@ -148,6 +147,14 @@
 - (IBAction)closeButtonClicked:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)inviteFacebookFriendsClicked:(id)sender
+{
+    //invite
+    [FBWebDialogs presentRequestsDialogModallyWithSession:nil message:@"message" title:nil parameters:nil handler:^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
+        
+    }];
 }
 
 -(void)followAll:(id)sender
@@ -296,7 +303,11 @@
     NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
     PFUser* user;
     if (self.segControl.selectedSegmentIndex == 0) {
-        user = _deviceContactsUsingApp[indexPath.row];
+        if (indexPath.section == 0) {
+            user = _deviceContactsUsingApp[indexPath.row];
+        } else {
+            user = _deviceContactsNotUsingApp[indexPath.row];
+        }
     } else {
         user = _facebookDatasource[indexPath.row];
     }

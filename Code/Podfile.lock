@@ -76,6 +76,7 @@ DEPENDENCIES:
   - FormatterKit (~> 1.4.2)
   - GTScrollNavigationBar (~> 0.1.1)
   - IDMPhotoBrowser
+  - IDMPhotoBrowser (~> 1.3.5)
   - iRate (~> 1.9.3)
   - MBProgressHUD (~> 0.8)
   - Parse (~> 1.2.9)
