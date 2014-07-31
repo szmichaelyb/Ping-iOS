@@ -156,7 +156,6 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-#warning change
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
@@ -168,7 +167,7 @@
             MFMailComposeViewController* mailVC = [[MFMailComposeViewController alloc] init];
             mailVC.mailComposeDelegate = self;
 //            mailVC.view.tintColor = [UIColor whiteColor];
-            [mailVC setSubject:@"vCinity App Support"];
+            [mailVC setSubject:@"GoCandid App Support"];
             [mailVC setToRecipients:@[@"helpme@appikon.com"]];
             
             NSString* info = [NSString stringWithFormat:@"Email: %@\n App Version: %@\nDevice: %@\n OS Version: %@", [PFUser currentUser][kPFUser_Email], [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"], [UIDevice currentDevice].platformString, [UIDevice currentDevice].systemVersion];
@@ -179,7 +178,7 @@
             MFMailComposeViewController* issueVC = [[MFMailComposeViewController alloc] init];
             issueVC.mailComposeDelegate = self;
 //            issueVC.view.tintColor = [UIColor whiteColor];
-            [issueVC setSubject:@"Reporting abuse content from vCinity"];
+            [issueVC setSubject:@"Reporting abuse content from GoCandid"];
             [issueVC setToRecipients:@[@"reportabuse@appikon.com"]];
             [self presentViewController:issueVC animated:YES completion:nil];
         }
@@ -188,7 +187,7 @@
         MFMailComposeViewController* mailVC = [[MFMailComposeViewController alloc] init];
         mailVC.mailComposeDelegate = self;
 //        mailVC.view.tintColor = [UIColor whiteColor];
-        [mailVC setSubject:@"Feedback for vCinity App."];
+        [mailVC setSubject:@"Feedback for GoCandid App."];
         [mailVC setToRecipients:@[@"feedback@appikon.com"]];
         [self presentViewController:mailVC animated:YES completion:nil];
     }
@@ -206,14 +205,13 @@
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (actionSheet.tag == ActionSheetTypeShare) {
-#warning change
         if (buttonIndex == 0) {
             //Mail
             if ([MFMessageComposeViewController canSendText]) {
                 MFMessageComposeViewController* messageVC = [[MFMessageComposeViewController alloc] init];
                 messageVC.messageComposeDelegate = self;
 //                messageVC.view.tintColor = [UIColor whiteColor];
-                messageVC.body = @"Download vCinity app on AppStore to chat even with no Internet connection. https://itunes.apple.com/app/id898275446";
+                messageVC.body = @"Download GoCandid app on AppStore and take beautiful animated photos. https://itunes.apple.com/app/id898275446";
                 [self presentViewController:messageVC animated:YES completion:nil];
             }
         } else if (buttonIndex == 1) {
@@ -222,7 +220,8 @@
                 MFMailComposeViewController* mailVC = [[MFMailComposeViewController alloc] init];
                 mailVC.mailComposeDelegate = self;
 //                mailVC.view.tintColor = [UIColor whiteColor];
-                [mailVC setSubject:@"vCinity Chat App for iPhone"];
+                [mailVC setSubject:@"GoCandid Chat App for iPhone"];
+#warning change text
                 [mailVC setMessageBody:@"Hey, \n\nI just downloaded vCinity Chat on my iPhone. \n\nIt is a chat app which lets me chat with people around me. Even if there is no Internet connection. The signup is very easy and simple. You don't have to remember anything. \n\nDownload it now on the AppStore to start chatting. https://itunes.apple.com/app/id898275446" isHTML:NO];
                 [self presentViewController:mailVC animated:YES completion:nil];
             }
@@ -231,7 +230,7 @@
             if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
                 SLComposeViewController* sheet = [[SLComposeViewController alloc] init];
                 sheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-                [sheet setInitialText:@"Download vCinity app on AppStore to chat even with no Internet connection. https://itunes.apple.com/app/id898275446"];
+                [sheet setInitialText:@"Download GoCandid app on AppStore and take beautiful animated photos. https://itunes.apple.com/app/id898275446"];
                 [self presentViewController:sheet animated:YES completion:nil];
             }
         } else if (buttonIndex == 3) {
@@ -239,7 +238,7 @@
             if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
                 SLComposeViewController* sheet = [[SLComposeViewController alloc] init];
                 sheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-                [sheet setInitialText:@"Download vCinity app on AppStore to chat even with no Internet connection. https://itunes.apple.com/app/id898275446"];
+                [sheet setInitialText:@"Download GoCandid app on AppStore and take beautiful animated photos. https://itunes.apple.com/app/id898275446"];
                 [self presentViewController:sheet animated:YES completion:nil];
             }
         }
