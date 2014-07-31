@@ -21,6 +21,7 @@
 @property (strong, nonatomic) CLLocationManager* locationManager;
 - (IBAction)shareOnFacebookClicked:(UIButton*)sender;
 - (IBAction)shareOnTwitterClicked:(UIButton*)sender;
+- (IBAction)backButtonClicked:(id)sender;
 
 @end
 
@@ -131,6 +132,11 @@
 - (IBAction)shareOnTwitterClicked:(UIButton *)sender
 {
     sender.selected = !sender.selected;
+}
+
+- (IBAction)backButtonClicked:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Post on Facebook

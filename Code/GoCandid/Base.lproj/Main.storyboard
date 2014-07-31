@@ -524,6 +524,17 @@
                                     <action selector="shareOnTwitterClicked:" destination="omH-ax-muh" eventType="touchUpInside" id="z1R-Sr-Q18"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DEh-yl-dnc">
+                                <rect key="frame" x="14" y="6" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="nav_back_arrow">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonClicked:" destination="omH-ax-muh" eventType="touchUpInside" id="drE-cH-tK4"/>
+                                    <action selector="backbuttonClicked:" destination="Dvu-oQ-EJq" eventType="touchUpInside" id="qDA-p8-g3t"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
