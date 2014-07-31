@@ -24,7 +24,7 @@ static void * CapturingStillImageContext = &CapturingStillImageContext;
 //static void * RecordingContext = &RecordingContext;
 static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDeviceAuthorizedContext;
 
-static float kDefaultCaptureDelay = 1.0f;
+static float kDefaultCaptureDelay = 0.7f;
 
 @interface PGCamViewController () <AVCaptureFileOutputRecordingDelegate>
 
@@ -38,14 +38,16 @@ static float kDefaultCaptureDelay = 1.0f;
 @property (nonatomic, strong) IBOutlet UIButton* manualButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *thumbScrollView;
 @property (strong, nonatomic) IBOutlet PGFramesButton *framesButton;
+@property (nonatomic, strong) IBOutlet UISlider* delaySlider;
 
 //- (IBAction)toggleMovieRecording:(id)sender;
-- (IBAction)changeCamera:(id)sender;
+-(IBAction)changeCamera:(id)sender;
 -(IBAction)captureButtonClicked:(id)sender;
 -(IBAction)pickFromLibary:(id)sender;
-- (IBAction)focusAndExposeTap:(UIGestureRecognizer *)gestureRecognizer;
+-(IBAction)focusAndExposeTap:(UIGestureRecognizer *)gestureRecognizer;
 - (IBAction)dismissButtonClicked:(id)sender;
 -(IBAction)manualButtonClicked:(id)sender;
+-(IBAction)delaySliderChanged:(id)sender;
 
 // Session management.
 @property (nonatomic) dispatch_queue_t sessionQueue; // Communicate with the session and other session objects on this queue.
@@ -167,6 +169,7 @@ static float kDefaultCaptureDelay = 1.0f;
     
     _images = [NSMutableArray new];
     [self changeCamera:nil];
+    self.delaySlider.value = kDefaultCaptureDelay;
 }
 
 -(BOOL)prefersStatusBarHidden
@@ -405,9 +408,14 @@ static float kDefaultCaptureDelay = 1.0f;
         _images = [NSMutableArray new];
 
         for (int i = 0; i < _framesButton.buttonState; i++) {
-            [self takePhotoDelay:kDefaultCaptureDelay * i];
+            [self takePhotoDelay:self.delaySlider.value * i];
         }
     }
+}
+
+-(IBAction)delaySliderChanged:(UISlider*)sender
+{
+    self.delaySlider.value = sender.value;
 }
 
 -(void)takePhotoDelay:(int)delay

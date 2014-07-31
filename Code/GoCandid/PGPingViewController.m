@@ -23,13 +23,13 @@ const CGFloat kDefaultGifDelay = 0.5;
 @property (nonatomic, strong) IBOutlet UIImageView* imageView;
 @property (nonatomic, strong) IBOutlet UIButton* sendButton;
 @property (nonatomic, strong) IBOutlet UIButton* retakeButton;
-@property (nonatomic, strong) IBOutlet UISlider* delaySlider;
+@property (nonatomic, strong) IBOutlet UISlider* durationSlider;
 @property (strong, nonatomic) IBOutlet UILabel *durationLabel;
 
 -(IBAction)retakeClicked:(id)sender;
--(IBAction)delaySliderChanged:(UISlider*)sender;
+-(IBAction)durationSliderChanged:(UISlider*)sender;
 -(IBAction)backbuttonClicked:(id)sender;
-- (IBAction)sliderDidFinishChanging:(id)sender;
+-(IBAction)sliderDidFinishChanging:(id)sender;
 
 @end
 
@@ -41,7 +41,7 @@ const CGFloat kDefaultGifDelay = 0.5;
     
     _imageURL = [self saveGifWithImages:_images gifDelay:kDefaultGifDelay];
     
-    _delaySlider.value = kDefaultGifDelay;
+    _durationSlider.value = kDefaultGifDelay;
     
     self.imageView.image = [UIImage animatedImageWithAnimatedGIFURL:_imageURL];
 }
@@ -57,7 +57,7 @@ const CGFloat kDefaultGifDelay = 0.5;
     // Dispose of any resources that can be recreated.
 }
 
--(IBAction)delaySliderChanged:(UISlider*)sender
+-(IBAction)durationSliderChanged:(UISlider *)sender
 {
     DLog(@"Slider Value: %f", sender.value);
     CGFloat duration = [self loopDurationForDelay:sender.value imagesCount:_images.count];

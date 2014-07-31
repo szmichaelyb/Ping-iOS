@@ -338,6 +338,13 @@
                                     <action selector="manualButtonClicked:" destination="vCX-ZW-3h4" eventType="touchUpInside" id="OxK-Dz-dQ3"/>
                                 </connections>
                             </button>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.69999999999999996" minValue="0.10000000000000001" maxValue="1" id="A6Z-oo-3Oi">
+                                <rect key="frame" x="20" y="438" width="281" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="delaySliderChanged:" destination="vCX-ZW-3h4" eventType="valueChanged" id="fta-hE-I4V"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -346,6 +353,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="cameraButton" destination="Ppu-OS-bx4" id="TMB-OF-Nbv"/>
+                        <outlet property="delaySlider" destination="A6Z-oo-3Oi" id="aXH-n5-2P2"/>
                         <outlet property="framesButton" destination="7cA-oj-knA" id="UNS-bJ-MGx"/>
                         <outlet property="manualButton" destination="Iui-DC-Yvu" id="Zjl-hN-rGB"/>
                         <outlet property="previewView" destination="ix2-56-jni" id="cXw-RS-u5o"/>
@@ -415,7 +423,7 @@
                                 <rect key="frame" x="28" y="442" width="264" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <action selector="delaySliderChanged:" destination="Dvu-oQ-EJq" eventType="valueChanged" id="Xee-aP-vx8"/>
+                                    <action selector="durationSliderChanged:" destination="Dvu-oQ-EJq" eventType="valueChanged" id="Yb0-F4-l2a"/>
                                     <action selector="sliderDidFinishChanging:" destination="Dvu-oQ-EJq" eventType="touchUpInside" id="TKF-re-gmH"/>
                                 </connections>
                             </slider>
@@ -441,8 +449,8 @@
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="delaySlider" destination="ajh-ec-UDV" id="pEt-XJ-gLU"/>
                         <outlet property="durationLabel" destination="YGz-kV-OKa" id="ane-Br-HqI"/>
+                        <outlet property="durationSlider" destination="ajh-ec-UDV" id="Lns-j6-mqv"/>
                         <outlet property="imageView" destination="Vwc-lv-uq3" id="qGR-F7-6Pl"/>
                         <outlet property="retakeButton" destination="QHl-Qf-TQe" id="muA-BQ-hck"/>
                         <outlet property="sendButton" destination="9bi-qT-dXP" id="P5z-JP-BRR"/>

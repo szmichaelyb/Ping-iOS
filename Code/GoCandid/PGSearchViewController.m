@@ -31,7 +31,7 @@
     self.navigationController.navigationBar.translucent = NO;
     self.tabBarController.tabBar.translucent = NO;
 
-    self.title = @"Search users";
+    self.title = @"Search";
     
     _datasource = [NSMutableArray new];
     

@@ -149,6 +149,7 @@
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     _profileIV.image = [UIImage imageWithData:imgData];
+                    _headerView.image = [self blur:_profileIV.image];
                 });
                 
                 PFFile* imageFile = [PFFile fileWithName:@"profile.jpg" data:imgData];
@@ -168,6 +169,7 @@
 {
     [self dismissViewControllerAnimated:YES completion:^{
         _profileIV.image = info[UIImagePickerControllerOriginalImage];
+        _headerView.image = [self blur:_profileIV.image];
         
         NSData* imgData = UIImageJPEGRepresentation(info[UIImagePickerControllerOriginalImage], 0.7);
         PFFile* imageFile = [PFFile fileWithName:@"profile.jpg" data:imgData];
@@ -303,7 +305,7 @@
 - (UIImage*)blur:(UIImage*)theImage
 {
     // ***********If you need re-orienting (e.g. trying to blur a photo taken from the device camera front facing camera in portrait mode)
-    // theImage = [self reOrientIfNeeded:theImage];
+     theImage = [self reOrientIfNeeded:theImage];
     
     // create our blurred image
     CIContext *context = [CIContext contextWithOptions:nil];
@@ -326,6 +328,77 @@
     
     // *************** if you need scaling
     // return [[self class] scaleIfNeeded:cgImage];
+}
+
+- (UIImage*) reOrientIfNeeded:(UIImage*)theImage{
+    
+    if (theImage.imageOrientation != UIImageOrientationUp) {
+        
+        CGAffineTransform reOrient = CGAffineTransformIdentity;
+        switch (theImage.imageOrientation) {
+            case UIImageOrientationDown:
+            case UIImageOrientationDownMirrored:
+                reOrient = CGAffineTransformTranslate(reOrient, theImage.size.width, theImage.size.height);
+                reOrient = CGAffineTransformRotate(reOrient, M_PI);
+                break;
+            case UIImageOrientationLeft:
+            case UIImageOrientationLeftMirrored:
+                reOrient = CGAffineTransformTranslate(reOrient, theImage.size.width, 0);
+                reOrient = CGAffineTransformRotate(reOrient, M_PI_2);
+                break;
+            case UIImageOrientationRight:
+            case UIImageOrientationRightMirrored:
+                reOrient = CGAffineTransformTranslate(reOrient, 0, theImage.size.height);
+                reOrient = CGAffineTransformRotate(reOrient, -M_PI_2);
+                break;
+            case UIImageOrientationUp:
+            case UIImageOrientationUpMirrored:
+                break;
+        }
+        
+        switch (theImage.imageOrientation) {
+            case UIImageOrientationUpMirrored:
+            case UIImageOrientationDownMirrored:
+                reOrient = CGAffineTransformTranslate(reOrient, theImage.size.width, 0);
+                reOrient = CGAffineTransformScale(reOrient, -1, 1);
+                break;
+            case UIImageOrientationLeftMirrored:
+            case UIImageOrientationRightMirrored:
+                reOrient = CGAffineTransformTranslate(reOrient, theImage.size.height, 0);
+                reOrient = CGAffineTransformScale(reOrient, -1, 1);
+                break;
+            case UIImageOrientationUp:
+            case UIImageOrientationDown:
+            case UIImageOrientationLeft:
+            case UIImageOrientationRight:
+                break;
+        }
+        
+        CGContextRef myContext = CGBitmapContextCreate(NULL, theImage.size.width, theImage.size.height, CGImageGetBitsPerComponent(theImage.CGImage), 0, CGImageGetColorSpace(theImage.CGImage), CGImageGetBitmapInfo(theImage.CGImage));
+        
+        CGContextConcatCTM(myContext, reOrient);
+        
+        switch (theImage.imageOrientation) {
+            case UIImageOrientationLeft:
+            case UIImageOrientationLeftMirrored:
+            case UIImageOrientationRight:
+            case UIImageOrientationRightMirrored:
+                CGContextDrawImage(myContext, CGRectMake(0,0,theImage.size.height,theImage.size.width), theImage.CGImage);
+                break;
+                
+            default:
+                CGContextDrawImage(myContext, CGRectMake(0,0,theImage.size.width,theImage.size.height), theImage.CGImage);
+                break;
+        }
+        
+        CGImageRef CGImg = CGBitmapContextCreateImage(myContext);
+        theImage = [UIImage imageWithCGImage:CGImg];
+        
+        CGImageRelease(CGImg);
+        CGContextRelease(myContext);
+    }
+    
+    return theImage;
 }
 
 @end
