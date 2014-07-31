@@ -32,7 +32,7 @@
 -(void)setMainView
 {
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
-    
+
     UIStoryboard* sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     PGTabViewController* mainVC = [sb instantiateViewControllerWithIdentifier:@"PGTabViewController"];
     

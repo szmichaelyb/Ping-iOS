@@ -24,14 +24,14 @@
 -(void)buttonTapped:(id)sender
 {
     DLog(@"tapped");
-    if (_buttonState == PGFramesButtonState1Frame) {
+    if (_buttonState == PGFramesButtonState2Frame) {
         _buttonState = PGFramesButtonState4Frame;
     } else if (_buttonState == PGFramesButtonState4Frame) {
         _buttonState = PGFramesButtonState9Frame;
     } else if (_buttonState == PGFramesButtonState9Frame) {
         _buttonState = PGFramesButtonState16Frame;
     } else {
-        _buttonState = PGFramesButtonState1Frame;
+        _buttonState = PGFramesButtonState2Frame;
     }
     
     [self setTitle:[NSString stringWithFormat:@"%d", _buttonState] forState:UIControlStateNormal];

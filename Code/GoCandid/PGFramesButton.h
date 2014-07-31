@@ -10,7 +10,7 @@
 
 typedef enum
 {
-    PGFramesButtonState1Frame = 1,
+    PGFramesButtonState2Frame = 2,
     PGFramesButtonState4Frame = 4,
     PGFramesButtonState9Frame = 9,
     PGFramesButtonState16Frame = 16
