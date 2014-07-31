@@ -8,6 +8,7 @@
 
 #import "PGSendPingViewController.h"
 #import "UIViewController+Transitions.h"
+#import <Twitter/Twitter.h>
 
 @interface PGSendPingViewController ()
 
@@ -98,7 +99,7 @@
                     }
                 }];
                 
-                [self postOnTwitter];
+                [self postOnTwitterObject:object];
             }];
         }];
         [_delegate didDismissCamViewController:nil];
@@ -184,10 +185,31 @@
     }
 }
 
--(void)postOnTwitter
+-(void)postOnTwitterObject:(PFObject*)object
 {
     if (self.twitterButton.isSelected) {
         //Share
+        PFFile* file = object[kPFSelfie_Selfie];
+        ACAccountStore* accountStore = [[ACAccountStore alloc] init];
+        ACAccountType* accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+        [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
+            if (granted) {
+                NSArray* accountsArray = [accountStore accountsWithAccountType:accountType];
+                if (accountsArray.count > 0) {
+                    ACAccount* twitterAccount = [accountsArray objectAtIndex:0];
+                    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%@ #GoCandidApp http://itunes.apple.com/app/id898275446", _captionTF.text], @"status", @"true", @"wrap_links", nil];
+
+                    SLRequest* postRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodPOST URL:[NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/update_with_media.json"] parameters:dict];
+                    NSData* tempData = [NSData dataWithContentsOfURL:[NSURL URLWithString:file.url]];
+                    [postRequest addMultipartData:tempData withName:@"media[]" type:@"image/gif" filename:@"image.gif"];
+                    [postRequest setAccount:twitterAccount];
+                    [postRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+                        NSString* output = [NSString stringWithFormat:@"HTTP response status: %@", [NSHTTPURLResponse localizedStringForStatusCode:urlResponse.statusCode]];
+                        DLog(@"Twitter post status: %@", output);
+                    }];
+                }
+            }
+        }];
     }
 }
 
