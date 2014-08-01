@@ -16,3 +16,5 @@ pod 'DZNPhotoPickerController'
 pod 'GTScrollNavigationBar', '~> 0.1.1'
 pod 'AFNetworking'
 pod 'IDMPhotoBrowser', '~> 1.3.5'
+##Use it for paper button effect
+pod 'BFPaperButton'

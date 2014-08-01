@@ -19,6 +19,7 @@
 #import "UIImagePickerControllerExtended.h"
 
 #import "PGFramesButton.h"
+#import <BFPaperButton/BFPaperButton.h>
 
 static void * CapturingStillImageContext = &CapturingStillImageContext;
 //static void * RecordingContext = &RecordingContext;
@@ -33,6 +34,7 @@ static float kDefaultCaptureDelay = 0.7f;
 
 @property (nonatomic, strong) NSMutableArray* images;
 
+@property (nonatomic, strong) IBOutlet BFPaperButton* captureButton;
 @property (nonatomic, weak) IBOutlet UIButton *cameraButton;
 @property (nonatomic, weak) IBOutlet UIButton *stillButton;
 @property (nonatomic, strong) IBOutlet UIButton* manualButton;
@@ -170,6 +172,8 @@ static float kDefaultCaptureDelay = 0.7f;
     _images = [NSMutableArray new];
     [self changeCamera:nil];
     self.delaySlider.value = kDefaultCaptureDelay;
+    self.captureButton.cornerRadius = self.captureButton.frame.size.width/2;
+    self.captureButton.rippleFromTapLocation = NO;
 }
 
 -(BOOL)prefersStatusBarHidden

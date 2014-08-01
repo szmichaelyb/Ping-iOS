@@ -9,9 +9,11 @@
 #import "PGSendPingViewController.h"
 #import "UIViewController+Transitions.h"
 #import <Twitter/Twitter.h>
+#import <BFPaperButton/BFPaperButton.h>
 
 @interface PGSendPingViewController ()
 
+@property (nonatomic, strong) IBOutlet BFPaperButton* postButton;
 @property (nonatomic, strong) IBOutlet UIImageView* imageView;
 
 @property (nonatomic, strong) IBOutlet UITextField* captionTF;
@@ -20,6 +22,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *twitterButton;
 
 @property (strong, nonatomic) CLLocationManager* locationManager;
+
 - (IBAction)shareOnFacebookClicked:(UIButton*)sender;
 - (IBAction)shareOnTwitterClicked:(UIButton*)sender;
 - (IBAction)backButtonClicked:(id)sender;
@@ -41,7 +44,8 @@
     [self.view addGestureRecognizer:dismissGesture];
     
     self.imageView.image = [UIImage animatedImageWithAnimatedGIFURL:_gifUrl];
-    
+    self.postButton.cornerRadius = self.postButton.frame.size.width/2;
+    self.postButton.rippleFromTapLocation = NO;
     // Do any additional setup after loading the view.
 }
 
