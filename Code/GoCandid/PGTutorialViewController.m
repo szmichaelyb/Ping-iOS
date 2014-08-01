@@ -49,9 +49,10 @@
 -(void)loginWithFacebook:(id)sender
 {
     NSArray* permissions = @[@"email", @"user_friends"];
-    
-    //    [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Logging in"];
+
+    [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Logging in"];
     [PFFacebookUtils logInWithPermissions:permissions block:^(PFUser *user, NSError *error) {
+        [[PGProgressHUD sharedInstance] hide:YES];
         //        [ActivityView hide];
         if (!user) {
             UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Facebook error" message:@"To use you Facebook account with this app, open Settings > Facebook and make sure this app is turned on." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];

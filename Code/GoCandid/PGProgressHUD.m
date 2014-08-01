@@ -34,7 +34,19 @@
 	HUD.labelText = text;
 	
 	[HUD show:YES];
-	[HUD hide:YES afterDelay:delay];
+    if (delay != 0) {
+        [HUD hide:YES afterDelay:delay];
+    }
+}
+
+-(void)showInView:(UIView *)view withText:(NSString *)text
+{
+    [self showInView:view withText:text hideAfter:0];
+}
+
+-(void)hide:(BOOL)animated
+{
+    [super hide:animated];
 }
 
 -(void)hudWasHidden:(MBProgressHUD *)hud
