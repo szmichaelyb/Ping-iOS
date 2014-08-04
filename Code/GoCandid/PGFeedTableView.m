@@ -260,8 +260,25 @@
             [PGParseHelper getTotalLikeForSelfie:object completion:^(BOOL finished, int number) {
                 cell.totalLikes.text = [NSString stringWithFormat:@"%d likes", number];
             }];
+            [self showLikeButtonAnimationInCell:cell];
         }];
     }
+}
+
+-(void)showLikeButtonAnimationInCell:(PGFeedTableViewCell*)cell
+{
+    UIImageView* likeIV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    likeIV.center = CGPointMake(CGRectGetMidX(cell.iv.bounds), CGRectGetMidY(cell.iv.bounds));
+    likeIV.image = [[UIImage imageNamed:@"like"] imageWithOverlayColor:[UIColor redColor]];
+    DLog(@"%@", NSStringFromCGPoint(cell.iv.center));
+    [cell.iv addSubview:likeIV];
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        likeIV.alpha = 0;
+        likeIV.transform = CGAffineTransformMakeScale(1.5, 1.5);
+    } completion:^(BOOL finished) {
+        [likeIV removeFromSuperview];
+    }];
 }
 
 @end
