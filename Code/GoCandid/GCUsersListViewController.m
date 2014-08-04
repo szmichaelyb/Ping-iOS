@@ -9,6 +9,7 @@
 #import "GCUsersListViewController.h"
 #import "PGSearchTableViewCell.h"
 #import "PGProfileViewController.h"
+#import <UIActionSheet+Blocks/UIActionSheet+Blocks.h>
 
 @interface GCUsersListViewController ()
 
@@ -135,7 +136,22 @@
 
 -(void)buttonTappedOnCell:(PGSearchTableViewCell *)cell
 {
+    NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
+    PFUser* user = _datasource[indexPath.row];
     
+    if ([cell followButtonStatus] == FollowButtonStateFollowing) {
+        [UIActionSheet showInView:self.view.window withTitle:user[kPFUser_Name] cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Unfollow" otherButtonTitles:nil tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+            if (buttonIndex == 0) {
+                [PGParseHelper unfollowUserInBackground:user completion:^(bool finished) {
+                    [cell setFollowButtonStatus:FollowButtonStateNotFollowing];
+                }];
+            }
+        }];
+    } else {
+        [PGParseHelper followUserInBackground:user completion:^(bool finished) {
+            [cell setFollowButtonStatus:FollowButtonStateFollowing];
+        }];
+    }
 }
 
 -(void)getFollowStatusArrayCompletion:(void (^)(NSArray* array))block

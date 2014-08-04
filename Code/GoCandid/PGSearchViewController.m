@@ -213,6 +213,8 @@
     [_tableView reloadData];
 }
 
+#pragma mark -
+
 -(void)buttonTappedOnCell:(PGSearchTableViewCell *)cell
 {
     NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
