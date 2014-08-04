@@ -210,8 +210,8 @@
 
 #pragma mark - PGFeedTableViewCell Delegate
 
--(void)cellDidStartTap:(PGFeedTableViewCell *)cell
-{
+//-(void)cellDidStartTap:(PGFeedTableViewCell *)cell
+//{
 //    NSIndexPath* indexPath = [self indexPathForCell:cell];
 //    PFFile* file = _datasource[indexPath.row][kPFSelfie_Selfie];
 //    [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
@@ -219,10 +219,10 @@
 //        UIImage* img = [UIImage animatedImageWithAnimatedGIFData:data];
 //        cell.iv.image = img;
 //    }];
-}
-
--(void)cellDidStopTap:(PGFeedTableViewCell *)cell
-{
+//}
+//
+//-(void)cellDidStopTap:(PGFeedTableViewCell *)cell
+//{
 //    NSIndexPath* indexPath = [self indexPathForCell:cell];
 //    PFFile* file = _datasource[indexPath.row][kPFSelfie_Selfie];
 //    [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
@@ -230,7 +230,7 @@
 //        UIImage* img = [UIImage imageWithData:data];
 //        cell.iv.image = img;
 //    }];
-}
+//}
 
 -(void)cellDidTapOnMoreButton:(PGFeedTableViewCell *)cell
 {
@@ -249,11 +249,17 @@
     if (alreadyLike) {
         [PGParseHelper unlikeSelfie:object compltion:^(BOOL finished) {
             [cell setLikeButtonState:NO];
+            [PGParseHelper getTotalLikeForSelfie:object completion:^(BOOL finished, int number) {
+                cell.totalLikes.text = [NSString stringWithFormat:@"%d likes", number];
+            }];
         }];
     } else {
         [PGParseHelper likeSelfie:object fromUser:[PFUser currentUser] completion:^(BOOL finished) {
             DLog(@"Liked");
             [cell setLikeButtonState:YES];
+            [PGParseHelper getTotalLikeForSelfie:object completion:^(BOOL finished, int number) {
+                cell.totalLikes.text = [NSString stringWithFormat:@"%d likes", number];
+            }];
         }];
     }
 }

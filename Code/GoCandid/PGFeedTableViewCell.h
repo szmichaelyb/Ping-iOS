@@ -29,8 +29,8 @@
 
 @protocol PGFeedTableViewCellDelegate <NSObject>
 
--(void)cellDidStartTap:(PGFeedTableViewCell*)cell;
--(void)cellDidStopTap:(PGFeedTableViewCell*)cell;
+//-(void)cellDidStartTap:(PGFeedTableViewCell*)cell;
+//-(void)cellDidStopTap:(PGFeedTableViewCell*)cell;
 -(void)cellDidTapOnLikeButton:(PGFeedTableViewCell*)cell;
 -(void)cellDidTapOnMoreButton:(PGFeedTableViewCell*)cell;
 

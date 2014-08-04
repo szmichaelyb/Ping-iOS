@@ -33,10 +33,14 @@
     [self.likeButton setImage:[UIImage imageNamed:@"like_empty"] forState:UIControlStateNormal];
     [self.likeButton setImage:[[self.likeButton imageForState:UIControlStateNormal] imageWithOverlayColor:[UIColor whiteColor]] forState:UIControlStateNormal];
     
-    UILongPressGestureRecognizer* gesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
-    gesture.minimumPressDuration = 0.1;
-    gesture.allowableMovement = 600;
-    [self.iv addGestureRecognizer:gesture];
+//    UILongPressGestureRecognizer* gesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+//    gesture.minimumPressDuration = 0.1;
+//    gesture.allowableMovement = 600;
+//    [self.iv addGestureRecognizer:gesture];
+    
+    UITapGestureRecognizer* doubleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
+    doubleTapGesture.numberOfTapsRequired = 2;
+    [self.iv addGestureRecognizer:doubleTapGesture];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -46,20 +50,25 @@
     // Configure the view for the selected state
 }
 
--(void)handleGesture:(UIGestureRecognizer*)gesture
+-(void)handleDoubleTap:(UIGestureRecognizer*)gesture
 {
-    DLog(@"%d", gesture.state);
-    if (gesture.state == UIGestureRecognizerStateBegan) {
-        if (_delegate) {
-            [_delegate cellDidStartTap:self];
-        }
-    }
-    if (gesture.state == UIGestureRecognizerStateEnded) {
-        if (_delegate) {
-            [_delegate cellDidStopTap:self];
-        }
-    }
+    [self likeButtonClicked:self.likeButton];
 }
+
+//-(void)handleGesture:(UIGestureRecognizer*)gesture
+//{
+//    DLog(@"%d", gesture.state);
+//    if (gesture.state == UIGestureRecognizerStateBegan) {
+//        if (_delegate) {
+//            [_delegate cellDidStartTap:self];
+//        }
+//    }
+//    if (gesture.state == UIGestureRecognizerStateEnded) {
+//        if (_delegate) {
+//            [_delegate cellDidStopTap:self];
+//        }
+//    }
+//}
 
 - (IBAction)moreButtonClicked:(id)sender {
     if (_delegate) {
