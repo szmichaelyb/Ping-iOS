@@ -31,6 +31,7 @@
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.delegate = self;
         self.dataSource = self;
+        self.showsVerticalScrollIndicator = NO;
         self.nxEV_hideSeparatorLinesWheyShowingEmptyView = YES;
         self.datasource = [NSMutableArray new];
         self.activityArray = [NSMutableArray new];
@@ -58,7 +59,8 @@
         [featuredList whereKey:kPFSelfie_Featured equalTo:[NSNumber numberWithBool:YES]];
         
         PFQuery* othersList = [PFQuery queryWithClassName:kPFTableName_Selfies];
-        [othersList whereKey:kPFSelfie_Receiver equalTo:[PFUser currentUser]];
+#warning Implement Feed logic
+//        [othersList whereKey:kPFSelfie_Owner equalTo:user];
         
         query = [PFQuery orQueryWithSubqueries:@[featuredList, othersList]];
     } else if (_feedType == FeedTypeFriends) {

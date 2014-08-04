@@ -115,7 +115,7 @@
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == _datasource.count - 1) {
-        [self loadFromParseText:_searchBar.text];
+        [self loadFromParseText:_searchBar.text append:YES];
     }
 }
 
@@ -136,7 +136,7 @@
     [self.searchBar setShowsCancelButton:NO animated:YES];
 }
 
--(void)loadFromParseText:(NSString*)text
+-(void)loadFromParseText:(NSString*)text append:(BOOL)append
 {
     //Get objects from parse
     PFQuery *queryCapitalizedString = [PFUser query];
@@ -154,8 +154,11 @@
     finalQuery.limit = 15;
     finalQuery.skip = _datasource.count;
     [finalQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        [_datasource addObjectsFromArray:objects];
-//        _datasource = [[NSMutableArray alloc] initWithArray:objects];
+        if (append) {
+            [_datasource addObjectsFromArray:objects];
+        } else {
+            _datasource = [[NSMutableArray alloc] initWithArray:objects];
+        }
         DLog(@"%@", objects);
         DLog(@"%@", _datasource);
         [self getFollowStatusCompletion:^(NSArray *array) {
@@ -175,7 +178,7 @@
     if (searchText.length == 0){
         [_tableView reloadData];
     } else {
-        [self loadFromParseText:searchBar.text];
+        [self loadFromParseText:searchBar.text append:NO];
     }
 }
 
