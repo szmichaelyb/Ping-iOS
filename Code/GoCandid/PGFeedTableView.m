@@ -59,8 +59,8 @@
         [featuredList whereKey:kPFSelfie_Featured equalTo:[NSNumber numberWithBool:YES]];
         
         PFQuery* othersList = [PFQuery queryWithClassName:kPFTableName_Selfies];
-#warning Implement Feed logic
-//        [othersList whereKey:kPFSelfie_Owner equalTo:user];
+        NSArray* array = [[PGParseHelper getFollowingListForUser:[PFUser currentUser]] valueForKey:kPFActivity_ToUser];
+        [othersList whereKey:kPFSelfie_Owner containedIn:array];
         
         query = [PFQuery orQueryWithSubqueries:@[featuredList, othersList]];
     } else if (_feedType == FeedTypeFriends) {
@@ -161,6 +161,10 @@
     } else {
         [cell setLikeButtonState:NO];
     }
+    
+    [PGParseHelper getTotalLikeForSelfie:_datasource[indexPath.row] completion:^(BOOL finished, int number) {
+        cell.totalLikes.text = [NSString stringWithFormat:@"%d likes", number];
+    }];
     
     cell.iv.userInteractionEnabled = YES;
     cell.iv.tag = indexPath.row;

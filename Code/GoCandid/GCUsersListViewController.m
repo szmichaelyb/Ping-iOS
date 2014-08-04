@@ -60,12 +60,8 @@
 
 -(void)getFollowingList
 {
-    PFQuery* query = [PFQuery queryWithClassName:kPFTableActivity];
-    [query whereKey:kPFActivity_FromUser equalTo:_listForUser];
-    [query whereKey:kPFActivity_Type equalTo:kPFActivity_Type_Follow];
-    [query includeKey:kPFActivity_ToUser];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        _datasource = [NSMutableArray arrayWithArray:[objects valueForKey:kPFActivity_ToUser]];
+    [PGParseHelper getFollowingListForUser:_listForUser completion:^(BOOL finished, NSArray *followingUsers) {
+        _datasource = [NSMutableArray arrayWithArray:[followingUsers valueForKey:kPFActivity_ToUser]];
         [self getFollowStatusArrayCompletion:^(NSArray *array) {
             _followStatusArray = [NSMutableArray arrayWithArray:array];
             [self.tableView reloadData];
@@ -121,7 +117,7 @@
     if ([[[_followStatusArray valueForKey:kPFActivity_ToUser] valueForKey:kPFObjectId] containsObject:user.objectId]) {
         [cell setFollowButtonStatus:FollowButtonStateFollowing];
     } else {
-    [cell setFollowButtonStatus:FollowButtonStateNotFollowing];
+        [cell setFollowButtonStatus:FollowButtonStateNotFollowing];
     }
     [PGParseHelper profilePhotoUser:user completion:^(UIImage *image) {
         cell.thumbIV.image = image;

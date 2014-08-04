@@ -12,10 +12,13 @@
 
 +(void)followUserInBackground:(PFUser *)followUser completion:(void (^) (bool finished))block;
 +(void)unfollowUserInBackground:(PFUser*)user completion:(void (^) (bool finished))block;
++(void)getFollowingListForUser:(PFUser*)user completion:(void (^) (BOOL finished, NSArray* followingUsers))block;
++(NSArray*)getFollowingListForUser:(PFUser*)user;
 
 +(void)getLikeActivityForSelfies:(NSArray*)selfies fromUser:(PFUser*)user completion:(void (^) (BOOL finished, NSArray* objects))block;
 +(void)likeSelfie:(PFObject*)selfie fromUser:(PFUser*)user completion:(void (^) (BOOL finished))block;
 +(void)unlikeSelfie:(PFObject*)selfie compltion:(void (^) (BOOL finished))block;
++(void)getTotalLikeForSelfie:(PFObject*)selfie completion:(void (^)(BOOL finished, int number))block;
 
 +(void)profilePhotoUser:(PFUser*)user completion:(void (^) (UIImage* image))block;
 

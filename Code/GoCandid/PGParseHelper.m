@@ -53,6 +53,29 @@
     }];
 }
 
++(void)getFollowingListForUser:(PFUser*)user completion:(void (^) (BOOL, NSArray*))block
+{
+    PFQuery* query = [PFQuery queryWithClassName:kPFTableActivity];
+    [query whereKey:kPFActivity_FromUser equalTo:user];
+    [query whereKey:kPFActivity_Type equalTo:kPFActivity_Type_Follow];
+    [query includeKey:kPFActivity_ToUser];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (block) {
+            block(YES, objects);
+        }
+    }];
+}
+
++(NSArray*)getFollowingListForUser:(PFUser*)user
+{
+    PFQuery* query = [PFQuery queryWithClassName:kPFTableActivity];
+    [query whereKey:kPFActivity_FromUser equalTo:user];
+    [query whereKey:kPFActivity_Type equalTo:kPFActivity_Type_Follow];
+    [query includeKey:kPFActivity_ToUser];
+    NSArray* result = [query  findObjects];
+    return result;
+}
+
 #pragma mark -
 
 +(void)getLikeActivityForSelfies:(NSArray *)selfies fromUser:(PFUser *)user completion:(void (^)(BOOL, NSArray *))block
@@ -138,6 +161,21 @@
         }
     }];
 }
+
++(void)getTotalLikeForSelfie:(PFObject*)selfie completion:(void (^)(BOOL, int))block
+{
+    PFQuery* query = [PFQuery queryWithClassName:kPFTableActivity];
+    [query whereKey:kPFActivity_Type equalTo:kPFActivity_Type_Like];
+    [query whereKey:kPFActivity_Selfie equalTo:selfie];
+    
+    [query countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
+        if (block) {
+            block(YES, number);
+        }
+    }];
+}
+
+#pragma mark -
 
 +(void)profilePhotoUser:(PFUser *)user completion:(void (^)(UIImage *))block
 {
