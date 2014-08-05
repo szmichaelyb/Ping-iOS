@@ -584,7 +584,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="settings-off" id="cvR-5b-ykj">
                             <connections>
-                                <segue destination="Ept-nu-5wr" kind="custom" identifier="blurSegue" customClass="AFBlurSegue" id="7mk-ZJ-h5C"/>
+                                <segue destination="Ept-nu-5wr" kind="modal" identifier="blurSegue" customClass="AFBlurSegue" id="7mk-ZJ-h5C"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -715,7 +715,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZVM-lf-0UW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1389" y="1928"/>
+            <point key="canvasLocation" x="1366" y="1916"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="MGW-hu-tVM">
@@ -739,11 +739,12 @@
                                                     <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="2Vd-QW-E8q" style="IBUITableViewCellStyleDefault" id="PQ6-K2-DF3">
                                         <rect key="frame" x="0.0" y="143" width="320" height="44"/>
@@ -761,6 +762,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Lj1-Fu-FGa" style="IBUITableViewCellStyleDefault" id="GmX-Vp-0iC">
                                         <rect key="frame" x="0.0" y="187" width="320" height="44"/>
@@ -778,6 +780,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -799,6 +802,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -820,6 +824,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <segue destination="B71-gp-K2g" kind="push" identifier="termsSegue" id="z3m-ZX-QfY"/>
                                         </connections>
@@ -844,6 +849,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
