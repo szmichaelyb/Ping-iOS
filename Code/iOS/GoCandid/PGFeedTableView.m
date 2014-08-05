@@ -27,16 +27,21 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        self.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1];
-        self.separatorStyle = UITableViewCellSeparatorStyleNone;
-        self.delegate = self;
-        self.dataSource = self;
-        self.showsVerticalScrollIndicator = NO;
-        self.nxEV_hideSeparatorLinesWheyShowingEmptyView = YES;
-        self.datasource = [NSMutableArray new];
-        self.activityArray = [NSMutableArray new];
+        [self setup];
     }
     return self;
+}
+
+-(void)setup
+{
+    self.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1];
+    self.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.delegate = self;
+    self.dataSource = self;
+    self.showsVerticalScrollIndicator = NO;
+    self.nxEV_hideSeparatorLinesWheyShowingEmptyView = YES;
+    self.datasource = [NSMutableArray new];
+    self.activityArray = [NSMutableArray new];
 }
 
 #pragma mark -
@@ -65,6 +70,8 @@
         query = [PFQuery orQueryWithSubqueries:@[featuredList, othersList]];
     } else if (_feedType == FeedTypeFriends) {
         [query whereKey:kPFSelfie_Owner equalTo:user];
+    } else if (_feedType == FeedTypeRecent) {
+        
     }
     
     query.limit = 5;

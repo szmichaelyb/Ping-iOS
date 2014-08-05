@@ -1056,15 +1056,37 @@
             <objects>
                 <viewController restorationIdentifier="PGFeedViewController" storyboardIdentifier="PGFeedViewController" id="1cV-B3-Drv" customClass="PGFeedViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gaQ-7C-CVy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="rHs-O0-XbC">
+                                <rect key="frame" x="89" y="9" width="142" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Home"/>
+                                    <segment title="Recent"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segChanged:" destination="1cV-B3-Drv" eventType="valueChanged" id="2K9-kr-NpJ"/>
+                                </connections>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="RfM-z5-p25" customClass="PGFeedTableView">
+                                <rect key="frame" x="0.0" y="45" width="320" height="410"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Feed" id="bIG-s4-hve"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="RfM-z5-p25" id="0sG-UH-Mme"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tc9-FD-g6e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="860" y="-1627"/>
+            <point key="canvasLocation" x="855" y="-1627"/>
         </scene>
     </scenes>
     <resources>

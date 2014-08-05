@@ -21,12 +21,13 @@
     UIImageView* tempIV;
 }
 
-@property (strong, nonatomic) PGFeedTableView* tableView;
+@property (strong, nonatomic) IBOutlet PGFeedTableView* tableView;
 
 //@property (strong, nonatomic) NSMutableArray* datasource;
 @property (nonatomic, strong) STZPullToRefresh *pullToRefresh;
-
 @property (nonatomic, strong) PFUser* feedUser;
+
+-(IBAction)segChanged:(UISegmentedControl*)sender;
 
 @end
 
@@ -42,7 +43,8 @@
     /// Setup pull to refresh
     CGFloat refreshBarY = self.navigationController.navigationBar.bounds.size.height + [UIApplication sharedApplication].statusBarFrame.size.height;
     
-    self.tableView = [[PGFeedTableView alloc] initWithFrame:self.view.bounds];
+    //    self.tableView = [[PGFeedTableView alloc] initWithFrame:self.view.bounds];
+    [self.tableView setup];
     self.tableView.myDelegate = self;
     self.tableView.feedType = FeedTypeOther;
     DLog(@"%f", self.tabBarController.tabBar.frame.size.height);
@@ -88,6 +90,19 @@
     }];
 }
 
+-(void)segChanged:(UISegmentedControl *)sender
+{
+    if (sender.selectedSegmentIndex == 0) {
+        self.tableView.feedType = FeedTypeOther;
+    } else {
+        self.tableView.feedType = FeedTypeRecent;
+    }
+    [self.tableView refreshDatasource];
+    [self.tableView getFeedForUser:_feedUser completion:^(bool finished) {
+        
+    }];
+}
+
 #pragma mark - PGFeedTableView Delegate
 
 -(void)tablescrollViewDidScrollToTop:(UIScrollView *)scrollView
@@ -108,9 +123,9 @@
             
             [UIActionSheet showInView:self.view.window withTitle:@"Are you sure?" cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@[@"Yes"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
                 if (buttonIndex == 0) {
-//                    DLog(@"%@", _datasource[indexPath.row]);
+                    //                    DLog(@"%@", _datasource[indexPath.row]);
                     
-//                    PFObject* object = object;
+                    //                    PFObject* object = object;
                     object[kPFSelfie_Abuse] = [NSNumber numberWithBool:YES];
                     [object saveEventually:^(BOOL succeeded, NSError *error) {
                         if (succeeded) {
@@ -126,27 +141,27 @@
 
 -(void)tableView:(PGFeedTableView *)tableView didTapOnImageView:(UIImageView *)imageView
 {
-//    UIImageView* iv = imageView;
-//    
-//    UIImageView* ivExpand = [[UIImageView alloc] initWithImage:iv.image];
-//    ivExpand.contentMode = iv.contentMode;
-//    ivExpand.frame = [self.view convertRect:iv.frame fromView:iv.superview];
-//    ivExpand.userInteractionEnabled = YES;
-//    ivExpand.clipsToBounds = YES;
-//    
-//    originalFrame = ivExpand.frame;
-////    originalFrame.origin.y = originalFrame.origin.y + self.navigationController.navigationBar.bounds.size.height + [UIApplication sharedApplication].statusBarFrame.size.height;
-//    tempIV = imageView;
-//    
-//    [self.navigationController.view addSubview:ivExpand];
-//    self.tabBarController.tabBar.hidden = YES;
-//    
-//    UITapGestureRecognizer* tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeFullScreen:)];
-//    [ivExpand addGestureRecognizer:tgr];
-//    
-//    [self animateView:ivExpand toFrame:self.view.bounds completion:^(POPAnimation *anim, bool finished) {
-//        tempIV.hidden = YES;
-//    }];
+    //    UIImageView* iv = imageView;
+    //
+    //    UIImageView* ivExpand = [[UIImageView alloc] initWithImage:iv.image];
+    //    ivExpand.contentMode = iv.contentMode;
+    //    ivExpand.frame = [self.view convertRect:iv.frame fromView:iv.superview];
+    //    ivExpand.userInteractionEnabled = YES;
+    //    ivExpand.clipsToBounds = YES;
+    //
+    //    originalFrame = ivExpand.frame;
+    ////    originalFrame.origin.y = originalFrame.origin.y + self.navigationController.navigationBar.bounds.size.height + [UIApplication sharedApplication].statusBarFrame.size.height;
+    //    tempIV = imageView;
+    //
+    //    [self.navigationController.view addSubview:ivExpand];
+    //    self.tabBarController.tabBar.hidden = YES;
+    //
+    //    UITapGestureRecognizer* tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeFullScreen:)];
+    //    [ivExpand addGestureRecognizer:tgr];
+    //
+    //    [self animateView:ivExpand toFrame:self.view.bounds completion:^(POPAnimation *anim, bool finished) {
+    //        tempIV.hidden = YES;
+    //    }];
 }
 
 #pragma mark -
