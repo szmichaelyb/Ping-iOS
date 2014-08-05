@@ -86,7 +86,10 @@
         [PGParseHelper getLikeActivityForSelfies:_datasource fromUser:[PFUser currentUser] completion:^(BOOL finished, NSArray *likeObjects) {
             [_activityArray addObjectsFromArray:likeObjects];
             if (objects.count != 0) {
+                [UIView setAnimationsEnabled:NO];
                 [self reloadData];
+                [UIView setAnimationsEnabled:YES];
+//                [self reloadData];
             }
             
         }];
@@ -113,7 +116,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 459;
+    return 430;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -152,7 +155,12 @@
     [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         UIImage* img = [UIImage animatedImageWithAnimatedGIFData:data];
 //        UIImage* img = [UIImage imageWithData:data];
-        cell.iv.image = img;
+        [UIView transitionWithView:cell.mainIV duration:0.2f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+            cell.mainIV.image = img;
+        } completion:nil];
+        UIImage* temp = [UIImage imageWithData:data];
+        temp = [temp applyDarkEffect];
+        cell.blurBgIV.image = temp;
     }];
     
     cell.captionLabel.text = _datasource[indexPath.row][kPFSelfie_Caption];
@@ -173,10 +181,10 @@
         cell.totalLikes.text = [NSString stringWithFormat:@"%d likes", number];
     }];
     
-    cell.iv.userInteractionEnabled = YES;
-    cell.iv.tag = indexPath.row;
-    UITapGestureRecognizer* gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(performFullScreenAnimation:)];
-    [cell.iv addGestureRecognizer:gesture];
+    cell.mainIV.userInteractionEnabled = YES;
+//    cell.mainIV.tag = indexPath.row;
+//    UITapGestureRecognizer* gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(performFullScreenAnimation:)];
+//    [cell.iv addGestureRecognizer:gesture];
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(PGFeedTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -186,12 +194,12 @@
             [_myDelegate tableView:self willDisplayLastCell:cell];
         }
     }
-    [cell.iv startAnimating];
+//    [cell.mainIV startAnimating];
 }
 
 -(void)tableView:(UITableView *)tableView didEndDisplayingCell:(PGFeedTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [cell.iv stopAnimating];
+//    [cell.mainIV stopAnimating];
 }
 
 #pragma mark -
@@ -204,16 +212,16 @@
     return str;
 }
 
--(void)performFullScreenAnimation:(UITapGestureRecognizer*)sender
-{
-    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:sender.view.tag inSection:0];
-    
-    PGFeedTableViewCell* cell = (PGFeedTableViewCell*)[self cellForRowAtIndexPath:indexPath];
-    
-    if (_myDelegate) {
-        [_myDelegate tableView:self didTapOnImageView:cell.iv];
-    }
-}
+//-(void)performFullScreenAnimation:(UITapGestureRecognizer*)sender
+//{
+//    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:sender.view.tag inSection:0];
+//    
+//    PGFeedTableViewCell* cell = (PGFeedTableViewCell*)[self cellForRowAtIndexPath:indexPath];
+//    
+//    if (_myDelegate) {
+//        [_myDelegate tableView:self didTapOnImageView:cell.mainIV];
+//    }
+//}
 
 #pragma mark - PGFeedTableViewCell Delegate
 
@@ -267,17 +275,17 @@
             [PGParseHelper getTotalLikeForSelfie:object completion:^(BOOL finished, int number) {
                 cell.totalLikes.text = [NSString stringWithFormat:@"%d likes", number];
             }];
-            [self showLikeButtonAnimationInCell:cell];
         }];
+        [self showLikeButtonAnimationInCell:cell];
     }
 }
 
 -(void)showLikeButtonAnimationInCell:(PGFeedTableViewCell*)cell
 {
     UIImageView* likeIV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-    likeIV.center = CGPointMake(CGRectGetMidX(cell.iv.bounds), CGRectGetMidY(cell.iv.bounds));
+    likeIV.center = CGPointMake(CGRectGetMidX(cell.mainIV.bounds), CGRectGetMidY(cell.mainIV.bounds));
     likeIV.image = [[UIImage imageNamed:@"like"] imageWithOverlayColor:[UIColor redColor]];
-    [cell.iv addSubview:likeIV];
+    [cell.mainIV addSubview:likeIV];
     
     [UIView animateWithDuration:0.5 animations:^{
         likeIV.alpha = 0;

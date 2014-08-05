@@ -12,7 +12,8 @@
 
 @interface PGFeedTableViewCell : UITableViewCell
 
-@property (strong, nonatomic) IBOutlet UIImageView* iv;
+@property (nonatomic, strong) IBOutlet UIImageView* blurBgIV;
+@property (strong, nonatomic) IBOutlet UIImageView* mainIV;
 @property (strong, nonatomic) IBOutlet UILabel* captionLabel;
 @property (strong, nonatomic) IBOutlet UILabel* nameLabel;
 @property (strong, nonatomic) IBOutlet UILabel* timeAndlocationLabel;

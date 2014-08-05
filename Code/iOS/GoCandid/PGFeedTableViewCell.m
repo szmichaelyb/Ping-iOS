@@ -40,7 +40,7 @@
     
     UITapGestureRecognizer* doubleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
     doubleTapGesture.numberOfTapsRequired = 2;
-    [self.iv addGestureRecognizer:doubleTapGesture];
+    [self.mainIV addGestureRecognizer:doubleTapGesture];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

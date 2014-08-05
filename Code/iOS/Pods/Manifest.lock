@@ -1,4 +1,5 @@
 PODS:
+  - AFBlurSegue (1.1)
   - AFNetworking (2.2.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
@@ -53,6 +54,7 @@ PODS:
   - FormatterKit/TimeIntervalFormatter (1.4.3)
   - FormatterKit/UnitOfInformationFormatter (1.4.3)
   - FormatterKit/URLRequestFormatter (1.4.3)
+  - FXBlurView (1.6.2)
   - GTScrollNavigationBar (0.1.1)
   - IDMPhotoBrowser (1.3.5):
     - AFNetworking (~> 2.2.3)
@@ -75,10 +77,12 @@ PODS:
   - ZGParallelView (0.1.6)
 
 DEPENDENCIES:
+  - AFBlurSegue
   - AFNetworking
   - BFPaperButton
   - DZNPhotoPickerController
   - FormatterKit (~> 1.4.2)
+  - FXBlurView (~> 1.6.1)
   - GTScrollNavigationBar (~> 0.1.1)
   - IDMPhotoBrowser
   - IDMPhotoBrowser (~> 1.3.5)
@@ -93,6 +97,7 @@ DEPENDENCIES:
   - ZGParallelView (~> 0.1.6)
 
 SPEC CHECKSUMS:
+  AFBlurSegue: 9b2bfada8d57af492f3ab5ef59a7599c6f915cb1
   AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
   BFPaperButton: 8fb7d157a72a36c9595e40e3831288253b3eae30
   Bolts: 0ca796081c3e7c139bd86d6903c27f1b83036a5d
@@ -101,6 +106,7 @@ SPEC CHECKSUMS:
   DZNPhotoPickerController: 3d7428991e2604939fc56e581693d61d29138186
   Facebook-iOS-SDK: 34eef640c2cc4c8618ba0f574ad2b290e07f1b4e
   FormatterKit: f744aa7928003eba8317d6fd6998414fbc78f7a5
+  FXBlurView: 47496afc9160097fa34af35fc4b310bd85d65dca
   GTScrollNavigationBar: 60392a5cc551047d0471e5693d06f68d4c1bd77b
   IDMPhotoBrowser: d691bcdf470553e165f8eb982c5cd8e9a58bcdef
   iOS-Hierarchy-Viewer: f795abaeb8ccec8f652abd0891c396ad77d211d3

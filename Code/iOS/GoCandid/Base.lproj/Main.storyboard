@@ -584,7 +584,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="settings-off" id="cvR-5b-ykj">
                             <connections>
-                                <segue destination="eOu-L6-0z5" kind="modal" id="8cn-ok-2SU"/>
+                                <segue destination="Ept-nu-5wr" kind="custom" identifier="blurSegue" customClass="AFBlurSegue" id="7mk-ZJ-h5C"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -703,19 +703,19 @@
             <point key="canvasLocation" x="1870" y="1141"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="2zG-ud-tw4">
+        <scene sceneID="ruR-vp-Jnh">
             <objects>
-                <navigationController definesPresentationContext="YES" id="eOu-L6-0z5" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="86s-7w-fDA">
+                <navigationController definesPresentationContext="YES" id="Ept-nu-5wr" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SSw-L1-QOM">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="cfo-ZM-QAj" kind="relationship" relationship="rootViewController" id="S63-gD-70d"/>
+                        <segue destination="cfo-ZM-QAj" kind="relationship" relationship="rootViewController" id="BDl-ae-hGU"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="88E-jj-3rc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZVM-lf-0UW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1386" y="1916"/>
+            <point key="canvasLocation" x="1389" y="1928"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="MGW-hu-tVM">
@@ -1059,28 +1059,37 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="rHs-O0-XbC">
-                                <rect key="frame" x="89" y="9" width="142" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Home"/>
-                                    <segment title="Recent"/>
-                                </segments>
-                                <connections>
-                                    <action selector="segChanged:" destination="1cV-B3-Drv" eventType="valueChanged" id="2K9-kr-NpJ"/>
-                                </connections>
-                            </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="RfM-z5-p25" customClass="PGFeedTableView">
-                                <rect key="frame" x="0.0" y="45" width="320" height="410"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <view contentMode="scaleToFill" id="xVp-e4-RPU" customClass="FXBlurView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="rHs-O0-XbC">
+                                        <rect key="frame" x="89" y="9" width="142" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <segments>
+                                            <segment title="Home"/>
+                                            <segment title="Recent"/>
+                                        </segments>
+                                        <color key="tintColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="segChanged:" destination="1cV-B3-Drv" eventType="valueChanged" id="2K9-kr-NpJ"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Feed" id="bIG-s4-hve"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
+                        <outlet property="segBGBlurView" destination="xVp-e4-RPU" id="r26-l1-aCi"/>
                         <outlet property="tableView" destination="RfM-z5-p25" id="0sG-UH-Mme"/>
                     </connections>
                 </viewController>

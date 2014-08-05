@@ -13,6 +13,8 @@
 #import "PGProgressHUD.h"
 #import "GCUsersListViewController.h"
 #import <IDMPhotoBrowser.h>
+#import "UIImage+MyUIImage.h"
+#import "PGSettingsViewController.h"
 
 @interface PGProfileViewController ()<PGFeedTableViewDelegate>
 
@@ -84,7 +86,7 @@
     
     _nameLabel.text = _profileUser[kPFUser_Name];
     
-    _headerView.image = [self blur:_profileIV.image];
+    _headerView.image = [_profileIV.image applyLightEffect];
     [self.tableView addParallelViewWithUIView:view withDisplayRadio:0.6 headerViewStyle:ZGScrollViewStyleDefault];
     
     [_followersButton setTitle:@"0 followers" forState:UIControlStateNormal];
@@ -149,7 +151,8 @@
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     _profileIV.image = [UIImage imageWithData:imgData];
-                    _headerView.image = [self blur:_profileIV.image];
+//                    _headerView.image = [self blur:_profileIV.image];
+                    _headerView.image = [_profileIV.image applyLightEffect];
                 });
                 
                 PFFile* imageFile = [PFFile fileWithName:@"profile.jpg" data:imgData];
@@ -169,7 +172,8 @@
 {
     [self dismissViewControllerAnimated:YES completion:^{
         _profileIV.image = info[UIImagePickerControllerOriginalImage];
-        _headerView.image = [self blur:_profileIV.image];
+//        _headerView.image = [self blur:_profileIV.image];
+        _headerView.image = [_profileIV.image applyLightEffect];
         
         NSData* imgData = UIImageJPEGRepresentation(info[UIImagePickerControllerOriginalImage], 0.7);
         PFFile* imageFile = [PFFile fileWithName:@"profile.jpg" data:imgData];
@@ -302,103 +306,28 @@
 
 #pragma mark -
 
-- (UIImage*)blur:(UIImage*)theImage
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // ***********If you need re-orienting (e.g. trying to blur a photo taken from the device camera front facing camera in portrait mode)
-     theImage = [self reOrientIfNeeded:theImage];
-    
-    // create our blurred image
-    CIContext *context = [CIContext contextWithOptions:nil];
-    CIImage *inputImage = [CIImage imageWithCGImage:theImage.CGImage];
-    
-    // setting up Gaussian Blur (we could use one of many filters offered by Core Image)
-    CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur"];
-    [filter setValue:inputImage forKey:kCIInputImageKey];
-    [filter setValue:[NSNumber numberWithFloat:15.0f] forKey:@"inputRadius"];
-    CIImage *result = [filter valueForKey:kCIOutputImageKey];
-    
-    // CIGaussianBlur has a tendency to shrink the image a little,
-    // this ensures it matches up exactly to the bounds of our original image
-    CGImageRef cgImage = [context createCGImage:result fromRect:[inputImage extent]];
-    
-    UIImage *returnImage = [UIImage imageWithCGImage:cgImage];//create a UIImage for this function to "return" so that ARC can manage the memory of the blur... ARC can't manage CGImageRefs so we need to release it before this function "returns" and ends.
-    CGImageRelease(cgImage);//release CGImageRef because ARC doesn't manage this on its own.
-    
-    return returnImage;
-    
-    // *************** if you need scaling
-    // return [[self class] scaleIfNeeded:cgImage];
-}
-
-- (UIImage*) reOrientIfNeeded:(UIImage*)theImage{
-    
-    if (theImage.imageOrientation != UIImageOrientationUp) {
+    if ([segue.identifier isEqualToString:@"blurSegue"]) {
+        UINavigationController* parentController=  segue.destinationViewController;
         
-        CGAffineTransform reOrient = CGAffineTransformIdentity;
-        switch (theImage.imageOrientation) {
-            case UIImageOrientationDown:
-            case UIImageOrientationDownMirrored:
-                reOrient = CGAffineTransformTranslate(reOrient, theImage.size.width, theImage.size.height);
-                reOrient = CGAffineTransformRotate(reOrient, M_PI);
-                break;
-            case UIImageOrientationLeft:
-            case UIImageOrientationLeftMirrored:
-                reOrient = CGAffineTransformTranslate(reOrient, theImage.size.width, 0);
-                reOrient = CGAffineTransformRotate(reOrient, M_PI_2);
-                break;
-            case UIImageOrientationRight:
-            case UIImageOrientationRightMirrored:
-                reOrient = CGAffineTransformTranslate(reOrient, 0, theImage.size.height);
-                reOrient = CGAffineTransformRotate(reOrient, -M_PI_2);
-                break;
-            case UIImageOrientationUp:
-            case UIImageOrientationUpMirrored:
-                break;
-        }
+        PGSettingsViewController* controller = parentController.viewControllers[0];
+        UITableView* target = controller.tableView;
         
-        switch (theImage.imageOrientation) {
-            case UIImageOrientationUpMirrored:
-            case UIImageOrientationDownMirrored:
-                reOrient = CGAffineTransformTranslate(reOrient, theImage.size.width, 0);
-                reOrient = CGAffineTransformScale(reOrient, -1, 1);
-                break;
-            case UIImageOrientationLeftMirrored:
-            case UIImageOrientationRightMirrored:
-                reOrient = CGAffineTransformTranslate(reOrient, theImage.size.height, 0);
-                reOrient = CGAffineTransformScale(reOrient, -1, 1);
-                break;
-            case UIImageOrientationUp:
-            case UIImageOrientationDown:
-            case UIImageOrientationLeft:
-            case UIImageOrientationRight:
-                break;
-        }
+        CGRect windowBounds = self.view.window.bounds;
+        CGSize windowSize = windowBounds.size;
         
-        CGContextRef myContext = CGBitmapContextCreate(NULL, theImage.size.width, theImage.size.height, CGImageGetBitsPerComponent(theImage.CGImage), 0, CGImageGetColorSpace(theImage.CGImage), CGImageGetBitmapInfo(theImage.CGImage));
+        UIGraphicsBeginImageContextWithOptions(windowSize, YES, 0.0);
+        [self.view.window drawViewHierarchyInRect:windowBounds afterScreenUpdates:NO];
+        UIImage* snapshot = UIGraphicsGetImageFromCurrentImageContext() ;
         
-        CGContextConcatCTM(myContext, reOrient);
+        UIGraphicsEndImageContext();
         
-        switch (theImage.imageOrientation) {
-            case UIImageOrientationLeft:
-            case UIImageOrientationLeftMirrored:
-            case UIImageOrientationRight:
-            case UIImageOrientationRightMirrored:
-                CGContextDrawImage(myContext, CGRectMake(0,0,theImage.size.height,theImage.size.width), theImage.CGImage);
-                break;
-                
-            default:
-                CGContextDrawImage(myContext, CGRectMake(0,0,theImage.size.width,theImage.size.height), theImage.CGImage);
-                break;
-        }
+        snapshot = [snapshot applyLightEffect];
         
-        CGImageRef CGImg = CGBitmapContextCreateImage(myContext);
-        theImage = [UIImage imageWithCGImage:CGImg];
-        
-        CGImageRelease(CGImg);
-        CGContextRelease(myContext);
+        UIImageView* bgIV = [[UIImageView alloc] initWithImage:snapshot];
+        target.backgroundView = bgIV;
     }
-    
-    return theImage;
 }
 
 @end
