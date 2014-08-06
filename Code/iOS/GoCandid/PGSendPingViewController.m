@@ -10,6 +10,8 @@
 #import "UIViewController+Transitions.h"
 #import <Twitter/Twitter.h>
 #import <BFPaperButton/BFPaperButton.h>
+#import "GCZoomOutTransitionController.h"
+#import "PGPingViewController.h"
 
 @interface PGSendPingViewController ()
 
@@ -48,6 +50,22 @@
     // Do any additional setup after loading the view.
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    self.navigationController.delegate = self;
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    if (self.navigationController.delegate == self) {
+        self.navigationController.delegate = nil;
+    }
+}
+
 -(BOOL)prefersStatusBarHidden
 {
     return YES;
@@ -57,6 +75,21 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark UINavigationControllerDelegate methods
+
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController *)fromVC
+                                                 toViewController:(UIViewController *)toVC {
+    // Check if we're transitioning from this view controller to a DSLFirstViewController
+    if (fromVC == self && [toVC isKindOfClass:[PGPingViewController class]]) {
+        return [[GCZoomOutTransitionController alloc] init];
+    }
+    else {
+        return nil;
+    }
 }
 
 -(void)dismissKeyboard:(UIGestureRecognizer*)reco

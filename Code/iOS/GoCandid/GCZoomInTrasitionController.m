@@ -1,16 +1,17 @@
 //
-//  GCZoomTrasitionController.m
+//  GCZoomInTrasitionController.m
 //  GoCandid
 //
 //  Created by Rishabh Tayal on 8/6/14.
 //  Copyright (c) 2014 Appikon Mobile. All rights reserved.
 //
 
-#import "GCZoomTrasitionController.h"
+#import "GCZoomInTrasitionController.h"
 #import "PGPingViewController.h"
 #import "PGSendPingViewController.h"
+#import <pop/POP.h>
 
-@implementation GCZoomTrasitionController
+@implementation GCZoomInTrasitionController
 
 -(NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext
 {
@@ -40,10 +41,10 @@
     [containerView addSubview:toViewController.view];
     [containerView addSubview:cellImageSnapshot];
     
-    [UIView animateWithDuration:duration animations:^{
+    [UIView animateWithDuration:duration delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:1.0 options:0 animations:^{
         // Fade in the second view controller's view
         toViewController.view.alpha = 1.0;
-        
+
         // Move the cell snapshot so it's over the second view controller's image view
         CGRect frame = [containerView convertRect:toViewController.imageView.frame fromView:toViewController.view];
         cellImageSnapshot.frame = frame;
@@ -52,7 +53,7 @@
         toViewController.imageView.hidden = NO;
         //        cell.hidden = NO;
         [cellImageSnapshot removeFromSuperview];
-        
+
         // Declare that we've finished
         [transitionContext completeTransition:!transitionContext.transitionWasCancelled];
     }];

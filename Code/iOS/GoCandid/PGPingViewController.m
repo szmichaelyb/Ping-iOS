@@ -13,7 +13,7 @@
 #import <BFPaperButton/BFPaperButton.h>
 #import <ImageIO/ImageIO.h>
 #import <MobileCoreServices/MobileCoreServices.h>
-#import "GCZoomTrasitionController.h"
+#import "GCZoomInTrasitionController.h"
 
 const CGFloat kDefaultGifDelay = 0.5;
 
@@ -78,7 +78,7 @@ const CGFloat kDefaultGifDelay = 0.5;
 -(id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC
 {
     if (fromVC == self && [toVC isKindOfClass:[PGSendPingViewController class]]) {
-        return [[GCZoomTrasitionController alloc] init];
+        return [[GCZoomInTrasitionController alloc] init];
     }
     return nil;
 }

@@ -1,5 +1,5 @@
 //
-//  GCZoomTrasitionController.h
+//  GCZoomInTrasitionController.h
 //  GoCandid
 //
 //  Created by Rishabh Tayal on 8/6/14.
@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GCZoomTrasitionController : NSObject<UIViewControllerAnimatedTransitioning>
+@interface GCZoomInTrasitionController : NSObject<UIViewControllerAnimatedTransitioning>
 
 @end
