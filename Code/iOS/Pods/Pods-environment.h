@@ -6,12 +6,6 @@
 // project.
 
 
-// AFBlurSegue
-#define COCOAPODS_POD_AVAILABLE_AFBlurSegue
-#define COCOAPODS_VERSION_MAJOR_AFBlurSegue 1
-#define COCOAPODS_VERSION_MINOR_AFBlurSegue 1
-#define COCOAPODS_VERSION_PATCH_AFBlurSegue 0
-
 // AFNetworking
 #define COCOAPODS_POD_AVAILABLE_AFNetworking
 #define COCOAPODS_VERSION_MAJOR_AFNetworking 2
@@ -173,6 +167,12 @@
 #define COCOAPODS_VERSION_MAJOR_MBProgressHUD 0
 #define COCOAPODS_VERSION_MINOR_MBProgressHUD 8
 #define COCOAPODS_VERSION_PATCH_MBProgressHUD 0
+
+// MaryPopin
+#define COCOAPODS_POD_AVAILABLE_MaryPopin
+#define COCOAPODS_VERSION_MAJOR_MaryPopin 1
+#define COCOAPODS_VERSION_MINOR_MaryPopin 3
+#define COCOAPODS_VERSION_PATCH_MaryPopin 1
 
 // Parse
 #define COCOAPODS_POD_AVAILABLE_Parse

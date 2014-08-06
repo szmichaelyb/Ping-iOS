@@ -86,6 +86,7 @@
         [PGParseHelper getLikeActivityForSelfies:_datasource fromUser:[PFUser currentUser] completion:^(BOOL finished, NSArray *likeObjects) {
             [_activityArray addObjectsFromArray:likeObjects];
             if (objects.count != 0) {
+                
                 [UIView setAnimationsEnabled:NO];
                 [self reloadData];
                 [UIView setAnimationsEnabled:YES];
@@ -159,8 +160,8 @@
             cell.mainIV.image = img;
         } completion:nil];
         UIImage* temp = [UIImage imageWithData:data];
-        temp = [temp applyDarkEffect];
-        cell.blurBgIV.image = temp;
+//        temp = [temp applyDarkEffect];
+//        cell.blurBgIV.image = temp;
     }];
     
     cell.captionLabel.text = _datasource[indexPath.row][kPFSelfie_Caption];

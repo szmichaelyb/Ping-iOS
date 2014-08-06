@@ -97,7 +97,19 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self getDataAppend:NO];
+    
+    NSDate* lastRefreshDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"profileLastRefresh"];
+    if (!lastRefreshDate) {
+        [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"profileLastRefresh"];
+        [self getDataAppend:NO];
+    }
+    NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:lastRefreshDate];
+    int minutes = (interval - ((int)interval/3600 * 3600)) / 60;
+    if (minutes >= 5) {
+        [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"profileLastRefresh"];
+        [self getDataAppend:NO];
+    }
+
     
     PFQuery* followerCountQuery = [PFQuery queryWithClassName:kPFTableActivity];
     [followerCountQuery whereKey:kPFActivity_Type equalTo:kPFActivity_Type_Follow];

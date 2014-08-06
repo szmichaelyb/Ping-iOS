@@ -1075,13 +1075,12 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="rHs-O0-XbC">
-                                        <rect key="frame" x="89" y="9" width="142" height="29"/>
+                                        <rect key="frame" x="50" y="9" width="220" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <segments>
                                             <segment title="Home"/>
                                             <segment title="Recent"/>
                                         </segments>
-                                        <color key="tintColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="segChanged:" destination="1cV-B3-Drv" eventType="valueChanged" id="2K9-kr-NpJ"/>
                                         </connections>
