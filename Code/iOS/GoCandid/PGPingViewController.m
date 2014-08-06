@@ -13,6 +13,7 @@
 #import <BFPaperButton/BFPaperButton.h>
 #import <ImageIO/ImageIO.h>
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "GCZoomTrasitionController.h"
 
 const CGFloat kDefaultGifDelay = 0.5;
 
@@ -20,7 +21,6 @@ const CGFloat kDefaultGifDelay = 0.5;
 
 @property (strong, nonatomic) NSURL* imageURL;
 
-@property (nonatomic, strong) IBOutlet UIImageView* imageView;
 @property (nonatomic, strong) IBOutlet BFPaperButton* sendButton;
 @property (nonatomic, strong) IBOutlet UIButton* retakeButton;
 @property (nonatomic, strong) IBOutlet UISlider* durationSlider;
@@ -30,6 +30,7 @@ const CGFloat kDefaultGifDelay = 0.5;
 -(IBAction)durationSliderChanged:(UISlider*)sender;
 -(IBAction)backbuttonClicked:(id)sender;
 -(IBAction)sliderDidFinishChanging:(id)sender;
+-(IBAction)nextButtonClicked:(id)sender;
 
 @end
 
@@ -48,6 +49,21 @@ const CGFloat kDefaultGifDelay = 0.5;
     self.sendButton.rippleFromTapLocation = NO;
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    self.navigationController.delegate = self;
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    if (self.navigationController.delegate == self) {
+        self.navigationController.delegate = nil;
+    }
+}
+
 -(BOOL)prefersStatusBarHidden
 {
     return YES;
@@ -57,6 +73,14 @@ const CGFloat kDefaultGifDelay = 0.5;
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC
+{
+    if (fromVC == self && [toVC isKindOfClass:[PGSendPingViewController class]]) {
+        return [[GCZoomTrasitionController alloc] init];
+    }
+    return nil;
 }
 
 -(IBAction)durationSliderChanged:(UISlider *)sender
@@ -81,13 +105,12 @@ const CGFloat kDefaultGifDelay = 0.5;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+-(void)nextButtonClicked:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"PGSendPingSegue"]) {
-        PGSendPingViewController* sendPingVC = segue.destinationViewController;
-        sendPingVC.delegate = _delegate;
-        sendPingVC.gifUrl = _imageURL;
-    }
+    PGSendPingViewController* sendPingVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PGSendPingViewController"];
+    sendPingVC.delegate = _delegate;
+    sendPingVC.gifUrl = _imageURL;
+    [self.navigationController pushViewController:sendPingVC animated:YES];
 }
 
 //-(void)findOldestUnusedSelfieObjectExcludingReciever:(PFObject*)recieverObj completionBlock:(void (^) (PFObject* selfieObj))block

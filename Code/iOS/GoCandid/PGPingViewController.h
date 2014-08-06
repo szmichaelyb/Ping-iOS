@@ -10,9 +10,10 @@
 
 #import "PGCamViewController.h"
 
-@interface PGPingViewController : UIViewController
+@interface PGPingViewController : UIViewController<UINavigationControllerDelegate>
 
 @property (assign, nonatomic) id<PGCamViewControllerDelegate> delegate;
 @property (strong, nonatomic) NSArray* images;
+@property (nonatomic, strong) IBOutlet UIImageView* imageView;
 
 @end

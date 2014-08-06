@@ -83,18 +83,31 @@
             block(YES);
         }
         [_datasource addObjectsFromArray:objects];
+        NSInteger i = _datasource.count - objects.count;
+        NSMutableArray* indexPaths = [[NSMutableArray alloc] init];
+        for (NSDictionary* result in objects) {
+            [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+            i++;
+        }
+        
         [PGParseHelper getLikeActivityForSelfies:_datasource fromUser:[PFUser currentUser] completion:^(BOOL finished, NSArray *likeObjects) {
             [_activityArray addObjectsFromArray:likeObjects];
-            if (objects.count != 0) {
-                
-                [UIView setAnimationsEnabled:NO];
+            if (_datasource.count != objects.count) {
+//Check if objects are new.
+                [self beginUpdates];
+                [self insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+                [self endUpdates];
+            } else {
                 [self reloadData];
-                [UIView setAnimationsEnabled:YES];
-//                [self reloadData];
             }
             
         }];
     }];
+}
+
+-(NSInteger)numberOfRows
+{
+    return self.datasource.count;
 }
 
 #pragma mark - UIScrollView Delegate

@@ -14,7 +14,6 @@
 @interface PGSendPingViewController ()
 
 @property (nonatomic, strong) IBOutlet BFPaperButton* postButton;
-@property (nonatomic, strong) IBOutlet UIImageView* imageView;
 
 @property (nonatomic, strong) IBOutlet UITextField* captionTF;
 @property (nonatomic, strong) IBOutlet UILabel* locationLabel;

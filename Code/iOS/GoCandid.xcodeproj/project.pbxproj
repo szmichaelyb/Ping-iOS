@@ -57,6 +57,7 @@
 		06DCBD2E1970886A00E8C9B2 /* InAppNotificationTapListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBD2A1970886A00E8C9B2 /* InAppNotificationTapListener.m */; };
 		06DCBD2F1970886A00E8C9B2 /* InAppNotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBD2C1970886A00E8C9B2 /* InAppNotificationView.m */; };
 		06DCBD301970886A00E8C9B2 /* InAppNotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06DCBD2D1970886A00E8C9B2 /* InAppNotificationView.xib */; };
+		06DF342D19928D9700509399 /* GCZoomTrasitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DF342C19928D9700509399 /* GCZoomTrasitionController.m */; };
 		06E79447198037CB00E7B143 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E79446198037CB00E7B143 /* Crashlytics.framework */; };
 		B4D0781A6E87400B8846C0E9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 44403505DE314A23B874DE7D /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -150,6 +151,8 @@
 		06DCBD2B1970886A00E8C9B2 /* InAppNotificationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppNotificationView.h; sourceTree = "<group>"; };
 		06DCBD2C1970886A00E8C9B2 /* InAppNotificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppNotificationView.m; sourceTree = "<group>"; };
 		06DCBD2D1970886A00E8C9B2 /* InAppNotificationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InAppNotificationView.xib; sourceTree = "<group>"; };
+		06DF342B19928D9700509399 /* GCZoomTrasitionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCZoomTrasitionController.h; sourceTree = "<group>"; };
+		06DF342C19928D9700509399 /* GCZoomTrasitionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCZoomTrasitionController.m; sourceTree = "<group>"; };
 		06E79446198037CB00E7B143 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		44403505DE314A23B874DE7D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3EC4F2809A54D8D8F1E8EBE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -334,6 +337,7 @@
 				06DCBCF9196EE8EB00E8C9B2 /* PGPingViewController.m */,
 				06654AEA197EBBDE0014FA74 /* PGSendPingViewController.h */,
 				06654AEB197EBBDF0014FA74 /* PGSendPingViewController.m */,
+				06DF342E199292A200509399 /* Transition Animations */,
 			);
 			name = "Ping VC";
 			sourceTree = "<group>";
@@ -453,6 +457,15 @@
 				06DCBD2D1970886A00E8C9B2 /* InAppNotificationView.xib */,
 			);
 			name = "In-app Notification";
+			sourceTree = "<group>";
+		};
+		06DF342E199292A200509399 /* Transition Animations */ = {
+			isa = PBXGroup;
+			children = (
+				06DF342B19928D9700509399 /* GCZoomTrasitionController.h */,
+				06DF342C19928D9700509399 /* GCZoomTrasitionController.m */,
+			);
+			name = "Transition Animations";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -583,6 +596,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06DCBCFA196EE8EB00E8C9B2 /* PGPingViewController.m in Sources */,
+				06DF342D19928D9700509399 /* GCZoomTrasitionController.m in Sources */,
 				0683409F19774AD4007A1AEC /* PGProgressHUD.m in Sources */,
 				06B56151197423AE00E92A92 /* PGProfileViewController.m in Sources */,
 				06DCBD2719707A1E00E8C9B2 /* PGFeedHeader.m in Sources */,
@@ -752,7 +766,7 @@
 				INFOPLIST_FILE = "GoCandid/GoCandid-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = GoCandid;
-				PROVISIONING_PROFILE = "271ADBD1-0F08-47FA-AB75-69EF809C8A7F";
+				PROVISIONING_PROFILE = "8B1BD77C-9B5A-4949-88E4-0B5D625875AC";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

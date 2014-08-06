@@ -47,7 +47,7 @@
     self.tableView = [[PGFeedTableView alloc] initWithFrame:self.view.bounds];
     self.tableView.myDelegate = self;
     UILabel* emptyView = [[UILabel alloc] initWithFrame:self.tableView.frame];
-    emptyView.text = @"No Ping yet.";
+    emptyView.text = @"No Posts yet.";
     emptyView.textAlignment = NSTextAlignmentCenter;
     emptyView.textColor = [UIColor lightGrayColor];
     self.tableView.emptyView = emptyView;
@@ -92,6 +92,7 @@
     [_followersButton setTitle:@"0 followers" forState:UIControlStateNormal];
     [_followingButton setTitle:@"0 following" forState:UIControlStateNormal];
     _postCountLabel.text = @"0 post";
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -105,7 +106,7 @@
     }
     NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:lastRefreshDate];
     int minutes = (interval - ((int)interval/3600 * 3600)) / 60;
-    if (minutes >= 5) {
+    if (minutes >= 5 || self.tableView.numberOfRows == 0) {
         [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"profileLastRefresh"];
         [self getDataAppend:NO];
     }

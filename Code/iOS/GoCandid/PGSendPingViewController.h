@@ -13,5 +13,6 @@
 
 @property (assign, nonatomic) id<PGCamViewControllerDelegate> delegate;
 @property (strong, nonatomic) NSURL* gifUrl;
+@property (nonatomic, strong) IBOutlet UIImageView* imageView;
 
 @end

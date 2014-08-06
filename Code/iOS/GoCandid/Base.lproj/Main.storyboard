@@ -407,7 +407,7 @@
                                 <state key="selected" image="CaptureButton-Normal"/>
                                 <state key="highlighted" image="CaptureButton-Normal"/>
                                 <connections>
-                                    <segue destination="omH-ax-muh" kind="push" identifier="PGSendPingSegue" id="xcz-id-4WZ"/>
+                                    <action selector="nextButtonClicked:" destination="Dvu-oQ-EJq" eventType="touchUpInside" id="s4w-0r-XvH"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QHl-Qf-TQe">
