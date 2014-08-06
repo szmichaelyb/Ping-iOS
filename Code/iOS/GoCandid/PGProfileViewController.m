@@ -322,24 +322,24 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"blurSegue"]) {
-        UINavigationController* parentController=  segue.destinationViewController;
-        
-        PGSettingsViewController* controller = parentController.viewControllers[0];
-        UITableView* target = controller.tableView;
-        
-        CGRect windowBounds = self.view.window.bounds;
-        CGSize windowSize = windowBounds.size;
-        
-        UIGraphicsBeginImageContextWithOptions(windowSize, YES, 0.0);
-        [self.view.window drawViewHierarchyInRect:windowBounds afterScreenUpdates:NO];
-        UIImage* snapshot = UIGraphicsGetImageFromCurrentImageContext() ;
-        
-        UIGraphicsEndImageContext();
-        
-        snapshot = [snapshot applyLightEffect];
-        
-        UIImageView* bgIV = [[UIImageView alloc] initWithImage:snapshot];
-        target.backgroundView = bgIV;
+//        UINavigationController* parentController=  segue.destinationViewController;
+//        
+//        PGSettingsViewController* controller = parentController.viewControllers[0];
+//        UITableView* target = controller.tableView;
+//        
+//        CGRect windowBounds = self.view.window.bounds;
+//        CGSize windowSize = windowBounds.size;
+//        
+//        UIGraphicsBeginImageContextWithOptions(windowSize, YES, 0.0);
+//        [self.view.window drawViewHierarchyInRect:windowBounds afterScreenUpdates:NO];
+//        UIImage* snapshot = UIGraphicsGetImageFromCurrentImageContext() ;
+//        
+//        UIGraphicsEndImageContext();
+//        
+//        snapshot = [snapshot applyLightEffect];
+//        
+//        UIImageView* bgIV = [[UIImageView alloc] initWithImage:snapshot];
+//        target.backgroundView = bgIV;
     }
 }
 

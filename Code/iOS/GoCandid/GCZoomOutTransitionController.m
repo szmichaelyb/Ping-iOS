@@ -40,7 +40,7 @@
     [containerView insertSubview:toViewController.view belowSubview:fromViewController.view];
     [containerView addSubview:imageSnapshot];
     
-    [UIView animateWithDuration:duration animations:^{
+    [UIView animateWithDuration:duration delay:0 usingSpringWithDamping:0.7 initialSpringVelocity:4.0 options:0 animations:^{
         // Fade out the source view controller
         fromViewController.view.alpha = 0.0;
         

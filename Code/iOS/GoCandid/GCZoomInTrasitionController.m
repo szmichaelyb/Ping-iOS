@@ -41,7 +41,7 @@
     [containerView addSubview:toViewController.view];
     [containerView addSubview:cellImageSnapshot];
     
-    [UIView animateWithDuration:duration delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:1.0 options:0 animations:^{
+    [UIView animateWithDuration:duration delay:0 usingSpringWithDamping:0.7 initialSpringVelocity:4.0 options:0 animations:^{
         // Fade in the second view controller's view
         toViewController.view.alpha = 1.0;
 
