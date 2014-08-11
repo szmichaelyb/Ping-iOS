@@ -22,7 +22,12 @@
 
 - (void)awakeFromNib
 {
-    // Initialization code
+    // Initialization code.
+    
+    self.nameLabel.font = FONT_OPENSANS_CONDLIGHT(FONT_SIZE_MEDIUM);
+    self.timeAndlocationLabel.font = FONT_OPENSANS_CONDBOLD(FONT_SIZE_SMALL);
+    self.captionLabel.font = FONT_OPENSANS_CONDLIGHT(FONT_SIZE_MEDIUM);
+    
     self.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1];
     self.thumbIV.layer.cornerRadius = self.thumbIV.frame.size.width/2;
     self.thumbIV.layer.masksToBounds = YES;
