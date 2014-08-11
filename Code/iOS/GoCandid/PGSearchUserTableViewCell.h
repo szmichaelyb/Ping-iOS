@@ -1,5 +1,5 @@
 //
-//  PGSearchTableViewCell.h
+//  PGSearchUserTableViewCell.h
 //  Ping
 //
 //  Created by Rishabh Tayal on 7/17/14.
@@ -14,22 +14,22 @@ typedef enum
     FollowButtonStateFollowing
 }FollowButtonStatus;
 
-@protocol PGSearchTableViewCellDelegate;
+@protocol PGSearchUserTableViewCellDelegate;
 
-@interface PGSearchTableViewCell : UITableViewCell
+@interface PGSearchUserTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) IBOutlet UILabel* nameLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *thumbIV;
 
-@property (assign, nonatomic) id<PGSearchTableViewCellDelegate> delegate;
+@property (assign, nonatomic) id<PGSearchUserTableViewCellDelegate> delegate;
 
 -(FollowButtonStatus)followButtonStatus;
 -(void)setFollowButtonStatus:(FollowButtonStatus)status;
 
 @end
 
-@protocol PGSearchTableViewCellDelegate <NSObject>
+@protocol PGSearchUserTableViewCellDelegate <NSObject>
 
--(void)buttonTappedOnCell:(PGSearchTableViewCell*)cell;
+-(void)buttonTappedOnCell:(PGSearchUserTableViewCell*)cell;
 
 @end

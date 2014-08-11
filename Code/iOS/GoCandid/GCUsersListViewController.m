@@ -7,7 +7,7 @@
 //
 
 #import "GCUsersListViewController.h"
-#import "PGSearchTableViewCell.h"
+#import "PGSearchUserTableViewCell.h"
 #import "PGProfileViewController.h"
 #import <UIActionSheet+Blocks/UIActionSheet+Blocks.h>
 
@@ -99,9 +99,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PGSearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    PGSearchUserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!cell) {
-        cell = [[NSBundle mainBundle] loadNibNamed:@"PGSearchTableViewCell" owner:nil options:nil][0];
+        cell = [[NSBundle mainBundle] loadNibNamed:@"PGSearchUserTableViewCell" owner:nil options:nil][0];
     }
     
     [self configureCell:cell forRowAtIndexPath:indexPath];
@@ -109,7 +109,7 @@
     return cell;
 }
 
-- (void)configureCell:(PGSearchTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(PGSearchUserTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DLog(@"%@", _datasource[indexPath.row]);
     PFUser* user = _datasource[indexPath.row];
@@ -134,7 +134,7 @@
 
 #pragma mark -
 
--(void)buttonTappedOnCell:(PGSearchTableViewCell *)cell
+-(void)buttonTappedOnCell:(PGSearchUserTableViewCell *)cell
 {
     NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
     PFUser* user = _datasource[indexPath.row];

@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "GoCandid Dev": {
+            "applicationId": "RjjejatHY8BsqER68vg48jtr9nRv0FVAfKqryjja", 
+            "masterKey": "pXdSDkUogigvB9ywDjBZ7q40MFGQjpOdws7DXqBB"
+        }, 
+        "_default": {
+            "link": "GoCandid Dev"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.2.19"
+    }
+}

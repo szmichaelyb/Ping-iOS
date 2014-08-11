@@ -109,7 +109,7 @@
         [alert show];
     } else {
         
-        PFObject* object = [PFObject objectWithClassName:kPFTableName_Selfies];
+        PFObject* object = [PFObject objectWithClassName:kPFTableNameSelfies];
         object[kPFSelfie_Owner] = [PFUser currentUser];
         
         //TODO: Change it to
@@ -123,6 +123,9 @@
             object[kPFSelfie_Location] = _locationLabel.text;
             [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 
+                if (error) {
+                    [[[UIAlertView alloc] initWithTitle:@"GoCandid" message:@"Error occurred while creating the post. Please try again." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+                }
                 [self postOnFacebookObject:object succesful:^(bool success) {
                     if (success) {
                         

@@ -14,9 +14,12 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (nonatomic, strong) IBOutlet UISegmentedControl* segControl;
 
 @property (nonatomic, strong) NSMutableArray* datasource;
 @property (nonatomic, strong) NSMutableArray* followStatusArray;
+
+-(IBAction)segControlChanged:(id)sender;
 
 @end
 
@@ -30,7 +33,7 @@
     
     self.navigationController.navigationBar.translucent = NO;
     self.tabBarController.tabBar.translucent = NO;
-
+    
     self.title = @"Search";
     
     _datasource = [NSMutableArray new];
@@ -83,18 +86,33 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PGSearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    if (!cell) {
-        cell = [[NSBundle mainBundle] loadNibNamed:@"PGSearchTableViewCell" owner:nil options:nil][0];
+    if (self.segControl.selectedSegmentIndex == 0) {
+        
+        PGSearchUserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+        if (!cell) {
+            cell = [[NSBundle mainBundle] loadNibNamed:@"PGSearchUserTableViewCell" owner:nil options:nil][0];
+        }
+        cell.contentView.tag = 1;
+        cell.delegate = self;
+        [self configureUserCell:cell forRowAtIndexPath:indexPath];
+        return cell;
+    } else {
+        UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"hashCell"];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"hashCell"];
+        }
+        [self configureHasgTagCell:cell forRowAtIndexPath:indexPath];
+        return cell;
     }
-    cell.contentView.tag = 1;
-    cell.delegate = self;
-    [self configureCell:cell
-      forRowAtIndexPath:indexPath];
-    return cell;
 }
 
-- (void)configureCell:(PGSearchTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)configureHasgTagCell:(UITableViewCell*)cell forRowAtIndexPath:(NSIndexPath*)indexPath
+{
+    PFObject* object = _datasource[indexPath.row];
+    cell.textLabel.text = object[kPFSelfie_HashTags][0];
+}
+
+- (void)configureUserCell:(PGSearchUserTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PFUser* object = _datasource[indexPath.row];
     cell.nameLabel.text = object[kPFUser_Name];
@@ -115,7 +133,11 @@
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == _datasource.count - 1) {
-        [self loadFromParseText:_searchBar.text append:YES];
+        if (self.segControl.selectedSegmentIndex == 0) {
+            [self loadUsersFromParseText:_searchBar.text append:YES];
+        } else {
+            //            [self loadHashTagsFromParseText:_searchBar.text append:YES];
+        }
     }
 }
 
@@ -136,7 +158,34 @@
     [self.searchBar setShowsCancelButton:NO animated:YES];
 }
 
--(void)loadFromParseText:(NSString*)text append:(BOOL)append
+#pragma mark -
+
+-(IBAction)segControlChanged:(id)sender
+{
+    _datasource = [NSMutableArray new];
+    if (_segControl.selectedSegmentIndex == 0) {
+        [self loadUsersFromParseText:_searchBar.text append:NO];
+    } else {
+        [self loadHashTagsFromParseText:_searchBar.text append:NO];
+    }
+}
+
+-(void)loadHashTagsFromParseText:(NSString*)text append:(BOOL)append
+{
+#warning Implmenent correct hashtag search algo.
+    if (text.length!= 0) {
+        NSArray* collection = @[[NSString stringWithFormat:@"#%@", text]];
+        NSPredicate* predicate = [NSPredicate predicateWithFormat:@"%K IN %@", kPFSelfie_HashTags, collection];
+        PFQuery* hashtagQuery = [PFQuery queryWithClassName:kPFTableNameSelfies predicate:predicate];
+        [hashtagQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            DLog(@"%@", objects);
+            _datasource = [NSMutableArray arrayWithArray:objects];
+            [self.tableView reloadData];
+        }];
+    }
+}
+
+-(void)loadUsersFromParseText:(NSString*)text append:(BOOL)append
 {
     //Get objects from parse
     PFQuery *queryCapitalizedString = [PFUser query];
@@ -178,7 +227,11 @@
     if (searchText.length == 0){
         [_tableView reloadData];
     } else {
-        [self loadFromParseText:searchBar.text append:NO];
+        if (self.segControl.selectedSegmentIndex == 0) {
+            [self loadUsersFromParseText:searchBar.text append:NO];
+        } else {
+            [self loadHashTagsFromParseText:searchBar.text append:NO];
+        }
     }
 }
 
@@ -215,7 +268,7 @@
 
 #pragma mark -
 
--(void)buttonTappedOnCell:(PGSearchTableViewCell *)cell
+-(void)buttonTappedOnCell:(PGSearchUserTableViewCell *)cell
 {
     NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
     PFUser* user = _datasource[indexPath.row];

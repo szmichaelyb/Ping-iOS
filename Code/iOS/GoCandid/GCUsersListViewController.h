@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PGSearchTableViewCell.h"
+#import "PGSearchUserTableViewCell.h"
 
 typedef enum
 {
@@ -15,7 +15,7 @@ typedef enum
     GCListTypeFollowers
 }GCListType;
 
-@interface GCUsersListViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, PGSearchTableViewCellDelegate>
+@interface GCUsersListViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, PGSearchUserTableViewCellDelegate>
 
 @property (nonatomic, strong) PFUser* listForUser;
 @property (nonatomic, assign) GCListType listType;

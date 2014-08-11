@@ -55,15 +55,15 @@
 {
     self.nxEV_emptyView = self.emptyView;
     
-    PFQuery* query = [PFQuery queryWithClassName:kPFTableName_Selfies];
+    PFQuery* query = [PFQuery queryWithClassName:kPFTableNameSelfies];
     
     if (_feedType == FeedTypeMine) {
         [query whereKey:kPFSelfie_Owner equalTo:[PFUser currentUser]];
     } else if (_feedType == FeedTypeOther) {
-        PFQuery* featuredList = [PFQuery queryWithClassName:kPFTableName_Selfies];
+        PFQuery* featuredList = [PFQuery queryWithClassName:kPFTableNameSelfies];
         [featuredList whereKey:kPFSelfie_Featured equalTo:[NSNumber numberWithBool:YES]];
         
-        PFQuery* othersList = [PFQuery queryWithClassName:kPFTableName_Selfies];
+        PFQuery* othersList = [PFQuery queryWithClassName:kPFTableNameSelfies];
         NSArray* array = [[PGParseHelper getFollowingListForUser:[PFUser currentUser]] valueForKey:kPFActivity_ToUser];
         [othersList whereKey:kPFSelfie_Owner containedIn:array];
         

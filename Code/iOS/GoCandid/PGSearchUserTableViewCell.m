@@ -6,15 +6,15 @@
 //  Copyright (c) 2014 Appikon Mobile. All rights reserved.
 //
 
-#import "PGSearchTableViewCell.h"
+#import "PGSearchUserTableViewCell.h"
 
-@interface PGSearchTableViewCell()
+@interface PGSearchUserTableViewCell()
 
 @property (strong, nonatomic) IBOutlet UIButton *followButton;
 
 @end
 
-@implementation PGSearchTableViewCell
+@implementation PGSearchUserTableViewCell
 
 - (void)awakeFromNib
 {

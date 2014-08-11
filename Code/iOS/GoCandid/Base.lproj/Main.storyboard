@@ -893,7 +893,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="dSX-pA-J49">
-                                <rect key="frame" x="0.0" y="44" width="320" height="411"/>
+                                <rect key="frame" x="0.0" y="79" width="320" height="376"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -909,6 +909,17 @@
                                     <outlet property="delegate" destination="2Hi-o4-zgt" id="snx-l7-xcO"/>
                                 </connections>
                             </searchBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="ELq-ds-dQR">
+                                <rect key="frame" x="0.0" y="43" width="320" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Users"/>
+                                    <segment title="Hashtags"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segControlChanged:" destination="2Hi-o4-zgt" eventType="valueChanged" id="fXN-Ai-UNe"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -919,6 +930,7 @@
                     <connections>
                         <outlet property="searchBar" destination="xaz-Ye-LbB" id="BWK-De-hYx"/>
                         <outlet property="searchDisplayController" destination="l1R-Cc-2oq" id="TSG-tR-Z8W"/>
+                        <outlet property="segControl" destination="ELq-ds-dQR" id="6DX-lM-g5R"/>
                         <outlet property="tableView" destination="dSX-pA-J49" id="EF9-4P-bUV"/>
                     </connections>
                 </viewController>

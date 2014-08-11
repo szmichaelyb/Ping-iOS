@@ -126,7 +126,7 @@
         [_followingButton setTitle:[NSString stringWithFormat:@"%d following", number]  forState:UIControlStateNormal];
     }];
     
-    PFQuery* postsCountQuery = [PFQuery queryWithClassName:kPFTableName_Selfies];
+    PFQuery* postsCountQuery = [PFQuery queryWithClassName:kPFTableNameSelfies];
     [postsCountQuery whereKey:kPFSelfie_Owner equalTo:_profileUser];
     [postsCountQuery countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
         _postCountLabel.text = [NSString stringWithFormat:@"%d posts", number];

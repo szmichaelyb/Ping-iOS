@@ -13,13 +13,13 @@
 		06654AEC197EBBDF0014FA74 /* PGSendPingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06654AEB197EBBDF0014FA74 /* PGSendPingViewController.m */; };
 		067A140C1980BD0200D9EF2B /* GCUsersListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 067A140A1980BD0200D9EF2B /* GCUsersListViewController.m */; };
 		067A140D1980BD0200D9EF2B /* GCUsersListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 067A140B1980BD0200D9EF2B /* GCUsersListViewController.xib */; };
-		067A140F1980C2F000D9EF2B /* PGSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 067A140E1980C2F000D9EF2B /* PGSearchTableViewCell.xib */; };
+		067A140F1980C2F000D9EF2B /* PGSearchUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 067A140E1980C2F000D9EF2B /* PGSearchUserTableViewCell.xib */; };
 		0683112B1976C8460099689D /* PGProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0683112A1976C8460099689D /* PGProfileHeaderView.xib */; };
 		0683409F19774AD4007A1AEC /* PGProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0683409E19774AD4007A1AEC /* PGProgressHUD.m */; };
 		068340A4197810A9007A1AEC /* PGSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 068340A3197810A9007A1AEC /* PGSignupViewController.m */; };
 		068340A7197810B0007A1AEC /* PGLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 068340A6197810B0007A1AEC /* PGLoginViewController.m */; };
 		068340AA197826FD007A1AEC /* PGSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 068340A9197826FD007A1AEC /* PGSearchViewController.m */; };
-		068340AD19782FC2007A1AEC /* PGSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 068340AC19782FC2007A1AEC /* PGSearchTableViewCell.m */; };
+		068340AD19782FC2007A1AEC /* PGSearchUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 068340AC19782FC2007A1AEC /* PGSearchUserTableViewCell.m */; };
 		068340B119783750007A1AEC /* PGParseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 068340B019783750007A1AEC /* PGParseHelper.m */; };
 		068340B519784572007A1AEC /* PGActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 068340B419784572007A1AEC /* PGActivityViewController.m */; };
 		068340B8197850AF007A1AEC /* PGActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 068340B7197850AF007A1AEC /* PGActivityTableViewCell.m */; };
@@ -75,7 +75,7 @@
 		067A14091980BD0200D9EF2B /* GCUsersListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCUsersListViewController.h; sourceTree = "<group>"; };
 		067A140A1980BD0200D9EF2B /* GCUsersListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCUsersListViewController.m; sourceTree = "<group>"; };
 		067A140B1980BD0200D9EF2B /* GCUsersListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GCUsersListViewController.xib; sourceTree = "<group>"; };
-		067A140E1980C2F000D9EF2B /* PGSearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGSearchTableViewCell.xib; sourceTree = "<group>"; };
+		067A140E1980C2F000D9EF2B /* PGSearchUserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGSearchUserTableViewCell.xib; sourceTree = "<group>"; };
 		0683112A1976C8460099689D /* PGProfileHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGProfileHeaderView.xib; sourceTree = "<group>"; };
 		0683409D19774AD4007A1AEC /* PGProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGProgressHUD.h; sourceTree = "<group>"; };
 		0683409E19774AD4007A1AEC /* PGProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGProgressHUD.m; sourceTree = "<group>"; };
@@ -85,8 +85,8 @@
 		068340A6197810B0007A1AEC /* PGLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGLoginViewController.m; sourceTree = "<group>"; };
 		068340A8197826FD007A1AEC /* PGSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSearchViewController.h; sourceTree = "<group>"; };
 		068340A9197826FD007A1AEC /* PGSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSearchViewController.m; sourceTree = "<group>"; };
-		068340AB19782FC2007A1AEC /* PGSearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSearchTableViewCell.h; sourceTree = "<group>"; };
-		068340AC19782FC2007A1AEC /* PGSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSearchTableViewCell.m; sourceTree = "<group>"; };
+		068340AB19782FC2007A1AEC /* PGSearchUserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSearchUserTableViewCell.h; sourceTree = "<group>"; };
+		068340AC19782FC2007A1AEC /* PGSearchUserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSearchUserTableViewCell.m; sourceTree = "<group>"; };
 		068340AF19783750007A1AEC /* PGParseHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGParseHelper.h; sourceTree = "<group>"; };
 		068340B019783750007A1AEC /* PGParseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PGParseHelper.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		068340B319784572007A1AEC /* PGActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGActivityViewController.h; sourceTree = "<group>"; };
@@ -213,9 +213,9 @@
 		067A14101980CA3E00D9EF2B /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				068340AB19782FC2007A1AEC /* PGSearchTableViewCell.h */,
-				068340AC19782FC2007A1AEC /* PGSearchTableViewCell.m */,
-				067A140E1980C2F000D9EF2B /* PGSearchTableViewCell.xib */,
+				068340AB19782FC2007A1AEC /* PGSearchUserTableViewCell.h */,
+				068340AC19782FC2007A1AEC /* PGSearchUserTableViewCell.m */,
+				067A140E1980C2F000D9EF2B /* PGSearchUserTableViewCell.xib */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -538,7 +538,7 @@
 				067A140D1980BD0200D9EF2B /* GCUsersListViewController.xib in Resources */,
 				06DCBCD2196E2AFF00E8C9B2 /* Images.xcassets in Resources */,
 				06DCBD301970886A00E8C9B2 /* InAppNotificationView.xib in Resources */,
-				067A140F1980C2F000D9EF2B /* PGSearchTableViewCell.xib in Resources */,
+				067A140F1980C2F000D9EF2B /* PGSearchUserTableViewCell.xib in Resources */,
 				06DCBD12196F404C00E8C9B2 /* SettingsShareView.xib in Resources */,
 				0683112B1976C8460099689D /* PGProfileHeaderView.xib in Resources */,
 				06DCBCC4196E2AFF00E8C9B2 /* InfoPlist.strings in Resources */,
@@ -613,7 +613,7 @@
 				068340A4197810A9007A1AEC /* PGSignupViewController.m in Sources */,
 				06DCBD2F1970886A00E8C9B2 /* InAppNotificationView.m in Sources */,
 				068340B519784572007A1AEC /* PGActivityViewController.m in Sources */,
-				068340AD19782FC2007A1AEC /* PGSearchTableViewCell.m in Sources */,
+				068340AD19782FC2007A1AEC /* PGSearchUserTableViewCell.m in Sources */,
 				068340AA197826FD007A1AEC /* PGSearchViewController.m in Sources */,
 				06654AEC197EBBDF0014FA74 /* PGSendPingViewController.m in Sources */,
 				06DCBCF4196EE40600E8C9B2 /* PGCamViewController.m in Sources */,

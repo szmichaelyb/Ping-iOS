@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PGSearchTableViewCell.h"
+#import "PGSearchUserTableViewCell.h"
 
-@interface PGSearchViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UIGestureRecognizerDelegate, PGSearchTableViewCellDelegate>
+@interface PGSearchViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UIGestureRecognizerDelegate, PGSearchUserTableViewCellDelegate>
 
 @end

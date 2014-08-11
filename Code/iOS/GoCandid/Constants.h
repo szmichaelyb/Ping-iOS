@@ -47,6 +47,7 @@
 #define kPFSelfie_Location @"location"
 #define kPFSelfie_Abuse @"abuse"
 #define kPFSelfie_Featured @"featured"
+#define kPFSelfie_HashTags @"hashtags"
 
 #define kPFActivity_Type @"type"
 #define kPFActivity_FromUser @"fromUser"
@@ -67,7 +68,7 @@
 //Setting UserDefaults
 
 //Parse Table Names
-#define kPFTableName_Selfies @"Selfies"
+#define kPFTableNameSelfies @"Selfies"
 #define kPFTableUser @"User"
 #define kPFTableActivity @"Activity"
 
