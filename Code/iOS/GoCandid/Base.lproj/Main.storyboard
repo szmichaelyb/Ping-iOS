@@ -74,7 +74,7 @@
             <objects>
                 <tabBarController restorationIdentifier="PGTabViewController" storyboardIdentifier="PGTabViewController" definesPresentationContext="YES" id="IEq-PX-ZJF" customClass="PGTabViewController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="ND5-Iw-jam">
+                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" backgroundImage="bar" id="ND5-Iw-jam">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -254,37 +254,12 @@
             <objects>
                 <viewController restorationIdentifier="PGCamViewController" storyboardIdentifier="PGCamViewController" id="vCX-ZW-3h4" customClass="PGCamViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QAW-2X-S4O">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="ix2-56-jni" customClass="AVCamPreviewView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yiu-e6-LjW">
-                                        <rect key="frame" x="13" y="13" width="40" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="chevron">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="dismissButtonClicked:" destination="vCX-ZW-3h4" eventType="touchUpInside" id="h5T-1D-CeN"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ppu-OS-bx4">
-                                        <rect key="frame" x="262" y="18" width="38" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <state key="normal" title="Selfie">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="selected">
-                                            <color key="titleColor" red="0.15576528279999999" green="1" blue="0.26873289230000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="changeCamera:" destination="vCX-ZW-3h4" eventType="touchUpInside" id="8X4-KR-8fK"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -292,9 +267,9 @@
                                 </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="enB-7k-rQh" customClass="BFPaperButton">
-                                <rect key="frame" x="127" y="482" width="66" height="66"/>
+                                <rect key="frame" x="127" y="418" width="66" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <state key="normal" backgroundImage="CaptureButton-Normal">
+                                <state key="normal" backgroundImage="capture">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="selected" image="CaptureButton-Normal"/>
@@ -304,8 +279,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7cA-oj-knA" customClass="PGFramesButton">
-                                <rect key="frame" x="12" y="493" width="73" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="12" y="429" width="73" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="9">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -326,8 +301,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Iui-DC-Yvu">
-                                <rect key="frame" x="244" y="500" width="51" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="244" y="436" width="51" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <state key="normal" title="Manual">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -339,17 +314,45 @@
                                 </connections>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.69999999999999996" minValue="0.10000000000000001" maxValue="1" id="A6Z-oo-3Oi">
-                                <rect key="frame" x="20" y="438" width="281" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="20" y="381" width="281" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <action selector="delaySliderChanged:" destination="vCX-ZW-3h4" eventType="valueChanged" id="fta-hE-I4V"/>
                                 </connections>
                             </slider>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="2yb-7b-unO"/>
-                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationItem key="navigationItem" id="2yb-7b-unO">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="noe-Gg-RUL">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yiu-e6-LjW">
+                                <rect key="frame" x="16" y="2" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="chevron_down">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismissButtonClicked:" destination="vCX-ZW-3h4" eventType="touchUpInside" id="h5T-1D-CeN"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="3Zc-RZ-wrI">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ppu-OS-bx4">
+                                <rect key="frame" x="266" y="7" width="38" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <state key="normal" backgroundImage="camera">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected">
+                                    <color key="titleColor" red="0.15576528279999999" green="1" blue="0.26873289230000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeCamera:" destination="vCX-ZW-3h4" eventType="touchUpInside" id="8X4-KR-8fK"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="cameraButton" destination="Ppu-OS-bx4" id="TMB-OF-Nbv"/>
@@ -370,11 +373,11 @@
             </objects>
             <point key="canvasLocation" x="860" y="-155"/>
         </scene>
-        <!--Navigation Controller - Feed-->
+        <!--Navigation Controller-->
         <scene sceneID="wfy-ms-89x">
             <objects>
                 <navigationController definesPresentationContext="YES" id="WPs-iE-ZTp" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feed" image="settings-off" id="z7h-6J-rkP"/>
+                    <tabBarItem key="tabBarItem" title="" image="tab1" id="z7h-6J-rkP"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="UQp-Vh-eVz" customClass="GTScrollNavigationBar">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -401,7 +404,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9bi-qT-dXP" customClass="BFPaperButton">
                                 <rect key="frame" x="127" y="480" width="66" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <state key="normal" title="Next" backgroundImage="CaptureButton-Normal">
+                                <state key="normal" title="Next" backgroundImage="capture">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="selected" image="CaptureButton-Normal"/>
@@ -428,16 +431,6 @@
                                     <action selector="sliderDidFinishChanging:" destination="Dvu-oQ-EJq" eventType="touchUpInside" id="TKF-re-gmH"/>
                                 </connections>
                             </slider>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4Wd-Sb-2l2">
-                                <rect key="frame" x="9" y="9" width="40" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="nav_back_arrow">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="backbuttonClicked:" destination="Dvu-oQ-EJq" eventType="touchUpInside" id="HC0-vT-rP6"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YGz-kV-OKa">
                                 <rect key="frame" x="101" y="404" width="118" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -446,9 +439,23 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationItem key="navigationItem" id="Z12-SM-tdy">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="iZm-M5-3M5">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4Wd-Sb-2l2">
+                                <rect key="frame" x="16" y="2" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="nav_back_arrow">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backbuttonClicked:" destination="Dvu-oQ-EJq" eventType="touchUpInside" id="HC0-vT-rP6"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="durationLabel" destination="YGz-kV-OKa" id="ane-Br-HqI"/>
                         <outlet property="durationSlider" destination="ajh-ec-UDV" id="Lns-j6-mqv"/>
@@ -466,7 +473,7 @@
             <objects>
                 <viewController restorationIdentifier="PGSendPingViewController" storyboardIdentifier="PGSendPingViewController" id="omH-ax-muh" customClass="PGSendPingViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KVS-Vb-EQX">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="OfV-ww-jSD">
@@ -474,9 +481,9 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Qrl-Gb-Joo" customClass="BFPaperButton">
-                                <rect key="frame" x="127" y="482" width="66" height="66"/>
+                                <rect key="frame" x="127" y="418" width="66" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <state key="normal" title="Post" backgroundImage="CaptureButton-Normal">
+                                <state key="normal" title="Post" backgroundImage="capture">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="selected" image="CaptureButton-Normal"/>
@@ -485,9 +492,11 @@
                                     <action selector="sendButtonClicked:" destination="omH-ax-muh" eventType="touchUpInside" id="ZIw-f8-zGp"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" id="yvo-HC-Cv1">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Enter Title" minimumFontSize="17" id="yvo-HC-Cv1">
                                 <rect key="frame" x="138" y="55" width="162" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -502,10 +511,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Rzy-M3-wyZ">
-                                <rect key="frame" x="20" y="217" width="113" height="35"/>
+                                <rect key="frame" x="64" y="211" width="52" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.33333333329999998" green="0.67450980390000004" blue="0.93333333330000001" alpha="1" colorSpace="deviceRGB"/>
-                                <state key="normal" title="Facebook">
+                                <state key="normal" backgroundImage="share_facebook">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -514,18 +522,22 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ioM-4a-4o5">
-                                <rect key="frame" x="147" y="217" width="153" height="34"/>
+                                <rect key="frame" x="210" y="211" width="47" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Twitter">
+                                <state key="normal" backgroundImage="share_twitter">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="shareOnTwitterClicked:" destination="omH-ax-muh" eventType="touchUpInside" id="z1R-Sr-Q18"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DEh-yl-dnc">
-                                <rect key="frame" x="14" y="6" width="40" height="40"/>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="TV9-sp-rrL">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="qSV-2H-rtf">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DEh-yl-dnc">
+                                <rect key="frame" x="16" y="2" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="nav_back_arrow">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -535,10 +547,9 @@
                                     <action selector="backbuttonClicked:" destination="Dvu-oQ-EJq" eventType="touchUpInside" id="qDA-p8-g3t"/>
                                 </connections>
                             </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="TV9-sp-rrL"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="captionTF" destination="yvo-HC-Cv1" id="reL-H0-Hht"/>
                         <outlet property="facebookButton" destination="Rzy-M3-wyZ" id="Ody-jE-biC"/>
@@ -552,7 +563,7 @@
             </objects>
             <point key="canvasLocation" x="1737" y="-155"/>
         </scene>
-        <!--View Controller - GoCandid-->
+        <!--View Controller-->
         <scene sceneID="X8v-66-vPv">
             <objects>
                 <viewController id="vCH-hg-Ps5" sceneMemberID="viewController">
@@ -561,7 +572,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="GoCandid" image="settings-off" id="aJo-Mp-YvV"/>
+                    <tabBarItem key="tabBarItem" title="" image="tab3" id="aJo-Mp-YvV"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v2K-ez-G1Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -868,11 +879,11 @@
             </objects>
             <point key="canvasLocation" x="1857" y="1916"/>
         </scene>
-        <!--Navigation Controller - Search-->
+        <!--Navigation Controller-->
         <scene sceneID="OxM-Wb-Uh2">
             <objects>
                 <navigationController definesPresentationContext="YES" id="FYt-W2-0gX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Search" image="settings-off" id="TI5-fh-wa0"/>
+                    <tabBarItem key="tabBarItem" title="" image="tab2" id="TI5-fh-wa0"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="msm-49-DWR">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -901,7 +912,7 @@
                                     <outlet property="delegate" destination="2Hi-o4-zgt" id="uhH-1w-2xS"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" id="xaz-Ye-LbB">
+                            <searchBar contentMode="redraw" placeholder="search for users or hashtags" id="xaz-Ye-LbB">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
@@ -923,8 +934,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Search" image="settings-off" id="axw-Cr-g9H"/>
-                    <navigationItem key="navigationItem" id="PE5-qF-gma"/>
+                    <navigationItem key="navigationItem" title="Search" id="PE5-qF-gma"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
@@ -946,11 +956,11 @@
             </objects>
             <point key="canvasLocation" x="860" y="-910"/>
         </scene>
-        <!--Navigation Controller - Activity-->
+        <!--Navigation Controller-->
         <scene sceneID="UK6-tc-ohK">
             <objects>
                 <navigationController definesPresentationContext="YES" id="3PM-O3-bav" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Activity" image="settings-off" id="bco-Tk-2X3"/>
+                    <tabBarItem key="tabBarItem" title="" image="tab4" id="bco-Tk-2X3"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fsw-l2-QMa">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1015,11 +1025,11 @@
             </objects>
             <point key="canvasLocation" x="860" y="580"/>
         </scene>
-        <!--Navigation Controller - Profile-->
+        <!--Navigation Controller-->
         <scene sceneID="9D9-CA-BsH">
             <objects>
                 <navigationController definesPresentationContext="YES" id="AFU-mQ-6Eu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="settings-off" id="oRW-cg-INK"/>
+                    <tabBarItem key="tabBarItem" title="" image="tab5" id="oRW-cg-INK"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="syQ-my-SGa">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1071,11 +1081,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="RfM-z5-p25" customClass="PGFeedTableView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <rect key="frame" x="0.0" y="45" width="320" height="410"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
-                            <view contentMode="scaleToFill" id="xVp-e4-RPU" customClass="FXBlurView">
+                            <view contentMode="scaleToFill" id="xVp-e4-RPU">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -1110,9 +1120,19 @@
     </scenes>
     <resources>
         <image name="CaptureButton-Normal" width="66" height="66"/>
-        <image name="chevron" width="25" height="25"/>
+        <image name="bar" width="320" height="49"/>
+        <image name="camera" width="35" height="26"/>
+        <image name="capture" width="71" height="71"/>
+        <image name="chevron_down" width="33" height="18"/>
         <image name="nav_back_arrow" width="40" height="40"/>
         <image name="settings-off" width="23" height="23"/>
+        <image name="share_facebook" width="104" height="104"/>
+        <image name="share_twitter" width="106" height="104"/>
+        <image name="tab1" width="48" height="32"/>
+        <image name="tab2" width="48" height="32"/>
+        <image name="tab3" width="48" height="31"/>
+        <image name="tab4" width="48" height="32"/>
+        <image name="tab5" width="48" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

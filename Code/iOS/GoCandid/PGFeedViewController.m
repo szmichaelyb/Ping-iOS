@@ -14,7 +14,7 @@
 #import "PGFeedTableView.h"
 #import "PGProgressHUD.h"
 #import <GTScrollNavigationBar/GTScrollNavigationBar.h>
-#import <FXBlurView/FXBlurView.h>
+#import "UIView+HidingView.h"
 
 @interface PGFeedViewController ()<PGFeedTableViewDelegate>
 {
@@ -23,7 +23,7 @@
 }
 
 @property (strong, nonatomic) IBOutlet PGFeedTableView* tableView;
-@property (nonatomic, strong) IBOutlet  FXBlurView* segBGBlurView;
+@property (nonatomic, strong) IBOutlet  UIView* segBGBlurView;
 
 //@property (strong, nonatomic) NSMutableArray* datasource;
 @property (nonatomic, strong) STZPullToRefresh *pullToRefresh;
@@ -44,10 +44,10 @@
     
 //    _segBGBlurView.dynamic = NO;
 //    _segBGBlurView.tintColor = [UIColor colorWithRed:0 green:0.5 blue:0.5 alpha:1];
-    _segBGBlurView.contentMode = UIViewContentModeTop;
+//    _segBGBlurView.contentMode = UIViewContentModeTop;
     
-    [_segBGBlurView updateAsynchronously:YES completion:^{
-    }];
+//    [_segBGBlurView updateAsynchronously:YES completion:^{
+//    }];
     
     /// Setup pull to refresh
     CGFloat refreshBarY = self.navigationController.navigationBar.bounds.size.height + [UIApplication sharedApplication].statusBarFrame.size.height;
@@ -113,6 +113,16 @@
 }
 
 #pragma mark - PGFeedTableView Delegate
+
+-(void)tableScrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [self.segBGBlurView scrollViewWillBeginDragging:scrollView];
+}
+
+-(void)tableScrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [self.segBGBlurView scrollViewDidScroll:scrollView];
+}
 
 -(void)tablescrollViewDidScrollToTop:(UIScrollView *)scrollView
 {

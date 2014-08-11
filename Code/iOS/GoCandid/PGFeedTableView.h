@@ -38,6 +38,7 @@ typedef enum {
 -(void)tableView:(PGFeedTableView *)tableView moreButtonClicked:(NSIndexPath*)indexPath dataObject:(id)object;
 
 @optional
+-(void)tableScrollViewWillBeginDragging:(UIScrollView*)scrollView;
 -(void)tableScrollViewDidScroll:(UIScrollView*)scrollView;
 -(void)tablescrollViewDidScrollToTop:(UIScrollView*)scrollView;
 

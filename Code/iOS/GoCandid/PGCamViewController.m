@@ -83,7 +83,7 @@ static float kDefaultCaptureDelay = 0.7f;
 {
 	[super viewDidLoad];
 	
-    [self.navigationController setNavigationBarHidden:YES];
+//    [self.navigationController setNavigationBarHidden:YES];
     self.navigationController.navigationBar.translucent = NO;
     
     //    if (_overalayImage) {
@@ -176,10 +176,10 @@ static float kDefaultCaptureDelay = 0.7f;
     self.captureButton.rippleFromTapLocation = NO;
 }
 
--(BOOL)prefersStatusBarHidden
-{
-    return YES;
-}
+//-(BOOL)prefersStatusBarHidden
+//{
+//    return YES;
+//}
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -215,11 +215,6 @@ static float kDefaultCaptureDelay = 0.7f;
         //		[self removeObserver:self forKeyPath:@"movieFileOutput.recording" context:RecordingContext];
 	});
 }
-
-//- (BOOL)prefersStatusBarHidden
-//{
-//	return YES;
-//}
 
 - (BOOL)shouldAutorotate
 {

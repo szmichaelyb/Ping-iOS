@@ -112,6 +112,13 @@
 
 #pragma mark - UIScrollView Delegate
 
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    if (_myDelegate && [_myDelegate respondsToSelector:@selector(tableScrollViewWillBeginDragging:)]) {
+        [_myDelegate tableScrollViewWillBeginDragging:scrollView];
+    }
+}
+
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (_myDelegate && [_myDelegate respondsToSelector:@selector(tableScrollViewDidScroll:)]) {

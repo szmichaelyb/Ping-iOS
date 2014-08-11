@@ -64,10 +64,10 @@ const CGFloat kDefaultGifDelay = 0.5;
     }
 }
 
--(BOOL)prefersStatusBarHidden
-{
-    return YES;
-}
+//-(BOOL)prefersStatusBarHidden
+//{
+//    return YES;
+//}
 
 - (void)didReceiveMemoryWarning
 {

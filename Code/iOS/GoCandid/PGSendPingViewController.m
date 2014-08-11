@@ -66,10 +66,10 @@
     }
 }
 
--(BOOL)prefersStatusBarHidden
-{
-    return YES;
-}
+//-(BOOL)prefersStatusBarHidden
+//{
+//    return YES;
+//}
 
 - (void)didReceiveMemoryWarning
 {

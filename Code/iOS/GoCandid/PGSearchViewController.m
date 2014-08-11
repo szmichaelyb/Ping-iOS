@@ -34,8 +34,6 @@
     self.navigationController.navigationBar.translucent = NO;
     self.tabBarController.tabBar.translucent = NO;
     
-    self.title = @"Search";
-    
     _datasource = [NSMutableArray new];
     
     UITapGestureRecognizer* reco = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];

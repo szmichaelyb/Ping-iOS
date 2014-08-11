@@ -23,7 +23,9 @@
 {
     [super viewDidLoad];
     self.tabBar.translucent = NO;
-    //    [self setSelectedIndex:1];
+    
+    [[UITabBar appearance] setSelectedImageTintColor:[UIColor whiteColor]];
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      //    [self setSelectedIndex:1];
     //    [self tabBar:self.tabBar didSelectItem:self.tabBar.selectedItem];
     // Do any additional setup after loading the view.
 }
@@ -46,7 +48,9 @@
 {
     PGCamViewController* pingVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PGCamViewController"];
     pingVC.delegate = self;
-    [self presentViewController:[[UINavigationController alloc] initWithRootViewController:pingVC] animated:YES completion:nil];
+    UINavigationController* controller = [[UINavigationController alloc] initWithRootViewController:pingVC];
+    [controller.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav_bar_black"] forBarMetrics:UIBarMetricsDefault];
+    [self presentViewController:controller animated:YES completion:nil];
 }
 
 -(void)didDismissCamViewController:(PGCamViewController *)controller

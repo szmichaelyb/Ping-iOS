@@ -59,6 +59,7 @@
 		06DCBD301970886A00E8C9B2 /* InAppNotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06DCBD2D1970886A00E8C9B2 /* InAppNotificationView.xib */; };
 		06DF342D19928D9700509399 /* GCZoomInTrasitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DF342C19928D9700509399 /* GCZoomInTrasitionController.m */; };
 		06DF3431199294D600509399 /* GCZoomOutTransitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DF3430199294D600509399 /* GCZoomOutTransitionController.m */; };
+		06DF343419993ED600509399 /* UIView+HidingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DF343319993ED600509399 /* UIView+HidingView.m */; };
 		06E79447198037CB00E7B143 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E79446198037CB00E7B143 /* Crashlytics.framework */; };
 		B4D0781A6E87400B8846C0E9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 44403505DE314A23B874DE7D /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -156,6 +157,8 @@
 		06DF342C19928D9700509399 /* GCZoomInTrasitionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCZoomInTrasitionController.m; sourceTree = "<group>"; };
 		06DF342F199294D600509399 /* GCZoomOutTransitionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCZoomOutTransitionController.h; sourceTree = "<group>"; };
 		06DF3430199294D600509399 /* GCZoomOutTransitionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCZoomOutTransitionController.m; sourceTree = "<group>"; };
+		06DF343219993ED600509399 /* UIView+HidingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HidingView.h"; sourceTree = "<group>"; };
+		06DF343319993ED600509399 /* UIView+HidingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HidingView.m"; sourceTree = "<group>"; };
 		06E79446198037CB00E7B143 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		44403505DE314A23B874DE7D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3EC4F2809A54D8D8F1E8EBE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -369,6 +372,8 @@
 		06DCBD18196F42E800E8C9B2 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				06DF343219993ED600509399 /* UIView+HidingView.h */,
+				06DF343319993ED600509399 /* UIView+HidingView.m */,
 				06B561621975B04B00E92A92 /* UIImage+animatedGIF.h */,
 				06B561631975B04B00E92A92 /* UIImage+animatedGIF.m */,
 				06DCBD19196F42F500E8C9B2 /* Animations */,
@@ -607,6 +612,7 @@
 				06DF3431199294D600509399 /* GCZoomOutTransitionController.m in Sources */,
 				06DCBD2719707A1E00E8C9B2 /* PGFeedHeader.m in Sources */,
 				06654AE6197DBABA0014FA74 /* PGFindFriendsViewController.m in Sources */,
+				06DF343419993ED600509399 /* UIView+HidingView.m in Sources */,
 				067A140C1980BD0200D9EF2B /* GCUsersListViewController.m in Sources */,
 				06DCBD14196F404C00E8C9B2 /* WebViewController.m in Sources */,
 				06DCBD2E1970886A00E8C9B2 /* InAppNotificationTapListener.m in Sources */,
