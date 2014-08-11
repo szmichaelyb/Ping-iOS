@@ -27,15 +27,23 @@
     //Remove 1px line from top
     self.tabBar.clipsToBounds = YES;
     
+    //Remove Grey Tint
     [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
     [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"tab_selection"]];
-
+    
+    //Image in center
+    for (UITabBarItem* item in self.tabBar.items) {
+        item.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
+    }
+    
+    //unselected Images
     [self.tabBar.items[0] setImage:[[UIImage imageNamed:@"tab1"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     [self.tabBar.items[1] setImage:[[UIImage imageNamed:@"tab2"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     [self.tabBar.items[2] setImage:[[UIImage imageNamed:@"tab3"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     [self.tabBar.items[3] setImage:[[UIImage imageNamed:@"tab4"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     [self.tabBar.items[4] setImage:[[UIImage imageNamed:@"tab5"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
 
+    //Selected Images
     [self.tabBar.items[0] setSelectedImage:[[UIImage imageNamed:@"tab1_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     [self.tabBar.items[1] setSelectedImage:[[UIImage imageNamed:@"tab2_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     [self.tabBar.items[2] setSelectedImage:[[UIImage imageNamed:@"tab3_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];

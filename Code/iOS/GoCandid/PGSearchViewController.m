@@ -34,6 +34,8 @@
     self.navigationController.navigationBar.translucent = NO;
     self.tabBarController.tabBar.translucent = NO;
     
+    self.searchBar.searchBarStyle = UISearchBarStyleMinimal;
+    
     _datasource = [NSMutableArray new];
     
     UITapGestureRecognizer* reco = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
