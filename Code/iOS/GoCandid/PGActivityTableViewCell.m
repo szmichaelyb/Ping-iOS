@@ -22,6 +22,8 @@
 - (void)awakeFromNib
 {
     // Initialization code
+    self.activityLabel.font = FONT_GEOSANSLIGHT(18);
+    self.activityDate.font = FONT_GEOSANSLIGHT(16);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

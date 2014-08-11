@@ -72,4 +72,9 @@
 #define kPFTableUser @"User"
 #define kPFTableActivity @"Activity"
 
+//Fonts
+#define FONT_OPENSANS_CONDLIGHT(s) [UIFont fontWithName:@"OpenSans-CondensedLight" size:s]
+#define FONT_OPENSANS_CONDBOLD(s) [UIFont fontWithName:@"OpenSans-CondensedBold" size:s]
+#define FONT_GEOSANSLIGHT(s) [UIFont fontWithName:@"GeosansLight" size:s]
+
 #endif
