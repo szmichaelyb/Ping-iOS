@@ -31,7 +31,7 @@
                                 <rect key="frame" x="0.0" y="379" width="320" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.23137254900000001" green="0.34901960780000002" blue="0.59607843140000005" alpha="1" colorSpace="deviceRGB"/>
-                                <state key="normal" title="Facebook">
+                                <state key="normal" title="Login with Facebook">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -64,6 +64,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="facebookLoginButton" destination="xwR-Sx-BvI" id="yQq-ua-htO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
@@ -74,7 +77,7 @@
             <objects>
                 <tabBarController restorationIdentifier="PGTabViewController" storyboardIdentifier="PGTabViewController" definesPresentationContext="YES" id="IEq-PX-ZJF" customClass="PGTabViewController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" backgroundImage="bar" id="ND5-Iw-jam">
+                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" backgroundImage="tab_bar" id="ND5-Iw-jam">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -377,7 +380,7 @@
         <scene sceneID="wfy-ms-89x">
             <objects>
                 <navigationController definesPresentationContext="YES" id="WPs-iE-ZTp" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="tab1" id="z7h-6J-rkP"/>
+                    <tabBarItem key="tabBarItem" title="" id="z7h-6J-rkP"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="UQp-Vh-eVz" customClass="GTScrollNavigationBar">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -573,7 +576,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="tab3" id="aJo-Mp-YvV"/>
+                    <tabBarItem key="tabBarItem" title="" id="aJo-Mp-YvV"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v2K-ez-G1Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -884,7 +887,7 @@
         <scene sceneID="OxM-Wb-Uh2">
             <objects>
                 <navigationController definesPresentationContext="YES" id="FYt-W2-0gX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="tab2" id="TI5-fh-wa0"/>
+                    <tabBarItem key="tabBarItem" title="" id="TI5-fh-wa0"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="msm-49-DWR">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -961,7 +964,7 @@
         <scene sceneID="UK6-tc-ohK">
             <objects>
                 <navigationController definesPresentationContext="YES" id="3PM-O3-bav" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="tab4" id="bco-Tk-2X3"/>
+                    <tabBarItem key="tabBarItem" title="" id="bco-Tk-2X3"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fsw-l2-QMa">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1030,7 +1033,7 @@
         <scene sceneID="9D9-CA-BsH">
             <objects>
                 <navigationController definesPresentationContext="YES" id="AFU-mQ-6Eu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="tab5" id="oRW-cg-INK"/>
+                    <tabBarItem key="tabBarItem" title="" id="oRW-cg-INK"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="syQ-my-SGa">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1121,7 +1124,6 @@
     </scenes>
     <resources>
         <image name="CaptureButton-Normal" width="66" height="66"/>
-        <image name="bar" width="320" height="49"/>
         <image name="camera" width="35" height="26"/>
         <image name="capture" width="71" height="71"/>
         <image name="chevron_down" width="33" height="18"/>
@@ -1129,11 +1131,7 @@
         <image name="settings-off" width="23" height="23"/>
         <image name="share_facebook" width="104" height="104"/>
         <image name="share_twitter" width="106" height="104"/>
-        <image name="tab1" width="48" height="32"/>
-        <image name="tab2" width="48" height="32"/>
-        <image name="tab3" width="48" height="31"/>
-        <image name="tab4" width="48" height="32"/>
-        <image name="tab5" width="48" height="32"/>
+        <image name="tab_bar" width="320" height="49"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

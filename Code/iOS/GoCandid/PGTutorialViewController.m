@@ -13,6 +13,8 @@
 
 @interface PGTutorialViewController ()
 
+@property (nonatomic, strong) IBOutlet UIButton* facebookLoginButton;
+
 -(IBAction)loginWithFacebook:(id)sender;
 
 @end
@@ -22,6 +24,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.facebookLoginButton.titleLabel.font = FONT_OPENSANS_CONDLIGHT(FONT_SIZE_MEDIUM);
     
     if ([PFUser currentUser] != NULL) {
         [self setMainView];

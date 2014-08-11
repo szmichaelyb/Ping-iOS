@@ -77,4 +77,8 @@
 #define FONT_OPENSANS_CONDBOLD(s) [UIFont fontWithName:@"OpenSans-CondensedBold" size:s]
 #define FONT_GEOSANSLIGHT(s) [UIFont fontWithName:@"GeosansLight" size:s]
 
+#define FONT_SIZE_SMALL 18
+#define FONT_SIZE_MEDIUM 20
+#define FONT_SIZE_LARGE 22
+
 #endif

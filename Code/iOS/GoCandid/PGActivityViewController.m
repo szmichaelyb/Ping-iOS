@@ -271,7 +271,7 @@
     } else if ([activityType isEqualToString:kPFActivity_Type_Comment]) {
         return NSLocalizedString(@"commented on your photo", nil);
     } else if ([activityType isEqualToString:kPFActivity_Type_Joined]) {
-        return NSLocalizedString(@"joined Ping", nil);
+        return NSLocalizedString(@"joined GoCandid", nil);
     } else {
         return nil;
     }

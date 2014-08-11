@@ -172,8 +172,10 @@ static float kDefaultCaptureDelay = 0.7f;
     _images = [NSMutableArray new];
     [self changeCamera:nil];
     self.delaySlider.value = kDefaultCaptureDelay;
+    [self.delaySlider setThumbImage:[UIImage imageNamed:@"slider_main"] forState:UIControlStateNormal];
     self.captureButton.cornerRadius = self.captureButton.frame.size.width/2;
     self.captureButton.rippleFromTapLocation = NO;
+    self.manualButton.titleLabel.font = FONT_OPENSANS_CONDLIGHT(FONT_SIZE_SMALL);
 }
 
 //-(BOOL)prefersStatusBarHidden
@@ -653,8 +655,8 @@ static float kDefaultCaptureDelay = 0.7f;
 		{
 			//Not granted access to mediaType
 			dispatch_async(dispatch_get_main_queue(), ^{
-				[[[UIAlertView alloc] initWithTitle:@"Ping!"
-											message:@"Ping doesn't have permission to use Camera, please change privacy settings"
+				[[[UIAlertView alloc] initWithTitle:@"GoCandid!"
+											message:@"GoCandid doesn't have permission to use Camera, please change privacy settings"
 										   delegate:self
 								  cancelButtonTitle:@"OK"
 								  otherButtonTitles:nil] show];

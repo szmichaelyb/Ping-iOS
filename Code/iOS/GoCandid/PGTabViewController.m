@@ -24,10 +24,23 @@
     [super viewDidLoad];
     self.tabBar.translucent = NO;
     
-    [[UITabBar appearance] setSelectedImageTintColor:[UIColor whiteColor]];
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      //    [self setSelectedIndex:1];
-    //    [self tabBar:self.tabBar didSelectItem:self.tabBar.selectedItem];
-    // Do any additional setup after loading the view.
+    //Remove 1px line from top
+    self.tabBar.clipsToBounds = YES;
+    
+    [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"tab_selection"]];
+
+    [self.tabBar.items[0] setImage:[[UIImage imageNamed:@"tab1"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [self.tabBar.items[1] setImage:[[UIImage imageNamed:@"tab2"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [self.tabBar.items[2] setImage:[[UIImage imageNamed:@"tab3"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [self.tabBar.items[3] setImage:[[UIImage imageNamed:@"tab4"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [self.tabBar.items[4] setImage:[[UIImage imageNamed:@"tab5"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+
+    [self.tabBar.items[0] setSelectedImage:[[UIImage imageNamed:@"tab1_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [self.tabBar.items[1] setSelectedImage:[[UIImage imageNamed:@"tab2_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [self.tabBar.items[2] setSelectedImage:[[UIImage imageNamed:@"tab3_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [self.tabBar.items[3] setSelectedImage:[[UIImage imageNamed:@"tab4_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [self.tabBar.items[4] setSelectedImage:[[UIImage imageNamed:@"tab5_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
 }
 
 - (void)didReceiveMemoryWarning

@@ -19,7 +19,6 @@
 @interface PGFeedViewController ()<PGFeedTableViewDelegate>
 {
     CGRect originalFrame;
-    UIImageView* tempIV;
 }
 
 @property (strong, nonatomic) IBOutlet PGFeedTableView* tableView;
@@ -41,7 +40,6 @@
     
     self.navigationController.navigationBar.translucent = NO;
     self.tabBarController.tabBar.translucent = NO;
-    
 //    _segBGBlurView.dynamic = NO;
 //    _segBGBlurView.tintColor = [UIColor colorWithRed:0 green:0.5 blue:0.5 alpha:1];
 //    _segBGBlurView.contentMode = UIViewContentModeTop;
@@ -77,6 +75,12 @@
 {
     [super viewWillAppear:animated];
     self.navigationController.scrollNavigationBar.scrollView = self.tableView;
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    originalFrame = self.tabBarController.tabBar.frame;
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -155,64 +159,6 @@
             }];
         }
     }];
-}
-
-
--(void)tableView:(PGFeedTableView *)tableView didTapOnImageView:(UIImageView *)imageView
-{
-    //    UIImageView* iv = imageView;
-    //
-    //    UIImageView* ivExpand = [[UIImageView alloc] initWithImage:iv.image];
-    //    ivExpand.contentMode = iv.contentMode;
-    //    ivExpand.frame = [self.view convertRect:iv.frame fromView:iv.superview];
-    //    ivExpand.userInteractionEnabled = YES;
-    //    ivExpand.clipsToBounds = YES;
-    //
-    //    originalFrame = ivExpand.frame;
-    ////    originalFrame.origin.y = originalFrame.origin.y + self.navigationController.navigationBar.bounds.size.height + [UIApplication sharedApplication].statusBarFrame.size.height;
-    //    tempIV = imageView;
-    //
-    //    [self.navigationController.view addSubview:ivExpand];
-    //    self.tabBarController.tabBar.hidden = YES;
-    //
-    //    UITapGestureRecognizer* tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeFullScreen:)];
-    //    [ivExpand addGestureRecognizer:tgr];
-    //
-    //    [self animateView:ivExpand toFrame:self.view.bounds completion:^(POPAnimation *anim, bool finished) {
-    //        tempIV.hidden = YES;
-    //    }];
-}
-
-#pragma mark -
-
--(void)removeFullScreen:(UITapGestureRecognizer*)tgr
-{
-    CGRect frame = originalFrame;
-    self.tabBarController.tabBar.hidden = NO;
-    
-    [self animateView:tgr.view toFrame:frame completion:^(POPAnimation *anim, bool finished) {
-        [tgr.view removeFromSuperview];
-        tempIV.hidden = NO;
-    }];
-}
-
--(void)animateView:(UIView*)view toFrame:(CGRect)frame completion:(void (^)(POPAnimation* anim, bool finished))completion
-{
-    [view pop_removeAllAnimations];
-    
-    POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewFrame];
-    animation.springBounciness = 10;
-    
-    animation.toValue = [NSValue valueWithCGRect:frame];
-    
-    animation.completionBlock = ^(POPAnimation *anim, BOOL finished) {
-        DLog(@"Animation has completed.");
-        if (completion) {
-            completion(anim, finished);
-        }
-    };
-    
-    [view pop_addAnimation:animation forKey:@"fullscreen"];
 }
 
 @end
