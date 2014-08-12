@@ -70,8 +70,7 @@
     if (file) {
         _profileIV.image = [UIImage imageWithData:[file getData]];
     } else {
-#warning chagne the placeholder image
-        _profileIV.image = [UIImage imageNamed:@"example"];
+        _profileIV.image = [UIImage imageNamed:@"NoProfilePhotoIMAGE"];
     }
     _profileIV.layer.cornerRadius = _profileIV.frame.size.width/2;
     _profileIV.layer.borderColor = [UIColor whiteColor].CGColor;

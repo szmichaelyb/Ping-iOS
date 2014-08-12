@@ -89,8 +89,7 @@
                 NSData* imgData = (__bridge NSData*)(ABPersonCopyImageDataWithFormat(ref, kABPersonImageFormatThumbnail));
                 UIImage* img = [UIImage imageWithData:imgData];
                 if (img == nil) {
-#warning change placeholder
-                    img = [UIImage imageNamed:@"example"];
+                    img = [UIImage imageNamed:@"NoProfilePhotoIMAGE"];
                 }
                 
                 NSDictionary* dict = @{@"name": name, @"email": email, @"image": img};
