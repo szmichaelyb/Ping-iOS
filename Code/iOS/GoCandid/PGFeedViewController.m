@@ -80,7 +80,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    originalFrame = self.tabBarController.tabBar.frame;
+//    originalFrame = self.tabBarController.tabBar.frame;
 }
 
 -(void)viewWillDisappear:(BOOL)animated

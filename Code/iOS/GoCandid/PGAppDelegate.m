@@ -12,6 +12,8 @@
 #import "PGFeedViewController.h"
 #import <iRate/iRate.h>
 #import <Crashlytics/Crashlytics.h>
+#include <unistd.h>
+#include<netdb.h>
 
 @implementation PGAppDelegate
 
@@ -130,6 +132,22 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
++(BOOL)isNetworkAvailable
+{
+    char *hostname;
+    struct hostent *hostinfo;
+    hostname = "google.com";
+    hostinfo = gethostbyname (hostname);
+    if (hostinfo == NULL){
+        NSLog(@"-> no connection!\n");
+        return NO;
+    }
+    else{
+        NSLog(@"-> connection established!\n");
+        return YES;
+    }
 }
 
 @end

@@ -7,6 +7,8 @@
 //
 
 #import "PGParseHelper.h"
+#import <SystemConfiguration/SystemConfiguration.h>
+#import "PGAppDelegate.h"
 
 @implementation PGParseHelper
 
@@ -72,7 +74,10 @@
     [query whereKey:kPFActivity_FromUser equalTo:user];
     [query whereKey:kPFActivity_Type equalTo:kPFActivity_Type_Follow];
     [query includeKey:kPFActivity_ToUser];
-    NSArray* result = [query  findObjects];
+    NSArray* result = nil;
+    if ([PGAppDelegate isNetworkAvailable]) {
+        result = [query findObjects];
+    }
     return result;
 }
 

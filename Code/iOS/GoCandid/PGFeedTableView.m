@@ -79,29 +79,34 @@
     [query includeKey:kPFSelfie_Owner];
     [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (block) {
-            block(YES);
-        }
-        [_datasource addObjectsFromArray:objects];
-        NSInteger i = _datasource.count - objects.count;
-        NSMutableArray* indexPaths = [[NSMutableArray alloc] init];
-        for (NSDictionary* result in objects) {
-            [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
-            i++;
-        }
-        
-        [PGParseHelper getLikeActivityForSelfies:_datasource fromUser:[PFUser currentUser] completion:^(BOOL finished, NSArray *likeObjects) {
-            [_activityArray addObjectsFromArray:likeObjects];
-            if (_datasource.count != objects.count) {
-//Check if objects are new.
-                [self beginUpdates];
-                [self insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-                [self endUpdates];
-            } else {
-                [self reloadData];
+        if (error) {
+//            [[[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil, nil] show];
+            
+        } else {
+            if (block) {
+                block(YES);
+            }
+            [_datasource addObjectsFromArray:objects];
+            NSInteger i = _datasource.count - objects.count;
+            NSMutableArray* indexPaths = [[NSMutableArray alloc] init];
+            for (NSDictionary* result in objects) {
+                [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+                i++;
             }
             
-        }];
+            [PGParseHelper getLikeActivityForSelfies:_datasource fromUser:[PFUser currentUser] completion:^(BOOL finished, NSArray *likeObjects) {
+                [_activityArray addObjectsFromArray:likeObjects];
+                if (_datasource.count != objects.count) {
+                    //Check if objects are new.
+                    [self beginUpdates];
+                    [self insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+                    [self endUpdates];
+                } else {
+                    [self reloadData];
+                }
+                
+            }];
+        }
     }];
 }
 
@@ -175,13 +180,13 @@
     PFFile* file = _datasource[indexPath.row][kPFSelfie_Selfie];
     [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         UIImage* img = [UIImage animatedImageWithAnimatedGIFData:data];
-//        UIImage* img = [UIImage imageWithData:data];
+        //        UIImage* img = [UIImage imageWithData:data];
         [UIView transitionWithView:cell.mainIV duration:0.2f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
             cell.mainIV.image = img;
         } completion:nil];
         UIImage* temp = [UIImage imageWithData:data];
-//        temp = [temp applyDarkEffect];
-//        cell.blurBgIV.image = temp;
+        //        temp = [temp applyDarkEffect];
+        //        cell.blurBgIV.image = temp;
     }];
     
     cell.captionLabel.text = _datasource[indexPath.row][kPFSelfie_Caption];
@@ -203,9 +208,9 @@
     }];
     
     cell.mainIV.userInteractionEnabled = YES;
-//    cell.mainIV.tag = indexPath.row;
-//    UITapGestureRecognizer* gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(performFullScreenAnimation:)];
-//    [cell.iv addGestureRecognizer:gesture];
+    //    cell.mainIV.tag = indexPath.row;
+    //    UITapGestureRecognizer* gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(performFullScreenAnimation:)];
+    //    [cell.iv addGestureRecognizer:gesture];
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(PGFeedTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -215,12 +220,12 @@
             [_myDelegate tableView:self willDisplayLastCell:cell];
         }
     }
-//    [cell.mainIV startAnimating];
+    //    [cell.mainIV startAnimating];
 }
 
 -(void)tableView:(UITableView *)tableView didEndDisplayingCell:(PGFeedTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    [cell.mainIV stopAnimating];
+    //    [cell.mainIV stopAnimating];
 }
 
 #pragma mark -
@@ -236,9 +241,9 @@
 //-(void)performFullScreenAnimation:(UITapGestureRecognizer*)sender
 //{
 //    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:sender.view.tag inSection:0];
-//    
+//
 //    PGFeedTableViewCell* cell = (PGFeedTableViewCell*)[self cellForRowAtIndexPath:indexPath];
-//    
+//
 //    if (_myDelegate) {
 //        [_myDelegate tableView:self didTapOnImageView:cell.mainIV];
 //    }

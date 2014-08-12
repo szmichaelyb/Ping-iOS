@@ -11,5 +11,6 @@
 @interface PGAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
++(BOOL)isNetworkAvailable;
 
 @end
