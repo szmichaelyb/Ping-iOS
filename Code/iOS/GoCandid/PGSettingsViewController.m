@@ -17,11 +17,18 @@
 
 @interface PGSettingsViewController ()
 
+@property (nonatomic, strong) IBOutlet UILabel* tellAFriendLbl;
+@property (nonatomic, strong) IBOutlet UILabel* helpLbl;
+@property (nonatomic, strong) IBOutlet UILabel* reportAbuseLbl;
+@property (nonatomic, strong) IBOutlet UILabel* sendFeedbackLbl;
+@property (nonatomic, strong) IBOutlet UILabel* termsLbl;
+@property (nonatomic, strong) IBOutlet UILabel* logoutLbl;
+
 @property (strong) IBOutlet UIButton* facebookButton;
 @property (strong) IBOutlet UIButton* twitterButton;
 @property (strong) IBOutlet UIButton* appstoreButton;
 
-@property (strong) IBOutlet UILabel* appVersionLabel;
+@property (strong) IBOutlet UILabel* madeWithLbl;
 
 -(IBAction)likeOnFacebook:(id)sender;
 -(IBAction)followOnTwitter:(id)sender;
@@ -36,13 +43,15 @@
     [super viewDidLoad];
     
     self.navigationController.navigationBar.translucent = NO;
-   
-    //Add tap gesture to Parallax View
-    //    UITapGestureRecognizer* tapGestuere = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(parallaxHeaderTapped:)];
-    //    [self.tableView.parallaxView addGestureRecognizer:tapGestuere];
     
     self.title = NSLocalizedString(@"Settings", nil);
-    // Do any additional setup after loading the view.
+    
+    _tellAFriendLbl.font = FONT_GEOSANSLIGHT(20);
+    _helpLbl.font = FONT_GEOSANSLIGHT(20);
+    _reportAbuseLbl.font = FONT_GEOSANSLIGHT(20);
+    _sendFeedbackLbl.font = FONT_GEOSANSLIGHT(20);
+    _termsLbl.font = FONT_GEOSANSLIGHT(20);
+    _logoutLbl.font = FONT_GEOSANSLIGHT(20);
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -61,13 +70,6 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
-//-(void)parallaxHeaderTapped:(UIGestureRecognizer*)reco
-//{
-//    UIActionSheet* sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"View Profile Photo", nil), NSLocalizedString(@"Take Photo", nil), NSLocalizedString(@"Choose Exisiting Photo", nil), NSLocalizedString(@"Import from Facebook", nil), nil];
-//    sheet.tag = ActionSheetTypeHeaderPhoto;
-//    [sheet showInView:self.view.window];
-//}
 
 #pragma mark - Facebook, Twitter, App Store Review
 
@@ -121,7 +123,7 @@
 {
     if (section == [tableView numberOfSections] - 1) {
         //Get the height from SettingsShareView.Xib
-        return 140;
+        return 120;
     }
     return 0;
 }
@@ -144,10 +146,12 @@
         NSString *majorVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
         NSString *minorVersion = [infoDictionary objectForKey:@"CFBundleVersion"];
         if (DEBUGMODE) {
-            _appVersionLabel.text = [NSString stringWithFormat:@"Version %@ (%@) DB", majorVersion, minorVersion];
+            _madeWithLbl.text = [NSString stringWithFormat:@"Made with love by Appikon Mobile: V %@ (%@) DB",majorVersion, minorVersion];
         } else {
-            _appVersionLabel.text = [NSString stringWithFormat:@"Version %@ (%@)", majorVersion, minorVersion];
+            _madeWithLbl.text = [NSString stringWithFormat:@"Made with love by Appikon Mobile: V %@ (%@)", majorVersion, minorVersion];
         }
+        
+        _madeWithLbl.font = FONT_OPENSANS_CONDLIGHT(18);
         
         return view;
     }
@@ -166,7 +170,7 @@
         } else if (indexPath.row == 1) {
             MFMailComposeViewController* mailVC = [[MFMailComposeViewController alloc] init];
             mailVC.mailComposeDelegate = self;
-//            mailVC.view.tintColor = [UIColor whiteColor];
+            //            mailVC.view.tintColor = [UIColor whiteColor];
             [mailVC setSubject:@"GoCandid App Support"];
             [mailVC setToRecipients:@[@"helpme@appikon.com"]];
             
@@ -177,7 +181,7 @@
             //Report an abuse
             MFMailComposeViewController* issueVC = [[MFMailComposeViewController alloc] init];
             issueVC.mailComposeDelegate = self;
-//            issueVC.view.tintColor = [UIColor whiteColor];
+            //            issueVC.view.tintColor = [UIColor whiteColor];
             [issueVC setSubject:@"Reporting abuse content from GoCandid"];
             [issueVC setToRecipients:@[@"reportabuse@appikon.com"]];
             [self presentViewController:issueVC animated:YES completion:nil];
@@ -186,7 +190,7 @@
     if (indexPath.section == 1) {
         MFMailComposeViewController* mailVC = [[MFMailComposeViewController alloc] init];
         mailVC.mailComposeDelegate = self;
-//        mailVC.view.tintColor = [UIColor whiteColor];
+        //        mailVC.view.tintColor = [UIColor whiteColor];
         [mailVC setSubject:@"Feedback for GoCandid App."];
         [mailVC setToRecipients:@[@"feedback@appikon.com"]];
         [self presentViewController:mailVC animated:YES completion:nil];
@@ -210,7 +214,7 @@
             if ([MFMessageComposeViewController canSendText]) {
                 MFMessageComposeViewController* messageVC = [[MFMessageComposeViewController alloc] init];
                 messageVC.messageComposeDelegate = self;
-//                messageVC.view.tintColor = [UIColor whiteColor];
+                //                messageVC.view.tintColor = [UIColor whiteColor];
                 messageVC.body = @"Download GoCandid app on AppStore and take beautiful animated photos. https://itunes.apple.com/app/id898275446";
                 [self presentViewController:messageVC animated:YES completion:nil];
             }
@@ -219,7 +223,7 @@
             if ([MFMailComposeViewController canSendMail]) {
                 MFMailComposeViewController* mailVC = [[MFMailComposeViewController alloc] init];
                 mailVC.mailComposeDelegate = self;
-//                mailVC.view.tintColor = [UIColor whiteColor];
+                //                mailVC.view.tintColor = [UIColor whiteColor];
                 [mailVC setSubject:@"GoCandid Chat App for iPhone"];
 #warning change text
                 [mailVC setMessageBody:@"Hey, \n\nI just downloaded vCinity Chat on my iPhone. \n\nIt is a chat app which lets me chat with people around me. Even if there is no Internet connection. The signup is very easy and simple. You don't have to remember anything. \n\nDownload it now on the AppStore to start chatting. https://itunes.apple.com/app/id898275446" isHTML:NO];
@@ -242,45 +246,6 @@
                 [self presentViewController:sheet animated:YES completion:nil];
             }
         }
-    } else if (actionSheet.tag == ActionSheetTypeHeaderPhoto) {
-        //        if (buttonIndex == 0) {
-        //            //View
-        //
-        //            IDMPhoto* photo = [IDMPhoto photoWithImage:self.tableView.parallaxView.imageView.image];
-        //            IDMPhotoBrowser* photoBrowser = [[IDMPhotoBrowser alloc] initWithPhotos:@[photo] animatedFromView:self.tableView.parallaxView];
-        //            photoBrowser.scaleImage = self.tableView.parallaxView.imageView.image;
-        //            [self presentViewController:photoBrowser animated:YES completion:nil];
-        //
-        //        } else if (buttonIndex == 1) {
-        //            //Take photo
-        //            UIImagePickerController* imagePicker = [[UIImagePickerController alloc] init];
-        //            imagePicker.delegate = self;
-        //            [imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
-        //            [self presentViewController:imagePicker animated:YES completion:nil];
-        //
-        //        } else if (buttonIndex == 2) {
-        //            //Choose from library
-        //            UIImagePickerController* imagePicker = [[UIImagePickerController alloc] init];
-        //            imagePicker.delegate = self;
-        //            [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
-        //            [self presentViewController:imagePicker animated:YES completion:nil];
-        //        } else if (buttonIndex == 3) {
-        //            //Import from Facebook
-        //            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        //                NSData* imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://graph.facebook.com/%@/picture?width=500", [PFUser currentUser][kPFUser_FBID]]]];
-        //
-        //                dispatch_async(dispatch_get_main_queue(), ^{
-        //                    self.tableView.parallaxView.imageView.image = [UIImage imageWithData:imgData];
-        //                });
-        //
-        //                PFFile* imageFile = [PFFile fileWithName:@"profile.jpg" data:imgData];
-        //                [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        //
-        //                    [[PFUser currentUser] setObject:imageFile forKey:kPFUser_Picture];
-        //                    [[PFUser currentUser] saveInBackground];
-        //                }];
-        //            });
-        //        }
     }
 }
 

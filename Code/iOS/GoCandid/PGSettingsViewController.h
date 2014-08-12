@@ -14,7 +14,6 @@
 typedef enum {
     ActionSheetTypeShare = 100,
     ActionSheetTypeLogout,
-    ActionSheetTypeHeaderPhoto
 }ActionSheetType;
 
 @interface PGSettingsViewController : UITableViewController<UIActionSheetDelegate, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>

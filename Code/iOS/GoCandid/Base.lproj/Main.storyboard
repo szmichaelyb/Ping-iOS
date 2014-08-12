@@ -739,7 +739,7 @@
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="rvE-Nc-ohi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
                             <tableViewSection id="Ces-KD-XQY">
                                 <cells>
@@ -758,6 +758,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="1" green="0.98039215686274506" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="2Vd-QW-E8q" style="IBUITableViewCellStyleDefault" id="PQ6-K2-DF3">
                                         <rect key="frame" x="0.0" y="143" width="320" height="44"/>
@@ -775,6 +776,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="1" green="0.98039215690000003" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Lj1-Fu-FGa" style="IBUITableViewCellStyleDefault" id="GmX-Vp-0iC">
                                         <rect key="frame" x="0.0" y="187" width="320" height="44"/>
@@ -792,6 +794,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="1" green="0.98039215690000003" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -813,6 +816,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="1" green="0.98039215690000003" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -834,6 +838,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="1" green="0.98039215690000003" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <segue destination="B71-gp-K2g" kind="push" identifier="termsSegue" id="z3m-ZX-QfY"/>
                                         </connections>
@@ -858,6 +863,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="1" green="0.98039215690000003" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -878,6 +884,14 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <size key="freeformSize" width="320" height="700"/>
+                    <connections>
+                        <outlet property="helpLbl" destination="2Vd-QW-E8q" id="HeA-Vo-i1Y"/>
+                        <outlet property="logoutLbl" destination="R0U-pY-jPF" id="zWa-53-CSb"/>
+                        <outlet property="reportAbuseLbl" destination="Lj1-Fu-FGa" id="oWL-D7-doF"/>
+                        <outlet property="sendFeedbackLbl" destination="wup-Um-fcv" id="koV-ZO-QRU"/>
+                        <outlet property="tellAFriendLbl" destination="dnC-dp-Z9B" id="6zu-4V-SA4"/>
+                        <outlet property="termsLbl" destination="C5S-hS-hYu" id="HNI-Gr-fsN"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m1C-y4-82E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
