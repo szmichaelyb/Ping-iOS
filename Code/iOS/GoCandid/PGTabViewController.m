@@ -39,14 +39,32 @@
     //unselected Images
     [self.tabBar.items[0] setImage:[[UIImage imageNamed:@"tab1"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     [self.tabBar.items[1] setImage:[[UIImage imageNamed:@"tab2"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-    [self.tabBar.items[2] setImage:[[UIImage imageNamed:@"tab3"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    
+    UIImage* buttonImage = [UIImage imageNamed:@"tab3-1"];
+    UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0, 0, buttonImage.size.width, buttonImage.size.height);
+    [button addTarget:self action:@selector(showCreatePingViewController) forControlEvents:UIControlEventTouchUpInside];
+    [button setBackgroundImage:buttonImage forState:UIControlStateNormal];
+    
+    CGFloat heightDifference = buttonImage.size.height - self.tabBar.frame.size.height;
+    if (heightDifference < 0) {
+        button.center = self.tabBar.center;
+    } else {
+        CGPoint center = self.tabBar.center;
+        center.y = center.y - heightDifference / 2.0;
+        button.center = center;
+    }
+    
+    [self.view addSubview:button];
+    
+//    [self.tabBar.items[2] setImage:[[UIImage imageNamed:@"tab3"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     [self.tabBar.items[3] setImage:[[UIImage imageNamed:@"tab4"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     [self.tabBar.items[4] setImage:[[UIImage imageNamed:@"tab5"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
 
     //Selected Images
     [self.tabBar.items[0] setSelectedImage:[[UIImage imageNamed:@"tab1_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     [self.tabBar.items[1] setSelectedImage:[[UIImage imageNamed:@"tab2_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-    [self.tabBar.items[2] setSelectedImage:[[UIImage imageNamed:@"tab3_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+//    [self.tabBar.items[2] setSelectedImage:[[UIImage imageNamed:@"tab3_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     [self.tabBar.items[3] setSelectedImage:[[UIImage imageNamed:@"tab4_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     [self.tabBar.items[4] setSelectedImage:[[UIImage imageNamed:@"tab5_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
 }
