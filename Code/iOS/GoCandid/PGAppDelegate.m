@@ -39,7 +39,8 @@
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navbar"] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName,FONT_OPENSANS_CONDBOLD(FONT_SIZE_LARGE), NSFontAttributeName, nil]];
     [UINavigationBar appearance].tintColor = [UIColor whiteColor];
-
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
     return YES;
 }
 

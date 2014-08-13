@@ -47,6 +47,10 @@
     self.imageView.image = [UIImage animatedImageWithAnimatedGIFURL:_gifUrl];
     self.postButton.cornerRadius = self.postButton.frame.size.width/2;
     self.postButton.rippleFromTapLocation = NO;
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:kUDFirstPostSent] != YES) {
+        self.captionTF.text = @"#firstGoCandid";
+    }
     // Do any additional setup after loading the view.
 }
 
@@ -139,6 +143,8 @@
                 }];
                 
                 [self postOnTwitterObject:object];
+                
+                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kUDFirstPostSent];
             }];
         }];
         [_delegate didDismissCamViewController:nil];
