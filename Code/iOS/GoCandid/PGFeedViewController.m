@@ -160,4 +160,10 @@
     }];
 }
 
+-(void)tableView:(PGFeedTableView *)tableView didTapOnKeyword:(NSString *)keyword
+{
+    DLog(@"Tapped on: %@", keyword);
+//    PGFeedViewController
+}
+
 @end

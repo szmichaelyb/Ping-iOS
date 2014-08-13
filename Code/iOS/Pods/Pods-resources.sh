@@ -248,7 +248,6 @@ install_resource "FormatterKit/Localizations/zh-Hans.lproj"
 install_resource "FormatterKit/Localizations/zh-Hant.lproj"
 install_resource "IDMPhotoBrowser/Classes/IDMPhotoBrowser.bundle"
 install_resource "IDMPhotoBrowser/Classes/IDMPBLocalizations.bundle"
-install_resource "SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle"
 install_resource "iRate/iRate/iRate.bundle"
 
 rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

@@ -3,5 +3,7 @@
 
 *.xcbkptlist
 
-Code/Pods/
+Code/iOS/Pods/
 Code/Android/bin/
+
+Code/iOS/Pods/AFNetworking/AFNetworking/AFHTTPRequestOperation.h

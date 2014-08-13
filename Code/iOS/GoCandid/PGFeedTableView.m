@@ -190,7 +190,12 @@
     }];
     
     cell.captionLabel.text = _datasource[indexPath.row][kPFSelfie_Caption];
-    
+    [cell.captionLabel setDetectionBlock:^(STTweetHotWord hotword, NSString *string, NSString *protocol, NSRange range) {
+        DLog(@"%@", string);
+        if (_myDelegate) {
+            [_myDelegate tableView:self didTapOnKeyword:string];
+        }
+    }];
     if (_datasource[indexPath.row][kPFSelfie_Featured]) {
         cell.featuredLabel.hidden = NO;
     } else {

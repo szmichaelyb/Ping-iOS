@@ -4,7 +4,7 @@ A scrollable UINavigationBar that follows a UIScrollView. This project was inspi
 
 =======
 
-![](http://luugiathuy.com/wp-content/uploads/2013/12/GTScrollUINavigationBar1.png)  &nbsp;  ![](http://luugiathuy.com/wp-content/uploads/2013/12/GTScrollUINavigationBar2.png)
+![](http://luugiathuy.com/wp-content/uploads/2013/12/GTScrollNavigationBar1.png)  &nbsp;  ![](http://luugiathuy.com/wp-content/uploads/2013/12/GTScrollNavigationBar2.png)
 
 ##Installation
 ###CocoaPods
@@ -17,7 +17,7 @@ Set up the navigation controller to use `GTScrollNavigationBar`:
 ```objective-c
 #import "GTScrollNavigationBar.h"
 
-self.navController = [[UINavigationController alloc] initWithNavigationBarClass:[GTScrollNavigationBar class] 
+self.navController = [[UINavigationController alloc] initWithNavigationBarClass:[GTScrollNavigationBar class]
                                                                    toolbarClass:nil];
 [self.navController setViewControllers:@[self.mainViewController] animated:NO];
 ```
@@ -36,7 +36,7 @@ Implement `scrollViewDidScrollToTop:` in the view controller to reset the naviga
 ```objective-c
 - (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView
 {
-    [self.navigationController.scrollNavigationBar resetToDefaultPosition:YES];
+    [self.navigationController.scrollNavigationBar resetToDefaultPositionWithAnimation:NO];
 }
 ```
 

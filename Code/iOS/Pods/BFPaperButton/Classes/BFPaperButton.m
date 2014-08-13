@@ -182,10 +182,16 @@ static CGFloat const bfPaperButton_clearBGFadeConstant             = 0.12f;
 - (void)setEnabled:(BOOL)enabled
 {
     [super setEnabled:enabled];
-    
-    if (!enabled) {
-        self.layer.masksToBounds = YES;
-        self.clipsToBounds = YES;
+
+    if (self.isRaised) {
+        if (!enabled) {
+            self.layer.masksToBounds = YES;
+            self.clipsToBounds = YES;
+        }
+        else {
+            self.layer.masksToBounds = NO;
+            self.clipsToBounds = NO;
+        }
     }
     [self setNeedsDisplay];
 }
@@ -230,8 +236,9 @@ static CGFloat const bfPaperButton_clearBGFadeConstant             = 0.12f;
     
     self.titleLabel.font = [UIFont systemFontOfSize:15.f];
 //    [self setTitle:@"BFPaperButton" forState:UIControlStateNormal];
-    [self setBackgroundImage:[UIColor imageFromColor:[UIColor paperColorBlue]] forState:UIControlStateDisabled];
-    [self setTitleColor:[UIColor paperColorGray700] forState:UIControlStateDisabled];
+    // Set disabled state:
+    [self setBackgroundImage:[UIColor imageFromColor:[UIColor paperColorGray300]] forState:UIControlStateDisabled];
+    [self setTitleColor:[UIColor paperColorGray400] forState:UIControlStateDisabled];
     
     if (self.isRaised) {
         self.backgroundColor = [UIColor paperColorBlue];

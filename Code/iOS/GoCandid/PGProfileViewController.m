@@ -295,6 +295,13 @@
     }
 }
 
+-(void)tableView:(PGFeedTableView *)tableView didTapOnKeyword:(NSString *)keyword
+{
+    DLog(@"%@", keyword);
+}
+
+#pragma mark -
+
 - (void)shareText:(NSString *)text andImage:(UIImage *)image andUrl:(NSURL *)url andData:(NSData*)data
 {
     NSMutableArray *sharingItems = [NSMutableArray new];

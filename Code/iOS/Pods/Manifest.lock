@@ -1,24 +1,26 @@
 PODS:
-  - AFNetworking (2.2.4):
+  - AFNetworking (2.3.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
     - AFNetworking/UIKit
-  - AFNetworking/NSURLConnection (2.2.4):
+  - AFNetworking/NSURLConnection (2.3.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.2.4):
-    - AFNetworking/NSURLConnection
-  - AFNetworking/Reachability (2.2.4)
-  - AFNetworking/Security (2.2.4)
-  - AFNetworking/Serialization (2.2.4)
-  - AFNetworking/UIKit (2.2.4):
+  - AFNetworking/NSURLSession (2.3.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.3.1)
+  - AFNetworking/Security (2.3.1)
+  - AFNetworking/Serialization (2.3.1)
+  - AFNetworking/UIKit (2.3.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - BFPaperButton (1.2.9):
+  - BFPaperButton (1.3.1):
     - UIColor+BFPaperColors
   - Bolts (1.1.1)
   - DACircularProgress (2.2.0)
@@ -53,23 +55,23 @@ PODS:
   - FormatterKit/TimeIntervalFormatter (1.4.3)
   - FormatterKit/UnitOfInformationFormatter (1.4.3)
   - FormatterKit/URLRequestFormatter (1.4.3)
-  - GTScrollNavigationBar (0.1.1)
-  - IDMPhotoBrowser (1.3.5):
-    - AFNetworking (~> 2.2.3)
-    - DACircularProgress (~> 2.2)
-    - SVProgressHUD (~> 1.0)
+  - GTScrollNavigationBar (0.1.2)
+  - IDMPhotoBrowser (1.4):
+    - AFNetworking
+    - DACircularProgress
+    - pop
   - iOS-Hierarchy-Viewer (1.4.7)
   - iRate (1.9.3)
   - MaryPopin (1.3.1)
-  - MBProgressHUD (0.8)
+  - MBProgressHUD (0.9)
   - Parse (1.2.20):
     - Facebook-iOS-SDK (~> 3.11)
   - pop (1.0.6)
   - SDWebImage (3.7.1):
     - SDWebImage/Core
   - SDWebImage/Core (3.7.1)
+  - STTweetLabel (3.1.12)
   - STZPullToRefresh (0.0.1)
-  - SVProgressHUD (1.0)
   - UIActionSheet+Blocks (0.8.1)
   - UIColor+BFPaperColors (1.1)
   - UITableView-NXEmptyView (0.1.6)
@@ -89,31 +91,32 @@ DEPENDENCIES:
   - MBProgressHUD (~> 0.8)
   - Parse (~> 1.2.9)
   - pop (~> 1.0.4)
+  - STTweetLabel (~> 3.1.9)
   - STZPullToRefresh (~> 0.0.1)
   - UIActionSheet+Blocks (~> 0.8.1)
   - UITableView-NXEmptyView
   - ZGParallelView (~> 0.1.6)
 
 SPEC CHECKSUMS:
-  AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
-  BFPaperButton: 8fb7d157a72a36c9595e40e3831288253b3eae30
+  AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
+  BFPaperButton: dd7f8fba0d59adee73ff1ab1307a3e17fd9d6fe1
   Bolts: 0ca796081c3e7c139bd86d6903c27f1b83036a5d
   DACircularProgress: 3b41941891a56dc6aa17971f5322a9a38a6f446e
   DZNEmptyDataSet: 381e880cb3bb2d33885cb0325218443df265bc98
   DZNPhotoPickerController: 3d7428991e2604939fc56e581693d61d29138186
   Facebook-iOS-SDK: f20274d809f112ba540842e2b6cbe50128d51b7b
   FormatterKit: f744aa7928003eba8317d6fd6998414fbc78f7a5
-  GTScrollNavigationBar: 60392a5cc551047d0471e5693d06f68d4c1bd77b
-  IDMPhotoBrowser: d691bcdf470553e165f8eb982c5cd8e9a58bcdef
+  GTScrollNavigationBar: 837e4481076638eabafd64b94546a1b4c05058ca
+  IDMPhotoBrowser: da2110d99ea8735ad9a0ba52f2d184e756104a71
   iOS-Hierarchy-Viewer: f795abaeb8ccec8f652abd0891c396ad77d211d3
   iRate: 34b63a5e9dabcd26a5cf573d872ebb366802d63d
   MaryPopin: 51ab03a9ea8342c358a2560c476955ecf2a6d438
-  MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
+  MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
   Parse: 28c0dc54f30201a369d29a2f76c09fa43b2add16
   pop: e518794da38942c05255eb64b36d894e70cb4f00
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
+  STTweetLabel: 5acb62e6a64449520f242c002364bd3ec3a44592
   STZPullToRefresh: 1dc4ff1654b0a0384bc53e995eace3a782b5abf7
-  SVProgressHUD: 5034c6e22b8c2ca3e09402e48d41ed0340aa1c50
   UIActionSheet+Blocks: c8b9c02f3d08964e8f7a4202f004a639c15eab80
   UIColor+BFPaperColors: 1245016a9cf4f2c1c7c03c90d40869dab5bebf4a
   UITableView-NXEmptyView: 4322b391d08f8272e4f1860e4a182eba300d05dd

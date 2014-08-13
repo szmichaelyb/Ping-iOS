@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <STTweetLabel/STTweetLabel.h>
 
 @protocol PGFeedTableViewCellDelegate;
 
@@ -14,7 +15,7 @@
 
 @property (nonatomic, strong) IBOutlet UIImageView* blurBgIV;
 @property (strong, nonatomic) IBOutlet UIImageView* mainIV;
-@property (strong, nonatomic) IBOutlet UILabel* captionLabel;
+@property (strong, nonatomic) IBOutlet STTweetLabel* captionLabel;
 @property (strong, nonatomic) IBOutlet UILabel* nameLabel;
 @property (strong, nonatomic) IBOutlet UILabel* timeAndlocationLabel;
 @property (strong, nonatomic) IBOutlet UIImageView* thumbIV;
