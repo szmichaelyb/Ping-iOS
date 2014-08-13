@@ -25,7 +25,7 @@
                                 <rect key="frame" x="0.0" y="62" width="320" height="320"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gradient_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="04r-Uy-uAF">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gradient_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="04r-Uy-uAF">
                                 <rect key="frame" x="0.0" y="62" width="320" height="320"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
