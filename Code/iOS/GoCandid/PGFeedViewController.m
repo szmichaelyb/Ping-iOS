@@ -146,10 +146,9 @@
             
             [UIActionSheet showInView:self.view.window withTitle:@"Are you sure?" cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@[@"Yes"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
                 if (buttonIndex == 0) {
-                    //                    DLog(@"%@", _datasource[indexPath.row]);
+                    object[kPFSelfie_Abuse] = [NSNumber numberWithInt:[object[kPFSelfie_Abuse] intValue] + 1];
                     
-                    //                    PFObject* object = object;
-                    object[kPFSelfie_Abuse] = [NSNumber numberWithBool:YES];
+//                    object[kPFSelfie_Abuse] = [NSNumber numberWithBool:YES];
                     [object saveEventually:^(BOOL succeeded, NSError *error) {
                         if (succeeded) {
                             [[PGProgressHUD sharedInstance] showInView:self.navigationController.view withText:@"Reported" hideAfter:2];

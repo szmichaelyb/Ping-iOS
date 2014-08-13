@@ -46,10 +46,9 @@
     
     self.tableView = [[PGFeedTableView alloc] initWithFrame:self.view.bounds];
     self.tableView.myDelegate = self;
-    UILabel* emptyView = [[UILabel alloc] initWithFrame:self.tableView.frame];
-    emptyView.text = @"No Posts yet.";
-    emptyView.textAlignment = NSTextAlignmentCenter;
-    emptyView.textColor = [UIColor lightGrayColor];
+    UIImageView* emptyView = [[UIImageView alloc] initWithFrame:self.tableView.frame];
+    emptyView.image = [UIImage imageNamed:@"NoImageIcon"];
+    emptyView.contentMode = UIViewContentModeCenter;
     self.tableView.emptyView = emptyView;
     self.tableView.contentInset=  UIEdgeInsetsMake(0, 0, self.tabBarController.tabBar.frame.size.height + refreshBarY, 0);
     [self.view addSubview:self.tableView];
