@@ -27,6 +27,8 @@ typedef enum {
 -(void)setup;
 -(void)refreshDatasource;
 -(void)getFeedForUser:(PFUser*)user completion:(void (^) (bool finished))block;
+-(void)getFeedForHashTag:(NSString*)hashTag completion:(void (^)(bool))block;
+
 -(NSInteger)numberOfRows;
 
 @end

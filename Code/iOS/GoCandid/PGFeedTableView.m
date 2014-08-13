@@ -51,6 +51,51 @@
     _datasource = [NSMutableArray new];
 }
 
+-(void)getFeedForHashTag:(NSString *)hashTag completion:(void (^)(bool))block
+
+{
+    self.nxEV_emptyView = self.emptyView;
+    
+    PFQuery* query = [PFQuery queryWithClassName:kPFTableNameSelfies];
+    
+    [query whereKey:kPFSelfie_HashTags containedIn:@[hashTag]];
+    
+    query.limit = 5;
+    query.skip = _datasource.count;
+    [query includeKey:kPFSelfie_Owner];
+    [query orderByDescending:@"createdAt"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            //            [[[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil, nil] show];
+            
+        } else {
+            if (block) {
+                block(YES);
+            }
+            [_datasource addObjectsFromArray:objects];
+            NSInteger i = _datasource.count - objects.count;
+            NSMutableArray* indexPaths = [[NSMutableArray alloc] init];
+            for (NSDictionary* result in objects) {
+                [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+                i++;
+            }
+            
+            [PGParseHelper getLikeActivityForSelfies:_datasource fromUser:[PFUser currentUser] completion:^(BOOL finished, NSArray *likeObjects) {
+                [_activityArray addObjectsFromArray:likeObjects];
+                if (_datasource.count != objects.count) {
+                    //Check if objects are new.
+                    [self beginUpdates];
+                    [self insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+                    [self endUpdates];
+                } else {
+                    [self reloadData];
+                }
+                
+            }];
+        }
+    }];
+}
+
 -(void)getFeedForUser:(PFUser *)user completion:(void (^)(bool))block
 {
     self.nxEV_emptyView = self.emptyView;
@@ -193,7 +238,7 @@
     [cell.captionLabel setDetectionBlock:^(STTweetHotWord hotword, NSString *string, NSString *protocol, NSRange range) {
         DLog(@"%@", string);
         if (_myDelegate) {
-            [_myDelegate tableView:self didTapOnKeyword:string];
+            [_myDelegate tableView:self didTapOnKeyword:[string lowercaseString]];
         }
     }];
     if (_datasource[indexPath.row][kPFSelfie_Featured]) {

@@ -163,7 +163,13 @@
 -(void)tableView:(PGFeedTableView *)tableView didTapOnKeyword:(NSString *)keyword
 {
     DLog(@"Tapped on: %@", keyword);
-//    PGFeedViewController
+#warning create and push proper view controller
+    UIViewController* controller = [[UIViewController alloc] init];
+    controller.title = keyword;
+    PGFeedTableView* table = [[PGFeedTableView alloc] initWithFrame:controller.view.bounds];
+    [table getFeedForHashTag:keyword completion:nil];
+    [controller.view addSubview:table];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 @end
