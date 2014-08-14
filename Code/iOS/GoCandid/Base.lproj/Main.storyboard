@@ -659,17 +659,25 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="IUl-Ni-MfE">
-                                <rect key="frame" x="36" y="8" width="234" height="29"/>
+                            <view contentMode="scaleToFill" id="ZCW-Jg-LAR">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Phone"/>
-                                    <segment title="Facebook"/>
-                                </segments>
-                                <connections>
-                                    <action selector="segmentChanged:" destination="FNA-UQ-P0N" eventType="valueChanged" id="P6V-48-pii"/>
-                                </connections>
-                            </segmentedControl>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="IUl-Ni-MfE">
+                                        <rect key="frame" x="43" y="8" width="234" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <segments>
+                                            <segment title="Phone"/>
+                                            <segment title="Facebook"/>
+                                        </segments>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="segmentChanged:" destination="FNA-UQ-P0N" eventType="valueChanged" id="P6V-48-pii"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" red="0.180392161" green="0.180392161" blue="0.180392161" alpha="1" colorSpace="deviceRGB"/>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ufZ-uc-lbK">
                                 <rect key="frame" x="0.0" y="44" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -956,7 +964,7 @@
                                     <outlet property="delegate" destination="2Hi-o4-zgt" id="uhH-1w-2xS"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" placeholder="search for users or hashtags" id="xaz-Ye-LbB">
+                            <searchBar contentMode="redraw" placeholder="search for users" id="xaz-Ye-LbB">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
@@ -1152,12 +1160,13 @@
                                             <segment title="Home"/>
                                             <segment title="Recent"/>
                                         </segments>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <action selector="segChanged:" destination="1cV-B3-Drv" eventType="valueChanged" id="2K9-kr-NpJ"/>
                                         </connections>
                                     </segmentedControl>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.18039216101169586" green="0.18039216101169586" blue="0.18039216101169586" alpha="1" colorSpace="deviceRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -1197,6 +1206,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Q32-xh-Mni"/>
+        <segue reference="5C2-Hb-zEM"/>
     </inferredMetricsTieBreakers>
 </document>

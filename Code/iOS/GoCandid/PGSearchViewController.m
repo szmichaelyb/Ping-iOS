@@ -34,7 +34,7 @@
     self.navigationController.navigationBar.translucent = NO;
     self.tabBarController.tabBar.translucent = NO;
     
-    self.searchBar.searchBarStyle = UISearchBarStyleMinimal;
+//    self.searchBar.searchBarStyle = UISearchBarStyleMinimal;
     
     _datasource = [NSMutableArray new];
     
