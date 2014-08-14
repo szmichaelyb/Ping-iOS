@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1456358174F749F4A1BDB337"
+               BlueprintIdentifier = "8A73B0765D0D414D9F226D35"
                BuildableName = "libPods-ZGParallelView.a"
                BlueprintName = "Pods-ZGParallelView"
                ReferencedContainer = "container:Pods.xcodeproj">

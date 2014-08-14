@@ -10,7 +10,7 @@
 
 @interface UIImage (MyUIImage)
 
--(UIImage*)imageWithOverlayColor:(UIColor*)color;
+//-(UIImage*)imageWithOverlayColor:(UIColor*)color;
 
 - (UIImage *)applyLightEffect;
 - (UIImage *)applyExtraLightEffect;

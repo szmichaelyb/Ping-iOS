@@ -22,11 +22,16 @@
 @property (strong, nonatomic) IBOutlet UIButton *facebookButton;
 @property (strong, nonatomic) IBOutlet UIButton *twitterButton;
 
+@property (nonatomic, strong) IBOutlet UIToolbar* keyboardInputView;
+@property (nonatomic, strong) IBOutlet UIButton* charRemainig;
+
 @property (strong, nonatomic) CLLocationManager* locationManager;
 
 - (IBAction)shareOnFacebookClicked:(UIButton*)sender;
 - (IBAction)shareOnTwitterClicked:(UIButton*)sender;
 - (IBAction)backButtonClicked:(id)sender;
+
+-(IBAction)hashButtonClicked:(id)sender;
 
 @end
 
@@ -51,6 +56,8 @@
     if ([[NSUserDefaults standardUserDefaults] boolForKey:kUDFirstPostSent] != YES) {
         self.captionTF.text = @"#firstGoCandid";
     }
+    
+    self.captionTF.inputAccessoryView = self.keyboardInputView;
     // Do any additional setup after loading the view.
 }
 
@@ -101,9 +108,22 @@
     [self.view endEditing:YES];
 }
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
     NSUInteger newLength = [textField.text length] + [string length] - range.length;
-    return (newLength > 25) ? NO : YES;
+    if (newLength <= 140) {
+        [UIView setAnimationsEnabled:NO];
+        [self.charRemainig setTitle:[NSString stringWithFormat:@"%d", 139 - self.captionTF.text.length] forState:UIControlStateNormal];
+        [UIView setAnimationsEnabled:YES];
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+-(IBAction)hashButtonClicked:(id)sender
+{
+    self.captionTF.text = [NSString stringWithFormat:@"%@#", self.captionTF.text];
 }
 
 -(IBAction)sendButtonClicked:(id)sender
@@ -243,7 +263,7 @@
                 if (accountsArray.count > 0) {
                     ACAccount* twitterAccount = [accountsArray objectAtIndex:0];
                     NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%@ #GoCandidApp http://itunes.apple.com/app/id898275446", _captionTF.text], @"status", @"true", @"wrap_links", nil];
-
+                    
                     SLRequest* postRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodPOST URL:[NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/update_with_media.json"] parameters:dict];
                     NSData* tempData = [NSData dataWithContentsOfURL:[NSURL URLWithString:file.url]];
                     [postRequest addMultipartData:tempData withName:@"media[]" type:@"image/gif" filename:@"image.gif"];

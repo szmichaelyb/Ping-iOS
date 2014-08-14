@@ -14,11 +14,15 @@
 
 @property (strong, nonatomic) UIPanGestureRecognizer* panGesture;
 @property (assign, nonatomic) CGFloat lastContentOffsetY;
-@property (assign, nonatomic) BOOL gestureIsActive;
 
 @end
 
 @implementation GTScrollNavigationBar
+
+@synthesize scrollView = _scrollView,
+            scrollState = _scrollState,
+            panGesture = _panGesture,
+            lastContentOffsetY = _lastContentOffsetY;
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -50,7 +54,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(statusBarOrientationDidChange)
                                                  name:UIApplicationDidChangeStatusBarOrientationNotification
-                                               object:nil];
+                                               object:nil];    
 }
 
 - (void)dealloc
@@ -66,7 +70,10 @@
 - (void)setScrollView:(UIScrollView*)scrollView
 {
     _scrollView = scrollView;
-    [self resetToDefaultPositionWithAnimation:NO];
+    
+    CGRect defaultFrame = self.frame;
+    defaultFrame.origin.y = [self statusBarHeight];
+    [self setFrame:defaultFrame alpha:1.0f animated:NO];
     
     // remove gesture from current panGesture's view
     if (self.panGesture.view) {
@@ -78,28 +85,22 @@
     }
 }
 
-- (void)resetToDefaultPositionWithAnimation:(BOOL)animated
-{
-    self.scrollState = GTScrollNavigationBarNone;
-    CGRect frame = self.frame;
-    frame.origin.y = [self statusBarTopOffset];
-    [self setFrame:frame alpha:1.0f animated:animated];
-}
-
 - (void)resetToDefaultPosition:(BOOL)animated
 {
-    [self resetToDefaultPositionWithAnimation:animated];
+    CGRect frame = self.frame;
+    frame.origin.y = [self statusBarHeight];
+    [self setFrame:frame alpha:1.0f animated:NO];
 }
 
 #pragma mark - notifications
 - (void)statusBarOrientationDidChange
 {
-    [self resetToDefaultPositionWithAnimation:NO];
+    [self resetToDefaultPosition:NO];
 }
 
 - (void)applicationDidBecomeActive
 {
-    [self resetToDefaultPositionWithAnimation:NO];
+    [self resetToDefaultPosition:NO];
 }
 
 #pragma mark - UIGestureRecognizerDelegate
@@ -115,16 +116,15 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     if (!self.scrollView || gesture.view != self.scrollView) {
         return;
     }
-    // Don't try to scroll navigation bar if there's not enough room
-    if (self.scrollView.frame.size.height + (self.bounds.size.height * 2) >= self.scrollView.contentSize.height) {
-        return;
-    }
     
     CGFloat contentOffsetY = self.scrollView.contentOffset.y;
     
+    if (contentOffsetY < -self.scrollView.contentInset.top) {
+        return;
+    }
+    
     if (gesture.state == UIGestureRecognizerStateBegan) {
         self.scrollState = GTScrollNavigationBarNone;
-        self.gestureIsActive = YES;
         self.lastContentOffsetY = contentOffsetY;
         return;
     }
@@ -138,32 +138,41 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     
     CGRect frame = self.frame;
     CGFloat alpha = 1.0f;
-    CGFloat maxY = [self statusBarTopOffset];
+    CGFloat statusBarHeight = [self statusBarHeight];
+    CGFloat maxY = statusBarHeight;
     CGFloat minY = maxY - CGRectGetHeight(frame) + 1.0f;
     // NOTE: plus 1px to prevent the navigation bar disappears in iOS < 7
     
-    bool isScrolling = (self.scrollState == GTScrollNavigationBarScrollingUp ||
-                        self.scrollState == GTScrollNavigationBarScrollingDown);
-    
-    self.gestureIsActive = (gesture.state != UIGestureRecognizerStateEnded &&
-                            gesture.state != UIGestureRecognizerStateCancelled);
-    
-    if (isScrolling && !self.gestureIsActive) {
+    bool isScrollingAndGestureEnded = (gesture.state == UIGestureRecognizerStateEnded ||
+                                       gesture.state == UIGestureRecognizerStateCancelled) &&
+                                        (self.scrollState == GTScrollNavigationBarScrollingUp ||
+                                         self.scrollState == GTScrollNavigationBarScrollingDown);
+    if (isScrollingAndGestureEnded) {
+        CGFloat contentOffsetYDelta = 0.0f;
         if (self.scrollState == GTScrollNavigationBarScrollingDown) {
+            contentOffsetYDelta = maxY - frame.origin.y;
             frame.origin.y = maxY;
             alpha = 1.0f;
         }
         else if (self.scrollState == GTScrollNavigationBarScrollingUp) {
+            contentOffsetYDelta = minY - frame.origin.y;
             frame.origin.y = minY;
             alpha = kNearZero;
         }
+        
         [self setFrame:frame alpha:alpha animated:YES];
+        
+        if (!self.scrollView.decelerating) {
+            CGPoint newContentOffset = CGPointMake(self.scrollView.contentOffset.x,
+                                                   contentOffsetY - contentOffsetYDelta);
+            [self.scrollView setContentOffset:newContentOffset animated:YES];
+        }
     }
     else {
         frame.origin.y -= deltaY;
         frame.origin.y = MIN(maxY, MAX(frame.origin.y, minY));
         
-        alpha = (frame.origin.y - (minY + maxY)) / (maxY - (minY + maxY));
+        alpha = (frame.origin.y - (minY + statusBarHeight)) / (maxY - (minY + statusBarHeight));
         alpha = MAX(kNearZero, alpha);
         
         [self setFrame:frame alpha:alpha animated:NO];
@@ -173,12 +182,12 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 }
 
 #pragma mark - helper methods
-- (CGFloat)statusBarTopOffset
+- (CGFloat)statusBarHeight
 {
     switch ([UIApplication sharedApplication].statusBarOrientation) {
         case UIInterfaceOrientationPortrait:
         case UIInterfaceOrientationPortraitUpsideDown:
-            return CGRectGetHeight([UIApplication sharedApplication].statusBarFrame)+[UIApplication sharedApplication].statusBarFrame.origin.y;
+            return CGRectGetHeight([UIApplication sharedApplication].statusBarFrame);
             break;
         case UIInterfaceOrientationLandscapeLeft:
         case UIInterfaceOrientationLandscapeRight:
@@ -186,28 +195,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
         default:
             break;
     };
-    return 64.0f;
-}
-
-
-- (void)setContentInset
-{
-    
-    NSLog(@"inset:%ld,offset:%ld",(long)self.scrollView.contentInset.top,(long)self.scrollView.contentOffset.y);
-    // Don't mess the scrollview at first start
-    if(self.scrollView.contentInset.top==0 && self.scrollView.contentOffset.y==0){
-        return;
-    }
-    
-    UIEdgeInsets insets = self.scrollView.contentInset;
-    insets.top = self.frame.origin.y+self.frame.size.height;
-    self.scrollView.contentInset = insets;
-    
-    bool isAtTop = (!self.gestureIsActive && self.scrollView.contentOffset.y<=0);
-    // Reset contentOffset when scrolling to top after user taps statusbar
-    if(isAtTop && self.scrollView.contentOffset.y!=-self.scrollView.contentInset.top){
-        [self.scrollView setContentOffset:CGPointMake(self.scrollView.contentOffset.x,-self.scrollView.contentInset.top) animated:NO];
-    }
+    return 0.0f;
 }
 
 - (void)setFrame:(CGRect)frame alpha:(CGFloat)alpha animated:(BOOL)animated
@@ -225,18 +213,12 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
             continue;
         view.alpha = alpha;
     }
-    
     self.frame = frame;
     
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0f){
-        [self setContentInset];
-    }
-    else {
-        CGRect parentViewFrame = self.scrollView.superview.frame;
-        parentViewFrame.origin.y += offsetY;
-        parentViewFrame.size.height -= offsetY;
-        self.scrollView.superview.frame = parentViewFrame;
-    }
+    CGRect parentViewFrame = self.scrollView.superview.frame;
+    parentViewFrame.origin.y += offsetY;
+    parentViewFrame.size.height -= offsetY;
+    self.scrollView.superview.frame = parentViewFrame;
     
     if (animated) {
         [UIView commitAnimations];

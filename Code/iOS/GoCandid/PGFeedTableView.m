@@ -338,16 +338,16 @@
     PFObject* object = _datasource[indexPath.row];
     BOOL alreadyLike = cell.likeButtonState;
     if (alreadyLike) {
+        [cell setLikeButtonState:NO];
         [PGParseHelper unlikeSelfie:object compltion:^(BOOL finished) {
-            [cell setLikeButtonState:NO];
             [PGParseHelper getTotalLikeForSelfie:object completion:^(BOOL finished, int number) {
                 cell.totalLikes.text = [NSString stringWithFormat:@"%d likes", number];
             }];
         }];
     } else {
+        [cell setLikeButtonState:YES];
         [PGParseHelper likeSelfie:object completion:^(BOOL finished) {
             DLog(@"Liked");
-            [cell setLikeButtonState:YES];
             [PGParseHelper getTotalLikeForSelfie:object completion:^(BOOL finished, int number) {
                 cell.totalLikes.text = [NSString stringWithFormat:@"%d likes", number];
             }];
@@ -360,7 +360,7 @@
 {
     UIImageView* likeIV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
     likeIV.center = CGPointMake(CGRectGetMidX(cell.mainIV.bounds), CGRectGetMidY(cell.mainIV.bounds));
-    likeIV.image = [[UIImage imageNamed:@"like"] imageWithOverlayColor:[UIColor redColor]];
+    likeIV.image = [UIImage imageNamed:@"heartON"];
     [cell.mainIV addSubview:likeIV];
     
     [UIView animateWithDuration:0.5 animations:^{

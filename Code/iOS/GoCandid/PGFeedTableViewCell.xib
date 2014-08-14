@@ -78,7 +78,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JX1-H8-lES">
                                 <rect key="frame" x="280" y="330" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="like_empty">
+                                <state key="normal" image="heartOFF">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -115,6 +115,6 @@
     <resources>
         <image name="MoreIcon" width="20" height="4"/>
         <image name="gradient_bottom" width="320" height="230"/>
-        <image name="like_empty" width="25" height="25"/>
+        <image name="heartOFF" width="36" height="32"/>
     </resources>
 </document>

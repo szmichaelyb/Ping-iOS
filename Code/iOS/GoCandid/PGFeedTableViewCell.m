@@ -32,11 +32,11 @@
     self.thumbIV.layer.cornerRadius = self.thumbIV.frame.size.width/2;
     self.thumbIV.layer.masksToBounds = YES;
     
-    [self.likeButton setImage:[UIImage imageNamed:@"like"] forState:UIControlStateSelected];
-    [self.likeButton setImage:[[self.likeButton imageForState:UIControlStateSelected] imageWithOverlayColor:[UIColor redColor]] forState:UIControlStateSelected];
+    [self.likeButton setImage:[UIImage imageNamed:@"heartON"] forState:UIControlStateSelected];
+//    [self.likeButton setImage:[[self.likeButton imageForState:UIControlStateSelected] imageWithOverlayColor:[UIColor redColor]] forState:UIControlStateSelected];
     
-    [self.likeButton setImage:[UIImage imageNamed:@"like_empty"] forState:UIControlStateNormal];
-    [self.likeButton setImage:[[self.likeButton imageForState:UIControlStateNormal] imageWithOverlayColor:[UIColor whiteColor]] forState:UIControlStateNormal];
+    [self.likeButton setImage:[UIImage imageNamed:@"heartOFF"] forState:UIControlStateNormal];
+//    [self.likeButton setImage:[[self.likeButton imageForState:UIControlStateNormal] imageWithOverlayColor:[UIColor whiteColor]] forState:UIControlStateNormal];
     
 //    UILongPressGestureRecognizer* gesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
 //    gesture.minimumPressDuration = 0.1;

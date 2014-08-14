@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0B6B4A84D78D49FFB99215ED"
+               BlueprintIdentifier = "B900274F3A874AD5836BE803"
                BuildableName = "libPods-UIActionSheet+Blocks.a"
                BlueprintName = "Pods-UIActionSheet+Blocks"
                ReferencedContainer = "container:Pods.xcodeproj">

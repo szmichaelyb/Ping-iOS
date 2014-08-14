@@ -263,7 +263,7 @@
                             <view contentMode="scaleToFill" id="ix2-56-jni" customClass="AVCamPreviewView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="qKW-nV-yZE" appends="YES" id="w7R-gX-vKQ"/>
@@ -499,6 +499,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Enter Title" minimumFontSize="17" id="yvo-HC-Cv1">
                                 <rect key="frame" x="138" y="55" width="162" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -556,14 +557,39 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="captionTF" destination="yvo-HC-Cv1" id="reL-H0-Hht"/>
+                        <outlet property="charRemainig" destination="Ovo-Jz-iNW" id="Imo-5g-idq"/>
                         <outlet property="facebookButton" destination="Rzy-M3-wyZ" id="Ody-jE-biC"/>
                         <outlet property="imageView" destination="OfV-ww-jSD" id="kAD-3x-f8H"/>
+                        <outlet property="keyboardInputView" destination="8nP-DN-Ieg" id="CrG-fV-T4T"/>
                         <outlet property="locationLabel" destination="0j4-d8-kO0" id="FTh-oN-QxF"/>
                         <outlet property="postButton" destination="Qrl-Gb-Joo" id="YrC-du-l7g"/>
                         <outlet property="twitterButton" destination="ioM-4a-4o5" id="DQl-G6-Z8U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GZn-yZ-2LP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="8nP-DN-Ieg">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <items>
+                        <barButtonItem title="#" id="Yzv-Cs-YeU">
+                            <connections>
+                                <action selector="hashButtonClicked:" destination="omH-ax-muh" id="Pol-9M-OLv"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="xLy-hA-uTv"/>
+                        <barButtonItem style="plain" id="lWd-Vo-yFk">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ovo-Jz-iNW">
+                                <rect key="frame" x="274" y="6" width="30" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="140">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
             </objects>
             <point key="canvasLocation" x="1737" y="-155"/>
         </scene>
@@ -592,7 +618,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="U9A-M3-EPF">
-                        <barButtonItem key="leftBarButtonItem" title="+" id="pd9-44-jsQ">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="pd9-44-jsQ">
                             <connections>
                                 <segue destination="eKY-XE-dNj" kind="modal" id="veL-FX-kvv"/>
                             </connections>
@@ -922,7 +948,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="dSX-pA-J49">
-                                <rect key="frame" x="0.0" y="79" width="320" height="376"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="411"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -938,7 +964,7 @@
                                     <outlet property="delegate" destination="2Hi-o4-zgt" id="snx-l7-xcO"/>
                                 </connections>
                             </searchBar>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="ELq-ds-dQR">
+                            <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="ELq-ds-dQR">
                                 <rect key="frame" x="0.0" y="43" width="320" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
@@ -952,7 +978,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Search" id="PE5-qF-gma"/>
+                    <navigationItem key="navigationItem" title="Search" id="PE5-qF-gma">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="csH-L3-ABw">
+                            <connections>
+                                <segue destination="eKY-XE-dNj" kind="modal" id="Q32-xh-Mni"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
@@ -1037,7 +1069,13 @@
                             <outlet property="delegate" destination="0EW-Uz-loC" id="PHI-XR-fBV"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Activity" id="Nwd-U5-sWm"/>
+                    <navigationItem key="navigationItem" title="Activity" id="Nwd-U5-sWm">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="vPe-C8-86t">
+                            <connections>
+                                <segue destination="eKY-XE-dNj" kind="modal" id="SLX-E8-ljN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NYd-b4-gXk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1124,7 +1162,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Feed" id="bIG-s4-hve"/>
+                    <navigationItem key="navigationItem" title="Feed" id="bIG-s4-hve">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="MSC-c4-oJ0">
+                            <connections>
+                                <segue destination="eKY-XE-dNj" kind="modal" id="5C2-Hb-zEM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="segBGBlurView" destination="xVp-e4-RPU" id="r26-l1-aCi"/>
@@ -1152,4 +1196,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="Q32-xh-Mni"/>
+    </inferredMetricsTieBreakers>
 </document>
