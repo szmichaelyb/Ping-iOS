@@ -14,6 +14,7 @@
 +(void)unfollowUserInBackground:(PFUser*)user completion:(void (^) (bool finished))block;
 +(void)getFollowingListForUser:(PFUser*)user completion:(void (^) (BOOL finished, NSArray* followingUsers))block;
 +(NSArray*)getFollowingListForUser:(PFUser*)user;
++(void)isUserFollowingUser:(PFUser*)user completion:(void (^) (BOOL finished, BOOL following))block;
 
 +(void)getLikeActivityForSelfies:(NSArray*)selfies fromUser:(PFUser*)user completion:(void (^) (BOOL finished, NSArray* objects))block;
 +(void)likeSelfie:(PFObject*)selfie completion:(void (^) (BOOL finished))block;

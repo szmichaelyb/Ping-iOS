@@ -59,7 +59,14 @@
         self.tableView.feedType = FeedTypeMine;
     } else {
         //Friends Profile
-        self.navigationItem.rightBarButtonItem = nil;
+        UIBarButtonItem* followButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Follow" style:UIBarButtonItemStyleBordered target:self action:@selector(followButtonClicked:)];
+        self.navigationItem.rightBarButtonItem = followButtonItem;
+        [PGParseHelper isUserFollowingUser:_profileUser completion:^(BOOL finished, BOOL following) {
+            if (following) {
+                self.navigationItem.rightBarButtonItem.title = @"Following";
+            } else
+            self.navigationItem.rightBarButtonItem.title = @"Follow";
+        }];
         self.navigationItem.leftBarButtonItem = nil;
         self.tableView.feedType = FeedTypeFriends;
     }
@@ -78,6 +85,7 @@
     _profileIV.userInteractionEnabled = YES;
     
     if ([_profileUser.objectId isEqualToString:[PFUser currentUser].objectId]) {
+        //Users profile
         UITapGestureRecognizer* tapGestuere = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(profileIVClicked:)];
         [_profileIV addGestureRecognizer:tapGestuere];
     }
@@ -129,6 +137,24 @@
     [postsCountQuery countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
         _postCountLabel.text = [NSString stringWithFormat:@"%d posts", number];
     }];
+}
+
+-(void)followButtonClicked:(UIBarButtonItem*)sender
+{
+    DLog(@"%@", sender.title);
+    if ([sender.title isEqualToString:@"Follow"]) {
+        [PGParseHelper followUserInBackground:_profileUser completion:^(bool finished) {
+            sender.title = @"Following";
+        }];
+    } else {
+        [UIActionSheet showInView:self.view.window withTitle:_profileUser[kPFUser_Name] cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Unfollow" otherButtonTitles:nil tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+            if (buttonIndex == 0) {
+                [PGParseHelper unfollowUserInBackground:_profileUser completion:^(bool finished) {
+                    sender.title = @"Follow";
+                }];
+            }
+        }];
+    }
 }
 
 -(void)profileIVClicked:(id)sender

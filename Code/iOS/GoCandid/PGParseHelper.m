@@ -9,6 +9,7 @@
 #import "PGParseHelper.h"
 #import <SystemConfiguration/SystemConfiguration.h>
 #import "PGAppDelegate.h"
+#import <UIActionSheet+Blocks/UIActionSheet+Blocks.h>
 
 @implementation PGParseHelper
 
@@ -35,7 +36,7 @@
 }
 
 +(void)unfollowUserInBackground:(PFUser *)user completion:(void (^)(bool))block
-{
+{    
     PFQuery *query = [PFQuery queryWithClassName:kPFTableActivity];
     [query whereKey:kPFActivity_FromUser equalTo:[PFUser currentUser]];
     [query whereKey:kPFActivity_ToUser equalTo:user];
@@ -79,6 +80,22 @@
         result = [query findObjects];
     }
     return result;
+}
+
++(void)isUserFollowingUser:(PFUser *)user completion:(void (^)(BOOL, BOOL))block
+{
+    PFQuery* query = [PFQuery queryWithClassName:kPFTableActivity];
+    [query whereKey:kPFActivity_Type equalTo:kPFActivity_Type_Follow];
+    [query whereKey:kPFActivity_FromUser equalTo:[PFUser currentUser]];
+    [query whereKey:kPFActivity_ToUser equalTo:user];
+    
+    [query countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
+        if (number == 0) {
+            block(YES, NO);
+        } else {
+            block(YES, YES);
+        }
+    }];
 }
 
 #pragma mark -
