@@ -38,7 +38,7 @@
 {
     [super viewDidLoad];
     
-//    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.navigationBar.translucent = YES;
     self.tabBarController.tabBar.translucent = NO;
     
     /// Setup pull to refresh
@@ -92,14 +92,19 @@
     }
     
     _nameLabel.text = _profileUser[kPFUser_Name];
+    _nameLabel.font = FONT_GEOSANSLIGHT(FONT_SIZE_MEDIUM);
     
     _headerView.image = [_profileIV.image applyLightEffect];
     [self.tableView addParallelViewWithUIView:view withDisplayRadio:0.6 headerViewStyle:ZGScrollViewStyleDefault];
     
     [_followersButton setTitle:@"0 followers" forState:UIControlStateNormal];
-    [_followingButton setTitle:@"0 following" forState:UIControlStateNormal];
-    _postCountLabel.text = @"0 post";
+    _followersButton.titleLabel.font = FONT_OPENSANS_CONDBOLD(FONT_SIZE_MEDIUM);
     
+    [_followingButton setTitle:@"0 following" forState:UIControlStateNormal];
+    _followingButton.titleLabel.font = FONT_OPENSANS_CONDBOLD(FONT_SIZE_MEDIUM);
+    
+    _postCountLabel.text = @"0 post";
+    _postCountLabel.font = FONT_OPENSANS_CONDBOLD(FONT_SIZE_MEDIUM);
 }
 
 -(void)viewWillAppear:(BOOL)animated

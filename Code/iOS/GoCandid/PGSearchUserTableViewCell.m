@@ -19,7 +19,7 @@
 - (void)awakeFromNib
 {
     // Initialization code
-    self.nameLabel.font = FONT_OPENSANS_CONDLIGHT(FONT_SIZE_MEDIUM);
+    self.nameLabel.font = FONT_GEOSANSLIGHT(FONT_SIZE_MEDIUM);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

@@ -46,12 +46,12 @@
     
     self.title = NSLocalizedString(@"Settings", nil);
     
-    _tellAFriendLbl.font = FONT_GEOSANSLIGHT(20);
-    _helpLbl.font = FONT_GEOSANSLIGHT(20);
-    _reportAbuseLbl.font = FONT_GEOSANSLIGHT(20);
-    _sendFeedbackLbl.font = FONT_GEOSANSLIGHT(20);
-    _termsLbl.font = FONT_GEOSANSLIGHT(20);
-    _logoutLbl.font = FONT_GEOSANSLIGHT(20);
+    _tellAFriendLbl.font = FONT_GEOSANSLIGHT(FONT_SIZE_SMALL);
+    _helpLbl.font = FONT_GEOSANSLIGHT(FONT_SIZE_SMALL);
+    _reportAbuseLbl.font = FONT_GEOSANSLIGHT(FONT_SIZE_SMALL);
+    _sendFeedbackLbl.font = FONT_GEOSANSLIGHT(FONT_SIZE_SMALL);
+    _termsLbl.font = FONT_GEOSANSLIGHT(FONT_SIZE_SMALL);
+    _logoutLbl.font = FONT_GEOSANSLIGHT(FONT_SIZE_SMALL);
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -151,7 +151,7 @@
             _madeWithLbl.text = [NSString stringWithFormat:@"Made with love by Appikon Mobile: V %@ (%@)", majorVersion, minorVersion];
         }
         
-        _madeWithLbl.font = FONT_OPENSANS_CONDLIGHT(18);
+        _madeWithLbl.font = FONT_OPENSANS_CONDLIGHT(FONT_SIZE_SMALL);
         
         return view;
     }

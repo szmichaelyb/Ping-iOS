@@ -183,9 +183,9 @@
         CLGeocoder* geoCoder = [[CLGeocoder alloc] init];
         [geoCoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
             NSString* city = ([placemarks count] > 0 ? [placemarks[0] locality] : @"N/A");
-            NSString* country = ([placemarks count] > 0 ? [placemarks[0] ISOcountryCode] : @"N/A");
+            NSString* state = ([placemarks count] > 0 ? [placemarks[0] administrativeArea] : @"N/A");
             DLog(@"City: %@", city);
-            self.locationLabel.text = [NSString stringWithFormat:@"%@, %@", city, country];
+            self.locationLabel.text = [NSString stringWithFormat:@"%@, %@", city, state];
         }];
     }
 }
