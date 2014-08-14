@@ -41,7 +41,9 @@
     
     self.navigationController.navigationBar.translucent = NO;
     self.tabBarController.tabBar.translucent = NO;
-//    _segBGBlurView.dynamic = NO;
+    
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"grandhotel"]];
+    //    _segBGBlurView.dynamic = NO;
 //    _segBGBlurView.tintColor = [UIColor colorWithRed:0 green:0.5 blue:0.5 alpha:1];
 //    _segBGBlurView.contentMode = UIViewContentModeTop;
     
