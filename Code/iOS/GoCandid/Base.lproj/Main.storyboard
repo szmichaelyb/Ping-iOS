@@ -618,7 +618,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="U9A-M3-EPF">
-                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="pd9-44-jsQ">
+                        <barButtonItem key="leftBarButtonItem" image="navADD" id="pd9-44-jsQ">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="eKY-XE-dNj" kind="modal" id="veL-FX-kvv"/>
                             </connections>
@@ -987,7 +988,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Search" id="PE5-qF-gma">
-                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="csH-L3-ABw">
+                        <barButtonItem key="leftBarButtonItem" image="navADD" id="csH-L3-ABw">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="eKY-XE-dNj" kind="modal" id="Q32-xh-Mni"/>
                             </connections>
@@ -1078,7 +1080,8 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Activity" id="Nwd-U5-sWm">
-                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="vPe-C8-86t">
+                        <barButtonItem key="leftBarButtonItem" image="navADD" id="vPe-C8-86t">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="eKY-XE-dNj" kind="modal" id="SLX-E8-ljN"/>
                             </connections>
@@ -1172,7 +1175,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Feed" id="bIG-s4-hve">
-                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="MSC-c4-oJ0">
+                        <barButtonItem key="leftBarButtonItem" image="navADD" id="MSC-c4-oJ0">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="eKY-XE-dNj" kind="modal" id="5C2-Hb-zEM"/>
                             </connections>
@@ -1194,6 +1198,7 @@
         <image name="camera" width="35" height="26"/>
         <image name="capture" width="71" height="71"/>
         <image name="chevron_down" width="33" height="18"/>
+        <image name="navADD" width="24" height="24"/>
         <image name="nav_back_arrow" width="40" height="40"/>
         <image name="settings-off" width="23" height="23"/>
         <image name="share_facebook" width="104" height="104"/>
@@ -1206,6 +1211,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Q32-xh-Mni"/>
+        <segue reference="veL-FX-kvv"/>
     </inferredMetricsTieBreakers>
 </document>
