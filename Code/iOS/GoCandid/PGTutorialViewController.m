@@ -11,18 +11,16 @@
 #import "PGTabViewController.h"
 #import "PGProgressHUD.h"
 
-#define NUMBER_OF_PAGES 4
-
-#define timeForPage(page) (NSInteger)(self.view.frame.size.width * (page - 1))
-
 @interface PGTutorialViewController ()
 
 //Page 1
-
 @property (nonatomic, strong) IBOutlet UILabel* page1Label1;
 @property (nonatomic, strong) IBOutlet UIImageView* page1IV1;
 
 //Page 2
+@property (nonatomic, strong) IBOutlet UILabel* page2Label1;
+@property (nonatomic, strong) IBOutlet UIImageView* page2IV1;
+
 @property (nonatomic, strong) IBOutlet UIButton* facebookLoginButton;
 
 -(IBAction)loginWithFacebook:(id)sender;
@@ -37,7 +35,7 @@
     
     self.slideShow.alpha = 0;
     
-    self.slideShow.contentSize = CGSizeMake(640, self.slideShow.frame.size.height);
+    self.slideShow.contentSize = CGSizeMake(960, self.slideShow.frame.size.height);
     
     [self setupSlideShowSubviewsAndAnimations];
     
@@ -72,9 +70,10 @@
     
 #pragma mark Page 1
     
-    //    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.magicStickImageView page:0 keyPath:@"alpha" fromValue:@0 toValue:@1 delay:0.75]];
-    //    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.magicStickImageView page:1 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.magicStickImageView.center.x + self.slideShow.frame.size.width, self.magicStickImageView.center.y - self.slideShow.frame.size.height)] delay:0]];
-    //    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.magicStickDescriptionTextView page:0 keyPath:@"transform" fromValue:[NSValue valueWithCGAffineTransform:CGAffineTransformMakeRotation(-0.9)] toValue:[NSValue valueWithCGAffineTransform:CGAffineTransformMakeRotation(0)] delay:0]];
+    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page2IV1 page:0 keyPath:@"alpha" fromValue:@0 toValue:@1 delay:0.75]];
+    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page2IV1 page:1 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.page2IV1.center.x + self.slideShow.frame.size.width, self.page2IV1.center.y - self.slideShow.frame.size.height)] delay:0]];
+    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page2Label1 page:0 keyPath:@"transform" fromValue:[NSValue valueWithCGAffineTransform:CGAffineTransformMakeRotation(-0.9)] toValue:[NSValue valueWithCGAffineTransform:CGAffineTransformMakeRotation(0)] delay:0]];
+    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page2Label1 page:1 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.page2Label1.center.x + self.slideShow.frame.size.width, self.page2Label1.frame.origin.y - 100)] delay:0]];
     
 #pragma mark Page 2
     
