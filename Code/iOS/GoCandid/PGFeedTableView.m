@@ -215,11 +215,15 @@
 - (void)configureCell:(PGFeedTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PFUser* senderUser = _datasource[indexPath.row][kPFSelfie_Owner];
-    cell.nameLabel.text = senderUser[kPFUser_Name];
+//    cell.nameLabel.text = senderUser[kPFUser_Name];
+    [cell.nameButton setTitle:senderUser[kPFUser_Name] forState:UIControlStateNormal];
     cell.timeAndlocationLabel.text = [NSString stringWithFormat:@"%@ at %@", [self friendlyDateTime:((PFObject*)_datasource[indexPath.row]).createdAt], _datasource[indexPath.row][kPFSelfie_Location]];
     
     [PGParseHelper profilePhotoUser:senderUser completion:^(UIImage *image) {
         cell.thumbIV.image = image;
+//        [cell.thumbButton setImage:image    forState:UIControlStateNormal];
+//        [cell.thumbButton setBackgroundImage:image forState:UIControlStateNormal];
+//        cell.thumbButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
     }];
     
     PFFile* file = _datasource[indexPath.row][kPFSelfie_Selfie];
@@ -323,6 +327,22 @@
 //    }];
 //}
 
+-(void)cellDidTapOnNameButton:(PGFeedTableViewCell *)cell
+{
+    NSIndexPath* indexPath = [self indexPathForCell:cell];
+    if (_myDelegate && [_myDelegate respondsToSelector:@selector(tableView:didTapOnNameButton:dataObject:)]) {
+        [_myDelegate tableView:self didTapOnNameButton:indexPath dataObject:_datasource[indexPath.row]];
+    }
+}
+
+-(void)cellDidTapOnThumbButton:(PGFeedTableViewCell *)cell
+{
+    NSIndexPath* indexPath = [self indexPathForCell:cell];
+    if (_myDelegate && [_myDelegate respondsToSelector:@selector(tableView:didTapOnThumbButton:dataObject:)]) {
+        [_myDelegate tableView:self didTapOnThumbButton:indexPath dataObject:_datasource[indexPath.row]];
+    }
+}
+
 -(void)cellDidTapOnMoreButton:(PGFeedTableViewCell *)cell
 {
     NSIndexPath* indexPath = [self indexPathForCell:cell];
@@ -355,6 +375,8 @@
         [self showLikeButtonAnimationInCell:cell];
     }
 }
+
+#pragma mark -
 
 -(void)showLikeButtonAnimationInCell:(PGFeedTableViewCell*)cell
 {

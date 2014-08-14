@@ -48,17 +48,6 @@
                                     <action selector="moreButtonClicked:" destination="gHt-sc-vFx" eventType="touchUpInside" id="xjR-LM-MXI"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iMY-Ww-For" userLabel="Profile Thumb IV">
-                                <rect key="frame" x="7" y="8" width="45" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="20G-7z-3fd">
-                                <rect key="frame" x="59" y="8" width="238" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o4o-nj-gQE">
                                 <rect key="frame" x="59" y="32" width="238" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -94,6 +83,21 @@
                                 <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rnQ-aH-KMs" userLabel="Name Button">
+                                <rect key="frame" x="59" y="8" width="193" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="N/A">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="nameButtonClicked:" destination="gHt-sc-vFx" eventType="touchUpInside" id="USd-aP-n5Y"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vgQ-fT-MlD" userLabel="Thumb IV">
+                                <rect key="frame" x="7" y="8" width="44" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -105,8 +109,8 @@
                 <outlet property="featuredLabel" destination="nWY-gb-0DS" id="Oqs-If-bkR"/>
                 <outlet property="likeButton" destination="JX1-H8-lES" id="L2g-0a-uBq"/>
                 <outlet property="mainIV" destination="KRd-Oh-xCu" id="k5N-p6-8OI"/>
-                <outlet property="nameLabel" destination="20G-7z-3fd" id="qOU-jp-7OU"/>
-                <outlet property="thumbIV" destination="iMY-Ww-For" id="o8D-QT-ccM"/>
+                <outlet property="nameButton" destination="rnQ-aH-KMs" id="tWL-0I-YmO"/>
+                <outlet property="thumbIV" destination="vgQ-fT-MlD" id="fNX-yn-tO7"/>
                 <outlet property="timeAndlocationLabel" destination="o4o-nj-gQE" id="iN1-pP-19k"/>
                 <outlet property="totalLikes" destination="HsH-RX-H86" id="yTl-aw-Ys8"/>
             </connections>

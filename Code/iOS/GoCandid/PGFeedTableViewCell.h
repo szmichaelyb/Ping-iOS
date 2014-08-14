@@ -16,9 +16,11 @@
 @property (nonatomic, strong) IBOutlet UIImageView* blurBgIV;
 @property (strong, nonatomic) IBOutlet UIImageView* mainIV;
 @property (strong, nonatomic) IBOutlet STTweetLabel* captionLabel;
-@property (strong, nonatomic) IBOutlet UILabel* nameLabel;
+//@property (strong, nonatomic) IBOutlet UILabel* nameLabel;
+@property (nonatomic, strong) IBOutlet UIButton* nameButton;
 @property (strong, nonatomic) IBOutlet UILabel* timeAndlocationLabel;
 @property (strong, nonatomic) IBOutlet UIImageView* thumbIV;
+//@property (nonatomic, strong) IBOutlet UIButton* thumbButton;
 @property (strong, nonatomic) IBOutlet UILabel* featuredLabel;
 @property (nonatomic, strong) IBOutlet UILabel* totalLikes;
 
@@ -33,7 +35,8 @@
 
 //-(void)cellDidStartTap:(PGFeedTableViewCell*)cell;
 //-(void)cellDidStopTap:(PGFeedTableViewCell*)cell;
+-(void)cellDidTapOnNameButton:(PGFeedTableViewCell*)cell;
+-(void)cellDidTapOnThumbButton:(PGFeedTableViewCell*)cell;
 -(void)cellDidTapOnLikeButton:(PGFeedTableViewCell*)cell;
 -(void)cellDidTapOnMoreButton:(PGFeedTableViewCell*)cell;
-
 @end

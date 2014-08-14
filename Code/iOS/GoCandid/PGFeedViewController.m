@@ -15,6 +15,7 @@
 #import "PGProgressHUD.h"
 #import <GTScrollNavigationBar/GTScrollNavigationBar.h>
 #import "UIView+HidingView.h"
+#import "PGProfileViewController.h"
 
 @interface PGFeedViewController ()<PGFeedTableViewDelegate>
 {
@@ -128,6 +129,22 @@
 -(void)tablescrollViewDidScrollToTop:(UIScrollView *)scrollView
 {
     [self.navigationController.scrollNavigationBar resetToDefaultPosition:YES];
+}
+
+-(void)tableView:(PGFeedTableView *)tableView didTapOnNameButton:(NSIndexPath *)indexPath dataObject:(id)object
+{
+    PGProfileViewController* profileVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PGProfileViewController"];
+    DLog(@"%@", object);
+    profileVC.profileUser = object[kPFSelfie_Owner];
+    [self.navigationController pushViewController:profileVC animated:YES];
+}
+
+-(void)tableView:(PGFeedTableView *)tableView didTapOnThumbButton:(NSIndexPath *)indexPath dataObject:(id)object
+{
+    PGProfileViewController* profileVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PGProfileViewController"];
+    DLog(@"%@", object);
+    profileVC.profileUser = object[kPFSelfie_Owner];
+    [self.navigationController pushViewController:profileVC animated:YES];
 }
 
 -(void)tableView:(PGFeedTableView *)tableView willDisplayLastCell:(UITableViewCell *)cell

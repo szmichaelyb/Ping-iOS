@@ -13,6 +13,8 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *likeButton;
 
+- (IBAction)nameButtonClicked:(id)sender;
+//- (IBAction)thumbButtonClicked:(id)sender;
 - (IBAction)moreButtonClicked:(id)sender;
 - (IBAction)likeButtonClicked:(id)sender;
 
@@ -24,14 +26,20 @@
 {
     // Initialization code.
     
-    self.nameLabel.font = FONT_OPENSANS_CONDLIGHT(FONT_SIZE_MEDIUM);
+//    self.nameLabel.font = FONT_OPENSANS_CONDLIGHT(FONT_SIZE_MEDIUM);
+    self.nameButton.titleLabel.font = FONT_OPENSANS_CONDLIGHT(FONT_SIZE_MEDIUM);
     self.timeAndlocationLabel.font = FONT_OPENSANS_CONDBOLD(FONT_SIZE_SMALL);
     self.captionLabel.font = FONT_OPENSANS_CONDLIGHT(FONT_SIZE_MEDIUM);
     
     self.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1];
+//    self.thumbButton.layer.cornerRadius = self.thumbButton.frame.size.width/2;
+//    self.thumbButton.layer.masksToBounds = YES;
     self.thumbIV.layer.cornerRadius = self.thumbIV.frame.size.width/2;
     self.thumbIV.layer.masksToBounds = YES;
+    self.thumbIV.userInteractionEnabled = YES;
     
+    UITapGestureRecognizer* thumbTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(thumbButtonClicked:)];
+    [self.thumbIV addGestureRecognizer:thumbTapGesture];
     [self.likeButton setImage:[UIImage imageNamed:@"heartON"] forState:UIControlStateSelected];
 //    [self.likeButton setImage:[[self.likeButton imageForState:UIControlStateSelected] imageWithOverlayColor:[UIColor redColor]] forState:UIControlStateSelected];
     
@@ -74,6 +82,20 @@
 //        }
 //    }
 //}
+
+- (IBAction)nameButtonClicked:(id)sender
+{
+    if (_delegate) {
+        [_delegate cellDidTapOnNameButton:self];
+    }
+}
+
+- (IBAction)thumbButtonClicked:(id)sender
+{
+    if (_delegate) {
+        [_delegate cellDidTapOnThumbButton:self];
+    }
+}
 
 - (IBAction)moreButtonClicked:(id)sender {
     if (_delegate) {
