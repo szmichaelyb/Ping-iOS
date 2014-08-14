@@ -38,7 +38,7 @@
 {
     [super viewDidLoad];
     
-    self.navigationController.navigationBar.translucent = NO;
+//    self.navigationController.navigationBar.translucent = NO;
     self.tabBarController.tabBar.translucent = NO;
     
     /// Setup pull to refresh
@@ -50,7 +50,8 @@
     emptyView.image = [UIImage imageNamed:@"NoImageIcon"];
     emptyView.contentMode = UIViewContentModeCenter;
     self.tableView.emptyView = emptyView;
-    self.tableView.contentInset=  UIEdgeInsetsMake(0, 0, self.tabBarController.tabBar.frame.size.height + refreshBarY, 0);
+//    self.tableView.contentInset=  UIEdgeInsetsMake(0, 0, self.tabBarController.tabBar.frame.size.height + refreshBarY, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, self.tabBarController.tabBar.frame.size.height, 0);
     [self.view addSubview:self.tableView];
     
     if (!_profileUser) {

@@ -52,6 +52,7 @@
 #pragma mark - UIViewController
 
 - (void)viewDidLoad {
+    
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
     [super viewDidLoad];
