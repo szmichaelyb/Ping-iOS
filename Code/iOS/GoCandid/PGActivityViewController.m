@@ -220,6 +220,10 @@
         cell.activityLabel.text = [NSString stringWithFormat:@"%@ followed you." , object[kPFActivity_FromUser][kPFUser_Name]];
     }
     
+    if (indexPath.row % 2 == 0) {
+        cell.contentView.backgroundColor = [UIColor colorWithRed:255.0/255 green:249.0/255 blue:242.0/255 alpha:1];
+    }
+    
     TTTTimeIntervalFormatter* tif = [[TTTTimeIntervalFormatter alloc] init];
     NSString* str = [tif stringForTimeInterval:[object.updatedAt timeIntervalSinceNow]];
     cell.activityDate.text = str;

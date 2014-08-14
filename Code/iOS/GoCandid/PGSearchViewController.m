@@ -125,6 +125,10 @@
         [cell setFollowButtonStatus:FollowButtonStateNotFollowing];
         //        [cell.followButton setTitle:@"Follow" forState:UIControlStateNormal];
     }
+    if (indexPath.row %2 == 0) {
+        cell.backgroundColor = [UIColor colorWithRed:255.0/255 green:249.0/255 blue:242.0/255 alpha:1];
+    }
+    
     [PGParseHelper profilePhotoUser:object completion:^(UIImage *image) {
         cell.thumbIV.image = image;
     }];
