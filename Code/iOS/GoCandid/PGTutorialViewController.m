@@ -11,8 +11,18 @@
 #import "PGTabViewController.h"
 #import "PGProgressHUD.h"
 
+#define NUMBER_OF_PAGES 4
+
+#define timeForPage(page) (NSInteger)(self.view.frame.size.width * (page - 1))
+
 @interface PGTutorialViewController ()
 
+//Page 1
+
+@property (nonatomic, strong) IBOutlet UILabel* page1Label1;
+@property (nonatomic, strong) IBOutlet UIImageView* page1IV1;
+
+//Page 2
 @property (nonatomic, strong) IBOutlet UIButton* facebookLoginButton;
 
 -(IBAction)loginWithFacebook:(id)sender;
@@ -25,6 +35,16 @@
 {
     [super viewDidLoad];
     
+    self.slideShow.alpha = 0;
+    
+    self.slideShow.contentSize = CGSizeMake(640, self.slideShow.frame.size.height);
+    
+    [self setupSlideShowSubviewsAndAnimations];
+    
+    [self.slideShow setDidReachPageBlock:^(NSInteger reachedPage) {
+        DLog(@"Current page: %d", reachedPage);
+    }];
+    
     self.facebookLoginButton.titleLabel.font = FONT_OPENSANS_CONDLIGHT(FONT_SIZE_MEDIUM);
     
     if ([PFUser currentUser] != NULL) {
@@ -33,10 +53,42 @@
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [UIView animateWithDuration:0.2 animations:^{
+        self.slideShow.alpha = 1;
+    }];
+}
+
+- (void)setupSlideShowSubviewsAndAnimations {
+#pragma mark Page 0
+    
+    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page1Label1 page:0 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.page1Label1.center.x + self.slideShow.frame.size.width, self.page1Label1.center.y - self.slideShow.frame.size.height)] delay:0]];
+    
+    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page1IV1 page:0 keyPath:@"alpha" toValue:@0 delay:0]];
+    
+    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page1IV1 page:0 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.page1IV1.center.x+self.slideShow.frame.size.width, self.page1IV1.center.y+self.slideShow.frame.size.height*2)] delay:0]];
+    
+#pragma mark Page 1
+    
+    //    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.magicStickImageView page:0 keyPath:@"alpha" fromValue:@0 toValue:@1 delay:0.75]];
+    //    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.magicStickImageView page:1 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.magicStickImageView.center.x + self.slideShow.frame.size.width, self.magicStickImageView.center.y - self.slideShow.frame.size.height)] delay:0]];
+    //    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.magicStickDescriptionTextView page:0 keyPath:@"transform" fromValue:[NSValue valueWithCGAffineTransform:CGAffineTransformMakeRotation(-0.9)] toValue:[NSValue valueWithCGAffineTransform:CGAffineTransformMakeRotation(0)] delay:0]];
+    
+#pragma mark Page 2
+    
+    //    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.codeBracketsLabel page:1 keyPath:@"alpha" fromValue:@0 toValue:@1 delay:0.75]];
+    //
+    //    [self.codingDescriptionTextView setCenter:CGPointMake(self.codingDescriptionTextView.center.x-self.slideShow.frame.size.width, self.codingDescriptionTextView.center.y+self.slideShow.frame.size.height)];
+    //
+    //    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.codingDescriptionTextView page:1 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.codingDescriptionTextView.center.x+self.slideShow.frame.size.width, self.codingDescriptionTextView.center.y-self.slideShow.frame.size.height)] delay:0]];
+}
+
 -(void)setMainView
 {
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
-
+    
     UIStoryboard* sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     PGTabViewController* mainVC = [sb instantiateViewControllerWithIdentifier:@"PGTabViewController"];
     
@@ -53,7 +105,7 @@
 -(void)loginWithFacebook:(id)sender
 {
     NSArray* permissions = @[@"email", @"user_friends"];
-
+    
     [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Logging in"];
     [PFFacebookUtils logInWithPermissions:permissions block:^(PFUser *user, NSError *error) {
         [[PGProgressHUD sharedInstance] hide:YES];
@@ -137,7 +189,7 @@
                 [push setMessage:[NSString stringWithFormat:@"Your friend %@ just joined GoCandid!", [PFUser currentUser][kPFUser_Name]]];
                 [push sendPushInBackground];
                 
-            }];            
+            }];
         }
     }];
 }

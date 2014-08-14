@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		064CD86A199D5E52007837A6 /* DRDynamicSlideShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 064CD869199D5E52007837A6 /* DRDynamicSlideShow.m */; };
 		06654AE0197DB1860014FA74 /* PGFramesButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 06654ADF197DB1860014FA74 /* PGFramesButton.m */; };
 		06654AE6197DBABA0014FA74 /* PGFindFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06654AE5197DBABA0014FA74 /* PGFindFriendsViewController.m */; };
 		06654AE9197DBE740014FA74 /* PGFindFriendsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06654AE8197DBE740014FA74 /* PGFindFriendsTableViewCell.m */; };
@@ -72,6 +73,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		064CD868199D5E52007837A6 /* DRDynamicSlideShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRDynamicSlideShow.h; sourceTree = "<group>"; };
+		064CD869199D5E52007837A6 /* DRDynamicSlideShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRDynamicSlideShow.m; sourceTree = "<group>"; };
 		06654ADE197DB1860014FA74 /* PGFramesButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGFramesButton.h; sourceTree = "<group>"; };
 		06654ADF197DB1860014FA74 /* PGFramesButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGFramesButton.m; sourceTree = "<group>"; };
 		06654AE4197DBABA0014FA74 /* PGFindFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGFindFriendsViewController.h; sourceTree = "<group>"; };
@@ -389,6 +392,8 @@
 		06DCBD18196F42E800E8C9B2 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				064CD868199D5E52007837A6 /* DRDynamicSlideShow.h */,
+				064CD869199D5E52007837A6 /* DRDynamicSlideShow.m */,
 				06DF343219993ED600509399 /* UIView+HidingView.h */,
 				06DF343319993ED600509399 /* UIView+HidingView.m */,
 				06B561621975B04B00E92A92 /* UIImage+animatedGIF.h */,
@@ -691,6 +696,7 @@
 				068340B119783750007A1AEC /* PGParseHelper.m in Sources */,
 				06DCBCD0196E2AFF00E8C9B2 /* PGTutorialViewController.m in Sources */,
 				06DCBCCA196E2AFF00E8C9B2 /* PGAppDelegate.m in Sources */,
+				064CD86A199D5E52007837A6 /* DRDynamicSlideShow.m in Sources */,
 				06654AE9197DBE740014FA74 /* PGFindFriendsTableViewCell.m in Sources */,
 				06DCBD13196F404C00E8C9B2 /* PGSettingsViewController.m in Sources */,
 				06DCBD17196F421400E8C9B2 /* UIDevice-Hardware.m in Sources */,

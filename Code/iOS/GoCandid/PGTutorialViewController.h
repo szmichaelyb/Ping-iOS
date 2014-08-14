@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DRDynamicSlideShow.h"
 
 @interface PGTutorialViewController : UIViewController
+
+@property (nonatomic, strong) IBOutlet DRDynamicSlideShow* slideShow;
 
 @end
