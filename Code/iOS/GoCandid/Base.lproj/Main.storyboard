@@ -25,11 +25,11 @@
             <objects>
                 <viewController restorationIdentifier="PGTutorialViewController" storyboardIdentifier="PGTutorialViewController" id="vXZ-lx-hvc" customClass="PGTutorialViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="1280" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1600" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="M7r-P4-jjv" customClass="DRDynamicSlideShow">
-                                <rect key="frame" x="0.0" y="0.0" width="1280" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1600" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="bs7-Is-elh" userLabel="View 1">
@@ -49,25 +49,8 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <view contentMode="scaleToFill" id="aUa-Mx-ff3" userLabel="View 2">
+                                    <view contentMode="scaleToFill" id="ZnO-jW-13N" userLabel="View 2">
                                         <rect key="frame" x="320" y="0.0" width="320" height="568"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IMG_9468 copy" id="31k-rj-wPq">
-                                                <rect key="frame" x="49" y="20" width="223" height="319"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            </imageView>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get creative &amp; make inspiring animations" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Nla-Yz-NFh">
-                                                <rect key="frame" x="36" y="382" width="249" height="47"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" id="ZnO-jW-13N" userLabel="View 3">
-                                        <rect key="frame" x="640" y="0.0" width="320" height="568"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set timer duration" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hGY-Rd-Ew1">
@@ -92,11 +75,57 @@
                                                 <rect key="frame" x="68" y="93" width="185" height="322"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IMG_9468 copy" id="31k-rj-wPq">
+                                                <rect key="frame" x="53" y="20" width="223" height="319"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <view contentMode="scaleToFill" id="Wo0-EQ-QyH" userLabel="View 4">
+                                    <view contentMode="scaleToFill" id="v4o-aO-5ON" userLabel="View 3">
+                                        <rect key="frame" x="640" y="0.0" width="320" height="568"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get creative &amp; make inspiring animations" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Nla-Yz-NFh">
+                                                <rect key="frame" x="36" y="486" width="249" height="47"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testtt copy" id="62g-og-DRd">
+                                                <rect key="frame" x="20" y="260" width="87" height="87"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testtt copy1" id="IKh-sr-Rrd">
+                                                <rect key="frame" x="107" y="260" width="87" height="87"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testtt copy2" id="5Ay-sC-FR2">
+                                                <rect key="frame" x="194" y="260" width="87" height="87"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow3" id="Gdr-On-K9d">
+                                                <rect key="frame" x="190" y="355" width="98" height="95"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow1" id="qUV-Ub-Gsp">
+                                                <rect key="frame" x="30" y="170" width="91" height="82"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow2" id="Z5i-KA-cEL">
+                                                <rect key="frame" x="141" y="161" width="106" height="100"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="50f-fW-XeG" userLabel="View 4">
                                         <rect key="frame" x="960" y="0.0" width="320" height="568"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="Wo0-EQ-QyH" userLabel="View 5">
+                                        <rect key="frame" x="1280" y="0.0" width="320" height="568"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xwR-Sx-BvI">
@@ -152,9 +181,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="1280" height="568"/>
+                    <size key="freeformSize" width="1600" height="568"/>
                     <connections>
                         <outlet property="facebookLoginButton" destination="xwR-Sx-BvI" id="yQq-ua-htO"/>
+                        <outlet property="iv1" destination="62g-og-DRd" id="JF8-W6-1xD"/>
+                        <outlet property="iv2" destination="IKh-sr-Rrd" id="e1l-At-b31"/>
+                        <outlet property="iv3" destination="5Ay-sC-FR2" id="6HN-de-dgC"/>
                         <outlet property="page1IV1" destination="2GF-1j-1cw" id="RCs-be-sR1"/>
                         <outlet property="page1Label1" destination="ySV-lp-mp1" id="uBo-U8-59c"/>
                         <outlet property="page2IV1" destination="31k-rj-wPq" id="d24-Mt-7Bk"/>
@@ -1297,6 +1329,9 @@
         <image name="CaptureButton-Normal" width="66" height="66"/>
         <image name="IMG_0478" width="320" height="568"/>
         <image name="IMG_9468 copy" width="287" height="399"/>
+        <image name="arrow1" width="125" height="105"/>
+        <image name="arrow2" width="150" height="119"/>
+        <image name="arrow3" width="167" height="171"/>
         <image name="camera" width="35" height="26"/>
         <image name="capture" width="71" height="71"/>
         <image name="chevron_down" width="33" height="18"/>
@@ -1306,6 +1341,9 @@
         <image name="share_facebook" width="104" height="104"/>
         <image name="share_twitter" width="106" height="104"/>
         <image name="tab_bar" width="320" height="49"/>
+        <image name="testtt copy" width="100" height="100"/>
+        <image name="testtt copy1" width="99" height="100"/>
+        <image name="testtt copy2" width="100" height="99"/>
         <image name="tutorial1" width="297" height="127"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
