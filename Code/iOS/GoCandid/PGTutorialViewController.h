@@ -11,6 +11,7 @@
 
 @interface PGTutorialViewController : UIViewController
 
-@property (nonatomic, strong) IBOutlet DRDynamicSlideShow* slideShow;
+@property (nonatomic, weak) IBOutlet DRDynamicSlideShow* slideShow;
+@property (nonatomic, weak) IBOutlet UIPageControl* pageControl;
 
 @end
