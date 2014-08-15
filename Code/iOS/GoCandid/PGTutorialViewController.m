@@ -47,7 +47,7 @@
     self.slideShow.alpha = 0;
     
     self.slideShow.contentSize = CGSizeMake(1600, self.slideShow.frame.size.height);
-    
+    self.pageControl.numberOfPages = self.slideShow.contentSize.width / self.slideShow.frame.size.width;
     [self setupFonts];
     [self setupSlideShowSubviewsAndAnimations];
     
@@ -64,6 +64,9 @@
     
     [self.slideShow setDidScrollBlock:^(CGPoint point) {
         DLog(@"%@", NSStringFromCGPoint(point));
+        if (point.x < 960) {
+            [self.iv3 stopAnimating];
+        }
     }];
     
     self.facebookLoginButton.titleLabel.font = FONT_OPENSANS_CONDLIGHT(FONT_SIZE_MEDIUM);
@@ -105,8 +108,8 @@
     
     [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page2IV1 page:0 keyPath:@"alpha" fromValue:@0 toValue:@1 delay:0.75]];
 //    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page2IV1 page:1 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.page2IV1.center.x + self.slideShow.frame.size.width, self.page2IV1.center.y)] delay:0]];
-    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page2Label1 page:0 keyPath:@"transform" fromValue:[NSValue valueWithCGAffineTransform:CGAffineTransformMakeRotation(-0.9)] toValue:[NSValue valueWithCGAffineTransform:CGAffineTransformMakeRotation(0)] delay:0]];
-    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page2Label1 page:1 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.page2Label1.center.x + self.slideShow.frame.size.width, self.page2Label1.center.y)] delay:0]];
+    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page2Label1 page:1 keyPath:@"transform" fromValue:[NSValue valueWithCGAffineTransform:CGAffineTransformMakeRotation(-0.9)] toValue:[NSValue valueWithCGAffineTransform:CGAffineTransformMakeRotation(0)] delay:0]];
+    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page2Label1 page:2 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.page2Label1.center.x + self.slideShow.frame.size.width, self.page2Label1.center.y)] delay:0]];
     //    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page2Label1 page:1 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.page2Label1.center.x + self.slideShow.frame.size.width, self.page2Label1.frame.origin.y - 100)] delay:0]];
     
 #pragma mark Page 2
