@@ -39,7 +39,6 @@
 {
     [super viewDidLoad];
     
-    self.navigationController.navigationBar.translucent = NO;
     self.tabBarController.tabBar.translucent = NO;
     
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"grandhotel"]];
@@ -74,6 +73,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.navigationController.navigationBar.translucent = NO;
     self.navigationController.scrollNavigationBar.scrollView = self.tableView;
 }
 
