@@ -97,6 +97,7 @@
     
 #pragma mark Page 2
     [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page3IV1 page:1 keyPath:@"alpha" fromValue:@0 toValue:@1 delay:0.5]];
+    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page3IV1 page:1 keyPath:@"center" fromValue:[NSValue valueWithCGPoint:CGPointMake(self.page2IV1.center.x - self.slideShow.frame.size.width, self.page3IV1.center.y)] toValue:[NSValue valueWithCGPoint:CGPointMake(self.page2IV1.center.x, self.page3IV1.center.y)] delay:0]];
     
     [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page3Label1 page:2 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.page3Label1.center.x + 500, self.page3Label1.center.y)] delay:0]];
     [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page3Label1 page:2 keyPath:@"alpha" toValue:@0 delay:0.7]];
