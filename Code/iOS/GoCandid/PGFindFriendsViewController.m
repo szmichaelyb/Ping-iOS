@@ -222,7 +222,7 @@
 {
     if (self.segControl.selectedSegmentIndex == 0) {
         if (section == 0) {
-            return @"contacts using GoCandid";
+            return @"Contacts using GoCandid";
         } else {
             return @"Contact not using GoCandid";
         }
