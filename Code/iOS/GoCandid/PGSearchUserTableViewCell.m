@@ -21,9 +21,9 @@
     // Initialization code
     self.nameLabel.font = FONT_GEOSANSLIGHT(FONT_SIZE_MEDIUM);
     self.followButton.titleLabel.font = FONT_GEOSANSLIGHT(FONT_SIZE_SMALL);
-    self.followButton.layer.borderWidth = 1;
-    self.followButton.layer.borderColor = self.followButton.backgroundColor.CGColor;
-    self.followButton.layer.cornerRadius = 4;
+//    self.followButton.layer.borderWidth = 1;
+//    self.followButton.layer.borderColor = self.followButton.backgroundColor.CGColor;
+//    self.followButton.layer.cornerRadius = 4;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

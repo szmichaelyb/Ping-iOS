@@ -452,12 +452,20 @@
                                 </connections>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.69999999999999996" minValue="0.10000000000000001" maxValue="1" id="A6Z-oo-3Oi">
-                                <rect key="frame" x="20" y="381" width="281" height="31"/>
+                                <rect key="frame" x="35" y="381" width="250" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <action selector="delaySliderChanged:" destination="vCX-ZW-3h4" eventType="valueChanged" id="fta-hE-I4V"/>
                                 </connections>
                             </slider>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1 copy" id="NU8-qD-phk">
+                                <rect key="frame" x="286" y="387" width="30" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" id="lok-Q4-iG6">
+                                <rect key="frame" x="4" y="389" width="30" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1328,6 +1336,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="1" width="19" height="26"/>
+        <image name="1 copy" width="22" height="30"/>
         <image name="CaptureButton-Normal" width="66" height="66"/>
         <image name="IMG_0478" width="320" height="568"/>
         <image name="IMG_9468 copy" width="287" height="399"/>

@@ -31,7 +31,6 @@
 {
     [super viewDidLoad];
     
-    self.navigationController.navigationBar.translucent = NO;
     self.tabBarController.tabBar.translucent = NO;
     
 //    self.searchBar.searchBarStyle = UISearchBarStyleMinimal;
@@ -41,6 +40,12 @@
     UITapGestureRecognizer* reco = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     reco.delegate = self;
     [self.view addGestureRecognizer:reco];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.translucent = NO;
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -130,7 +135,11 @@
     }
     
     [PGParseHelper profilePhotoUser:object completion:^(UIImage *image) {
-        cell.thumbIV.image = image;
+        if (image) {
+            cell.thumbIV.image = image;
+        } else {
+            cell.thumbIV.image = [UIImage imageNamed:@"NoProfilePhotoIMAGE"];
+        }
     }];
 }
 

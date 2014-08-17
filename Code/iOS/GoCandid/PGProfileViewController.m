@@ -38,7 +38,6 @@
 {
     [super viewDidLoad];
     
-    self.navigationController.navigationBar.translucent = YES;
     self.tabBarController.tabBar.translucent = NO;
     
     /// Setup pull to refresh
@@ -111,6 +110,8 @@
 {
     [super viewWillAppear:animated];
     
+    self.navigationController.navigationBar.translucent = YES;
+
     NSDate* lastRefreshDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"profileLastRefresh"];
     if (!lastRefreshDate) {
         [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"profileLastRefresh"];
