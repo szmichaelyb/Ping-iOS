@@ -18,17 +18,21 @@
     return instance;
 }
 
--(void)showInView:(UIView *)view withText:(NSString *)text hideAfter:(CGFloat)delay
+-(void)showInView:(UIView *)view withText:(NSString *)text hideAfter:(CGFloat)delay showCustom:(BOOL)showCustom
 {
     MBProgressHUD* HUD = [[MBProgressHUD alloc] initWithView:view];
 	[view addSubview:HUD];
 	
 	// The sample image is based on the work by http://www.pixelpressicons.com, http://creativecommons.org/licenses/by/2.5/ca/
 	// Make the customViews 37 by 37 pixels for best results (those are the bounds of the build-in progress indicators)
-	HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+    if (showCustom) {
+        HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+        
+        // Set custom view mode
+        HUD.mode = MBProgressHUDModeCustomView;
+    }
 	
-	// Set custom view mode
-	HUD.mode = MBProgressHUDModeCustomView;
+
 	
 	HUD.delegate = self;
 	HUD.labelText = text;
@@ -39,9 +43,9 @@
     }
 }
 
--(void)showInView:(UIView *)view withText:(NSString *)text
+-(void)showInView:(UIView *)view withText:(NSString *)text showCustom:(BOOL)showCustom
 {
-    [self showInView:view withText:text hideAfter:0];
+    [self showInView:view withText:text hideAfter:0 showCustom:showCustom];
 }
 
 -(void)hide:(BOOL)animated

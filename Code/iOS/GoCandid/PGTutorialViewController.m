@@ -165,7 +165,8 @@
 {
     NSArray* permissions = @[@"email", @"user_friends"];
     
-    [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Logging in"];
+//    [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Logging in"];
+    [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Logging in..." showCustom:NO];
     [PFFacebookUtils logInWithPermissions:permissions block:^(PFUser *user, NSError *error) {
         [[PGProgressHUD sharedInstance] hide:YES];
         //        [ActivityView hide];

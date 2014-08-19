@@ -11,7 +11,8 @@
 @interface PGProgressHUD : MBProgressHUD<MBProgressHUDDelegate>
 
 + (instancetype)sharedInstance;
--(void)showInView:(UIView *)view withText:(NSString *)text;
--(void)showInView:(UIView*)view withText:(NSString*)text hideAfter:(CGFloat)delay;
+-(void)showInView:(UIView *)view withText:(NSString *)text showCustom:(BOOL)showCustom;
+//-(void)showInView:(UIView*)view withText:(NSString*)text hideAfter:(CGFloat)delay;
+-(void)showInView:(UIView *)view withText:(NSString *)text hideAfter:(CGFloat)delay showCustom:(BOOL)showCustom;
 
 @end

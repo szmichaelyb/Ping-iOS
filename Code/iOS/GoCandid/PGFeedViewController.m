@@ -167,7 +167,7 @@
 //                    object[kPFSelfie_Abuse] = [NSNumber numberWithBool:YES];
                     [object saveEventually:^(BOOL succeeded, NSError *error) {
                         if (succeeded) {
-                            [[PGProgressHUD sharedInstance] showInView:self.navigationController.view withText:@"Reported" hideAfter:2];
+                            [[PGProgressHUD sharedInstance] showInView:self.navigationController.view withText:@"Reported" hideAfter:2 showCustom:YES];
                         }
                     }];
                 }
