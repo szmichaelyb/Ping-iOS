@@ -37,10 +37,10 @@
     }
     
     //unselected Images
-    [self.tabBar.items[0] setImage:[[UIImage imageNamed:@"tab1"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-    [self.tabBar.items[1] setImage:[[UIImage imageNamed:@"tab2"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [self.tabBar.items[0] setImage:[[UIImage imageNamed:@"Tab_Feed_Off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [self.tabBar.items[1] setImage:[[UIImage imageNamed:@"Tab_Search_Off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     
-    UIImage* buttonImage = [UIImage imageNamed:@"tab3-1"];
+    UIImage* buttonImage = [UIImage imageNamed:@"Tab_Camera"];
     UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(0, 0, buttonImage.size.width, buttonImage.size.height);
     [button addTarget:self action:@selector(showCreatePingViewController) forControlEvents:UIControlEventTouchUpInside];
@@ -58,15 +58,15 @@
     [self.view addSubview:button];
     
 //    [self.tabBar.items[2] setImage:[[UIImage imageNamed:@"tab3"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-    [self.tabBar.items[3] setImage:[[UIImage imageNamed:@"tab4"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-    [self.tabBar.items[4] setImage:[[UIImage imageNamed:@"tab5"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [self.tabBar.items[3] setImage:[[UIImage imageNamed:@"Tab_Activity_Off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [self.tabBar.items[4] setImage:[[UIImage imageNamed:@"Tab_Profile_Off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
 
     //Selected Images
-    [self.tabBar.items[0] setSelectedImage:[[UIImage imageNamed:@"tab1_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-    [self.tabBar.items[1] setSelectedImage:[[UIImage imageNamed:@"tab2_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [self.tabBar.items[0] setSelectedImage:[[UIImage imageNamed:@"Tab_Feed_On"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [self.tabBar.items[1] setSelectedImage:[[UIImage imageNamed:@"Tab_Search_On"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
 //    [self.tabBar.items[2] setSelectedImage:[[UIImage imageNamed:@"tab3_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-    [self.tabBar.items[3] setSelectedImage:[[UIImage imageNamed:@"tab4_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-    [self.tabBar.items[4] setSelectedImage:[[UIImage imageNamed:@"tab5_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [self.tabBar.items[3] setSelectedImage:[[UIImage imageNamed:@"Tab_Activity_On"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [self.tabBar.items[4] setSelectedImage:[[UIImage imageNamed:@"Tab_Profile_On"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
 }
 
 - (void)didReceiveMemoryWarning
