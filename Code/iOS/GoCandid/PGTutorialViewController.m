@@ -135,9 +135,9 @@
     [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.iv2 page:1 keyPath:@"alpha" fromValue:@0 toValue:@1 delay:0.7]];
     [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.iv3 page:1 keyPath:@"alpha" fromValue:@0 toValue:@1 delay:0.9]];
     
-    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.iv1 page:2 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.iv1.center.x + 320 + self.iv1.frame.size.width + 3, 100)] delay:0]];
-    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.iv2 page:2 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.iv2.center.x + 320, 100)] delay:0]];
-    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.iv3 page:2 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.iv3.center.x + 320 - self.iv3.frame.size.width - 3, 100)] delay:0]];
+    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.iv1 page:2 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.iv1.center.x + 320 + self.iv1.frame.size.width + 3, 130)] delay:0]];
+    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.iv2 page:2 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.iv2.center.x + 320, 130)] delay:0]];
+    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.iv3 page:2 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.iv3.center.x + 320 - self.iv3.frame.size.width - 3, 130)] delay:0]];
 
     [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.iv1 page:2 keyPath:@"size" toValue:[NSValue valueWithCGSize:CGSizeMake(150, 150)] delay:0]];
     [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.iv2 page:2 keyPath:@"size" toValue:[NSValue valueWithCGSize:CGSizeMake(150, 150)] delay:0]];
