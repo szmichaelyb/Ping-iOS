@@ -86,6 +86,16 @@
                                         <rect key="frame" x="640" y="0.0" width="320" height="568"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="horizontalline" id="NHU-sh-epM" userLabel="Horizontal Line 2">
+                                                <rect key="frame" x="17" y="355" width="267" height="1"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="horizontalline" id="2wY-d7-vdz" userLabel="Horizontal Line 1">
+                                                <rect key="frame" x="17" y="251" width="267" height="1"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </imageView>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get creative &amp; make fun animations" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Nla-Yz-NFh">
                                                 <rect key="frame" x="36" y="55" width="245" height="47"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1373,6 +1383,7 @@
         <image name="cameraswitch" width="35" height="26"/>
         <image name="down" width="33" height="18"/>
         <image name="facebookOFF" width="60" height="60"/>
+        <image name="horizontalline" width="1" height="1"/>
         <image name="minus" width="14" height="20"/>
         <image name="navADD" width="24" height="24"/>
         <image name="plus" width="14" height="25"/>

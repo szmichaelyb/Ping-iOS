@@ -105,7 +105,7 @@
 }
 
 -(void)setLikeButtonState:(BOOL)liked
-{
+{    
     [self.likeButton setSelected:liked];
 }
 

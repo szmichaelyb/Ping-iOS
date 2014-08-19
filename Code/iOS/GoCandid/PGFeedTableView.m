@@ -258,7 +258,7 @@
     } else {
         [cell setLikeButtonState:NO];
     }
-    
+        
     [PGParseHelper getTotalLikeForSelfie:_datasource[indexPath.row] completion:^(BOOL finished, int number) {
         cell.totalLikes.text = [NSString stringWithFormat:@"%d likes", number];
     }];
