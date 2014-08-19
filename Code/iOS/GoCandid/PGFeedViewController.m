@@ -50,7 +50,7 @@
 //    }];
     
     /// Setup pull to refresh
-    CGFloat refreshBarY = self.navigationController.navigationBar.bounds.size.height + [UIApplication sharedApplication].statusBarFrame.size.height;
+//    CGFloat refreshBarY = self.navigationController.navigationBar.bounds.size.height + [UIApplication sharedApplication].statusBarFrame.size.height;
     
     //    self.tableView = [[PGFeedTableView alloc] initWithFrame:self.view.bounds];
     [self.tableView setup];
@@ -179,7 +179,7 @@
 -(void)tableView:(PGFeedTableView *)tableView didTapOnKeyword:(NSString *)keyword
 {
     DLog(@"Tapped on: %@", keyword);
-#warning create and push proper view controller
+//#warning create and push proper view controller
     UIViewController* controller = [[UIViewController alloc] init];
     controller.title = keyword;
     PGFeedTableView* table = [[PGFeedTableView alloc] initWithFrame:controller.view.bounds];

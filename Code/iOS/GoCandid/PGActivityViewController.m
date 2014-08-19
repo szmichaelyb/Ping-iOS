@@ -93,7 +93,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row < self.objects.count) {
         PFObject *object = [self.objects objectAtIndex:indexPath.row];
-        NSString *activityString = [PGActivityViewController stringForActivityType:(NSString*)[object objectForKey:kPFActivity_Type]];
+//        NSString *activityString = [PGActivityViewController stringForActivityType:(NSString*)[object objectForKey:kPFActivity_Type]];
         
         PFUser *user = (PFUser*)[object objectForKey:kPFActivity_FromUser];
         NSString *nameString = NSLocalizedString(@"Someone", nil);

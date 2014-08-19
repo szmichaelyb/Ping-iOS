@@ -235,7 +235,7 @@
         [UIView transitionWithView:cell.mainIV duration:0.2f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
             cell.mainIV.image = img;
         } completion:nil];
-        UIImage* temp = [UIImage imageWithData:data];
+//        UIImage* temp = [UIImage imageWithData:data];
         //        temp = [temp applyDarkEffect];
         //        cell.blurBgIV.image = temp;
     }];

@@ -225,7 +225,6 @@
                 mailVC.mailComposeDelegate = self;
                 //                mailVC.view.tintColor = [UIColor whiteColor];
                 [mailVC setSubject:@"GoCandid Chat App for iPhone"];
-#warning change text
                 [mailVC setMessageBody:@"Hey, \n\nI just downloaded GoCandid app on my iPhone. \n\nIt is a photo app which lets me create amazing stop motion animations and share it with others. The signup is very easy and simple. You don't have to remember anything. \n\nDownload it now on the App Store to start chatting. https://itunes.apple.com/app/id898275446" isHTML:NO];
                 [self presentViewController:mailVC animated:YES completion:nil];
             }
