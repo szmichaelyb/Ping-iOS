@@ -17,7 +17,7 @@
 
 @property (nonatomic, strong) IBOutlet BFPaperButton* postButton;
 
-@property (nonatomic, strong) IBOutlet UITextField* captionTF;
+@property (nonatomic, strong) IBOutlet UITextView* captionTV;
 @property (nonatomic, strong) IBOutlet UILabel* locationLabel;
 @property (strong, nonatomic) IBOutlet UIButton *facebookButton;
 @property (strong, nonatomic) IBOutlet UIButton *twitterButton;
@@ -54,10 +54,10 @@
     self.postButton.rippleFromTapLocation = NO;
     
     if ([[NSUserDefaults standardUserDefaults] boolForKey:kUDFirstPostSent] != YES) {
-        self.captionTF.text = @"#firstGoCandid";
+        self.captionTV.text = @"#firstGoCandid";
     }
     
-    self.captionTF.inputAccessoryView = self.keyboardInputView;
+    self.captionTV.inputAccessoryView = self.keyboardInputView;
     // Do any additional setup after loading the view.
 }
 
@@ -108,12 +108,12 @@
     [self.view endEditing:YES];
 }
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
-    NSUInteger newLength = [textField.text length] + [string length] - range.length;
+    NSUInteger newLength = [textView.text length] + [text length] - range.length;
     if (newLength <= 140) {
         [UIView setAnimationsEnabled:NO];
-        [self.charRemainig setTitle:[NSString stringWithFormat:@"%d", 139 - self.captionTF.text.length] forState:UIControlStateNormal];
+        [self.charRemainig setTitle:[NSString stringWithFormat:@"%d", 139 - self.captionTV.text.length] forState:UIControlStateNormal];
         [UIView setAnimationsEnabled:YES];
         return YES;
     } else {
@@ -123,13 +123,13 @@
 
 -(IBAction)hashButtonClicked:(id)sender
 {
-    self.captionTF.text = [NSString stringWithFormat:@"%@#", self.captionTF.text];
+    self.captionTV.text = [NSString stringWithFormat:@"%@#", self.captionTV.text];
 }
 
 -(IBAction)sendButtonClicked:(id)sender
 {
-    if (_captionTF.text.length == 0) {
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Caption" message:@"Write something funny." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+    if (_captionTV.text.length == 0) {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Caption" message:@"Say something funny." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         [alert show];
     } else {
         
@@ -143,7 +143,7 @@
         [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             
             object[kPFSelfie_Selfie] = imageFile;
-            object[kPFSelfie_Caption] = _captionTF.text;
+            object[kPFSelfie_Caption] = _captionTV.text;
             object[kPFSelfie_Location] = _locationLabel.text;
             [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 
@@ -262,7 +262,7 @@
                 NSArray* accountsArray = [accountStore accountsWithAccountType:accountType];
                 if (accountsArray.count > 0) {
                     ACAccount* twitterAccount = [accountsArray objectAtIndex:0];
-                    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%@ #GoCandidApp http://itunes.apple.com/app/id898275446", _captionTF.text], @"status", @"true", @"wrap_links", nil];
+                    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%@ #GoCandidApp http://itunes.apple.com/app/id898275446", _captionTV.text], @"status", @"true", @"wrap_links", nil];
                     
                     SLRequest* postRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodPOST URL:[NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/update_with_media.json"] parameters:dict];
                     NSData* tempData = [NSData dataWithContentsOfURL:[NSURL URLWithString:file.url]];

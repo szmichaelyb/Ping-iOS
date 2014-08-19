@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PGCamViewController.h"
 
-@interface PGSendPingViewController : UIViewController<CLLocationManagerDelegate, UINavigationControllerDelegate, UITextFieldDelegate>
+@interface PGSendPingViewController : UIViewController<CLLocationManagerDelegate, UINavigationControllerDelegate, UITextViewDelegate>
 
 @property (assign, nonatomic) id<PGCamViewControllerDelegate> delegate;
 @property (strong, nonatomic) NSURL* gifUrl;
