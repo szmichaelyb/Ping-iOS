@@ -43,6 +43,7 @@ const CGFloat kDefaultGifDelay = 0.5;
     _imageURL = [self saveGifWithImages:_images gifDelay:kDefaultGifDelay];
     
     _durationSlider.value = kDefaultGifDelay;
+    [_durationSlider setThumbImage:[UIImage imageNamed:@"slider"] forState:UIControlStateNormal];
     
     self.imageView.image = [UIImage animatedImageWithAnimatedGIFURL:_imageURL];
     self.sendButton.cornerRadius = self.sendButton.frame.size.width/2;

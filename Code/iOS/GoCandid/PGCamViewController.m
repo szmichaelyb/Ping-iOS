@@ -172,7 +172,7 @@ static float kDefaultCaptureDelay = 0.7f;
     _images = [NSMutableArray new];
     [self changeCamera:nil];
     self.delaySlider.value = kDefaultCaptureDelay;
-    [self.delaySlider setThumbImage:[UIImage imageNamed:@"slider_main"] forState:UIControlStateNormal];
+    [self.delaySlider setThumbImage:[UIImage imageNamed:@"slider"] forState:UIControlStateNormal];
     self.captureButton.cornerRadius = self.captureButton.frame.size.width/2;
     self.captureButton.rippleFromTapLocation = NO;
     self.manualButton.titleLabel.font = FONT_OPENSANS_CONDLIGHT(FONT_SIZE_SMALL);

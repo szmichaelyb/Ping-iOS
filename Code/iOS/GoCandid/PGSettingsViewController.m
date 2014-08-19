@@ -215,7 +215,7 @@
                 MFMessageComposeViewController* messageVC = [[MFMessageComposeViewController alloc] init];
                 messageVC.messageComposeDelegate = self;
                 //                messageVC.view.tintColor = [UIColor whiteColor];
-                messageVC.body = @"Download GoCandid app on AppStore and take beautiful animated photos. https://itunes.apple.com/app/id898275446";
+                messageVC.body = @"Download GoCandid app on App Store and take beautiful animated photos. https://itunes.apple.com/app/id898275446";
                 [self presentViewController:messageVC animated:YES completion:nil];
             }
         } else if (buttonIndex == 1) {
@@ -226,7 +226,7 @@
                 //                mailVC.view.tintColor = [UIColor whiteColor];
                 [mailVC setSubject:@"GoCandid Chat App for iPhone"];
 #warning change text
-                [mailVC setMessageBody:@"Hey, \n\nI just downloaded vCinity Chat on my iPhone. \n\nIt is a chat app which lets me chat with people around me. Even if there is no Internet connection. The signup is very easy and simple. You don't have to remember anything. \n\nDownload it now on the AppStore to start chatting. https://itunes.apple.com/app/id898275446" isHTML:NO];
+                [mailVC setMessageBody:@"Hey, \n\nI just downloaded GoCandid app on my iPhone. \n\nIt is a photo app which lets me create amazing stop motion animations and share it with others. The signup is very easy and simple. You don't have to remember anything. \n\nDownload it now on the App Store to start chatting. https://itunes.apple.com/app/id898275446" isHTML:NO];
                 [self presentViewController:mailVC animated:YES completion:nil];
             }
         } else if (buttonIndex == 2) {
@@ -234,7 +234,7 @@
             if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
                 SLComposeViewController* sheet = [[SLComposeViewController alloc] init];
                 sheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-                [sheet setInitialText:@"Download GoCandid app on AppStore and take beautiful animated photos. https://itunes.apple.com/app/id898275446"];
+                [sheet setInitialText:@"Download GoCandid app on App Store and take beautiful animated photos. https://itunes.apple.com/app/id898275446"];
                 [self presentViewController:sheet animated:YES completion:nil];
             }
         } else if (buttonIndex == 3) {
@@ -242,7 +242,7 @@
             if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
                 SLComposeViewController* sheet = [[SLComposeViewController alloc] init];
                 sheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-                [sheet setInitialText:@"Download GoCandid app on AppStore and take beautiful animated photos. https://itunes.apple.com/app/id898275446"];
+                [sheet setInitialText:@"Download GoCandid app on App Store and take beautiful animated photos. https://itunes.apple.com/app/id898275446"];
                 [self presentViewController:sheet animated:YES completion:nil];
             }
         }
