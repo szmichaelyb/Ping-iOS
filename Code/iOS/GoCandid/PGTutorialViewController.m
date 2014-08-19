@@ -32,6 +32,11 @@
 @property (nonatomic, strong) IBOutlet UIImageView* iv2;
 @property (nonatomic, strong) IBOutlet UIImageView* iv3;
 
+//Page 5
+@property (nonatomic, strong) IBOutlet UILabel* page5Label1;
+
+//Last Page
+@property (nonatomic, strong) IBOutlet UILabel* createPostLabel;
 @property (nonatomic, strong) IBOutlet UIButton* facebookLoginButton;
 
 -(IBAction)loginWithFacebook:(id)sender;
@@ -69,8 +74,6 @@
         }
     }];
     
-    self.facebookLoginButton.titleLabel.font = FONT_OPENSANS_CONDLIGHT(FONT_SIZE_MEDIUM);
-    
     if ([PFUser currentUser] != NULL) {
         [self setMainView];
     }
@@ -93,6 +96,10 @@
     self.page3Label1.font = font;
     self.page3Label2.font = font;
     self.page3Label3.font = font;
+    self.page5Label1.font = font;
+    self.createPostLabel.font = font;
+    
+    self.facebookLoginButton.titleLabel.font = font;
 }
 
 - (void)setupSlideShowSubviewsAndAnimations {
@@ -100,21 +107,21 @@
     
     [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page1Label1 page:0 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.page1Label1.center.x + self.slideShow.frame.size.width, self.page1Label1.center.y - self.slideShow.frame.size.height)] delay:0]];
     
-    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page1IV1 page:0 keyPath:@"alpha" toValue:@0 delay:0]];
+//    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page1IV1 page:0 keyPath:@"alpha" toValue:@0 delay:0]];
     
     [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page1IV1 page:0 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.page1IV1.center.x+self.slideShow.frame.size.width, self.page1IV1.center.y+self.slideShow.frame.size.height*2)] delay:0]];
     
 #pragma mark Page 1
     
     [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page2IV1 page:0 keyPath:@"alpha" fromValue:@0 toValue:@1 delay:0.75]];
+    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page3IV1 page:0 keyPath:@"alpha" fromValue:@0 toValue:@1 delay:0.75]];
 //    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page2IV1 page:1 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.page2IV1.center.x + self.slideShow.frame.size.width, self.page2IV1.center.y)] delay:0]];
     [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page2Label1 page:1 keyPath:@"transform" fromValue:[NSValue valueWithCGAffineTransform:CGAffineTransformMakeRotation(-0.9)] toValue:[NSValue valueWithCGAffineTransform:CGAffineTransformMakeRotation(0)] delay:0]];
-    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page2Label1 page:2 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.page2Label1.center.x + self.slideShow.frame.size.width, self.page2Label1.center.y)] delay:0]];
-    //    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page2Label1 page:1 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.page2Label1.center.x + self.slideShow.frame.size.width, self.page2Label1.frame.origin.y - 100)] delay:0]];
+//    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page2Label1 page:2 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.page2Label1.center.x + self.slideShow.frame.size.width, 300)] delay:0]];
     
 #pragma mark Page 2
-    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page3IV1 page:0 keyPath:@"alpha" fromValue:@0 toValue:@1 delay:0.5]];
-    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page3IV1 page:0 keyPath:@"center" fromValue:[NSValue valueWithCGPoint:CGPointMake(self.page2IV1.center.x - self.slideShow.frame.size.width, self.page3IV1.center.y)] toValue:[NSValue valueWithCGPoint:CGPointMake(self.page2IV1.center.x, self.page3IV1.center.y)] delay:0]];
+//    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page3IV1 page:0 keyPath:@"alpha" fromValue:@0 toValue:@1 delay:0.5]];
+//    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page3IV1 page:0 keyPath:@"center" fromValue:[NSValue valueWithCGPoint:CGPointMake(self.page2IV1.center.x - self.slideShow.frame.size.width, self.page3IV1.center.y)] toValue:[NSValue valueWithCGPoint:CGPointMake(self.page2IV1.center.x, self.page3IV1.center.y)] delay:0]];
     
     [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page3Label1 page:1 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.page3Label1.center.x + 500, self.page3Label1.center.y)] delay:0]];
     [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page3Label1 page:1 keyPath:@"alpha" toValue:@0 delay:0.7]];
@@ -123,18 +130,18 @@
     [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page3Label3 page:1 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.page3Label3.center.x + 500, self.page3Label3.center.y)] delay:0]];
     [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page3Label3 page:1 keyPath:@"alpha" toValue:@0 delay:0.7]];
     
-    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.iv1 page:2 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.iv1.center.x + 320 + self.iv1.frame.size.width, 100)] delay:0]];
+    
+    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.iv1 page:1 keyPath:@"alpha" fromValue:@0 toValue:@1 delay:0.5]];
+    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.iv2 page:1 keyPath:@"alpha" fromValue:@0 toValue:@1 delay:0.7]];
+    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.iv3 page:1 keyPath:@"alpha" fromValue:@0 toValue:@1 delay:0.9]];
+    
+    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.iv1 page:2 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.iv1.center.x + 320 + self.iv1.frame.size.width + 3, 100)] delay:0]];
     [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.iv2 page:2 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.iv2.center.x + 320, 100)] delay:0]];
-    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.iv3 page:2 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.iv3.center.x + 320 - self.iv3.frame.size.width, 100)] delay:0]];
-    
-//    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page3Label2 page:2 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(300, self.page3Label2.center.y)] delay:0.2]];
-//    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page3Label3 page:2 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(300, self.page3Label3.center.y)] delay:0.4]];
-    
-    //    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.codeBracketsLabel page:1 keyPath:@"alpha" fromValue:@0 toValue:@1 delay:0.75]];
-    //
-    //    [self.codingDescriptionTextView setCenter:CGPointMake(self.codingDescriptionTextView.center.x-self.slideShow.frame.size.width, self.codingDescriptionTextView.center.y+self.slideShow.frame.size.height)];
-    //
-    //    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.codingDescriptionTextView page:1 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.codingDescriptionTextView.center.x+self.slideShow.frame.size.width, self.codingDescriptionTextView.center.y-self.slideShow.frame.size.height)] delay:0]];
+    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.iv3 page:2 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.iv3.center.x + 320 - self.iv3.frame.size.width - 3, 100)] delay:0]];
+
+    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.iv1 page:2 keyPath:@"size" toValue:[NSValue valueWithCGSize:CGSizeMake(150, 150)] delay:0]];
+    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.iv2 page:2 keyPath:@"size" toValue:[NSValue valueWithCGSize:CGSizeMake(150, 150)] delay:0]];
+    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.iv3 page:2 keyPath:@"size" toValue:[NSValue valueWithCGSize:CGSizeMake(150, 150)] delay:0]];
 }
 
 -(void)setMainView
