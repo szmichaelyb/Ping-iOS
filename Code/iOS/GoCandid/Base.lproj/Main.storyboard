@@ -454,7 +454,7 @@
                                 </connections>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.69999999999999996" minValue="0.10000000000000001" maxValue="1" id="A6Z-oo-3Oi">
-                                <rect key="frame" x="35" y="381" width="250" height="31"/>
+                                <rect key="frame" x="35" y="388" width="250" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="minimumTrackTintColor" red="0.97647058819999999" green="0.62352941179999999" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="maximumTrackTintColor" red="0.97647058819999999" green="0.62352941179999999" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -463,11 +463,11 @@
                                 </connections>
                             </slider>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus" id="NU8-qD-phk">
-                                <rect key="frame" x="286" y="387" width="30" height="22"/>
+                                <rect key="frame" x="291" y="386" width="14" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="minus" id="lok-Q4-iG6">
-                                <rect key="frame" x="4" y="389" width="30" height="22"/>
+                                <rect key="frame" x="15" y="391" width="14" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
