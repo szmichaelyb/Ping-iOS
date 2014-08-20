@@ -48,12 +48,6 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 3
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 1
 
-// BFPaperButton
-#define COCOAPODS_POD_AVAILABLE_BFPaperButton
-#define COCOAPODS_VERSION_MAJOR_BFPaperButton 1
-#define COCOAPODS_VERSION_MINOR_BFPaperButton 3
-#define COCOAPODS_VERSION_PATCH_BFPaperButton 1
-
 // Bolts
 #define COCOAPODS_POD_AVAILABLE_Bolts
 #define COCOAPODS_VERSION_MAJOR_Bolts 1
@@ -203,12 +197,6 @@
 #define COCOAPODS_VERSION_MAJOR_UIActionSheet_Blocks 0
 #define COCOAPODS_VERSION_MINOR_UIActionSheet_Blocks 8
 #define COCOAPODS_VERSION_PATCH_UIActionSheet_Blocks 1
-
-// UIColor+BFPaperColors
-#define COCOAPODS_POD_AVAILABLE_UIColor_BFPaperColors
-#define COCOAPODS_VERSION_MAJOR_UIColor_BFPaperColors 1
-#define COCOAPODS_VERSION_MINOR_UIColor_BFPaperColors 1
-#define COCOAPODS_VERSION_PATCH_UIColor_BFPaperColors 0
 
 // UITableView-NXEmptyView
 #define COCOAPODS_POD_AVAILABLE_UITableView_NXEmptyView

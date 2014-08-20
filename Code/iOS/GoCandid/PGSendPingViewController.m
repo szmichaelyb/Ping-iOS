@@ -9,13 +9,13 @@
 #import "PGSendPingViewController.h"
 #import "UIViewController+Transitions.h"
 #import <Twitter/Twitter.h>
-#import <BFPaperButton/BFPaperButton.h>
+//#import <BFPaperButton/BFPaperButton.h>
 #import "GCZoomOutTransitionController.h"
 #import "PGPingViewController.h"
 
 @interface PGSendPingViewController ()
 
-@property (nonatomic, strong) IBOutlet BFPaperButton* postButton;
+@property (nonatomic, strong) IBOutlet UIButton* postButton;
 
 @property (nonatomic, strong) IBOutlet UITextView* captionTV;
 @property (nonatomic, strong) IBOutlet UILabel* locationLabel;
@@ -50,8 +50,8 @@
     [self.view addGestureRecognizer:dismissGesture];
     
     self.imageView.image = [UIImage animatedImageWithAnimatedGIFURL:_gifUrl];
-    self.postButton.cornerRadius = self.postButton.frame.size.width/2;
-    self.postButton.rippleFromTapLocation = NO;
+//    self.postButton.cornerRadius = self.postButton.frame.size.width/2;
+//    self.postButton.rippleFromTapLocation = NO;
     
     if ([[NSUserDefaults standardUserDefaults] boolForKey:kUDFirstPostSent] != YES) {
         self.captionTV.text = @"#firstGoCandid";

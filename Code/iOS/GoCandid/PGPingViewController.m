@@ -10,7 +10,7 @@
 #import "UIViewController+Transitions.h"
 #import "UIView+Animate.h"
 #import "PGSendPingViewController.h"
-#import <BFPaperButton/BFPaperButton.h>
+//#import <BFPaperButton/BFPaperButton.h>
 #import <ImageIO/ImageIO.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "GCZoomInTrasitionController.h"
@@ -21,7 +21,7 @@ const CGFloat kDefaultGifDelay = 0.5;
 
 @property (strong, nonatomic) NSURL* imageURL;
 
-@property (nonatomic, strong) IBOutlet BFPaperButton* sendButton;
+@property (nonatomic, strong) IBOutlet UIButton* sendButton;
 @property (nonatomic, strong) IBOutlet UIButton* retakeButton;
 @property (nonatomic, strong) IBOutlet UISlider* durationSlider;
 @property (strong, nonatomic) IBOutlet UILabel *durationLabel;
@@ -46,8 +46,8 @@ const CGFloat kDefaultGifDelay = 0.5;
     [_durationSlider setThumbImage:[UIImage imageNamed:@"slider"] forState:UIControlStateNormal];
     
     self.imageView.image = [UIImage animatedImageWithAnimatedGIFURL:_imageURL];
-    self.sendButton.cornerRadius = self.sendButton.frame.size.width/2;
-    self.sendButton.rippleFromTapLocation = NO;
+//    self.sendButton.cornerRadius = self.sendButton.frame.size.width/2;
+//    self.sendButton.rippleFromTapLocation = NO;
 }
 
 -(void)viewDidAppear:(BOOL)animated

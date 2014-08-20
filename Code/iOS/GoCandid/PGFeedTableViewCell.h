@@ -21,7 +21,8 @@
 @property (strong, nonatomic) IBOutlet UILabel* timeAndlocationLabel;
 @property (strong, nonatomic) IBOutlet UIImageView* thumbIV;
 //@property (nonatomic, strong) IBOutlet UIButton* thumbButton;
-@property (strong, nonatomic) IBOutlet UILabel* featuredLabel;
+@property (nonatomic, strong) IBOutlet UIView* featuredView;
+
 @property (nonatomic, strong) IBOutlet UILabel* totalLikes;
 
 @property (assign, nonatomic) id<PGFeedTableViewCellDelegate> delegate;

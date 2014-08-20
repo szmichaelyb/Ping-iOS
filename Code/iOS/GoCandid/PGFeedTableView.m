@@ -248,9 +248,9 @@
         }
     }];
     if (_datasource[indexPath.row][kPFSelfie_Featured]) {
-        cell.featuredLabel.hidden = NO;
+        cell.featuredView.hidden = NO;
     } else {
-        cell.featuredLabel.hidden = YES;
+        cell.featuredView.hidden = YES;
     }
     
     if ([[[_activityArray valueForKey:kPFActivity_Selfie] valueForKey:kPFObjectId] containsObject:[_datasource[indexPath.row] valueForKey:kPFObjectId]]) {

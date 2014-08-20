@@ -12,6 +12,7 @@
 @interface PGFeedTableViewCell()
 
 @property (strong, nonatomic) IBOutlet UIButton *likeButton;
+@property (strong, nonatomic) IBOutlet UILabel* featuredLabel;
 
 - (IBAction)nameButtonClicked:(id)sender;
 //- (IBAction)thumbButtonClicked:(id)sender;
@@ -29,7 +30,7 @@
     self.nameButton.titleLabel.font = FONT_GEOSANSLIGHT(FONT_SIZE_MEDIUM);
     self.timeAndlocationLabel.font = FONT_OPENSANS_CONDBOLD(FONT_SIZE_XS);
     self.captionLabel.font = FONT_OPENSANS_CONDLIGHT(FONT_SIZE_MEDIUM);
-    
+    self.featuredLabel.font = FONT_GEOSANSLIGHT(FONT_SIZE_MEDIUM);
     self.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1];
     self.thumbIV.layer.cornerRadius = self.thumbIV.frame.size.width/2;
     self.thumbIV.layer.masksToBounds = YES;
