@@ -144,10 +144,10 @@
                 if (_datasource.count != objects.count) {
                     //Check if objects are new.
 #warning implement table reload
-//                    [self beginUpdates];
-//                    [self insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-//                    [self endUpdates];
-                    [self reloadData];
+                    [self beginUpdates];
+                    [self insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+                    [self endUpdates];
+//                    [self reloadData];
                 } else {
                     [self reloadData];
                 }

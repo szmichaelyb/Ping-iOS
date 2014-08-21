@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>93908EAD-FF00-49D7-B5C2-1563F3E2D0F2</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MySocialAppDemo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>AFFE8D7B-FF1E-4A38-A69C-3F46246DA61C</key>
+		<string>https://github.com/rishabhtayal/Ping-iOS.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Sample/MySocialAppDemo-master/MySocialAppDemo.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>AFFE8D7B-FF1E-4A38-A69C-3F46246DA61C</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/rishabhtayal/Ping-iOS.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>AFFE8D7B-FF1E-4A38-A69C-3F46246DA61C</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>AFFE8D7B-FF1E-4A38-A69C-3F46246DA61C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Ping-iOS</string>
+		</dict>
+	</array>
+</dict>
+</plist>
