@@ -125,7 +125,7 @@
     [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error) {
-//            [[[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil, nil] show];
+            //            [[[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil, nil] show];
             
         } else {
             if (block) {
@@ -147,7 +147,7 @@
                     [self beginUpdates];
                     [self insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
                     [self endUpdates];
-//                    [self reloadData];
+                    //                    [self reloadData];
                 } else {
                     [self reloadData];
                 }
@@ -217,28 +217,31 @@
 - (void)configureCell:(PGFeedTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PFUser* senderUser = _datasource[indexPath.row][kPFSelfie_Owner];
-//    cell.nameLabel.text = senderUser[kPFUser_Name];
+    //    cell.nameLabel.text = senderUser[kPFUser_Name];
     [cell.nameButton setTitle:senderUser[kPFUser_Name] forState:UIControlStateNormal];
     cell.timeAndlocationLabel.text = [NSString stringWithFormat:@"%@ at %@", [self friendlyDateTime:((PFObject*)_datasource[indexPath.row]).createdAt], _datasource[indexPath.row][kPFSelfie_Location]];
     
     [PGParseHelper profilePhotoUser:senderUser completion:^(UIImage *image) {
         cell.thumbIV.image = image;
-//        [cell.thumbButton setImage:image    forState:UIControlStateNormal];
-//        [cell.thumbButton setBackgroundImage:image forState:UIControlStateNormal];
-//        cell.thumbButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        //        [cell.thumbButton setImage:image    forState:UIControlStateNormal];
+        //        [cell.thumbButton setBackgroundImage:image forState:UIControlStateNormal];
+        //        cell.thumbButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
     }];
     
     PFFile* file = _datasource[indexPath.row][kPFSelfie_Selfie];
-    [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-        UIImage* img = [UIImage animatedImageWithAnimatedGIFData:data];
-        //        UIImage* img = [UIImage imageWithData:data];
-        [UIView transitionWithView:cell.mainIV duration:0.2f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
-            cell.mainIV.image = img;
-        } completion:nil];
-//        UIImage* temp = [UIImage imageWithData:data];
-        //        temp = [temp applyDarkEffect];
-        //        cell.blurBgIV.image = temp;
-    }];
+    if (![file isKindOfClass:[NSNull class]] && file != NULL)
+    {
+        [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            UIImage* img = [UIImage animatedImageWithAnimatedGIFData:data];
+            //        UIImage* img = [UIImage imageWithData:data];
+            [UIView transitionWithView:cell.mainIV duration:0.2f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+                cell.mainIV.image = img;
+            } completion:nil];
+            //        UIImage* temp = [UIImage imageWithData:data];
+            //        temp = [temp applyDarkEffect];
+            //        cell.blurBgIV.image = temp;
+        }];
+    }
     
     cell.captionLabel.text = _datasource[indexPath.row][kPFSelfie_Caption];
     [cell.captionLabel setDetectionBlock:^(STTweetHotWord hotword, NSString *string, NSString *protocol, NSRange range) {
@@ -258,7 +261,7 @@
     } else {
         [cell setLikeButtonState:NO];
     }
-        
+    
     [PGParseHelper getTotalLikeForSelfie:_datasource[indexPath.row] completion:^(BOOL finished, int number) {
         cell.totalLikes.text = [NSString stringWithFormat:@"%d likes", number];
     }];
