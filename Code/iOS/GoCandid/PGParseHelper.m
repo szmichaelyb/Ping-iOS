@@ -18,21 +18,28 @@
     if ([[followUser objectId] isEqualToString:[[PFUser currentUser] objectId]]) {
         return;
     }
-    
-    PFObject *followActivity = [PFObject objectWithClassName:kPFTableActivity];
-    [followActivity setObject:[PFUser currentUser] forKey:kPFActivity_FromUser];
-    [followActivity setObject:followUser forKey:kPFActivity_ToUser];
-    [followActivity setObject:kPFActivity_Type_Follow forKey:kPFActivity_Type];
-    
-    PFACL *followACL = [PFACL ACLWithUser:[PFUser currentUser]];
-    [followACL setPublicReadAccess:YES];
-    followActivity.ACL = followACL;
-    
-    [followActivity saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (block) {
-            block(succeeded);
+
+    [PGParseHelper isUserFollowingUser:followUser completion:^(BOOL finished, BOOL following) {
+        if (following) {
+            return ;
+        } else {
+            PFObject *followActivity = [PFObject objectWithClassName:kPFTableActivity];
+            [followActivity setObject:[PFUser currentUser] forKey:kPFActivity_FromUser];
+            [followActivity setObject:followUser forKey:kPFActivity_ToUser];
+            [followActivity setObject:kPFActivity_Type_Follow forKey:kPFActivity_Type];
+            
+            PFACL *followACL = [PFACL ACLWithUser:[PFUser currentUser]];
+            [followACL setPublicReadAccess:YES];
+            followActivity.ACL = followACL;
+            
+            [followActivity saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (block) {
+                    block(succeeded);
+                }
+            }];
         }
     }];
+    
 }
 
 +(void)unfollowUserInBackground:(PFUser *)user completion:(void (^)(bool))block
