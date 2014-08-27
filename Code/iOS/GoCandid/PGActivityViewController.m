@@ -11,6 +11,7 @@
 #import <TTTTimeIntervalFormatter.h>
 #import <UITableView-NXEmptyView/UITableView+NXEmptyView.h>
 #import "PGProfileViewController.h"
+#import "PGFeedTableView.h"
 
 @interface PGActivityViewController ()
 
@@ -93,7 +94,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row < self.objects.count) {
         PFObject *object = [self.objects objectAtIndex:indexPath.row];
-//        NSString *activityString = [PGActivityViewController stringForActivityType:(NSString*)[object objectForKey:kPFActivity_Type]];
+        //        NSString *activityString = [PGActivityViewController stringForActivityType:(NSString*)[object objectForKey:kPFActivity_Type]];
         
         PFUser *user = (PFUser*)[object objectForKey:kPFActivity_FromUser];
         NSString *nameString = NSLocalizedString(@"Someone", nil);
@@ -112,17 +113,24 @@
     if (indexPath.row < self.objects.count) {
         PFObject *activity = [self.objects objectAtIndex:indexPath.row];
         if ([activity objectForKey:kPFActivity_Selfie]) {
-            //            PAPPhotoDetailsViewController *detailViewController = [[PAPPhotoDetailsViewController alloc] initWithPhoto:[activity objectForKey:kPAPActivityPhotoKey]];
-            //            [self.navigationController pushViewController:detailViewController animated:YES];
-        } else if ([activity objectForKey:kPFActivity_FromUser]) {
             
+            PFQuery* query = [PFQuery queryWithClassName:kPFTableNameSelfies];
+            [query whereKey:kPFObjectId equalTo:((PFObject*)activity[kPFActivity_Selfie]).objectId];
+            [query includeKey:kPFSelfie_Owner];
+            [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                UIViewController* postViewController = [[UIViewController alloc] init];
+                postViewController.title = @"Post";
+                PGFeedTableView* table = [[PGFeedTableView alloc] initWithFrame:postViewController.view.bounds];
+                table.datasource = [[NSMutableArray alloc] initWithObjects:objects[0], nil];
+                [table reloadData];
+                [postViewController.view addSubview:table];
+                [self.navigationController pushViewController:postViewController animated:YES];
+            }];
+            
+        } else if ([activity objectForKey:kPFActivity_FromUser]) {
             PGProfileViewController* profileVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PGProfileViewController"];
             profileVC.profileUser = activity[kPFActivity_FromUser];
             [self.navigationController pushViewController:profileVC animated:YES];
-            
-            //            PAPAccountViewController *detailViewController = [[PAPAccountViewController alloc] initWithStyle:UITableViewStylePlain];
-            //            [detailViewController setUser:[activity objectForKey:kPAPActivityFromUserKey]];
-            //            [self.navigationController pushViewController:detailViewController animated:YES];
         }
     } else if (self.paginationEnabled) {
         // load more

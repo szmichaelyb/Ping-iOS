@@ -15,7 +15,6 @@
 
 @interface PGFeedTableView()
 
-@property (strong, nonatomic) NSMutableArray* datasource;
 @property (strong, nonatomic) NSMutableArray* activityArray;
 
 @end
