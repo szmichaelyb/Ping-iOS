@@ -12,6 +12,7 @@
 		06654AE6197DBABA0014FA74 /* PGFindFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06654AE5197DBABA0014FA74 /* PGFindFriendsViewController.m */; };
 		06654AE9197DBE740014FA74 /* PGFindFriendsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06654AE8197DBE740014FA74 /* PGFindFriendsTableViewCell.m */; };
 		06654AEC197EBBDF0014FA74 /* PGSendPingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06654AEB197EBBDF0014FA74 /* PGSendPingViewController.m */; };
+		06683ADC19AE5F8800D726DE /* GCSharePost.m in Sources */ = {isa = PBXBuildFile; fileRef = 06683ADB19AE5F8800D726DE /* GCSharePost.m */; };
 		067A140C1980BD0200D9EF2B /* GCUsersListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 067A140A1980BD0200D9EF2B /* GCUsersListViewController.m */; };
 		067A140D1980BD0200D9EF2B /* GCUsersListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 067A140B1980BD0200D9EF2B /* GCUsersListViewController.xib */; };
 		067A140F1980C2F000D9EF2B /* PGSearchUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 067A140E1980C2F000D9EF2B /* PGSearchUserTableViewCell.xib */; };
@@ -83,6 +84,8 @@
 		06654AE8197DBE740014FA74 /* PGFindFriendsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGFindFriendsTableViewCell.m; sourceTree = "<group>"; };
 		06654AEA197EBBDE0014FA74 /* PGSendPingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSendPingViewController.h; sourceTree = "<group>"; };
 		06654AEB197EBBDF0014FA74 /* PGSendPingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSendPingViewController.m; sourceTree = "<group>"; };
+		06683ADA19AE5F8800D726DE /* GCSharePost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCSharePost.h; sourceTree = "<group>"; };
+		06683ADB19AE5F8800D726DE /* GCSharePost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCSharePost.m; sourceTree = "<group>"; };
 		067A14091980BD0200D9EF2B /* GCUsersListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCUsersListViewController.h; sourceTree = "<group>"; };
 		067A140A1980BD0200D9EF2B /* GCUsersListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCUsersListViewController.m; sourceTree = "<group>"; };
 		067A140B1980BD0200D9EF2B /* GCUsersListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GCUsersListViewController.xib; sourceTree = "<group>"; };
@@ -405,6 +408,8 @@
 				0683409E19774AD4007A1AEC /* PGProgressHUD.m */,
 				068340B91979688B007A1AEC /* UIImage+MyUIImage.h */,
 				068340BA1979688B007A1AEC /* UIImage+MyUIImage.m */,
+				06683ADA19AE5F8800D726DE /* GCSharePost.h */,
+				06683ADB19AE5F8800D726DE /* GCSharePost.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -662,6 +667,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06683ADC19AE5F8800D726DE /* GCSharePost.m in Sources */,
 				06DCBCFA196EE8EB00E8C9B2 /* PGPingViewController.m in Sources */,
 				06DF342D19928D9700509399 /* GCZoomInTrasitionController.m in Sources */,
 				0683409F19774AD4007A1AEC /* PGProgressHUD.m in Sources */,

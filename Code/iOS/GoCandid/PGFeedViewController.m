@@ -16,6 +16,7 @@
 #import <GTScrollNavigationBar/GTScrollNavigationBar.h>
 #import "UIView+HidingView.h"
 #import "PGProfileViewController.h"
+#import "GCSharePost.h"
 
 @interface PGFeedViewController ()<PGFeedTableViewDelegate>
 {
@@ -156,24 +157,57 @@
 
 -(void)tableView:(PGFeedTableView *)tableView moreButtonClicked:(NSIndexPath*)indexPath dataObject:(id)object
 {
-    [UIActionSheet showInView:self.view.window withTitle:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Report inappropriate" otherButtonTitles:nil tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
-        DLog(@"%d", buttonIndex);
-        if (buttonIndex == 0) {
+    UIActionSheet* sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:nil cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil, nil];
+
+    [sheet addButtonWithTitle:@"Share"];
+    sheet.destructiveButtonIndex = [sheet addButtonWithTitle:@"Report Inappropriate"];
+    sheet.cancelButtonIndex = [sheet addButtonWithTitle:@"Cancel"];
+    
+    sheet.tapBlock = ^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+        if (buttonIndex == actionSheet.destructiveButtonIndex) {
             
             [UIActionSheet showInView:self.view.window withTitle:@"Are you sure?" cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@[@"Yes"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
                 if (buttonIndex == 0) {
                     object[kPFSelfie_Abuse] = [NSNumber numberWithInt:[object[kPFSelfie_Abuse] intValue] + 1];
                     
-//                    object[kPFSelfie_Abuse] = [NSNumber numberWithBool:YES];
+                    //                    object[kPFSelfie_Abuse] = [NSNumber numberWithBool:YES];
                     [object saveEventually:^(BOOL succeeded, NSError *error) {
                         if (succeeded) {
-                            [[PGProgressHUD sharedInstance] showInView:self.navigationController.view withText:@"Reported" hideAfter:2 showCustom:YES];
+                            [[PGProgressHUD sharedInstance] showInView:self.navigationController.view withText:@"Reported" hideAfter:2 progressType:PGProgressHUDTypeCheck];
                         }
                     }];
                 }
             }];
         }
-    }];
+        
+        if (buttonIndex == 0) {
+            //Share
+            [UIActionSheet showInView:self.view.window withTitle:@"Share" cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@[@"Facebook", @"Twitter"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+                if (buttonIndex == 0) {
+                    //Facebook
+                } else if (buttonIndex == 1) {
+                    //Twitter
+                    [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Posting..." hideAfter:1.0 progressType:PGProgressHUDTypeDefault];
+                    [GCSharePost postOnTwitterObject:object completion:^(BOOL success) {
+//                        [[PGProgressHUD sharedInstance] hide:YES];
+                        if (success) {
+                            [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Success" hideAfter:2 progressType:PGProgressHUDTypeCheck];
+                        } else {
+#warning Change to error sign
+                            [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Could not post" hideAfter:2 progressType:PGProgressHUDTypeError];
+                        }
+                    }];
+                }
+            }];
+        }
+    };
+    
+    [sheet showInView:self.view.window];
+//    
+//    [UIActionSheet showInView:self.view.window withTitle:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Report inappropriate" otherButtonTitles:@[@"Share"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+//        DLog(@"%d", buttonIndex);
+//      
+//    }];
 }
 
 -(void)tableView:(PGFeedTableView *)tableView didTapOnKeyword:(NSString *)keyword

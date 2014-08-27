@@ -8,11 +8,17 @@
 
 #import "MBProgressHUD.h"
 
+typedef enum {
+    PGProgressHUDTypeDefault,
+    PGProgressHUDTypeCheck,
+    PGProgressHUDTypeError
+}PGProgressHUDType;
+
 @interface PGProgressHUD : MBProgressHUD<MBProgressHUDDelegate>
 
 + (instancetype)sharedInstance;
--(void)showInView:(UIView *)view withText:(NSString *)text showCustom:(BOOL)showCustom;
+-(void)showInView:(UIView *)view withText:(NSString *)text progressType:(PGProgressHUDType)progressType;
 //-(void)showInView:(UIView*)view withText:(NSString*)text hideAfter:(CGFloat)delay;
--(void)showInView:(UIView *)view withText:(NSString *)text hideAfter:(CGFloat)delay showCustom:(BOOL)showCustom;
+-(void)showInView:(UIView *)view withText:(NSString *)text hideAfter:(CGFloat)delay progressType:(PGProgressHUDType)progressType;
 
 @end
