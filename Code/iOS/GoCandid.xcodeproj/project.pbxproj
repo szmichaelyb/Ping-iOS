@@ -264,13 +264,28 @@
 			name = "Activity VC";
 			sourceTree = "<group>";
 		};
-		068340BC19797102007A1AEC /* PARSE HELPER */ = {
+		068340BC19797102007A1AEC /* Parse Helper */ = {
 			isa = PBXGroup;
 			children = (
 				068340AF19783750007A1AEC /* PGParseHelper.h */,
 				068340B019783750007A1AEC /* PGParseHelper.m */,
 			);
-			name = "PARSE HELPER";
+			name = "Parse Helper";
+			sourceTree = "<group>";
+		};
+		06A2E87E19AE7DC60042A721 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				06B561621975B04B00E92A92 /* UIImage+animatedGIF.h */,
+				06B561631975B04B00E92A92 /* UIImage+animatedGIF.m */,
+				064CD868199D5E52007837A6 /* DRDynamicSlideShow.h */,
+				064CD869199D5E52007837A6 /* DRDynamicSlideShow.m */,
+				06DF343219993ED600509399 /* UIView+HidingView.h */,
+				06DF343319993ED600509399 /* UIView+HidingView.m */,
+				06DCBD15196F421400E8C9B2 /* UIDevice-Hardware.h */,
+				06DCBD16196F421400E8C9B2 /* UIDevice-Hardware.m */,
+			);
+			name = Vendor;
 			sourceTree = "<group>";
 		};
 		06B5614E1974239200E92A92 /* Profile VC */ = {
@@ -322,7 +337,7 @@
 		06DCBCBF196E2AFF00E8C9B2 /* GoCandid */ = {
 			isa = PBXGroup;
 			children = (
-				068340BC19797102007A1AEC /* PARSE HELPER */,
+				068340BC19797102007A1AEC /* Parse Helper */,
 				06DCBD18196F42E800E8C9B2 /* Utilities */,
 				06DCBD00196F060F00E8C9B2 /* Settings VC */,
 				06654AE3197DBAA30014FA74 /* Find Friends VC */,
@@ -395,15 +410,8 @@
 		06DCBD18196F42E800E8C9B2 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				064CD868199D5E52007837A6 /* DRDynamicSlideShow.h */,
-				064CD869199D5E52007837A6 /* DRDynamicSlideShow.m */,
-				06DF343219993ED600509399 /* UIView+HidingView.h */,
-				06DF343319993ED600509399 /* UIView+HidingView.m */,
-				06B561621975B04B00E92A92 /* UIImage+animatedGIF.h */,
-				06B561631975B04B00E92A92 /* UIImage+animatedGIF.m */,
+				06A2E87E19AE7DC60042A721 /* Vendor */,
 				06DCBD19196F42F500E8C9B2 /* Animations */,
-				06DCBD15196F421400E8C9B2 /* UIDevice-Hardware.h */,
-				06DCBD16196F421400E8C9B2 /* UIDevice-Hardware.m */,
 				0683409D19774AD4007A1AEC /* PGProgressHUD.h */,
 				0683409E19774AD4007A1AEC /* PGProgressHUD.m */,
 				068340B91979688B007A1AEC /* UIImage+MyUIImage.h */,
