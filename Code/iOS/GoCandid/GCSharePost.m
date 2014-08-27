@@ -11,6 +11,81 @@
 
 @implementation GCSharePost
 
++(void)postOnFacebookObject:(PFObject*)object completion:(void (^) (bool success))completion
+{
+    [GCSharePost callGraphForPostWithObject:object completion:^(bool success) {
+        if (success) {
+            if (completion)
+                completion(YES);
+        } else {
+            [GCSharePost facebookPermissionHandle:^(bool granted) {
+                if (granted) {
+                    [GCSharePost callGraphForPostWithObject:object completion:^(bool success) {
+                        if (success) {
+                            if (completion)
+                                completion(YES);
+                        } else {
+                            if (completion)
+                                completion(NO);
+                        }
+                    }];
+                } else {
+                    if (completion)
+                        completion(NO);
+                }
+            }];
+        }
+    }];
+}
+
+#pragma mark - Facebook Helper
+
++(void)callGraphForPostWithObject:(PFObject*)object completion:(void (^) (bool success))block
+{
+    //Share
+    PFFile* file = object[kPFSelfie_Selfie];
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:object[kPFSelfie_Caption], @"name",
+                                   file.url, @"link",
+                                   nil];
+    
+    [FBRequestConnection startWithGraphPath:@"/me/feed" parameters:params HTTPMethod:@"POST" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+        DLog(@"%@", result);
+        if (!error) {
+            if (block)
+                block(YES);
+        } else {
+            if (block)
+                block(NO);
+        }
+    }];
+}
+
++(void)facebookPermissionHandle:(void (^) (bool granted))completion
+{
+    [FBRequestConnection startWithGraphPath:@"/me/permissions" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+        id permissions = [(NSArray*)[result data] objectAtIndex:0];
+        DLog(@"%@",permissions);
+        if (![permissions objectForKey:@"publish_actions"]) {
+            //request permission
+            [[FBSession activeSession] requestNewPublishPermissions:@[@"publish_actions"] defaultAudience:FBSessionDefaultAudienceFriends completionHandler:^(FBSession *session, NSError *error) {
+                if ([[FBSession activeSession].permissions indexOfObject:@"publish_actions"] == NSNotFound) {
+                    [[[UIAlertView alloc] initWithTitle:@"Facebook" message:@"Permission not granted. Will not upload to Facebook" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil, nil] show];
+                    if (completion)
+                        completion(NO);
+                } else {
+                    if (completion)
+                        completion(YES);
+                }
+            }];
+        } else {
+            if (completion)
+                completion(YES);
+        }
+    }];
+}
+
+#pragma mark - Post on Twitter
+
 +(void)postOnTwitterObject:(PFObject*)object completion:(void (^) (BOOL success))completion
 {
     PFFile* file = object[kPFSelfie_Selfie];

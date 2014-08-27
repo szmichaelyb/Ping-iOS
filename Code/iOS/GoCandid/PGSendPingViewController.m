@@ -12,6 +12,7 @@
 #import "GCZoomOutTransitionController.h"
 #import "PGPingViewController.h"
 #import "GCSharePost.h"
+#import "PGProgressHUD.h"
 
 @interface PGSendPingViewController ()
 
@@ -50,8 +51,6 @@
     [self.view addGestureRecognizer:dismissGesture];
     
     self.imageView.image = [UIImage animatedImageWithAnimatedGIFURL:_gifUrl];
-//    self.postButton.cornerRadius = self.postButton.frame.size.width/2;
-//    self.postButton.rippleFromTapLocation = NO;
     
     if ([[NSUserDefaults standardUserDefaults] boolForKey:kUDFirstPostSent] != YES) {
         self.captionTV.text = @"#firstGoCandid";
@@ -150,19 +149,27 @@
                 if (error) {
                     [[[UIAlertView alloc] initWithTitle:@"GoCandid" message:@"Error occurred while creating the post. Please try again." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
                 }
-                [self postOnFacebookObject:object succesful:^(bool success) {
-                    if (success) {
-                        
-                    } else {
-                        [self facebookPermissionHandle:^(bool granted) {
-                            if (granted) {
-                                [self postOnFacebookObject:object succesful:nil];
-                            }
-                        }];
-                    }
-                }];
+                if (self.facebookButton.isSelected) {
+                    //Share on Facebook
+                    [GCSharePost postOnFacebookObject:object completion:^(bool success) {
+                        if (success) {
+                            [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Shared" hideAfter:1.0 progressType:PGProgressHUDTypeCheck];
+                        } else {
+                            [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Could not share" hideAfter:1.0 progressType:PGProgressHUDTypeError];
+                        }
+                    }];
+                }
                 
-                [self postOnTwitterObject:object];
+                                
+                if (self.twitterButton.isSelected) {
+                    [GCSharePost postOnTwitterObject:object completion:^(BOOL success) {
+                        if (success) {
+                            [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Shared" hideAfter:1.0 progressType:PGProgressHUDTypeCheck];
+                        } else {
+                            [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Could not share" hideAfter:1.0 progressType:PGProgressHUDTypeError];
+                        }
+                    }];
+                }
                 
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kUDFirstPostSent];
             }];
@@ -203,59 +210,6 @@
 - (IBAction)backButtonClicked:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
-}
-
-#pragma mark - Post on Facebook
-
--(void)facebookPermissionHandle:(void (^) (bool granted))completion
-{
-    [FBRequestConnection startWithGraphPath:@"/me/permissions" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-        id permissions = [(NSArray*)[result data] objectAtIndex:0];
-        DLog(@"%@",permissions);
-        if (![permissions objectForKey:@"publish_actions"]) {
-            //request permission
-            [[FBSession activeSession] requestNewPublishPermissions:@[@"publish_actions"] defaultAudience:FBSessionDefaultAudienceFriends completionHandler:^(FBSession *session, NSError *error) {
-                if ([[FBSession activeSession].permissions indexOfObject:@"publish_actions"] == NSNotFound) {
-                    [[[UIAlertView alloc] initWithTitle:@"Facebook" message:@"Permission not granted. Will not upload to Facebook" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil, nil] show];
-                    completion(NO);
-                } else {
-                    completion(YES);
-                }
-            }];
-        } else {
-            completion(YES);
-        }
-    }];
-}
-
--(void)postOnFacebookObject:(PFObject*)object succesful:(void (^) (bool success))block
-{
-    if (self.facebookButton.isSelected) {
-        //Share
-        PFFile* file = object[kPFSelfie_Selfie];
-        NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:object[kPFSelfie_Caption], @"name",
-                                       file.url, @"link",
-                                       nil];
-        
-        [FBRequestConnection startWithGraphPath:@"/me/feed" parameters:params HTTPMethod:@"POST" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-            DLog(@"%@", result);
-            if (!error) {
-                if (block)
-                    block(YES);
-            } else {
-                if (block)
-                    block(NO);
-            }
-        }];
-    }
-}
-
--(void)postOnTwitterObject:(PFObject*)object
-{
-    if (self.twitterButton.isSelected) {
-        //Share
-        [GCSharePost postOnTwitterObject:object completion:nil];
-    }
 }
 
 @end
