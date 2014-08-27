@@ -383,6 +383,9 @@
 
 -(void)sendPushToOwner:(PFUser*)user
 {
+    if ([user.objectId isEqualToString:[PFUser currentUser].objectId]) {
+        return;
+    }
     NSString* pushMessage = [NSString stringWithFormat:@"%@ liked your post.", [PFUser currentUser][kPFUser_Name]];
     [PGParseHelper sendPushToUsers:@[user] pushText:pushMessage];
 }

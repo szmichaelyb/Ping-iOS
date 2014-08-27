@@ -43,7 +43,8 @@
     self.frame = CGRectMake(0, -80, 320, 80);
     
     _headingLabel.text = text;
-   
+    _headingLabel.font = FONT_GEOSANSLIGHT(FONT_SIZE_MEDIUM);
+    
     _myWindow = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
     _myWindow.windowLevel = UIWindowLevelStatusBar + 1;
     _myWindow.hidden = NO;
