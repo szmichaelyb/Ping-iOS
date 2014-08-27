@@ -10,6 +10,8 @@
 #import "PGAppDelegate.h"
 #import "PGTabViewController.h"
 #import "PGProgressHUD.h"
+#import <UIAlertView+Blocks/UIAlertView+Blocks.h>
+#import "WebViewController.h"
 
 @interface PGTutorialViewController ()
 
@@ -57,7 +59,7 @@
     [self setupSlideShowSubviewsAndAnimations];
     
     [self.slideShow setDidReachPageBlock:^(NSInteger reachedPage) {
-//        DLog(@"Current page: %d", reachedPage);
+        //        DLog(@"Current page: %d", reachedPage);
         self.pageControl.currentPage = reachedPage;
         if (reachedPage == 3) {
             NSArray* array = @[self.iv1.image, self.iv2.image, self.iv3.image];
@@ -107,7 +109,7 @@
     
     [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page1Label1 page:0 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.page1Label1.center.x + self.slideShow.frame.size.width, self.page1Label1.center.y - self.slideShow.frame.size.height)] delay:0]];
     
-//    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page1IV1 page:0 keyPath:@"alpha" toValue:@0 delay:0]];
+    //    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page1IV1 page:0 keyPath:@"alpha" toValue:@0 delay:0]];
     
     [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page1IV1 page:0 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.page1IV1.center.x+self.slideShow.frame.size.width, self.page1IV1.center.y+self.slideShow.frame.size.height*2)] delay:0]];
     
@@ -115,13 +117,13 @@
     
     [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page2IV1 page:0 keyPath:@"alpha" fromValue:@0 toValue:@1 delay:0.75]];
     [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page3IV1 page:0 keyPath:@"alpha" fromValue:@0 toValue:@1 delay:0.75]];
-//    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page2IV1 page:1 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.page2IV1.center.x + self.slideShow.frame.size.width, self.page2IV1.center.y)] delay:0]];
+    //    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page2IV1 page:1 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.page2IV1.center.x + self.slideShow.frame.size.width, self.page2IV1.center.y)] delay:0]];
     [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page2Label1 page:1 keyPath:@"transform" fromValue:[NSValue valueWithCGAffineTransform:CGAffineTransformMakeRotation(-0.9)] toValue:[NSValue valueWithCGAffineTransform:CGAffineTransformMakeRotation(0)] delay:0]];
-//    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page2Label1 page:2 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.page2Label1.center.x + self.slideShow.frame.size.width, 300)] delay:0]];
+    //    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page2Label1 page:2 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.page2Label1.center.x + self.slideShow.frame.size.width, 300)] delay:0]];
     
 #pragma mark Page 2
-//    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page3IV1 page:0 keyPath:@"alpha" fromValue:@0 toValue:@1 delay:0.5]];
-//    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page3IV1 page:0 keyPath:@"center" fromValue:[NSValue valueWithCGPoint:CGPointMake(self.page2IV1.center.x - self.slideShow.frame.size.width, self.page3IV1.center.y)] toValue:[NSValue valueWithCGPoint:CGPointMake(self.page2IV1.center.x, self.page3IV1.center.y)] delay:0]];
+    //    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page3IV1 page:0 keyPath:@"alpha" fromValue:@0 toValue:@1 delay:0.5]];
+    //    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page3IV1 page:0 keyPath:@"center" fromValue:[NSValue valueWithCGPoint:CGPointMake(self.page2IV1.center.x - self.slideShow.frame.size.width, self.page3IV1.center.y)] toValue:[NSValue valueWithCGPoint:CGPointMake(self.page2IV1.center.x, self.page3IV1.center.y)] delay:0]];
     
     [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page3Label1 page:1 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.page3Label1.center.x + 500, self.page3Label1.center.y)] delay:0]];
     [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page3Label1 page:1 keyPath:@"alpha" toValue:@0 delay:0.7]];
@@ -138,7 +140,7 @@
     [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.iv1 page:2 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.iv1.center.x + 320 + self.iv1.frame.size.width + 3, 130)] delay:0]];
     [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.iv2 page:2 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.iv2.center.x + 320, 130)] delay:0]];
     [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.iv3 page:2 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.iv3.center.x + 320 - self.iv3.frame.size.width - 3, 130)] delay:0]];
-
+    
     [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.iv1 page:2 keyPath:@"size" toValue:[NSValue valueWithCGSize:CGSizeMake(150, 150)] delay:0]];
     [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.iv2 page:2 keyPath:@"size" toValue:[NSValue valueWithCGSize:CGSizeMake(150, 150)] delay:0]];
     [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.iv3 page:2 keyPath:@"size" toValue:[NSValue valueWithCGSize:CGSizeMake(150, 150)] delay:0]];
@@ -163,68 +165,81 @@
 
 -(void)loginWithFacebook:(id)sender
 {
-    NSArray* permissions = @[@"email", @"user_friends"];
-    
-//    [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Logging in"];
-    [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Logging in..." progressType:PGProgressHUDTypeDefault];
-    [PFFacebookUtils logInWithPermissions:permissions block:^(PFUser *user, NSError *error) {
-        [[PGProgressHUD sharedInstance] hide:YES];
-        //        [ActivityView hide];
-        if (!user) {
-            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Facebook error" message:@"To use you Facebook account with this app, open Settings > Facebook and make sure this app is turned on." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [alert show];
-        } else {
-            //            [[FBRequest requestForMe] startWithCompletionHandler:^(FBRequestConnection *connection, id<FBGraphUser> result, NSError *error) {
-            //                DLog(@"%@", result);
-            //            }];
+    [UIAlertView showWithTitle:@"GoCandid" message:@"We will never post anything on Facebook without your permission. By clicking 'I Agree', you agree to GoCandid's terms." cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"I Agree", @"Read Terms"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        
+        if (buttonIndex == 1) {
+            //Agree
+            NSArray* permissions = @[@"email", @"user_friends"];
             
-            [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-                
-                if (!error) {
+            [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Logging in..." progressType:PGProgressHUDTypeDefault];
+            [PFFacebookUtils logInWithPermissions:permissions block:^(PFUser *user, NSError *error) {
+                [[PGProgressHUD sharedInstance] hide:YES];
+                if (!user) {
+                    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Facebook error" message:@"To use you Facebook account with this app, open Settings > Facebook and make sure this app is turned on." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                    [alert show];
+                } else {
                     
-                    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
-                    
-                    [self setMainView];
-                    
-                    //                    [[PFUser currentUser] setObject:result[@""] forKey:kPFUser_Username];
-                    [[PFUser currentUser] setObject:result[@"name"] forKey:kPFUser_Name];
-                    if ([[PFUser currentUser] objectForKey:kPFUser_FBID] == NULL) {
-                        DLog(@"First Time");
-                        [self notifyFriendsViaPushThatIJoined];
-                        //                        [self notifyFriendsViaEmailThatIJoined];
-                    }
-                    [[PFUser currentUser] setObject:result[@"id"] forKey:kPFUser_FBID];
-                    if (result[@"email"] != NULL) {
-                        [[PFUser currentUser] setObject:result[@"email"] forKey:kPFUser_Email];
-                    }
-                    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                        if (error) {
-                            //                            [GAI trackEventWithCategory:@"pf_user" action:@"save_in_background" label:error.description value:result[@"id"]];
-                        }
-                    }];
-                    
-                    //If there is no picture for user, download it from Facebook
-                    if (![PFUser currentUser][kPFUser_Picture]) {
-                        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-                            NSData* imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://graph.facebook.com/%@/picture?width=500", result[@"id"]]]];
+                    [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+                        
+                        if (!error) {
                             
-                            PFFile* imageFile = [PFFile fileWithName:@"profile.jpg" data:imgData];
-                            [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                                
-                                [[PFUser currentUser] setObject:imageFile forKey:kPFUser_Picture];
-                                [[PFUser currentUser] saveInBackground];
+                            [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
+                            
+                            [self setMainView];
+                            
+                            [[PFUser currentUser] setObject:result[@"name"] forKey:kPFUser_Name];
+                            if ([[PFUser currentUser] objectForKey:kPFUser_FBID] == NULL) {
+                                DLog(@"First Time");
+                                [self notifyFriendsViaPushThatIJoined];
+                            }
+                            [[PFUser currentUser] setObject:result[@"id"] forKey:kPFUser_FBID];
+                            if (result[@"email"] != NULL) {
+                                [[PFUser currentUser] setObject:result[@"email"] forKey:kPFUser_Email];
+                            }
+                            [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                if (error) {
+                                    //                            [GAI trackEventWithCategory:@"pf_user" action:@"save_in_background" label:error.description value:result[@"id"]];
+                                }
                             }];
-                        });
-                    }
-                    
-                    [[PFInstallation currentInstallation] setObject:[PFUser currentUser] forKey:kPFInstallation_Owner];
-                    [[PFInstallation currentInstallation] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                        DLog(@"%@", error);
+                            
+                            //If there is no picture for user, download it from Facebook
+                            if (![PFUser currentUser][kPFUser_Picture]) {
+                                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                                    NSData* imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://graph.facebook.com/%@/picture?width=500", result[@"id"]]]];
+                                    
+                                    PFFile* imageFile = [PFFile fileWithName:@"profile.jpg" data:imgData];
+                                    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                        
+                                        [[PFUser currentUser] setObject:imageFile forKey:kPFUser_Picture];
+                                        [[PFUser currentUser] saveInBackground];
+                                    }];
+                                });
+                            }
+                            
+                            [[PFInstallation currentInstallation] setObject:[PFUser currentUser] forKey:kPFInstallation_Owner];
+                            [[PFInstallation currentInstallation] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                DLog(@"%@", error);
+                            }];
+                        }
                     }];
                 }
             }];
+        } else if (buttonIndex == 2) {
+            //Read Terms
+        
+            WebViewController* webViewContr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"WebViewController"];
+            webViewContr.title = @"Terms of Use";
+            webViewContr.url = [NSURL URLWithString:@"http://appikon.com/GoCandid/ToS.html"];
+            webViewContr.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissTermsView)];
+            UINavigationController* navC = [[UINavigationController alloc] initWithRootViewController:webViewContr];
+            [self presentViewController:navC animated:YES completion:nil];
         }
     }];
+}
+
+-(void)dismissTermsView
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)notifyFriendsViaPushThatIJoined
@@ -240,7 +255,7 @@
             PFQuery* userQuery = [PFUser query];
             [userQuery whereKey:kPFUser_FBID containedIn:recipients];
             [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-                                
+                
                 NSString* pushMessage = [NSString stringWithFormat:@"Your friend %@ just joined GoCandid!", [PFUser currentUser][kPFUser_Name]];
                 [PGParseHelper sendPushToUsers:objects pushText:pushMessage];
             }];
