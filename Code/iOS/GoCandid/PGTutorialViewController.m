@@ -62,7 +62,7 @@
         if (reachedPage == 3) {
             NSArray* array = @[self.iv1.image, self.iv2.image, self.iv3.image];
             self.iv3.animationImages = array;
-            self.iv3.animationDuration = 2;
+            self.iv3.animationDuration = 1;
             [self.iv3 startAnimating];
         }
     }];
