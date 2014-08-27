@@ -15,6 +15,7 @@
 #import <IDMPhotoBrowser.h>
 #import "UIImage+MyUIImage.h"
 #import "PGSettingsViewController.h"
+#import "GCSharePost.h"
 
 @interface PGProfileViewController ()<PGFeedTableViewDelegate>
 
@@ -292,40 +293,50 @@
 
 -(void)tableView:(PGFeedTableView *)tableView moreButtonClicked:(NSIndexPath *)indexPath dataObject:(id)object
 {
+    
+    UIActionSheet* sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:nil cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil, nil];
+    
+    [sheet addButtonWithTitle:@"Share"];
     if ([[object[kPFSelfie_Owner] valueForKey:kPFObjectId] isEqualToString:[PFUser currentUser].objectId]) {
-        
-        [UIActionSheet showInView:self.view.window withTitle:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles:@[@"Share"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
-            DLog(@"tapped");
+        sheet.destructiveButtonIndex = [sheet addButtonWithTitle:@"Delete"];
+    }
+    sheet.cancelButtonIndex = [sheet addButtonWithTitle:@"Cancel"];
+    
+    sheet.tapBlock = ^(UIActionSheet* actionSheet, NSInteger buttonIndex){
+        if (buttonIndex == actionSheet.destructiveButtonIndex) {
+            //Delete
+            DLog(@"Delete");
+        [UIActionSheet showInView:self.view.window withTitle:@"Are you sure?" cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@[@"Yes"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
             if (buttonIndex == 0) {
-                //Delete
-                [UIActionSheet showInView:self.view.window withTitle:@"Are you sure?" cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@[@"Yes"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
-                    if (buttonIndex == 0) {
-                        //Yes
-                        [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                            if (succeeded) {
-                                [[PGProgressHUD sharedInstance] showInView:self.navigationController.view withText:@"Deleted" hideAfter:1.0 progressType:PGProgressHUDTypeCheck];
-                            }
-                            [self getDataAppend:NO];
-                        }];
+                [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (succeeded) {
+                        [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Deleted" hideAfter:1.0 progressType:PGProgressHUDTypeCheck];
                     }
+                    [self getDataAppend:NO];
                 }];
             }
-            if (buttonIndex == 1) {
-                //Share
-                PFObject* pfObject = (PFObject*)object;
-                PFFile* file = pfObject[kPFSelfie_Selfie];
-                DLog(@"%@",file.url);
-                [self shareText:pfObject[kPFSelfie_Caption] andImage:nil andUrl:nil andData:[file getData]];
-            }
         }];
-    } else {
-        [UIActionSheet showInView:self.view.window withTitle:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@[@"Share"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
-            if (buttonIndex == 0) {
-                PFFile* file = object[kPFSelfie_Selfie];
-                [self shareText:object[kPFSelfie_Caption] andImage:nil andUrl:nil andData:[file getData]];
-            }
-        }];
-    }
+        } else if (buttonIndex == 0) {
+            //Share
+            DLog(@"Share");
+            [UIActionSheet showInView:self.view.window withTitle:@"Share" cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@[@"Facebook", @"Twitter"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+                if (buttonIndex == 0) {
+                    //Facebook
+                } else if (buttonIndex == 1) {
+                    //Twitter
+                    [GCSharePost postOnTwitterObject:object completion:^(BOOL success) {
+                        if (success) {
+                            [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Posted" hideAfter:1.0 progressType:PGProgressHUDTypeCheck];
+                        } else {
+                            [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Could not post" hideAfter:1.0 progressType:PGProgressHUDTypeError];
+                        }
+                    }];
+                }
+            }];
+        }
+    };
+
+    [sheet showInView:self.view.window];
 }
 
 -(void)tableView:(PGFeedTableView *)tableView didTapOnKeyword:(NSString *)keyword
@@ -335,25 +346,25 @@
 
 #pragma mark -
 
-- (void)shareText:(NSString *)text andImage:(UIImage *)image andUrl:(NSURL *)url andData:(NSData*)data
-{
-    NSMutableArray *sharingItems = [NSMutableArray new];
-    
-    if (text) {
-        [sharingItems addObject:text];
-    }
-    if (image) {
-        [sharingItems addObject:image];
-    }
-    if (url) {
-        [sharingItems addObject:url];
-    }
-    if (data) {
-        [sharingItems addObject:data];
-    }
-    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:sharingItems applicationActivities:nil];
-    [self presentViewController:activityController animated:YES completion:nil];
-}
+//- (void)shareText:(NSString *)text andImage:(UIImage *)image andUrl:(NSURL *)url andData:(NSData*)data
+//{
+//    NSMutableArray *sharingItems = [NSMutableArray new];
+//    
+//    if (text) {
+//        [sharingItems addObject:text];
+//    }
+//    if (image) {
+//        [sharingItems addObject:image];
+//    }
+//    if (url) {
+//        [sharingItems addObject:url];
+//    }
+//    if (data) {
+//        [sharingItems addObject:data];
+//    }
+//    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:sharingItems applicationActivities:nil];
+//    [self presentViewController:activityController animated:YES completion:nil];
+//}
 
 #pragma mark -
 
