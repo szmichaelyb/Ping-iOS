@@ -376,8 +376,20 @@
                 cell.totalLikes.text = [NSString stringWithFormat:@"%d likes", number];
             }];
         }];
+        [self sendPushToOwner:object[kPFSelfie_Owner]];
         [self showLikeButtonAnimationInCell:cell];
     }
+}
+
+-(void)sendPushToOwner:(PFUser*)user
+{
+    PFQuery* installationQuery = [PFInstallation query];
+    [installationQuery whereKey:@"owner" equalTo:user];
+    
+    PFPush *push = [[PFPush alloc] init];
+    [push setQuery:installationQuery];
+    [push setMessage:[NSString stringWithFormat:@"%@ liked your post.", [PFUser currentUser][kPFUser_Name]]];
+    [push sendPushInBackground];
 }
 
 #pragma mark -
