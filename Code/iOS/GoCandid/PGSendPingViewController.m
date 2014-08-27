@@ -111,9 +111,9 @@
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
     NSUInteger newLength = [textView.text length] + [text length] - range.length;
-    if (newLength <= 140) {
+    if (newLength <= 117) {
         [UIView setAnimationsEnabled:NO];
-        [self.charRemainig setTitle:[NSString stringWithFormat:@"%d", 139 - self.captionTV.text.length] forState:UIControlStateNormal];
+        [self.charRemainig setTitle:[NSString stringWithFormat:@"%d", 116 - self.captionTV.text.length] forState:UIControlStateNormal];
         [UIView setAnimationsEnabled:YES];
         return YES;
     } else {
@@ -233,8 +233,8 @@
     if (self.facebookButton.isSelected) {
         //Share
         PFFile* file = object[kPFSelfie_Selfie];
-        NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:object[kPFSelfie_Caption], @"caption",
-                                       file.url, @"picture",
+        NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:object[kPFSelfie_Caption], @"name",
+                                       file.url, @"link",
                                        nil];
         
         [FBRequestConnection startWithGraphPath:@"/me/feed" parameters:params HTTPMethod:@"POST" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
@@ -262,7 +262,16 @@
                 NSArray* accountsArray = [accountStore accountsWithAccountType:accountType];
                 if (accountsArray.count > 0) {
                     ACAccount* twitterAccount = [accountsArray objectAtIndex:0];
-                    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%@ #GoCandidApp http://itunes.apple.com/app/id898275446", _captionTV.text], @"status", @"true", @"wrap_links", nil];
+                    
+                    NSString* status;
+                    if (_captionTV.text.length <= 104) {
+                        status = [NSString stringWithFormat:@"%@ #GoCandidApp", _captionTV.text];
+                    } else {
+                        status = _captionTV.text;
+                    }
+                    
+                    DLog(@"Status Length: %d", status.length);
+                    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:status, @"status", @"true", @"wrap_links", nil];
                     
                     SLRequest* postRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodPOST URL:[NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/update_with_media.json"] parameters:dict];
                     NSData* tempData = [NSData dataWithContentsOfURL:[NSURL URLWithString:file.url]];
