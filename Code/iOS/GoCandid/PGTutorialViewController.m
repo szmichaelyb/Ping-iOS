@@ -240,15 +240,9 @@
             PFQuery* userQuery = [PFUser query];
             [userQuery whereKey:kPFUser_FBID containedIn:recipients];
             [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-                
-                PFQuery* installationQuery = [PFInstallation query];
-                [installationQuery whereKey:@"owner" containedIn:objects];
-                
-                PFPush *push = [[PFPush alloc] init];
-                [push setQuery:installationQuery];
-                [push setMessage:[NSString stringWithFormat:@"Your friend %@ just joined GoCandid!", [PFUser currentUser][kPFUser_Name]]];
-                [push sendPushInBackground];
-                
+                                
+                NSString* pushMessage = [NSString stringWithFormat:@"Your friend %@ just joined GoCandid!", [PFUser currentUser][kPFUser_Name]];
+                [PGParseHelper sendPushToUsers:objects pushText:pushMessage];
             }];
         }
     }];

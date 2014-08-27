@@ -23,4 +23,6 @@
 
 +(void)profilePhotoUser:(PFUser*)user completion:(void (^) (UIImage* image))block;
 
++(void)sendPushToUsers:(NSArray*)users pushText:(NSString*)text;
+
 @end

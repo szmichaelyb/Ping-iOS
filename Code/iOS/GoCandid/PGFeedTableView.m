@@ -383,13 +383,8 @@
 
 -(void)sendPushToOwner:(PFUser*)user
 {
-    PFQuery* installationQuery = [PFInstallation query];
-    [installationQuery whereKey:@"owner" equalTo:user];
-    
-    PFPush *push = [[PFPush alloc] init];
-    [push setQuery:installationQuery];
-    [push setMessage:[NSString stringWithFormat:@"%@ liked your post.", [PFUser currentUser][kPFUser_Name]]];
-    [push sendPushInBackground];
+    NSString* pushMessage = [NSString stringWithFormat:@"%@ liked your post.", [PFUser currentUser][kPFUser_Name]];
+    [PGParseHelper sendPushToUsers:@[user] pushText:pushMessage];
 }
 
 #pragma mark -

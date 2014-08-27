@@ -36,6 +36,7 @@
                 if (block) {
                     block(succeeded);
                 }
+                [PGParseHelper sendPushToUsers:@[followUser] pushText:[NSString stringWithFormat:@"%@ is now following you.", [PFUser currentUser][kPFUser_Name]]];
             }];
         }
     }];
@@ -216,6 +217,19 @@
         block(img);
 //        [cell.thumbIV setImage:[UIImage imageWithData:data]];
     }];
+}
+
+#pragma mark - PFPush Helpers
+
++(void)sendPushToUsers:(NSArray *)users pushText:(NSString *)text
+{
+    PFQuery* installationQuery = [PFInstallation query];
+    [installationQuery whereKey:@"owner" containedIn:users];
+
+    PFPush *push = [[PFPush alloc] init];
+    [push setQuery:installationQuery];
+    [push setMessage:text];
+    [push sendPushInBackground];
 }
 
 @end

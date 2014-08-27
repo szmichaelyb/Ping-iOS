@@ -66,12 +66,6 @@
 
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
-    DLog(@"%@", self.window.rootViewController);
-    UITabBarController* tab = (UITabBarController*)self.window.rootViewController;
-    NSString* badge = [NSString stringWithFormat:@"%@", [userInfo[@"aps"] objectForKey:@"badge"]];
-    [tab.tabBar.items[0] setBadgeValue:badge];
-    
-    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"notification" object:nil userInfo:userInfo];
     
     if ([UIApplication sharedApplication].applicationState != UIApplicationStateActive) {
@@ -80,19 +74,13 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"notificationTapped" object:nil userInfo:userInfo];
     } else {
         [[InAppNotificationTapListener sharedInAppNotificationTapListener] startObserving];
-//        UIViewController* currentVC = ((UINavigationController*)((UITabBarController*)self.window.rootViewController).selectedViewController).visibleViewController;
-//        
-//        if (![currentVC isKindOfClass:[PGFeedViewController class]]) {
-//            
-//            //                if (userInfo[kNotificationSender]) {
-//            [[InAppNotificationView sharedInstance] notifyWithUserInfo:userInfo andTouchBlock:^(InAppNotificationView *view) {
-//                [[NSNotificationCenter defaultCenter] postNotificationName:@"notificationTapped" object:nil userInfo:userInfo];
-//            }];
-//            //                }
-//        }
+
+        DLog(@"%@", userInfo);
         
+        [[InAppNotificationView sharedInstance] notifyWithUserInfo:userInfo andTouchBlock:^(InAppNotificationView *view) {
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"notificationTapped" object:nil userInfo:userInfo];
+        }];
     }
-    //    [self.window.rootViewController.tabBarController.tabBar.items[0] setBadgeValue:@"2"];
 }
 
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
