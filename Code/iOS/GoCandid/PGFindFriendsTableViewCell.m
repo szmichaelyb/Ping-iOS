@@ -51,12 +51,16 @@
 {
     if (status == FollowButtonStateFollowing) {
         [_actionButton setTitle:@"Following" forState:UIControlStateNormal];
+        _actionButton.enabled = true;
     } else if (status == FollowButtonStateNotFollowing) {
         [_actionButton setTitle:@"Follow" forState:UIControlStateNormal];
+        _actionButton.enabled = true;
     } else if (status == FollowButtonStateInvite) {
         [_actionButton setTitle:@"Invite" forState:UIControlStateNormal];
+        _actionButton.enabled = true;
     } else {
         [_actionButton setTitle:@"Invited" forState:UIControlStateNormal];
+        _actionButton.enabled = false;
     }
     _followButtonStatus = status;
 }

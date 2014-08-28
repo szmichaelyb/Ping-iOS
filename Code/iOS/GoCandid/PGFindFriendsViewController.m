@@ -10,6 +10,7 @@
 #import "PGFindFriendsTableViewCell.h"
 #import <AddressBook/AddressBook.h>
 #import <UIActionSheet+Blocks/UIActionSheet+Blocks.h>
+#import "PGProgressHUD.h"
 
 @interface PGFindFriendsViewController ()<PGFindFriendsCellDelegate>
 
@@ -290,6 +291,16 @@
     } else {
         cell.nameLabel.text = _deviceContactsNotUsingApp[indexPath.row][@"name"];
         [cell setFollowButtonStatus:FollowButtonStateInvite];
+        
+        NSArray* array = [PFUser currentUser][kPFUser_Invited];
+        if ([array containsObject:_deviceContactsNotUsingApp[indexPath.row][@"email"] ]) {
+            [cell setFollowButtonStatus:FollowButtonStateInvited];
+//            [cell.inviteButton setTitle:NSLocalizedString(@"Invited", nil) forState:UIControlStateDisabled];
+        } else {
+//            cell.inviteButton.enabled = true;
+            [cell setFollowButtonStatus:FollowButtonStateInvite];
+        }
+
     }
     
     //    cell.nameLabel.text  = _deviceContactsDatasource[indexPath.
@@ -326,7 +337,53 @@
         }];
     } else if (cell.followButtonStatus == FollowButtonStateInvite) {
         //Invite
+        NSString* recipientEmail = _deviceContactsNotUsingApp[indexPath.row][@"email"];
+        if (DEBUGMODE) {
+            recipientEmail = @"rtayal11@gmail.com";
+        }
+        
+        if ([self NSStringIsValidEmail:recipientEmail]) {
+            NSString* recipientName = _deviceContactsNotUsingApp[indexPath.row][@"name"];
+            NSDictionary* params = @{@"toEmail": recipientEmail, @"toName": recipientName, @"fromEmail": @"downloadvcinity@appikon.com", @"fromName": [PFUser currentUser][kPFUser_Name], @"text": @"Hey, \n\nI just downloaded GoCandid on my iPhone. \n\nIt is a fun app which lets you take animated selfies. The signup is very easy and simple. You don't have to remember anything. \n\nDownload it now on the AppStore to start chatting. https://itunes.apple.com/app/id898275446", @"subject":@"GoCandid App for iPhone"};
+            [PFCloud callFunctionInBackground:@"sendMail" withParameters:params block:^(id object, NSError *error) {
+                DLog(@"%@", object);
+                if (!error) {
+                    //Show Success
+                    [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Invited" hideAfter:1. progressType:PGProgressHUDTypeCheck];
+//                    [GAI trackEventWithCategory:kGAICategoryButton action:@"invite" label:@"success" value:nil];
+                    
+                    //Save email to invited coloumn
+                    NSMutableArray* array = [PFUser currentUser][kPFUser_Invited];
+                    if (!array) {
+                        array = [[NSMutableArray alloc] init];
+                    }
+                    if (![array containsObject:recipientEmail]) {
+                        [array addObject:recipientEmail];
+                        [[PFUser currentUser] setObject:array forKey:kPFUser_Invited];
+                        [[PFUser currentUser] saveEventually];
+                    }
+                } else {
+                    //Show Error
+                    [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Not sent" hideAfter:1.0 progressType:PGProgressHUDTypeError];
+//                    [DropDownView showInViewController:self withText:NSLocalizedString(@"Invitation could not be sent!", nil) height:DropDownViewHeightTall hideAfterDelay:2];
+//                    [GAI trackEventWithCategory:kGAICategoryButton action:@"invite" label:@"failed" value:nil];
+                }
+            }];
+        } else {
+            [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Not a valid email address" hideAfter:1. progressType:PGProgressHUDTypeError];
+//            [DropDownView showInViewController:self withText:NSLocalizedString(@"Not a valid email address", nil) height:DropDownViewHeightTall hideAfterDelay:2];
+        }
     }
+}
+
+-(BOOL)NSStringIsValidEmail:(NSString*)checkString
+{
+    BOOL stricterFilter = YES; // Discussion http://blog.logichigh.com/2010/09/02/validating-an-e-mail-address/
+    NSString *stricterFilterString = @"[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}";
+    NSString *laxString = @".+@([A-Za-z0-9]+\\.)+[A-Za-z]{2}[A-Za-z]*";
+    NSString *emailRegex = stricterFilter ? stricterFilterString : laxString;
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [emailTest evaluateWithObject:checkString];
 }
 
 @end
