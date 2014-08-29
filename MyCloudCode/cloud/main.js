@@ -141,6 +141,25 @@ Parse.Cloud.define("sendMail", function(request, response) {
 	});
 });
 
+
+//Schedule job
+Parse.Cloud.job("notification", function(request, status) {
+	Parse.Cloud.useMasterKey();
+	Parse.Push.send({
+		channels: ["channel"],
+		data: {			
+			alert:"test"
+		}
+	}, {
+		success: function() {
+			status.success("Push sent to all users");
+		},
+		error: function(error) {
+			status.error("Error sending pushes: " + error.code + ": " + error.message);
+		}
+	});
+});
+
 Parse.Cloud.define("hello", function(request, response) {
   response.success("Hello world!");
 });
