@@ -21,6 +21,29 @@ Parse.Cloud.beforeSave("Selfies", function(request, response) {
     response.success();
 });
 
+Parse.Cloud.afterSave("Selfies", function(request) {
+
+//Send Push to User when their work is featured.
+	var isFeatured = request.object.get("featured");
+	if(isFeatured) {
+		query = new Parse.Query(Parse.Installation);
+		query.equalTo("owner", request.object.get("owner"));		
+		Parse.Push.send({
+			where: query,
+			data: {
+				alert: "Woohoo!!! Your post has been featured. Keep creating GoCandids."
+			}
+		}, {
+			success: function() {
+				console.log("Success");
+			},
+			error: function(error) {
+				console.error("Error");
+			}
+		});
+	}
+});
+
 //Delete activities when a post is deleted
 Parse.Cloud.afterDelete("Selfies", function(request) {	
 	query = new Parse.Query("Activity");

@@ -34,9 +34,7 @@
         // Set custom view mode
         HUD.mode = MBProgressHUDModeCustomView;
     }
-	
-
-	
+    
 	HUD.delegate = self;
 	HUD.labelText = text;
 	

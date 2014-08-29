@@ -249,7 +249,7 @@
             [_myDelegate tableView:self didTapOnKeyword:[string lowercaseString]];
         }
     }];
-    if (_datasource[indexPath.row][kPFSelfie_Featured]) {
+    if ([_datasource[indexPath.row][kPFSelfie_Featured] boolValue]) {
         cell.featuredView.hidden = NO;
     } else {
         cell.featuredView.hidden = YES;
