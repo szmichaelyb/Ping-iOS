@@ -56,6 +56,7 @@
     if ([PFUser currentUser]) {
         [currentInstallation setObject:[PFUser currentUser] forKey:kPFInstallation_Owner];
     }
+    [currentInstallation setObject:[PFUser currentUser] forKey:kPFInstallation_Owner];
     [currentInstallation saveEventually:^(BOOL succeeded, NSError *error) {
         if (error) {
             //            DLog(@"Push Registration Error: %@", error);

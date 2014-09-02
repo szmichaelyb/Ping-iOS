@@ -216,10 +216,10 @@
                                 });
                             }
                             
-                            [[PFInstallation currentInstallation] setObject:[PFUser currentUser] forKey:kPFInstallation_Owner];
-                            [[PFInstallation currentInstallation] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                                DLog(@"%@", error);
-                            }];
+//                            [[PFInstallation currentInstallation] setObject:[PFUser currentUser] forKey:kPFInstallation_Owner];
+//                            [[PFInstallation currentInstallation] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//                                DLog(@"%@", error);
+//                            }];
                         }
                     }];
                 }
