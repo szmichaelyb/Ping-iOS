@@ -33,12 +33,12 @@
  * Initialize with a base64-encoded master key.
  * This key and the current derivation function will be used to generate the encryption key and the mac key.
  */
-- (instancetype)initWithMasterKey:(NSString *)masterKey;
+- (id)initWithMasterKey:(NSString *)masterKey;
 
 /**
  * Initialize with base64-encoded encryption key and mac key
  */
-- (instancetype)initWithEncryptionKey:(NSString *)encryptionKey macKey:(NSString *)macKey;
+- (id)initWithEncryptionKey:(NSString *)encryptionKey macKey:(NSString *)macKey;
 
 /**
  * Encrypt plainText and return the base64 encoded result. MAC computation involves additionalDataToSign

@@ -2,9 +2,9 @@ platform:ios, '7.0'
 
 inhibit_all_warnings!
 
-pod 'Parse', '~> 1.2.9'
+pod 'Parse', '1.2.9'
 pod 'pop', '~> 1.0.4'
-pod 'STZPullToRefresh', '~> 0.0.1'
+#epod 'STZPullToRefresh', '~> 0.0.1'
 pod 'ZGParallelView', '~> 0.1.6'
 pod 'iRate', '~> 1.9.3'
 pod 'IDMPhotoBrowser'

@@ -1,1 +1,1 @@
-../../../Facebook-iOS-SDK/src/UI/FBFriendPickerCacheDescriptor.h
+../../../Facebook-iOS-SDK/src/FBFriendPickerCacheDescriptor.h

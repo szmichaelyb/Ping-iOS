@@ -48,12 +48,6 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 3
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 1
 
-// Bolts
-#define COCOAPODS_POD_AVAILABLE_Bolts
-#define COCOAPODS_VERSION_MAJOR_Bolts 1
-#define COCOAPODS_VERSION_MINOR_Bolts 1
-#define COCOAPODS_VERSION_PATCH_Bolts 2
-
 // DACircularProgress
 #define COCOAPODS_POD_AVAILABLE_DACircularProgress
 #define COCOAPODS_VERSION_MAJOR_DACircularProgress 2
@@ -81,8 +75,8 @@
 // Facebook-iOS-SDK
 #define COCOAPODS_POD_AVAILABLE_Facebook_iOS_SDK
 #define COCOAPODS_VERSION_MAJOR_Facebook_iOS_SDK 3
-#define COCOAPODS_VERSION_MINOR_Facebook_iOS_SDK 17
-#define COCOAPODS_VERSION_PATCH_Facebook_iOS_SDK 0
+#define COCOAPODS_VERSION_MINOR_Facebook_iOS_SDK 5
+#define COCOAPODS_VERSION_PATCH_Facebook_iOS_SDK 3
 
 // FormatterKit
 #define COCOAPODS_POD_AVAILABLE_FormatterKit
@@ -166,7 +160,7 @@
 #define COCOAPODS_POD_AVAILABLE_Parse
 #define COCOAPODS_VERSION_MAJOR_Parse 1
 #define COCOAPODS_VERSION_MINOR_Parse 2
-#define COCOAPODS_VERSION_PATCH_Parse 20
+#define COCOAPODS_VERSION_PATCH_Parse 9
 
 // SDWebImage
 #define COCOAPODS_POD_AVAILABLE_SDWebImage
@@ -185,12 +179,6 @@
 #define COCOAPODS_VERSION_MAJOR_STTweetLabel 3
 #define COCOAPODS_VERSION_MINOR_STTweetLabel 1
 #define COCOAPODS_VERSION_PATCH_STTweetLabel 12
-
-// STZPullToRefresh
-#define COCOAPODS_POD_AVAILABLE_STZPullToRefresh
-#define COCOAPODS_VERSION_MAJOR_STZPullToRefresh 0
-#define COCOAPODS_VERSION_MINOR_STZPullToRefresh 0
-#define COCOAPODS_VERSION_PATCH_STZPullToRefresh 1
 
 // UIActionSheet+Blocks
 #define COCOAPODS_POD_AVAILABLE_UIActionSheet_Blocks

@@ -14,12 +14,15 @@
 #import <iRate/iRate.h>
 #import "UIDevice-Hardware.h"
 #import <UIActionSheet+Blocks/UIActionSheet+Blocks.h>
+#import <UIAlertView+Blocks/UIAlertView+Blocks.h>
 
 @interface PGSettingsViewController ()
 
 @property (nonatomic, strong) IBOutlet UILabel* tellAFriendLbl;
 @property (nonatomic, strong) IBOutlet UILabel* helpLbl;
 @property (nonatomic, strong) IBOutlet UILabel* reportAbuseLbl;
+@property (nonatomic, strong) IBOutlet UILabel* getFeaturedLbl;
+
 @property (nonatomic, strong) IBOutlet UILabel* sendFeedbackLbl;
 @property (nonatomic, strong) IBOutlet UILabel* termsLbl;
 @property (nonatomic, strong) IBOutlet UILabel* logoutLbl;
@@ -29,6 +32,8 @@
 @property (strong) IBOutlet UIButton* appstoreButton;
 
 @property (strong) IBOutlet UILabel* madeWithLbl;
+
+@property (nonatomic, strong) MFMailComposeViewController* getFeaturedMailVC;
 
 -(IBAction)likeOnFacebook:(id)sender;
 -(IBAction)followOnTwitter:(id)sender;
@@ -49,6 +54,8 @@
     _tellAFriendLbl.font = FONT_GEOSANSLIGHT(FONT_SIZE_SMALL);
     _helpLbl.font = FONT_GEOSANSLIGHT(FONT_SIZE_SMALL);
     _reportAbuseLbl.font = FONT_GEOSANSLIGHT(FONT_SIZE_SMALL);
+    _getFeaturedLbl.font = FONT_GEOSANSLIGHT(FONT_SIZE_SMALL);
+    
     _sendFeedbackLbl.font = FONT_GEOSANSLIGHT(FONT_SIZE_SMALL);
     _termsLbl.font = FONT_GEOSANSLIGHT(FONT_SIZE_SMALL);
     _logoutLbl.font = FONT_GEOSANSLIGHT(FONT_SIZE_SMALL);
@@ -168,6 +175,7 @@
             sheet.tag = ActionSheetTypeShare;
             [sheet showInView:self.view.window];
         } else if (indexPath.row == 1) {
+            //Help
             MFMailComposeViewController* mailVC = [[MFMailComposeViewController alloc] init];
             mailVC.mailComposeDelegate = self;
             //            mailVC.view.tintColor = [UIColor whiteColor];
@@ -185,6 +193,20 @@
             [issueVC setSubject:@"Reporting abuse content from GoCandid"];
             [issueVC setToRecipients:@[@"reportabuse@appikon.com"]];
             [self presentViewController:issueVC animated:YES completion:nil];
+        } else if (indexPath.row == 3) {
+            //Get featured
+            [UIAlertView showWithTitle:@"Featured" message:@"We pick the best posts to show up as featured. If you like to get your post featured for a nominal charge, contact us." cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"Contact"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                DLog(@"%d", buttonIndex);
+                if (buttonIndex == 0) {
+
+                } else if (buttonIndex == 1) {
+                    _getFeaturedMailVC = [[MFMailComposeViewController alloc]init];
+                    _getFeaturedMailVC.mailComposeDelegate = self;
+                    [_getFeaturedMailVC setSubject:@"Getting Featured Request from GoCandid"];
+                    [_getFeaturedMailVC setToRecipients:@[@"getfeatured@appikon.com"]];
+                    [self presentViewController:_getFeaturedMailVC animated:YES completion:nil];
+                }
+            }];
         }
     }
     if (indexPath.section == 1) {
@@ -279,6 +301,11 @@
 
 -(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
+    if (controller == _getFeaturedMailVC) {
+        if (result == MFMailComposeResultSent) {
+            [UIAlertView showWithTitle:@"Sent" message:@"Thanks for contacting us regarding getting your post featured. We will contact you very soon." cancelButtonTitle:nil otherButtonTitles:@[@"Ok"] tapBlock:nil];
+        }
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

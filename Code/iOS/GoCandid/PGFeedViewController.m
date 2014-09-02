@@ -27,7 +27,7 @@
 @property (nonatomic, strong) IBOutlet  UIView* segBGBlurView;
 
 //@property (strong, nonatomic) NSMutableArray* datasource;
-@property (nonatomic, strong) STZPullToRefresh *pullToRefresh;
+//@property (nonatomic, strong) STZPullToRefresh *pullToRefresh;
 @property (nonatomic, strong) PFUser* feedUser;
 
 -(IBAction)segChanged:(UISegmentedControl*)sender;
@@ -61,14 +61,19 @@
 //    self.tableView.contentInset =  UIEdgeInsetsMake(0, 0, self.tabBarController.tabBar.frame.size.height + refreshBarY, 0);
 //    [self.view addSubview:self.tableView];
     
-    STZPullToRefreshView *refreshView = [[STZPullToRefreshView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 3)];
-    [self.view addSubview:refreshView];
+//    STZPullToRefreshView *refreshView = [[STZPullToRefreshView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 3)];
+//    [self.view addSubview:refreshView];
     
-    self.pullToRefresh = [[STZPullToRefresh alloc] initWithTableView:self.tableView refreshView:refreshView tableViewDelegate:self.tableView];
-    self.tableView.delegate = self.pullToRefresh;
-    self.pullToRefresh.delegate = self;
     
-    [self.pullToRefresh startRefresh];
+//    self.pullToRefresh = [[STZPullToRefresh alloc] initWithTableView:self.tableView refreshView:refreshView tableViewDelegate:self.tableView];
+//    self.tableView.delegate = self.pullToRefresh;
+//    self.pullToRefresh.delegate = self;
+    
+//    [self.pullToRefresh startRefresh];
+    UIRefreshControl* refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(pullToRefreshDidStart:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:refreshControl];
+    [self.tableView getFeedForUser:_feedUser completion:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -96,11 +101,12 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)pullToRefreshDidStart
+-(void)pullToRefreshDidStart:(UIRefreshControl*)refreshControl
 {
     [self.tableView refreshDatasource];
     [self.tableView getFeedForUser:_feedUser completion:^(bool finished) {
-        [self.pullToRefresh finishRefresh];
+//        [self.pullToRefresh finishRefresh];
+        [refreshControl endRefreshing];
     }];
 }
 

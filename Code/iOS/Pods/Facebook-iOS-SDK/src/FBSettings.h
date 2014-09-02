@@ -17,85 +17,63 @@
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CGBase.h>
 
-#import "FBSDKMacros.h"
-
 /*
  * Constants defining logging behavior.  Use with <[FBSettings setLoggingBehavior]>.
  */
 
 /*! Log requests from FBRequest* classes */
-FBSDK_EXTERN NSString *const FBLoggingBehaviorFBRequests;
+extern NSString *const FBLoggingBehaviorFBRequests;
 
 /*! Log requests from FBURLConnection* classes */
-FBSDK_EXTERN NSString *const FBLoggingBehaviorFBURLConnections;
+extern NSString *const FBLoggingBehaviorFBURLConnections;
 
 /*! Include access token in logging. */
-FBSDK_EXTERN NSString *const FBLoggingBehaviorAccessTokens;
+extern NSString *const FBLoggingBehaviorAccessTokens;
 
 /*! Log session state transitions. */
-FBSDK_EXTERN NSString *const FBLoggingBehaviorSessionStateTransitions;
+extern NSString *const FBLoggingBehaviorSessionStateTransitions;
 
 /*! Log performance characteristics */
-FBSDK_EXTERN NSString *const FBLoggingBehaviorPerformanceCharacteristics;
+extern NSString *const FBLoggingBehaviorPerformanceCharacteristics;
 
-/*! Log FBAppEvents interactions */
-FBSDK_EXTERN NSString *const FBLoggingBehaviorAppEvents;
-
-/*! Log Informational occurrences */
-FBSDK_EXTERN NSString *const FBLoggingBehaviorInformational;
-
-/*! Log cache errors. */
-FBSDK_EXTERN NSString *const FBLoggingBehaviorCacheErrors;
+/*! Log Insights interactions */
+extern NSString *const FBLoggingBehaviorInsights;
 
 /*! Log errors likely to be preventable by the developer. This is in the default set of enabled logging behaviors. */
-FBSDK_EXTERN NSString *const FBLoggingBehaviorDeveloperErrors;
+extern NSString *const FBLoggingBehaviorDeveloperErrors;
+
+@class FBGraphObject;
+
+/*! 
+ @typedef
+ 
+ @abstract Block type used to get install data that is returned by server when publishInstall is called
+ @discussion
+ */
+typedef void (^FBInstallResponseDataHandler)(FBGraphObject *response, NSError *error);
 
 /*!
  @typedef
-
+ 
  @abstract A list of beta features that can be enabled for the SDK. Beta features are for evaluation only,
  and are therefore only enabled for DEBUG builds. Beta features should not be enabled
  in release builds.
  */
 typedef enum : NSUInteger {
-    FBBetaFeaturesNone                  = 0,
+  FBBetaFeaturesNone                 = 0,
 #if defined(DEBUG) || defined(FB_BUILD_ONLY)
-    FBBetaFeaturesLikeButton            = 1 << 2,
+  FBBetaFeaturesShareDialog          = 1 << 0,
+  FBBetaFeaturesOpenGraphShareDialog = 1 << 1,
 #endif
 } FBBetaFeatures;
 
-/*!
- @typedef
- @abstract Indicates if this app should be restricted
- */
-typedef NS_ENUM(NSUInteger, FBRestrictedTreatment) {
-    /*! The default treatment indicating the app is not restricted. */
-    FBRestrictedTreatmentNO = 0,
-
-    /*! Indicates the app is restricted. */
-    FBRestrictedTreatmentYES = 1
-};
-
-/*!
- @class FBSettings
-
- @abstract Allows configuration of SDK behavior.
-*/
 @interface FBSettings : NSObject
 
 /*!
  @method
-
- @abstract Retrieve the current iOS SDK version.
-
- */
-+ (NSString *)sdkVersion;
-
-/*!
- @method
-
+ 
  @abstract Retrieve the current Facebook SDK logging behavior.
-
+ 
  */
 + (NSSet *)loggingBehavior;
 
@@ -110,55 +88,80 @@ typedef NS_ENUM(NSUInteger, FBRestrictedTreatment) {
  */
 + (void)setLoggingBehavior:(NSSet *)loggingBehavior;
 
+/*! @abstract Retreive the current auto publish behavior.  Defaults to YES. */
++ (BOOL)shouldAutoPublishInstall;
+
 /*!
  @method
 
- @abstract
- This method is deprecated -- App Events favors using bundle identifiers to this.
+ @abstract Sets whether the SDK will automatically publish an install to Facebook during first FBSession init
+ or on first network request to Facebook.
+
+ @param autoPublishInstall      If YES, automatically publish the install; if NO, do not.
  */
-+ (NSString *)appVersion __attribute__ ((deprecated("App Events favors use of bundle identifiers for version identification.")));
++ (void)setShouldAutoPublishInstall:(BOOL)autoPublishInstall;
 
+// For best results, call this function during app activation.
 /*!
  @method
 
- @abstract
- This method is deprecated -- App Events favors using bundle identifiers to this.
+ @abstract Manually publish an attributed install to the facebook graph. Calling this method will implicitly 
+ turn off auto-publish.  This method acquires the current attribution id from the facebook application, queries the
+ graph API to determine if the application has install attribution enabled, publishes the id, and records 
+ success to avoid reporting more than once.
+
+ @param appID A specific appID to publish an install for.  If nil, uses [FBSession defaultAppID].
  */
-+ (void)setAppVersion:(NSString *)appVersion __attribute__ ((deprecated("App Events favors use of bundle identifiers for version identification.")));
++ (void)publishInstall:(NSString *)appID;
 
 /*!
  @method
 
+ @abstract Manually publish an attributed install to the Facebook graph, and return the server response back in
+ the supplied handler.  Calling this method will implicitly turn off auto-publish.  This method acquires the 
+ current attribution id from the facebook application, queries the graph API to determine if the application 
+ has install attribution enabled, publishes the id, and records success to avoid reporting more than once.
+
+ @param appID   A specific appID to publish an install for.  If nil, uses [FBSession defaultAppID].
+ @param handler A block to call with the server's response.
+ */
++ (void)publishInstall:(NSString *)appID
+           withHandler:(FBInstallResponseDataHandler)handler;
+
+/*!
+ @method
+ 
  @abstract Retrieve the Client Token that has been set via [FBSettings setClientToken]
  */
 + (NSString *)clientToken;
 
 /*!
  @method
-
+ 
  @abstract Sets the Client Token for the Facebook App.  This is needed for certain API calls when made anonymously,
- without a user-based Session.
-
- @param clientToken  The Facebook App's "client token", which, for a given appid can be found in the Security
+ without a user-based Session. Calls to FBInsights logging events are examples of this, when there may 
+ have been no user login established.
+ 
+ @param clientToken  The Facebook App's "client token", which, for a given appid can be found in the Security 
  section of the Advanced tab of the Facebook App settings found at <https://developers.facebook.com/apps/[your-app-id]>
-
+ 
  */
 + (void)setClientToken:(NSString *)clientToken;
 
 /*!
  @method
-
+ 
  @abstract Set the default Facebook Display Name to be used by the SDK. This should match
  the Display Name that has been set for the app with the corresponding Facebook App ID, in
  the Facebook App Dashboard
-
+ 
  @param displayName The default Facebook Display Name to be used by the SDK.
  */
 + (void)setDefaultDisplayName:(NSString *)displayName;
 
 /*!
  @method
-
+ 
  @abstract Get the default Facebook Display Name used by the SDK. If not explicitly
  set, the default will be read from the application's plist.
  */
@@ -166,99 +169,69 @@ typedef NS_ENUM(NSUInteger, FBRestrictedTreatment) {
 
 /*!
  @method
-
+ 
  @abstract Set the default Facebook App ID to use for sessions. The SDK allows the appID
  to be overridden per instance in certain cases (e.g. per instance of FBSession)
-
+ 
  @param appID The default Facebook App ID to be used by the SDK.
  */
-+ (void)setDefaultAppID:(NSString *)appID;
++ (void)setDefaultAppID:(NSString*)appID;
 
 /*!
  @method
-
+ 
  @abstract Get the default Facebook App ID used by the SDK. If not explicitly
  set, the default will be read from the application's plist. The SDK allows the appID
  to be overridden per instance in certain cases (e.g. per instance of FBSession)
  */
-+ (NSString *)defaultAppID;
-
++ (NSString*)defaultAppID;
+ 
 /*!
  @method
-
- @abstract Set the default url scheme suffix used by the SDK.
-
+ 
+ @abstract Set the default url scheme suffix used by the SDK. The SDK allows the url
+ scheme suffix to be overridden per instance in certain cases (e.g. per instance of FBSession)
+ 
  @param urlSchemeSuffix The default url scheme suffix to be used by the SDK.
  */
-+ (void)setDefaultUrlSchemeSuffix:(NSString *)urlSchemeSuffix;
++ (void)setDefaultUrlSchemeSuffix:(NSString*)urlSchemeSuffix;
 
 /*!
  @method
-
+ 
  @abstract Get the default url scheme suffix used for sessions.  If not
- explicitly set, the default will be read from the application's plist value for 'FacebookUrlSchemeSuffix'.
+ explicitly set, the default will be read from the application's plist. The SDK allows the url
+ scheme suffix to be overridden per instance in certain cases (e.g. per instance of FBSession)
  */
-+ (NSString *)defaultUrlSchemeSuffix;
++ (NSString*)defaultUrlSchemeSuffix;
 
 /*!
  @method
-
- @abstract Set the bundle name from the SDK will try and load overrides of images and text
-
- @param bundleName The name of the bundle (MyFBBundle).
- */
-+ (void)setResourceBundleName:(NSString *)bundleName;
-
-/*!
- @method
-
- @abstract Get the name of the bundle to override the SDK images and text
- */
-+ (NSString *)resourceBundleName;
-
-/*!
- @method
-
- @abstract Set the subpart of the facebook domain (e.g. @"beta") so that requests will be sent to graph.beta.facebook.com
-
- @param facebookDomainPart The domain part to be inserted into facebook.com
- */
-+ (void)setFacebookDomainPart:(NSString *)facebookDomainPart;
-
-/*!
- @method
-
- @abstract Get the Facebook domain part
- */
-+ (NSString *)facebookDomainPart;
-
-/*!
- @method
-
+ 
  @abstract Enables the specified beta features. Beta features are for evaluation only,
  and are therefore only enabled for debug builds. Beta features should not be enabled
  in release builds.
-
+ 
  @param betaFeatures The beta features to enable (expects a bitwise OR of FBBetaFeatures)
  */
 + (void)enableBetaFeatures:(NSUInteger)betaFeatures;
 
 /*!
  @method
-
+ 
  @abstract Enables a beta feature. Beta features are for evaluation only,
  and are therefore only enabled for debug builds. Beta features should not be enabled
  in release builds.
-
+ 
  @param betaFeature The beta feature to enable.
  */
 + (void)enableBetaFeature:(FBBetaFeatures)betaFeature;
 
 /*!
  @method
-
+ 
  @abstract Disables a beta feature.
-
+ 
  @param betaFeature The beta feature to disable.
  */
 + (void)disableBetaFeature:(FBBetaFeatures)betaFeature;
@@ -267,47 +240,11 @@ typedef NS_ENUM(NSUInteger, FBRestrictedTreatment) {
  @method
 
  @abstract Determines whether a beta feature is enabled or not.
-
+ 
  @param betaFeature The beta feature to check.
-
+ 
  @return YES if the beta feature is enabled, NO if not.
  */
 + (BOOL)isBetaFeatureEnabled:(FBBetaFeatures)betaFeature;
-
-/*!
- @method
-
- @abstract
- Gets whether data such as that generated through FBAppEvents and sent to Facebook should be restricted from being used for other than analytics and conversions.  Defaults to NO.  This value is stored on the device and persists across app launches.
- */
-+ (BOOL)limitEventAndDataUsage;
-
-/*!
- @method
-
- @abstract
- Sets whether data such as that generated through FBAppEvents and sent to Facebook should be restricted from being used for other than analytics and conversions.  Defaults to NO.  This value is stored on the device and persists across app launches.
-
- @param limitEventAndDataUsage   The desired value.
- */
-+ (void)setLimitEventAndDataUsage:(BOOL)limitEventAndDataUsage;
-
-/*!
- @method
- @abstract Returns YES if the legacy Graph API mode is enabled
-*/
-+ (BOOL)isPlatformCompatibilityEnabled;
-
-/*!
- @method
- @abstract Configures the SDK to use the legacy platform.
- @param enable indicates whether to use the legacy mode
- @discussion Setting this flag has several effects:
-   - FBRequests will target v1.0 of the Graph API.
-   - Login will use the prior behavior without abilities to decline permission.
-   - Specific new features such as `FBLikeButton` that require the current platform
-     will not work.
-*/
-+ (void)enablePlatformCompatibility:(BOOL)enable;
 
 @end

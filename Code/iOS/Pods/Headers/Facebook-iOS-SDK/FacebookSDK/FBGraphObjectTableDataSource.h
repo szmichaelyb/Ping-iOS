@@ -1,1 +1,1 @@
-../../../Facebook-iOS-SDK/src/Network/FBGraphObjectTableDataSource.h
+../../../Facebook-iOS-SDK/src/FBGraphObjectTableDataSource.h
