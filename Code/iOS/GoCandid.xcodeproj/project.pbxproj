@@ -26,6 +26,9 @@
 		068340B519784572007A1AEC /* PGActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 068340B419784572007A1AEC /* PGActivityViewController.m */; };
 		068340B8197850AF007A1AEC /* PGActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 068340B7197850AF007A1AEC /* PGActivityTableViewCell.m */; };
 		068340BB1979688B007A1AEC /* UIImage+MyUIImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 068340BA1979688B007A1AEC /* UIImage+MyUIImage.m */; };
+		06AE7ED819B65C55001FE651 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06AE7ED519B65C54001FE651 /* Bolts.framework */; };
+		06AE7ED919B65C55001FE651 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06AE7ED619B65C54001FE651 /* Parse.framework */; };
+		06AE7EDA19B65C55001FE651 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06AE7ED719B65C54001FE651 /* ParseFacebookUtils.framework */; };
 		06B56151197423AE00E92A92 /* PGProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B56150197423AE00E92A92 /* PGProfileViewController.m */; };
 		06B561541974425D00E92A92 /* PGFeedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B561531974425D00E92A92 /* PGFeedTableView.m */; };
 		06B561581974467300E92A92 /* PGFeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B561571974467300E92A92 /* PGFeedTableViewCell.xib */; };
@@ -109,6 +112,9 @@
 		068340B7197850AF007A1AEC /* PGActivityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGActivityTableViewCell.m; sourceTree = "<group>"; };
 		068340B91979688B007A1AEC /* UIImage+MyUIImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MyUIImage.h"; sourceTree = "<group>"; };
 		068340BA1979688B007A1AEC /* UIImage+MyUIImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MyUIImage.m"; sourceTree = "<group>"; };
+		06AE7ED519B65C54001FE651 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		06AE7ED619B65C54001FE651 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		06AE7ED719B65C54001FE651 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		06B5614F197423AE00E92A92 /* PGProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGProfileViewController.h; sourceTree = "<group>"; };
 		06B56150197423AE00E92A92 /* PGProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGProfileViewController.m; sourceTree = "<group>"; };
 		06B561521974425D00E92A92 /* PGFeedTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGFeedTableView.h; sourceTree = "<group>"; };
@@ -191,9 +197,12 @@
 			files = (
 				06DF34531999ADBB00509399 /* SystemConfiguration.framework in Frameworks */,
 				06B58A80198807F10020D01E /* AddressBook.framework in Frameworks */,
+				06AE7EDA19B65C55001FE651 /* ParseFacebookUtils.framework in Frameworks */,
 				06B561611975AB9E00E92A92 /* ImageIO.framework in Frameworks */,
 				06B5615F1975AB9700E92A92 /* MobileCoreServices.framework in Frameworks */,
 				06DCBCBC196E2AFF00E8C9B2 /* CoreGraphics.framework in Frameworks */,
+				06AE7ED819B65C55001FE651 /* Bolts.framework in Frameworks */,
+				06AE7ED919B65C55001FE651 /* Parse.framework in Frameworks */,
 				06DCBCBE196E2AFF00E8C9B2 /* UIKit.framework in Frameworks */,
 				06DCBCBA196E2AFF00E8C9B2 /* Foundation.framework in Frameworks */,
 				B4D0781A6E87400B8846C0E9 /* libPods.a in Frameworks */,
@@ -288,6 +297,16 @@
 			name = Vendor;
 			sourceTree = "<group>";
 		};
+		06AE7ED419B65C54001FE651 /* parse-library-1.2.21 */ = {
+			isa = PBXGroup;
+			children = (
+				06AE7ED519B65C54001FE651 /* Bolts.framework */,
+				06AE7ED619B65C54001FE651 /* Parse.framework */,
+				06AE7ED719B65C54001FE651 /* ParseFacebookUtils.framework */,
+			);
+			path = "parse-library-1.2.21";
+			sourceTree = "<group>";
+		};
 		06B5614E1974239200E92A92 /* Profile VC */ = {
 			isa = PBXGroup;
 			children = (
@@ -320,6 +339,7 @@
 		06DCBCB8196E2AFF00E8C9B2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				06AE7ED419B65C54001FE651 /* parse-library-1.2.21 */,
 				06DF34521999ADBB00509399 /* SystemConfiguration.framework */,
 				06B58A7F198807F10020D01E /* AddressBook.framework */,
 				06E79446198037CB00E7B143 /* Crashlytics.framework */,
@@ -822,6 +842,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/parse-library-1.2.21",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GoCandid/GoCandid-Prefix.pch";
@@ -844,6 +865,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/parse-library-1.2.21",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GoCandid/GoCandid-Prefix.pch";

@@ -12,5 +12,6 @@
 
 +(void)postOnFacebookObject:(PFObject*)object completion:(void (^) (bool success))completion;
 +(void)postOnTwitterObject:(PFObject*)object completion:(void (^) (BOOL success))completion;
++(void)shareViaWhatsApp:(PFObject*)object;
 
 @end

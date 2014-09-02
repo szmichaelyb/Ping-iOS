@@ -188,7 +188,7 @@
         
         if (buttonIndex == 0) {
             //Share
-            [UIActionSheet showInView:self.view.window withTitle:@"Share" cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@[@"Facebook", @"Twitter"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+            [UIActionSheet showInView:self.view.window withTitle:@"Share" cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@[@"Facebook", @"Twitter", @"WhatsApp"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
                 if (buttonIndex == 0) {
                     //Facebook
                 } else if (buttonIndex == 1) {
@@ -203,6 +203,9 @@
                             [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Could not post" hideAfter:2 progressType:PGProgressHUDTypeError];
                         }
                     }];
+                } else if (buttonIndex == 2) {
+                    //WhatsApp
+                    [GCSharePost shareViaWhatsApp:object];
                 }
             }];
         }

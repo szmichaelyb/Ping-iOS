@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F74BCB93309948B480AF90CF"
+               BlueprintIdentifier = "E2DA879E667D4D38970A9D27"
                BuildableName = "libPods-iOS-Hierarchy-Viewer.a"
                BlueprintName = "Pods-iOS-Hierarchy-Viewer"
                ReferencedContainer = "container:Pods.xcodeproj">

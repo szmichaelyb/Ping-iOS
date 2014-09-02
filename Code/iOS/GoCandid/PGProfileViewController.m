@@ -319,9 +319,16 @@
         } else if (buttonIndex == 0) {
             //Share
             DLog(@"Share");
-            [UIActionSheet showInView:self.view.window withTitle:@"Share" cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@[@"Facebook", @"Twitter"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+            [UIActionSheet showInView:self.view.window withTitle:@"Share" cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@[@"Facebook", @"Twitter", @"WhatsApp"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
                 if (buttonIndex == 0) {
                     //Facebook
+                    [GCSharePost postOnFacebookObject:object completion:^(bool success) {
+                        if (success) {
+                            [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Posted" hideAfter:1.0 progressType:PGProgressHUDTypeCheck];
+                        }else {
+                            [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Could not post" hideAfter:1.0 progressType:PGProgressHUDTypeError];
+                        }
+                    }];
                 } else if (buttonIndex == 1) {
                     //Twitter
                     [GCSharePost postOnTwitterObject:object completion:^(BOOL success) {
@@ -331,6 +338,8 @@
                             [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Could not post" hideAfter:1.0 progressType:PGProgressHUDTypeError];
                         }
                     }];
+                } else if (buttonIndex == 2) {
+                    [GCSharePost shareViaWhatsApp:object];
                 }
             }];
         }
