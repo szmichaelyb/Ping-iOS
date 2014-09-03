@@ -118,7 +118,7 @@
     [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page2IV1 page:0 keyPath:@"alpha" fromValue:@0 toValue:@1 delay:0.75]];
     [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page3IV1 page:0 keyPath:@"alpha" fromValue:@0 toValue:@1 delay:0.75]];
     //    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page2IV1 page:1 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.page2IV1.center.x + self.slideShow.frame.size.width, self.page2IV1.center.y)] delay:0]];
-    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page2Label1 page:1 keyPath:@"transform" fromValue:[NSValue valueWithCGAffineTransform:CGAffineTransformMakeRotation(-0.9)] toValue:[NSValue valueWithCGAffineTransform:CGAffineTransformMakeRotation(0)] delay:0]];
+//    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page2Label1 page:1 keyPath:@"transform" fromValue:[NSValue valueWithCGAffineTransform:CGAffineTransformMakeRotation(-0.9)] toValue:[NSValue valueWithCGAffineTransform:CGAffineTransformMakeRotation(0)] delay:0]];
     //    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page2Label1 page:2 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.page2Label1.center.x + self.slideShow.frame.size.width, 300)] delay:0]];
     
 #pragma mark Page 2
