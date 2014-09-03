@@ -117,7 +117,9 @@
     [query includeKey:kPFActivity_Selfie];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        block(YES, objects);
+        if (block) {
+            block(YES, objects);
+        }
     }];
 }
 
