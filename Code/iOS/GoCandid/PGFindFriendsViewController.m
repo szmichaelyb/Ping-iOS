@@ -350,7 +350,7 @@
                 if (!error) {
                     //Show Success
                     [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Invited" hideAfter:1. progressType:PGProgressHUDTypeCheck];
-//                    [GAI trackEventWithCategory:kGAICategoryButton action:@"invite" label:@"success" value:nil];
+                    [GAI trackEventWithCategory:kGAICategoryButton action:@"invite" label:@"success" value:nil];
                     
                     //Save email to invited coloumn
                     NSMutableArray* array = [PFUser currentUser][kPFUser_Invited];
@@ -366,7 +366,7 @@
                     //Show Error
                     [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Not sent" hideAfter:1.0 progressType:PGProgressHUDTypeError];
 //                    [DropDownView showInViewController:self withText:NSLocalizedString(@"Invitation could not be sent!", nil) height:DropDownViewHeightTall hideAfterDelay:2];
-//                    [GAI trackEventWithCategory:kGAICategoryButton action:@"invite" label:@"failed" value:nil];
+                    [GAI trackEventWithCategory:kGAICategoryButton action:@"invite_failed" label:error.localizedDescription value:nil];
                 }
             }];
         } else {

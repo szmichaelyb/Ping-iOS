@@ -19,5 +19,6 @@
 #import "Constants.h"
 #import "PGParseHelper.h"
 #import "UIImage+animatedGIF.h"
+#import "GAI+MyGAITracker.h"
 
 #endif

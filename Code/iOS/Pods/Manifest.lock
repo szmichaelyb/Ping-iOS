@@ -1,23 +1,23 @@
 PODS:
-  - AFNetworking (2.3.1):
+  - AFNetworking (2.4.0):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
     - AFNetworking/UIKit
-  - AFNetworking/NSURLConnection (2.3.1):
+  - AFNetworking/NSURLConnection (2.4.0):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.3.1):
+  - AFNetworking/NSURLSession (2.4.0):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.3.1)
-  - AFNetworking/Security (2.3.1)
-  - AFNetworking/Serialization (2.3.1)
-  - AFNetworking/UIKit (2.3.1):
+  - AFNetworking/Reachability (2.4.0)
+  - AFNetworking/Security (2.4.0)
+  - AFNetworking/Serialization (2.4.0)
+  - AFNetworking/UIKit (2.4.0):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - DACircularProgress (2.2.0)
@@ -51,6 +51,7 @@ PODS:
   - FormatterKit/TimeIntervalFormatter (1.4.3)
   - FormatterKit/UnitOfInformationFormatter (1.4.3)
   - FormatterKit/URLRequestFormatter (1.4.3)
+  - GoogleAnalytics-iOS-SDK (3.0.9)
   - GTScrollNavigationBar (0.1.1)
   - IDMPhotoBrowser (1.4):
     - AFNetworking
@@ -75,6 +76,7 @@ DEPENDENCIES:
   - DZNPhotoPickerController
   - Facebook-iOS-SDK (~> 3.9.0)
   - FormatterKit (~> 1.4.2)
+  - GoogleAnalytics-iOS-SDK (~> 3.0.6)
   - GTScrollNavigationBar (= 0.1.1)
   - IDMPhotoBrowser
   - IDMPhotoBrowser (~> 1.3.5)
@@ -90,12 +92,13 @@ DEPENDENCIES:
   - ZGParallelView (~> 0.1.6)
 
 SPEC CHECKSUMS:
-  AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
+  AFNetworking: 6b4a5f150a93a9d10d57643fe91fad47a661f096
   DACircularProgress: 3b41941891a56dc6aa17971f5322a9a38a6f446e
   DZNEmptyDataSet: 381e880cb3bb2d33885cb0325218443df265bc98
   DZNPhotoPickerController: 3d7428991e2604939fc56e581693d61d29138186
   Facebook-iOS-SDK: e77b57ba1b0ca040e54df806093cdda32f1f8d25
   FormatterKit: f744aa7928003eba8317d6fd6998414fbc78f7a5
+  GoogleAnalytics-iOS-SDK: d9e198b1f955259a72886769be7377cdfcdb2250
   GTScrollNavigationBar: 60392a5cc551047d0471e5693d06f68d4c1bd77b
   IDMPhotoBrowser: da2110d99ea8735ad9a0ba52f2d184e756104a71
   iOS-Hierarchy-Viewer: f795abaeb8ccec8f652abd0891c396ad77d211d3

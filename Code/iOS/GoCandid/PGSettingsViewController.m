@@ -64,7 +64,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    //    [GAI trackWithScreenName:kScreenNameSettings];
+//    [GAI trackWithScreenName:kScreenNameSettings];
 }
 
 - (void)didReceiveMemoryWarning

@@ -29,6 +29,7 @@
 		06AE7ED819B65C55001FE651 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06AE7ED519B65C54001FE651 /* Bolts.framework */; };
 		06AE7ED919B65C55001FE651 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06AE7ED619B65C54001FE651 /* Parse.framework */; };
 		06AE7EDA19B65C55001FE651 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06AE7ED719B65C54001FE651 /* ParseFacebookUtils.framework */; };
+		06AE7EDD19B7B692001FE651 /* GAI+MyGAITracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AE7EDC19B7B692001FE651 /* GAI+MyGAITracker.m */; };
 		06B56151197423AE00E92A92 /* PGProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B56150197423AE00E92A92 /* PGProfileViewController.m */; };
 		06B561541974425D00E92A92 /* PGFeedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B561531974425D00E92A92 /* PGFeedTableView.m */; };
 		06B561581974467300E92A92 /* PGFeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B561571974467300E92A92 /* PGFeedTableViewCell.xib */; };
@@ -115,6 +116,8 @@
 		06AE7ED519B65C54001FE651 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		06AE7ED619B65C54001FE651 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		06AE7ED719B65C54001FE651 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
+		06AE7EDB19B7B692001FE651 /* GAI+MyGAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GAI+MyGAITracker.h"; sourceTree = "<group>"; };
+		06AE7EDC19B7B692001FE651 /* GAI+MyGAITracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GAI+MyGAITracker.m"; sourceTree = "<group>"; };
 		06B5614F197423AE00E92A92 /* PGProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGProfileViewController.h; sourceTree = "<group>"; };
 		06B56150197423AE00E92A92 /* PGProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGProfileViewController.m; sourceTree = "<group>"; };
 		06B561521974425D00E92A92 /* PGFeedTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGFeedTableView.h; sourceTree = "<group>"; };
@@ -438,6 +441,8 @@
 				068340BA1979688B007A1AEC /* UIImage+MyUIImage.m */,
 				06683ADA19AE5F8800D726DE /* GCSharePost.h */,
 				06683ADB19AE5F8800D726DE /* GCSharePost.m */,
+				06AE7EDB19B7B692001FE651 /* GAI+MyGAITracker.h */,
+				06AE7EDC19B7B692001FE651 /* GAI+MyGAITracker.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -731,6 +736,7 @@
 				06DCBCD0196E2AFF00E8C9B2 /* PGTutorialViewController.m in Sources */,
 				06DCBCCA196E2AFF00E8C9B2 /* PGAppDelegate.m in Sources */,
 				064CD86A199D5E52007837A6 /* DRDynamicSlideShow.m in Sources */,
+				06AE7EDD19B7B692001FE651 /* GAI+MyGAITracker.m in Sources */,
 				06654AE9197DBE740014FA74 /* PGFindFriendsTableViewCell.m in Sources */,
 				06DCBD13196F404C00E8C9B2 /* PGSettingsViewController.m in Sources */,
 				06DCBD17196F421400E8C9B2 /* UIDevice-Hardware.m in Sources */,

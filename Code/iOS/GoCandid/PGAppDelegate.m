@@ -15,6 +15,8 @@
 #include <unistd.h>
 #include<netdb.h>
 
+#import "GAI.h"
+
 @implementation PGAppDelegate
 
 +(void)initialize
@@ -40,6 +42,15 @@
  
     [Crashlytics startWithAPIKey:@"02d3f7db22ac1a3e538528547a694d5230eb8278"];
     
+    //Exceptions handled by crashlytics
+    [GAI sharedInstance].trackUncaughtExceptions = NO;
+    
+    [GAI sharedInstance].dispatchInterval = 20;
+    
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelError];
+    
+    [[GAI sharedInstance] trackerWithTrackingId:@"UA-40631521-10"];
+    
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navbar"] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName,FONT_OPENSANS_CONDBOLD(FONT_SIZE_LARGE), NSFontAttributeName, nil]];
     [UINavigationBar appearance].tintColor = [UIColor whiteColor];
@@ -60,7 +71,7 @@
     [currentInstallation saveEventually:^(BOOL succeeded, NSError *error) {
         if (error) {
             //            DLog(@"Push Registration Error: %@", error);
-            //            [GAI trackEventWithCategory:@"pf_installation" action:@"registration_error" label:error.description value:nil];
+            [GAI trackEventWithCategory:@"pf_installation" action:@"registration_error" label:error.localizedDescription value:nil];
         }
     }];
 }

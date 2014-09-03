@@ -198,7 +198,7 @@
                             }
                             [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                                 if (error) {
-                                    //                            [GAI trackEventWithCategory:@"pf_user" action:@"save_in_background" label:error.description value:result[@"id"]];
+                                    [GAI trackEventWithCategory:@"pf_user" action:@"save_in_background" label:error.localizedDescription value:result[@"id"]];
                                 }
                             }];
                             
