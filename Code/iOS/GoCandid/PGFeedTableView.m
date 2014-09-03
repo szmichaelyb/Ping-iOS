@@ -231,14 +231,11 @@
     if (![file isKindOfClass:[NSNull class]] && file != NULL)
     {
         [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-            UIImage* img = [UIImage animatedImageWithAnimatedGIFData:data];
-            //        UIImage* img = [UIImage imageWithData:data];
+//            UIImage* img = [UIImage animatedImageWithAnimatedGIFData:data];
+        UIImage* img = [UIImage imageWithData:data];
             [UIView transitionWithView:cell.mainIV duration:0.2f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
                 cell.mainIV.image = img;
             } completion:nil];
-            //        UIImage* temp = [UIImage imageWithData:data];
-            //        temp = [temp applyDarkEffect];
-            //        cell.blurBgIV.image = temp;
         }];
     }
     
@@ -309,27 +306,27 @@
 
 #pragma mark - PGFeedTableViewCell Delegate
 
-//-(void)cellDidStartTap:(PGFeedTableViewCell *)cell
-//{
-//    NSIndexPath* indexPath = [self indexPathForCell:cell];
-//    PFFile* file = _datasource[indexPath.row][kPFSelfie_Selfie];
-//    [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-//        //        UIImage* img = [UIImage animatedImageWithAnimatedGIFData:data];
-//        UIImage* img = [UIImage animatedImageWithAnimatedGIFData:data];
-//        cell.iv.image = img;
-//    }];
-//}
-//
-//-(void)cellDidStopTap:(PGFeedTableViewCell *)cell
-//{
-//    NSIndexPath* indexPath = [self indexPathForCell:cell];
-//    PFFile* file = _datasource[indexPath.row][kPFSelfie_Selfie];
-//    [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-//        //        UIImage* img = [UIImage animatedImageWithAnimatedGIFData:data];
-//        UIImage* img = [UIImage imageWithData:data];
-//        cell.iv.image = img;
-//    }];
-//}
+-(void)cellDidStartTap:(PGFeedTableViewCell *)cell
+{
+    NSIndexPath* indexPath = [self indexPathForCell:cell];
+    PFFile* file = _datasource[indexPath.row][kPFSelfie_Selfie];
+    [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        //        UIImage* img = [UIImage animatedImageWithAnimatedGIFData:data];
+        UIImage* img = [UIImage animatedImageWithAnimatedGIFData:data];
+        cell.mainIV.image = img;
+    }];
+}
+
+-(void)cellDidStopTap:(PGFeedTableViewCell *)cell
+{
+    NSIndexPath* indexPath = [self indexPathForCell:cell];
+    PFFile* file = _datasource[indexPath.row][kPFSelfie_Selfie];
+    [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        //        UIImage* img = [UIImage animatedImageWithAnimatedGIFData:data];
+        UIImage* img = [UIImage imageWithData:data];
+        cell.mainIV.image = img;
+    }];
+}
 
 -(void)cellDidTapOnNameButton:(PGFeedTableViewCell *)cell
 {

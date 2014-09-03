@@ -197,6 +197,10 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grandhotel" id="HcC-rB-Bkj">
+                                                <rect key="frame" x="116" y="86" width="89" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
@@ -1413,6 +1417,7 @@
         <image name="blurred1" width="320" height="568"/>
         <image name="cameraswitch" width="35" height="26"/>
         <image name="down" width="33" height="18"/>
+        <image name="grandhotel" width="91" height="32"/>
         <image name="horizontalline" width="1" height="1"/>
         <image name="minus" width="14" height="20"/>
         <image name="navADD" width="24" height="24"/>
