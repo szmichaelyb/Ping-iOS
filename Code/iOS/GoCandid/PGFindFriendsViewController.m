@@ -344,7 +344,7 @@
         
         if ([self NSStringIsValidEmail:recipientEmail]) {
             NSString* recipientName = _deviceContactsNotUsingApp[indexPath.row][@"name"];
-            NSDictionary* params = @{@"toEmail": recipientEmail, @"toName": recipientName, @"fromEmail": @"downloadvcinity@appikon.com", @"fromName": [PFUser currentUser][kPFUser_Name], @"text": @"Hey, \n\nI just downloaded GoCandid on my iPhone. \n\nIt is a fun app which lets you take animated selfies. The signup is very easy and simple. You don't have to remember anything. \n\nDownload it now on the AppStore to start chatting. https://itunes.apple.com/app/id898275446", @"subject":@"GoCandid App for iPhone"};
+            NSDictionary* params = @{@"toEmail": recipientEmail, @"toName": recipientName, @"fromEmail": @"downloadvcinity@appikon.com", @"fromName": [PFUser currentUser][kPFUser_Name], @"text": @"Hey, \n\nI just downloaded GoCandid app on my iPhone. \n\nIt is a photo app which lets me create amazing stop motion animations and share it with others. The signup is very easy and simple. You don't have to remember anything. \n\nDownload it now on the App Store and start taking amazing photos. https://itunes.apple.com/app/id898275446", @"subject":@"GoCandid App for iPhone"};
             [PFCloud callFunctionInBackground:@"sendMail" withParameters:params block:^(id object, NSError *error) {
                 DLog(@"%@", object);
                 if (!error) {

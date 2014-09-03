@@ -112,6 +112,9 @@
 {
     [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
     
+    // Register App Install on Facebook Ads Manager
+    [FBAppEvents activateApp];
+    
     if ([self.window.rootViewController isKindOfClass:[UITabBarController class]]) {
         
         UITabBarController* tab = (UITabBarController*)self.window.rootViewController;
