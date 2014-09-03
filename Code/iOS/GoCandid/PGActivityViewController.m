@@ -84,7 +84,15 @@
     //    _lastRefresh = [[NSUserDefaults standardUserDefaults] objectForKey:kPAPUserDefaultsActivityFeedViewControllerLastRefreshKey];
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle {
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [GAI trackWithScreenName:kScreenNameActivityScreen];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
     return UIStatusBarStyleLightContent;
 }
 

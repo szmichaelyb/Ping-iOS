@@ -185,6 +185,8 @@ static float kDefaultCaptureDelay = 0.7f;
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
 	dispatch_async([self sessionQueue], ^{
 		[self addObserver:self forKeyPath:@"sessionRunningAndDeviceAuthorized" options:(NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew) context:SessionRunningAndDeviceAuthorizedContext];
 		[self addObserver:self forKeyPath:@"stillImageOutput.capturingStillImage" options:(NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew) context:CapturingStillImageContext];
@@ -206,6 +208,9 @@ static float kDefaultCaptureDelay = 0.7f;
 
 - (void)viewDidDisappear:(BOOL)animated
 {
+    [super viewDidDisappear:animated];
+    
+    [GAI trackWithScreenName:kScreenNameCreatePostScreen];
 	dispatch_async([self sessionQueue], ^{
 		[[self session] stopRunning];
 		

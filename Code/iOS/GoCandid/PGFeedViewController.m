@@ -86,6 +86,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [GAI trackWithScreenName:kScreenNameFeedScreen];
 //    originalFrame = self.tabBarController.tabBar.frame;
 }
 

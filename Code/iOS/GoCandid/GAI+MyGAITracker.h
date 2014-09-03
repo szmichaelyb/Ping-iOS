@@ -17,10 +17,12 @@ typedef enum
     kScreenNameSearchScreen,
     kScreenNameCreatePostScreen,
     kScreenNameActivityScreen,
-    kScreenNameProfileScreen
+    kScreenNameProfileScreen,
+    kScreenNameSettingsScreen,
+    kScreenNameFindFriendsScreen,
 } ScreenName;
 
-#define ScreenNameString(enum) [@[@"FeedScreen",@"SearchScreen",@"CreatePostScreen", @"ActivityScreen", @"ProfileScreen"] objectAtIndex:enum]
+#define ScreenNameString(enum) [@[@"Feed Screen",@"Search Screen",@"Create Post Screen", @"Activity Screen", @"Profile Screen", @"Settings Screen", @"Find Friends Screen"] objectAtIndex:enum]
 
 @interface GAI (MyGAITracker)
 

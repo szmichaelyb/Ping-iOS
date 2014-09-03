@@ -147,6 +147,12 @@
     }];
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [GAI trackWithScreenName:kScreenNameProfileScreen];
+}
+
 -(void)followButtonClicked:(UIBarButtonItem*)sender
 {
     DLog(@"%@", sender.title);

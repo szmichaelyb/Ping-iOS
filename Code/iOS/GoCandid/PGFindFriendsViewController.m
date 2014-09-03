@@ -50,6 +50,12 @@
     [NSThread detachNewThreadSelector:@selector(loadFacebookFriends) toTarget:self withObject:nil];
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [GAI trackWithScreenName:kScreenNameFindFriendsScreen];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
