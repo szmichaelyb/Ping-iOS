@@ -9,11 +9,14 @@
 #import "PGTabViewController.h"
 #import "PGFeedViewController.h"
 #import "PGCamViewController.h"
+#import "PGAppDelegate.h"
 
 @interface PGTabViewController ()<PGCamViewControllerDelegate>
 {
     NSUInteger lastSelectedIndex;
 }
+
+@property (nonatomic, strong) IBOutlet UILabel* takeAPicLbl;
 
 @end
 
@@ -57,22 +60,60 @@
     
     [self.view addSubview:button];
     
-//    [self.tabBar.items[2] setImage:[[UIImage imageNamed:@"tab3"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    //    [self.tabBar.items[2] setImage:[[UIImage imageNamed:@"tab3"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     [self.tabBar.items[3] setImage:[[UIImage imageNamed:@"Tab_Activity_Off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     [self.tabBar.items[4] setImage:[[UIImage imageNamed:@"Tab_Profile_Off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-
+    
     //Selected Images
     [self.tabBar.items[0] setSelectedImage:[[UIImage imageNamed:@"Tab_Feed_On"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     [self.tabBar.items[1] setSelectedImage:[[UIImage imageNamed:@"Tab_Search_On"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-//    [self.tabBar.items[2] setSelectedImage:[[UIImage imageNamed:@"tab3_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    //    [self.tabBar.items[2] setSelectedImage:[[UIImage imageNamed:@"tab3_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     [self.tabBar.items[3] setSelectedImage:[[UIImage imageNamed:@"Tab_Activity_On"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     [self.tabBar.items[4] setSelectedImage:[[UIImage imageNamed:@"Tab_Profile_On"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:kUDIntructionShown] == false) {
+        DLog(@"First time");
+        
+        [self performSelector:@selector(addInstruView) withObject:nil afterDelay:2.0];
+        
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kUDIntructionShown];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)addInstruView
+{
+    PGAppDelegate* appDelegate = (PGAppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    UIView* tutView = [[NSBundle mainBundle] loadNibNamed:@"GCInstructionsView" owner:self options:nil][0];
+    
+    UITapGestureRecognizer* tapGest = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissIntrucView:)];
+    [tutView addGestureRecognizer:tapGest];
+    
+    _takeAPicLbl.font = FONT_OPENSANS_CONDBOLD(FONT_SIZE_MEDIUM);
+    [appDelegate.window.rootViewController.view addSubview:tutView];
+    
+    tutView.alpha = 0;
+    [UIView animateWithDuration:0.4 animations:^{
+        tutView.alpha = 0.8;
+    }];
+}
+
+-(void)dismissIntrucView:(id)sender
+{
+    UIView* view = ((UIGestureRecognizer*)sender).view;
+    [UIView animateWithDuration:0.2 animations:^{
+        view.alpha = 0;
+    } completion:^(BOOL finished) {
+        [view removeFromSuperview];
+    }];
 }
 //
 //-(void)setSelectedIndex:(NSUInteger)selectedIndex

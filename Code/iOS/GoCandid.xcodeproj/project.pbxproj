@@ -30,6 +30,7 @@
 		06AE7ED919B65C55001FE651 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06AE7ED619B65C54001FE651 /* Parse.framework */; };
 		06AE7EDA19B65C55001FE651 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06AE7ED719B65C54001FE651 /* ParseFacebookUtils.framework */; };
 		06AE7EDD19B7B692001FE651 /* GAI+MyGAITracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AE7EDC19B7B692001FE651 /* GAI+MyGAITracker.m */; };
+		06AE7EDF19B90ED4001FE651 /* GCInstructionsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06AE7EDE19B90ED4001FE651 /* GCInstructionsView.xib */; };
 		06B56151197423AE00E92A92 /* PGProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B56150197423AE00E92A92 /* PGProfileViewController.m */; };
 		06B561541974425D00E92A92 /* PGFeedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B561531974425D00E92A92 /* PGFeedTableView.m */; };
 		06B561581974467300E92A92 /* PGFeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B561571974467300E92A92 /* PGFeedTableViewCell.xib */; };
@@ -118,6 +119,7 @@
 		06AE7ED719B65C54001FE651 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		06AE7EDB19B7B692001FE651 /* GAI+MyGAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GAI+MyGAITracker.h"; sourceTree = "<group>"; };
 		06AE7EDC19B7B692001FE651 /* GAI+MyGAITracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GAI+MyGAITracker.m"; sourceTree = "<group>"; };
+		06AE7EDE19B90ED4001FE651 /* GCInstructionsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GCInstructionsView.xib; sourceTree = "<group>"; };
 		06B5614F197423AE00E92A92 /* PGProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGProfileViewController.h; sourceTree = "<group>"; };
 		06B56150197423AE00E92A92 /* PGProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGProfileViewController.m; sourceTree = "<group>"; };
 		06B561521974425D00E92A92 /* PGFeedTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGFeedTableView.h; sourceTree = "<group>"; };
@@ -414,6 +416,7 @@
 			children = (
 				06DCBCEF196EDDFA00E8C9B2 /* PGTabViewController.h */,
 				06DCBCF0196EDDFA00E8C9B2 /* PGTabViewController.m */,
+				06AE7EDE19B90ED4001FE651 /* GCInstructionsView.xib */,
 			);
 			name = Tab;
 			sourceTree = "<group>";
@@ -640,6 +643,7 @@
 				06DCBD12196F404C00E8C9B2 /* SettingsShareView.xib in Resources */,
 				0683112B1976C8460099689D /* PGProfileHeaderView.xib in Resources */,
 				06DCBCC4196E2AFF00E8C9B2 /* InfoPlist.strings in Resources */,
+				06AE7EDF19B90ED4001FE651 /* GCInstructionsView.xib in Resources */,
 				06B561581974467300E92A92 /* PGFeedTableViewCell.xib in Resources */,
 				06DCBCCD196E2AFF00E8C9B2 /* Main.storyboard in Resources */,
 				06DF34511999588A00509399 /* OpenSans-CondLightItalic.ttf in Resources */,

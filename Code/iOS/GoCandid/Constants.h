@@ -67,7 +67,7 @@
 
 //Setting UserDefaults
 #define kUDFirstPostSent @"firstPostSent"
-
+#define kUDIntructionShown @"instructionShown"
 
 //Parse Table Names
 #define kPFTableNameSelfies @"Selfies"
