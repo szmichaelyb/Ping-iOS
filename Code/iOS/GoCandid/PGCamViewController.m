@@ -41,6 +41,8 @@ static float kDefaultCaptureDelay = 0.7f;
 @property (strong, nonatomic) IBOutlet UIScrollView *thumbScrollView;
 @property (strong, nonatomic) IBOutlet PGFramesButton *framesButton;
 @property (nonatomic, strong) IBOutlet UISlider* delaySlider;
+@property (nonatomic, strong) IBOutlet UIImageView* plusIV;
+@property (nonatomic, strong) IBOutlet UIImageView* minusIV;
 
 //- (IBAction)toggleMovieRecording:(id)sender;
 -(IBAction)changeCamera:(id)sender;
@@ -401,6 +403,13 @@ static float kDefaultCaptureDelay = 0.7f;
     _images = [NSMutableArray new];
     
     [self.manualButton setSelected:!self.manualButton.isSelected];
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        float alpha = (self.manualButton.selected) ? 0 : 1;
+        self.delaySlider.alpha = alpha;
+        self.plusIV.alpha = alpha;
+        self.minusIV.alpha = alpha;
+    }];
 }
 
 -(IBAction)captureButtonClicked:(id)sender

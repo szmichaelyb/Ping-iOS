@@ -545,6 +545,8 @@
                         <outlet property="delaySlider" destination="A6Z-oo-3Oi" id="aXH-n5-2P2"/>
                         <outlet property="framesButton" destination="7cA-oj-knA" id="UNS-bJ-MGx"/>
                         <outlet property="manualButton" destination="Iui-DC-Yvu" id="Zjl-hN-rGB"/>
+                        <outlet property="minusIV" destination="lok-Q4-iG6" id="1zU-LK-Wez"/>
+                        <outlet property="plusIV" destination="NU8-qD-phk" id="rTc-hO-Goo"/>
                         <outlet property="previewView" destination="ix2-56-jni" id="cXw-RS-u5o"/>
                         <outlet property="thumbScrollView" destination="UXW-o3-m69" id="jhX-aR-ckV"/>
                     </connections>
