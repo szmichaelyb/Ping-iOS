@@ -136,6 +136,8 @@ static float kDefaultCaptureDelay = 0.7f;
                 
 				[[(AVCaptureVideoPreviewLayer *)[[self previewView] layer] connection] setVideoOrientation:(AVCaptureVideoOrientation)[self interfaceOrientation]];
                 [(AVCaptureVideoPreviewLayer*) [[self previewView] layer] setVideoGravity:AVLayerVideoGravityResizeAspectFill];
+                //For square camera. size is defined in nib
+                [(AVCaptureVideoPreviewLayer*) [[self previewView] layer] setMasksToBounds:YES];
 			});
 		}
         //
@@ -694,7 +696,9 @@ static float kDefaultCaptureDelay = 0.7f;
     }
     UIImage *smallImage = [self imageWithImage:image scaledToWidth:640.0f]; //UIGraphicsGetImageFromCurrentImageContext();
     
-    CGRect cropRect = CGRectMake(0, 405, 640, 640);
+    float tempHeight = [[UIScreen mainScreen] bounds].size.height;
+    float y = (tempHeight - 320);
+    CGRect cropRect = CGRectMake(0, y, 640, 640);
     CGImageRef imageRef = CGImageCreateWithImageInRect([smallImage CGImage], cropRect);
     
     //    croppedImageWithoutOrientation = [[UIImage imageWithCGImage:imageRef] copy];

@@ -14,6 +14,7 @@
 #import <ImageIO/ImageIO.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "GCZoomInTrasitionController.h"
+#import <UIAlertView+Blocks/UIAlertView+Blocks.h>
 
 const CGFloat kDefaultGifDelay = 0.5;
 
@@ -44,6 +45,7 @@ const CGFloat kDefaultGifDelay = 0.5;
     
     _durationSlider.value = kDefaultGifDelay;
     [_durationSlider setThumbImage:[UIImage imageNamed:@"slider"] forState:UIControlStateNormal];
+    [self durationSliderChanged:_durationSlider];
     
     self.imageView.image = [UIImage animatedImageWithAnimatedGIFURL:_imageURL];
 //    self.sendButton.cornerRadius = self.sendButton.frame.size.width/2;
@@ -97,8 +99,13 @@ const CGFloat kDefaultGifDelay = 0.5;
     _imageView.image = [UIImage animatedImageWithAnimatedGIFURL:_imageURL];
 }
 
-- (IBAction)backbuttonClicked:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+- (IBAction)backbuttonClicked:(id)sender
+{
+    [UIAlertView showWithTitle:@"Start over" message:@"Are you sure? This will discard the current picture." cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"Yes"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        if (buttonIndex == 1) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    }];
 }
 
 -(IBAction)retakeClicked:(id)sender

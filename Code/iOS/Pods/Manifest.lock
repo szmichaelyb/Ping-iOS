@@ -1,23 +1,23 @@
 PODS:
-  - AFNetworking (2.4.0):
+  - AFNetworking (2.4.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
     - AFNetworking/UIKit
-  - AFNetworking/NSURLConnection (2.4.0):
+  - AFNetworking/NSURLConnection (2.4.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.4.0):
+  - AFNetworking/NSURLSession (2.4.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.4.0)
-  - AFNetworking/Security (2.4.0)
-  - AFNetworking/Serialization (2.4.0)
-  - AFNetworking/UIKit (2.4.0):
+  - AFNetworking/Reachability (2.4.1)
+  - AFNetworking/Security (2.4.1)
+  - AFNetworking/Serialization (2.4.1)
+  - AFNetworking/UIKit (2.4.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - DACircularProgress (2.2.0)
@@ -92,7 +92,7 @@ DEPENDENCIES:
   - ZGParallelView (~> 0.1.6)
 
 SPEC CHECKSUMS:
-  AFNetworking: 6b4a5f150a93a9d10d57643fe91fad47a661f096
+  AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
   DACircularProgress: 3b41941891a56dc6aa17971f5322a9a38a6f446e
   DZNEmptyDataSet: 381e880cb3bb2d33885cb0325218443df265bc98
   DZNPhotoPickerController: 3d7428991e2604939fc56e581693d61d29138186
