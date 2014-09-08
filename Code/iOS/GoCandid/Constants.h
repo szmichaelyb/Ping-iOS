@@ -38,6 +38,7 @@
 #define kPFUser_Picture @"picture"
 #define kPFUser_Invited @"invited"
 #define kPFUser_Location @"location"
+#define kPFUser_FollowersCount @"followersCount"
 //#define kPFUser_Follow @"follow"
 
 #define kPFSelfie_Owner @"owner"
@@ -60,6 +61,12 @@
 #define kPFActivity_Type_Comment @"comment"
 #define kPFActivity_Type_Joined @"joined"
 #define kPGActivity_Type_Invited @"invited"
+
+#define kPFCloudFunctionNameEditUser @"editUser"
+
+#define kPFCloudEditUser_UserId @"userId"
+#define kPFCloudEditUser_ColumnName @"colName"
+#define kPFCloudEditUser_ColumnText @"colText"
 
 /**
 *

@@ -141,6 +141,31 @@ Parse.Cloud.define("sendMail", function(request, response) {
 	});
 });
 
+Parse.Cloud.define("editUser", function(request, response) {
+
+	Parse.Cloud.useMasterKey();
+	
+	var userId = request.params.userId;
+	var colName = request.params.colName;
+	var	colText = request.params.colText;
+		
+	var user = new Parse.Query(Parse.User);
+	user.equalTo("objectId", userId);
+	user.first({
+		success: function(object) {
+			object.set(colName, colText);
+	
+			object.save().then(function(object) {
+				response.success(object);
+			}, function(error) {
+				response.error(error)
+			});	
+
+		}, error: function(error) {
+		}
+	});
+	
+});
 
 //Schedule job
 Parse.Cloud.job("notification", function(request, status) {

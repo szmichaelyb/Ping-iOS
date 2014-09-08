@@ -216,6 +216,8 @@
     PFQuery *finalQuery = [PFQuery orQueryWithSubqueries:[NSArray arrayWithObjects:queryCapitalizedString,queryLowerCaseString, querySearchBarString,nil]];
     finalQuery.limit = 15;
     finalQuery.skip = _datasource.count;
+    [finalQuery orderByDescending:kPFUser_FollowersCount];
+    [finalQuery addAscendingOrder:kPFUser_Name];
     [finalQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (append) {
             [_datasource addObjectsFromArray:objects];

@@ -125,12 +125,8 @@
         [self getDataAppend:NO];
     }
 
-    
-    PFQuery* followerCountQuery = [PFQuery queryWithClassName:kPFTableActivity];
-    [followerCountQuery whereKey:kPFActivity_Type equalTo:kPFActivity_Type_Follow];
-    [followerCountQuery whereKey:kPFActivity_ToUser equalTo:_profileUser];
-    [followerCountQuery countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
-        [_followersButton setTitle:[NSString stringWithFormat:@"%d follower", number]  forState:UIControlStateNormal];
+    [PGParseHelper getTotalFollowersForUser:_profileUser completion:^(BOOL finished, int count) {
+        [_followersButton setTitle:[NSString stringWithFormat:@"%d follower", count]  forState:UIControlStateNormal];
     }];
     
     PFQuery* followingCountQuery = [PFQuery queryWithClassName:kPFTableActivity];

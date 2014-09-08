@@ -31,11 +31,15 @@
             PFACL *followACL = [PFACL ACLWithUser:[PFUser currentUser]];
             [followACL setPublicReadAccess:YES];
             followActivity.ACL = followACL;
-            
             [followActivity saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (block) {
                     block(succeeded);
                 }
+                
+                [PGParseHelper getTotalFollowersForUser:followUser completion:^(BOOL finished, int count) {
+                    [PFCloud callFunction:kPFCloudFunctionNameEditUser withParameters:@{kPFCloudEditUser_UserId: followUser.objectId, kPFCloudEditUser_ColumnName: kPFUser_FollowersCount, kPFCloudEditUser_ColumnText: [NSNumber numberWithInt:count]}];
+                }];
+               
                 [PGParseHelper sendPushToUsers:@[followUser] pushText:[NSString stringWithFormat:@"%@ is now following you.", [PFUser currentUser][kPFUser_Name]]];
             }];
         }
@@ -58,6 +62,10 @@
                     if (block) {
                         block(succeeded);
                     }
+                    
+                    [PGParseHelper getTotalFollowersForUser:user completion:^(BOOL finished, int count) {
+                        [PFCloud callFunction:kPFCloudFunctionNameEditUser withParameters:@{kPFCloudEditUser_UserId: user.objectId, kPFCloudEditUser_ColumnName: kPFUser_FollowersCount, kPFCloudEditUser_ColumnText: [NSNumber numberWithInt:count]}];
+                    }];                    
                 }];
             }
         }
@@ -102,6 +110,18 @@
             block(YES, NO);
         } else {
             block(YES, YES);
+        }
+    }];
+}
+
++(void)getTotalFollowersForUser:(PFUser *)user completion:(void (^)(BOOL, int))block
+{
+    PFQuery* followerCountQuery = [PFQuery queryWithClassName:kPFTableActivity];
+    [followerCountQuery whereKey:kPFActivity_Type equalTo:kPFActivity_Type_Follow];
+    [followerCountQuery whereKey:kPFActivity_ToUser equalTo:user];
+    [followerCountQuery countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
+        if (block) {
+            block(YES, number);
         }
     }];
 }
