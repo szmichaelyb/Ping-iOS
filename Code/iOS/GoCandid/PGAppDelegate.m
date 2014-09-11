@@ -97,9 +97,12 @@
 
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    BOOL wasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication withSession:[PFFacebookUtils session]];
-    
-    return wasHandled;
+    if ([sourceApplication isEqualToString:@"com.facebook.Facebook"]) {
+        BOOL wasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication withSession:[PFFacebookUtils session]];
+        
+        return wasHandled;
+    }
+    return true;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

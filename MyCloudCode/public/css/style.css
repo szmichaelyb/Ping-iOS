@@ -1,0 +1,24 @@
+/* CSS Document */
+.video {
+position: relative;
+padding-bottom: 65.25%;
+padding-top: 30px;
+height: 0;
+overflow: auto; 
+-webkit-overflow-scrolling:touch;
+border: solid black 1px;
+} 
+.video iframe {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+
+
+#banner-on-top-mobile{display:none;}
+#banner-on-top-mobile img{width:100%; position:relative;}
+@media screen and (min-width: 20px) and (max-width: 630px) {
+#banner-on-top-mobile{ display:block;}	
+	}

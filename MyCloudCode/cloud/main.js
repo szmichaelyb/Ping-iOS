@@ -1,6 +1,10 @@
 
 // Use Parse.Cloud.define to define as many cloud functions as you want.
 // For example:
+
+require('cloud/app.js');
+
+
 var _ = require("underscore");
 
 Parse.Cloud.beforeSave("Selfies", function(request, response) {

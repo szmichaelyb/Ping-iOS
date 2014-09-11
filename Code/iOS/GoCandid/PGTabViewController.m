@@ -74,7 +74,7 @@
     if ([[NSUserDefaults standardUserDefaults] boolForKey:kUDIntructionShown] == false) {
         DLog(@"First time");
         
-        [self performSelector:@selector(addInstruView) withObject:nil afterDelay:2.0];
+        [self performSelector:@selector(addInstruView) withObject:nil afterDelay:5.0];
         
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kUDIntructionShown];
         [[NSUserDefaults standardUserDefaults] synchronize];

@@ -227,7 +227,8 @@
 #warning Change URL to Gocandid website URL pointing to the post
     DLog(@"%@", object);
     PFFile* file = object[kPFSelfie_Selfie];
-    NSString* urlString = [[NSString stringWithFormat:@"whatsapp://send?text=%@ %@\n-Created on GoCandid app", object[kPFSelfie_Caption],file.url] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
+    NSString* urlString = [[NSString stringWithFormat:@"whatsapp://send?text=%@ www.gocandidapp.com/posts/%@\n-Created on GoCandid app", object[kPFSelfie_Caption], object.objectId] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL* whatsAppURL = [NSURL URLWithString:urlString];
     if ([[UIApplication sharedApplication] canOpenURL:whatsAppURL]) {
         [[UIApplication sharedApplication] openURL:whatsAppURL];
