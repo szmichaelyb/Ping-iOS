@@ -7,9 +7,11 @@
 //
 
 #import "PGAppDelegate.h"
+#import "PGTabViewController.h"
 #import "InAppNotificationTapListener.h"
 #import "InAppNotificationView.h"
 #import "PGFeedViewController.h"
+#import "PGFeedTableView.h"
 #import <iRate/iRate.h>
 #import <Crashlytics/Crashlytics.h>
 #include <unistd.h>
@@ -32,11 +34,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    if (DEBUGMODE) {
-        [Parse setApplicationId:@"RjjejatHY8BsqER68vg48jtr9nRv0FVAfKqryjja" clientKey:@"hTwjS9Ng9azIQoOfpQ6xeYX3Ah8mesiCWGt0gz3b"];
-    } else {
+#warning Uncomment this
+//    if (DEBUGMODE) {
+//        [Parse setApplicationId:@"RjjejatHY8BsqER68vg48jtr9nRv0FVAfKqryjja" clientKey:@"hTwjS9Ng9azIQoOfpQ6xeYX3Ah8mesiCWGt0gz3b"];
+//    } else {
         [Parse setApplicationId:@"oLAYrU2fvZm5MTwA8z7kdtyVsJC4rSY4NiAh6yAp" clientKey:@"GMc6VRe3Op6SllEFXwm0hrDear99ptg7WuFZfiC7"];
-    }
+//    }
     
     [PFFacebookUtils initializeFacebook];
  
@@ -97,10 +100,35 @@
 
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    if ([sourceApplication isEqualToString:@"com.facebook.Facebook"]) {
+    DLog(@"URL: %@", [url scheme]);
+    if ([[url scheme] rangeOfString:@"fb"].location != NSNotFound) {
         BOOL wasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication withSession:[PFFacebookUtils session]];
         
         return wasHandled;
+    } else {
+        //Opened app context from web browser
+        url = [NSURL URLWithString:[[url absoluteString] stringByReplacingOccurrencesOfString:@"#" withString:@""]];
+        DLog(@"%@", [url path]);
+        if ([[url path] rangeOfString:@"/posts"].location != NSNotFound) {
+            //Post
+            DLog(@"Post");
+            PGTabViewController* tab = (PGTabViewController*)((UIWindow*)[UIApplication sharedApplication].windows[0]).rootViewController;
+            [tab setSelectedIndex:0];
+            UINavigationController* feedNavC = tab.viewControllers[0];
+
+            UIViewController* controller = [[UIViewController alloc] init];
+            
+            PGFeedTableView* table = [[PGFeedTableView alloc] initWithFrame:controller.view.bounds];
+            
+            PFQuery* query = [PFQuery queryWithClassName:kPFTableNameSelfies];
+            [query whereKey:kPFObjectId equalTo:url.pathComponents[2]];
+            [query includeKey:kPFSelfie_Owner];
+            [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+                table.datasource = [[NSMutableArray alloc] initWithObjects:object, nil];
+                [controller.view addSubview:table];
+                [feedNavC pushViewController:controller animated:YES];
+            }];
+        }
     }
     return true;
 }

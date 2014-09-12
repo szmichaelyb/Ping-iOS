@@ -43,9 +43,11 @@
 +(void)callGraphForPostWithObject:(PFObject*)object completion:(void (^) (bool success))block
 {
     //Share
-    PFFile* file = object[kPFSelfie_Selfie];
+//    PFFile* file = object[kPFSelfie_Selfie];
+    NSString* postLink = [NSString stringWithFormat:@"www.gocandidapp.com/#posts/%@", object.objectId];
+
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:object[kPFSelfie_Caption], @"name",
-                                   file.url, @"link",
+                                    postLink, @"link",
                                    nil];
     
     [FBRequestConnection startWithGraphPath:@"/me/feed" parameters:params HTTPMethod:@"POST" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
@@ -225,7 +227,8 @@
 +(void)shareViaWhatsApp:(PFObject *)object
 {
     DLog(@"%@", object);
-    NSString* urlString = [[NSString stringWithFormat:@"whatsapp://send?text=%@ www.gocandidapp.com/posts/%@\n-Created on GoCandid app", object[kPFSelfie_Caption], object.objectId] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString* postLink = [NSString stringWithFormat:@"www.gocandidapp.com/#posts/%@", object.objectId];
+    NSString* urlString = [[NSString stringWithFormat:@"whatsapp://send?text=%@ %@\n-Created on GoCandid app", object[kPFSelfie_Caption], postLink] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL* whatsAppURL = [NSURL URLWithString:urlString];
     if ([[UIApplication sharedApplication] canOpenURL:whatsAppURL]) {
         [[UIApplication sharedApplication] openURL:whatsAppURL];

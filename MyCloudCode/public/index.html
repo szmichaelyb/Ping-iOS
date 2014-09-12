@@ -5,12 +5,14 @@
 <meta content="authenticity_token" name="csrf-param">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="apple-itunes-app" content="app-id=898275446, affiliate-data=myAffiliateData, app-argument=https://itunes.apple.com/us/app/gocandid-share-selfies-others/id898275446?mt=8">
+<meta name="apple-itunes-app" content="app-id=898275446, affiliate-data=myAffiliateData, app-argument=url">
 
 <link href="css/one.css" media="all" rel="stylesheet">
 <link href="css/style.css" media="all" rel="stylesheet">
 <link rel="stylesheet" href="css/jquery.maximage.css?v=1.2" type="text/css" media="screen" charset="utf-8" />
 <script src="js/script.js"></script>
+<script src="js/script-call.js"></script>
+<link rel="stylesheet" type="text/css" href="css/style-selfe.css" />
 
 <style type="text/css" media="screen">
 html {overflow-x:hidden;}
@@ -1649,9 +1651,7 @@ data="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf" width="640" heigh
 </object>
 </video>  
  -->
-    
-
-
+ 
 
 <div id="preloader">
   <div id="status">
@@ -1664,11 +1664,41 @@ data="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf" width="640" heigh
 </div>
 
 
+
+
+<!--User Data Start-->
+<div id="user-data-start">
+<div class="header-top">
+<img src="img/logo.png"/>
+</div>
+
+<!--calling user image and name-->
+<div id="photo-container">
+<div id="author">
+<div class="avatar" id="user-profile-pic">
+<img src=""/>
+</div>
+<h1 id="user-name"></h1>
+</div>
+<div id="user-images"><img src="img/2.jpg" class="photo"/></div>
+<p id="get-request-of-caption"></p>
+<div class="total-like-contaner">Total No of Like <span id="total-like"></span></div>
+</div>
+<div class="footer-get-request">
+<p>Copyright © 2014 GoCandid by Appikon Mobile</p>
+</div>
+</div>
+<!--User Data end->
+
+
+
 <!--<div id="banner-on-top-mobile">
 <a href="https://itunes.apple.com/us/app/gocandid-share-selfies-others/id898275446?mt=8">
 <img src="img/smartbanner.png"/>
 </a>
 </div>-->
+
+<div id="main-site-contaner">
 
 <section id="home">
   <div class="container">
@@ -1712,17 +1742,17 @@ data="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf" width="640" heigh
     <div class="row">
       <div class="col-sm-4 col-md-4 col-lg-4" id="service_1"><img alt="Better choices" src="img/better_choices.png"> 
         <!--<svg viewBox="0 0 32 32" class="services_icon"><use xlink:href="#compass"></use></svg>-->
-        <h3>Make better choices</h3>
+        <h3>Take photos</h3>
         <p> Create beautiful stop motion animations using your camera. </p>
       </div>
       <div class="col-sm-4 col-md-4 col-lg-4" id="service_2"><img alt="Routines" src="img/routines.png"> 
         <!--<svg viewBox="0 0 32 32" class="services_icon"><use xlink:href="#map"></use></svg>-->
-        <h3>Form new habits</h3>
+        <h3>Set animation loop duration</h3>
         <p>Find, follow with people from your contacts and Facebook. </p>
       </div>
       <div class="col-sm-4 col-md-4 col-lg-4" id="service_3"><img alt="Long activity" src="img/long_activity.png"> 
         <!--<svg viewBox="0 0 32 32" class="services_icon"><use xlink:href="#calendar"></use></svg>-->
-        <h3>Become more active</h3>
+        <h3>Share your story with the world</h3>
         <p>Switch between manual mode to manually capture the photos. </p>
       </div>
     </div>
@@ -1871,6 +1901,12 @@ data="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf" width="640" heigh
     </div>
   </div>
 </section>
+
+</div>
+
+
+
+
 
 <!-- JavaScript plugins comes here --> 
 

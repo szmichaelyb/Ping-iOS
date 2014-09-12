@@ -1,3 +1,0 @@
-Options +FollowSymlinks
-RewriteEngine on
-RewriteRule ^post/([a-zA-Z0-9_+-]+)$ selfe.html

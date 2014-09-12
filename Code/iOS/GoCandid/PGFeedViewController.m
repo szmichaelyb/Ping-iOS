@@ -192,6 +192,13 @@
             [UIActionSheet showInView:self.view.window withTitle:@"Share" cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@[@"Facebook", @"Twitter", @"WhatsApp"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
                 if (buttonIndex == 0) {
                     //Facebook
+                    [GCSharePost postOnFacebookObject:object completion:^(bool success) {
+                        if (success) {
+                            [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Success" hideAfter:2 progressType:PGProgressHUDTypeCheck];
+                        } else {
+                            [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Could not post" hideAfter:2 progressType:PGProgressHUDTypeError];
+                        }
+                    }];
                 } else if (buttonIndex == 1) {
                     //Twitter
                     [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Posting..." hideAfter:1.0 progressType:PGProgressHUDTypeDefault];
@@ -200,7 +207,6 @@
                         if (success) {
                             [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Success" hideAfter:2 progressType:PGProgressHUDTypeCheck];
                         } else {
-#warning Change to error sign
                             [[PGProgressHUD sharedInstance] showInView:self.view withText:@"Could not post" hideAfter:2 progressType:PGProgressHUDTypeError];
                         }
                     }];
