@@ -299,10 +299,7 @@ body{padding:0; margin:0;}
   margin: 300px auto;
 }
 
-/* line 343, ../sass/screen.scss */
-.spinner {
-  display: none;
-}
+
 
 /* line 347, ../sass/screen.scss */
 #photo-container {
@@ -394,7 +391,8 @@ div.photo-thumb img {
 }
 
 /* Smartphones (portrait and landscape) ----------- */
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+@media only screen and (min-device-width: 20px) and (max-device-width: 480px) {
+	#logo_header h5{ font-size:12px;}
   /* Styles */
 }
 /* Smartphones (landscape) ----------- */

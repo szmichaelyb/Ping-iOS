@@ -4,10 +4,12 @@ body{padding:0; margin:0;}
 /*************************
 *****Working On header****
 **************************/
-.header-top{background-color:#29120A; width:100%;height:auto;}
-.header-top img{padding:20px 20px 8px 20px;}
+.header-top{background-color:#29120A; width:100%;height:auto; box-shadow: 4px 4px 10px 2px #333333; border-bottom:#000000 1px solid
+}
+.header-top img{padding:0px 0px 0px 10px;}
 
 .clear-div{clear:both;}
+
 
 
 #user-images img{ width:100%;}
@@ -15,7 +17,8 @@ body{padding:0; margin:0;}
 /*************************
 *****Working On footer****
 **************************/
-.footer-get-request{ width:100%; text-align:center;}
+.footer-get-request{width:100%; text-align:center;}
+.footer-get-request p{font-size:12px;}
 
 
 #get-request-of-caption{ margin:0; background-color:#FFF; width:100%; border:5px; padding:4px; 20px; color:#333333; font-size:24px !important;}
@@ -296,10 +299,7 @@ body{padding:0; margin:0;}
   margin: 300px auto;
 }
 
-/* line 343, ../sass/screen.scss */
-.spinner {
-  display: none;
-}
+
 
 /* line 347, ../sass/screen.scss */
 #photo-container {
@@ -307,14 +307,14 @@ body{padding:0; margin:0;}
   width: 620px;
   text-align: center;
   text-align: center;
-  margin: 0 auto;
+  margin: 8px auto;
   padding: 0;
 }
 /* line 356, ../sass/screen.scss */
 #photo-container h1 {
+  margin-bottom:24px;
   float: left;
-  margin: 20px 0 0 20px;
-  color: #6c5140;
+  color: #FFFFFF;
   font-family: "HelveticaNeueRegular", "HelveticaNeue-Regular", "Helvetica Neue Regular", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosRegular', "Helvetica", "Arial", sans-serif;
   font-weight: 300;
   font-stretch: normal;
@@ -323,7 +323,13 @@ body{padding:0; margin:0;}
   font-weight: bold;
 }
 
-.total-like-contaner{ color:#666; font-size:18px;}
+.total-like-contaner{ 
+color:#999; 
+font-size:18px;
+background-color:#FFFFFF;
+border-top:#666666 1px dotted;
+padding:8px;
+}
 .total-like-contaner span{ color:#900; font-size:18px;}
 /* line 364, ../sass/screen.scss */
 #photo-container div.avatar {
@@ -346,19 +352,9 @@ body{padding:0; margin:0;}
 }
 /* line 374, ../sass/screen.scss */
 #photo-container div.avatar img {
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  -ms-border-radius: 8px;
-  -o-border-radius: 8px;
-  border-radius: 8px;
-  -o-border-radius: 8px;
-  -ms-border-radius: 8px;
-  -webkit-box-shadow: 0 -1px 0 1px rgba(0, 0, 0, 0.6);
-  -moz-box-shadow: 0 -1px 0 1px rgba(0, 0, 0, 0.6);
-  box-shadow: 0 -1px 0 1px rgba(0, 0, 0, 0.6);
-  margin-top: 1px;
-  width: 60px;
-  height: 60px;
+border-radius: 6px;
+    height: 52px;
+    width: 52px;
 }
 /* line 382, ../sass/screen.scss */
 #photo-container img.photo {
@@ -368,7 +364,6 @@ body{padding:0; margin:0;}
   -moz-box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.4);
   box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.4);
   position: relative;
-  margin: 20px;
   padding-top: 0;
 }
 
@@ -396,7 +391,8 @@ div.photo-thumb img {
 }
 
 /* Smartphones (portrait and landscape) ----------- */
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+@media only screen and (min-device-width: 20px) and (max-device-width: 480px) {
+	#logo_header h5{ font-size:12px;}
   /* Styles */
 }
 /* Smartphones (landscape) ----------- */
@@ -576,13 +572,12 @@ div.photo-thumb img {
   #photo-container {
     height: 100%;
     width: 480px;
-    margin: 0 auto;
+    margin: 10px auto;
     padding: 0;
   }
   /* line 144, ../sass/_480.scss */
   #photo-container h1 {
-    margin: 20px 0 0 20px;
-    color: #6c5140;
+    color: #FFFFFF;
     font-family: "HelveticaNeueRegular", "HelveticaNeue-Regular", "Helvetica Neue Regular", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosRegular', "Helvetica", "Arial", sans-serif;
     font-weight: 300;
     font-stretch: normal;
@@ -610,19 +605,9 @@ div.photo-thumb img {
   }
   /* line 160, ../sass/_480.scss */
   #photo-container div.avatar img {
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    -ms-border-radius: 8px;
-    -o-border-radius: 8px;
-    border-radius: 8px;
-    -o-border-radius: 8px;
-    -ms-border-radius: 8px;
-    -webkit-box-shadow: 0 -1px 0 1px rgba(0, 0, 0, 0.6);
-    -moz-box-shadow: 0 -1px 0 1px rgba(0, 0, 0, 0.6);
-    box-shadow: 0 -1px 0 1px rgba(0, 0, 0, 0.6);
-    margin-top: 1px;
-    width: 60px;
-    height: 60px;
+	border-radius: 8px;
+	height: 52px;
+	width: 52px;
   }
   /* line 168, ../sass/_480.scss */
   #photo-container img.photo {
@@ -634,7 +619,6 @@ div.photo-thumb img {
     -moz-box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.4);
     box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.4);
     position: relative;
-    margin: 20px 0 20px 0;
     padding-top: 0;
   }
 }
@@ -799,15 +783,15 @@ div.photo-thumb img {
 
   /* line 122, ../sass/_320.scss */
   #photo-container {
+	margin-top:10px;
     height: 100%;
     width: 320px;
-    margin: 0 auto;
+    margin: 8px auto 4px auto !important;
     padding: 0;
   }
   /* line 130, ../sass/_320.scss */
   #photo-container h1 {
-    margin: 20px 0 0 20px;
-    color: #6c5140;
+    color: #FFFFFF;
     font-family: "HelveticaNeueRegular", "HelveticaNeue-Regular", "Helvetica Neue Regular", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosRegular', "Helvetica", "Arial", sans-serif;
     font-weight: 300;
     font-stretch: normal;
@@ -842,12 +826,8 @@ div.photo-thumb img {
     border-radius: 8px;
     -o-border-radius: 8px;
     -ms-border-radius: 8px;
-    -webkit-box-shadow: 0 -1px 0 1px rgba(0, 0, 0, 0.6);
-    -moz-box-shadow: 0 -1px 0 1px rgba(0, 0, 0, 0.6);
-    box-shadow: 0 -1px 0 1px rgba(0, 0, 0, 0.6);
-    margin-top: 1px;
-    width: 60px;
-    height: 60px;
+    width: 52px;
+    height: 52px;
   }
   /* line 154, ../sass/_320.scss */
   #photo-container img.photo {
@@ -859,7 +839,6 @@ div.photo-thumb img {
     -moz-box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.4);
     box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.4);
     position: relative;
-    margin: 20px 0 20px 0;
     padding-top: 0;
   }
 }
