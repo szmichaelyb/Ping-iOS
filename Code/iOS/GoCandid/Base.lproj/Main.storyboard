@@ -708,9 +708,6 @@
                                 <state key="normal" image="back">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="backbuttonClicked:" destination="Dvu-oQ-EJq" eventType="touchUpInside" id="HC0-vT-rP6"/>
-                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
