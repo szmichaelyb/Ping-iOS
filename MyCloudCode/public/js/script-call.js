@@ -14,11 +14,15 @@ $(document).ready(function(e) {
             var userId = resURL[userIdIndex];
             $('meta').remove();
             $('head').append('<meta name="apple-itunes-app" content="app-id=898275446, affiliate-data=myAffiliateData, app-argument=http://www.gocandidapp.com/#posts/' + userId + '"> ');
+			
+			$.getJSON( "key.json", function( json ) {
+			var allPass=  json        
+			console.clear();
             $.ajax({
                 url: 'https://api.parse.com/1/classes/Selfies/' + userId,
                 beforeSend: function(xhr) {
-                    xhr.setRequestHeader("X-Parse-Application-Id", 'oLAYrU2fvZm5MTwA8z7kdtyVsJC4rSY4NiAh6yAp');
-                    xhr.setRequestHeader("X-Parse-REST-API-Key", '0d9TgCbXtJWBlBAvDDG2KN0hLXdKWcdsML0EYciv');
+                    xhr.setRequestHeader("X-Parse-Application-Id", allPass.id);
+                    xhr.setRequestHeader("X-Parse-REST-API-Key", allPass.key);
                 },
                 success: function(selfieData) {
                     var caption = selfieData.caption
@@ -30,8 +34,8 @@ $(document).ready(function(e) {
                     $.ajax({
                         url: 'https://api.parse.com/1/users/' + ownerObjectId,
                         beforeSend: function(xhr) {
-                            xhr.setRequestHeader("X-Parse-Application-Id", 'oLAYrU2fvZm5MTwA8z7kdtyVsJC4rSY4NiAh6yAp');
-                            xhr.setRequestHeader("X-Parse-REST-API-Key", '0d9TgCbXtJWBlBAvDDG2KN0hLXdKWcdsML0EYciv');
+                            xhr.setRequestHeader("X-Parse-Application-Id", allPass.id);
+                            xhr.setRequestHeader("X-Parse-REST-API-Key", allPass.key);
                         },
                         success: function(userProfileData) {
                             var userName = userProfileData.name;
@@ -42,8 +46,8 @@ $(document).ready(function(e) {
 						    $.ajax({
                                 url: 'https://api.parse.com/1/classes/Activity/',
                                 beforeSend: function(xhr) {
-                                    xhr.setRequestHeader("X-Parse-Application-Id", 'oLAYrU2fvZm5MTwA8z7kdtyVsJC4rSY4NiAh6yAp');
-                                    xhr.setRequestHeader("X-Parse-REST-API-Key", '0d9TgCbXtJWBlBAvDDG2KN0hLXdKWcdsML0EYciv');
+                                    xhr.setRequestHeader("X-Parse-Application-Id", allPass.id);
+                                    xhr.setRequestHeader("X-Parse-REST-API-Key", allPass.key);
                                 },
                                 data: {
                                     "where": {
@@ -66,12 +70,10 @@ $(document).ready(function(e) {
 
 
                 }
+				  });   
             });
 
         }
-    } else {
-        $("#main-site-contaner").show();
-    }
-
-
+    } 
+console.clear();
 });

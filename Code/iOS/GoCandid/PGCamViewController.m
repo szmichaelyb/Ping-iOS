@@ -406,12 +406,13 @@ static float kDefaultCaptureDelay = 0.7f;
     
     [self.manualButton setSelected:!self.manualButton.isSelected];
     
-    [UIView animateWithDuration:0.2 animations:^{
-        float alpha = (self.manualButton.selected) ? 0 : 1;
-        self.delaySlider.alpha = alpha;
-        self.plusIV.alpha = alpha;
-        self.minusIV.alpha = alpha;
-    }];
+    POPBasicAnimation* anim = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerOpacity];
+    float alpha = (self.manualButton.selected) ? 0 : 1;
+    anim.toValue = @(alpha);
+
+    [self.delaySlider.layer pop_addAnimation:anim forKey:kPOPLayerOpacity];
+    [self.plusIV.layer pop_addAnimation:anim forKey:kPOPLayerOpacity];
+    [self.minusIV.layer pop_addAnimation:anim forKey:kPOPLayerOpacity];
 }
 
 -(IBAction)captureButtonClicked:(id)sender
