@@ -28,8 +28,6 @@ static NSString * const kAFAviarySecret = @"a50ce6288a3d78f1";
 {
     [super viewDidLoad];
     
-    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(gotoNextView:)]];
-    
     // Do any additional setup after loading the view.
 }
 
@@ -39,7 +37,7 @@ static NSString * const kAFAviarySecret = @"a50ce6288a3d78f1";
     // Dispose of any resources that can be recreated.
 }
 
--(void)gotoNextView:(id)sender
+-(IBAction)nextButtonClicked:(id)sender
 {
     PGPingViewController* pingVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PGPingViewController"];
     pingVC.images = _images;
