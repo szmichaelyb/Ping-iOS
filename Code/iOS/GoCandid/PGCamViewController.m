@@ -13,7 +13,7 @@
 
 #import "AVCamPreviewView.h"
 
-#import "PGPingViewController.h"
+#import "GCReviewViewController.h"
 #import "UIView+Animate.h"
 #import <DZNPhotoPickerController.h>
 #import "UIImagePickerControllerExtended.h"
@@ -445,6 +445,7 @@ static float kDefaultCaptureDelay = 0.7f;
         [_thumbScrollView setContentSize:CGSizeMake((blockI + 1) * (iv.frame.size.width), _thumbScrollView.frame.size.height)];
         DLog(@"%@", NSStringFromCGRect(iv.frame));
         [_thumbScrollView scrollRectToVisible:iv.frame animated:YES];
+        
         if (blockI == _framesButton.buttonState - 1) {
             [self userDidPickImages];
         }
@@ -520,15 +521,23 @@ static float kDefaultCaptureDelay = 0.7f;
 
 -(void)userDidPickImages
 {
-    UIStoryboard* sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     //    if (_overalayImage) {
     
     //Create GIF from _overlayimage and image
-    PGPingViewController* pingVC = [sb instantiateViewControllerWithIdentifier:@"PGPingViewController"];
+//    PGPingViewController* pingVC = [sb instantiateViewControllerWithIdentifier:@"PGPingViewController"];
+//    GCPhotoEditorViewController* editorVC = [sb instantiateViewControllerWithIdentifier:@"GCPhotoEditorViewController"];
+
+//    img.
+//    [self launchPhotoEditorWithImage:img highResolutionImage:nil];
+//    [self launchPhotoEditorWithImage:[UIImage animatedImageWithImages:_images duration:2] highResolutionImage:nil];
+
     //        pingVC.images = @[_overalayImage, image];
-    pingVC.images = _images;
-    pingVC.delegate = _delegate;
-    [self.navigationController pushViewController:pingVC animated:YES];
+    GCReviewViewController* reviewVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"GCReviewViewController"];
+    reviewVC.images = _images;
+//    [editorVC setImageArray:_images];
+//    editorVC.imageArray = _images;
+    reviewVC.delegate = _delegate;
+    [self.navigationController pushViewController:reviewVC animated:YES];
     //    } else {
     //        PGCamViewController* camVC = [sb instantiateViewControllerWithIdentifier:@"PGCamViewController"];
     //        camVC.overalayImage = image;

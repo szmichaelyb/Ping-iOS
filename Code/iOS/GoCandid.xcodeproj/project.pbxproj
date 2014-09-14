@@ -75,6 +75,9 @@
 		06DF34511999588A00509399 /* OpenSans-CondLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06DF344D1999588A00509399 /* OpenSans-CondLightItalic.ttf */; };
 		06DF34531999ADBB00509399 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06DF34521999ADBB00509399 /* SystemConfiguration.framework */; };
 		06E79447198037CB00E7B143 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E79446198037CB00E7B143 /* Crashlytics.framework */; };
+		06F33B1519C535DA0053B1BF /* GCGIFHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F33B1419C535DA0053B1BF /* GCGIFHelper.m */; };
+		06F33B1819C548260053B1BF /* GCReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F33B1719C548260053B1BF /* GCReviewViewController.m */; };
+		06F33B1B19C54C7D0053B1BF /* GCReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F33B1A19C54C7D0053B1BF /* GCReviewCell.m */; };
 		B4D0781A6E87400B8846C0E9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 44403505DE314A23B874DE7D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -191,6 +194,12 @@
 		06DF344D1999588A00509399 /* OpenSans-CondLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-CondLightItalic.ttf"; sourceTree = "<group>"; };
 		06DF34521999ADBB00509399 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		06E79446198037CB00E7B143 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		06F33B1319C535DA0053B1BF /* GCGIFHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCGIFHelper.h; sourceTree = "<group>"; };
+		06F33B1419C535DA0053B1BF /* GCGIFHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCGIFHelper.m; sourceTree = "<group>"; };
+		06F33B1619C548260053B1BF /* GCReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCReviewViewController.h; sourceTree = "<group>"; };
+		06F33B1719C548260053B1BF /* GCReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCReviewViewController.m; sourceTree = "<group>"; };
+		06F33B1919C54C7D0053B1BF /* GCReviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCReviewCell.h; sourceTree = "<group>"; };
+		06F33B1A19C54C7D0053B1BF /* GCReviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCReviewCell.m; sourceTree = "<group>"; };
 		44403505DE314A23B874DE7D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3EC4F2809A54D8D8F1E8EBE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -399,9 +408,12 @@
 		06DCBCFB196EF61A00E8C9B2 /* Ping VC */ = {
 			isa = PBXGroup;
 			children = (
+				06F33B1319C535DA0053B1BF /* GCGIFHelper.h */,
+				06F33B1419C535DA0053B1BF /* GCGIFHelper.m */,
 				06DCBD1D196F9DBE00E8C9B2 /* View */,
 				06DCBCF2196EE40600E8C9B2 /* PGCamViewController.h */,
 				06DCBCF3196EE40600E8C9B2 /* PGCamViewController.m */,
+				06F33B1C19C54C830053B1BF /* Review VC */,
 				06DCBCF8196EE8EB00E8C9B2 /* PGPingViewController.h */,
 				06DCBCF9196EE8EB00E8C9B2 /* PGPingViewController.m */,
 				06654AEA197EBBDE0014FA74 /* PGSendPingViewController.h */,
@@ -568,6 +580,25 @@
 				06DF344D1999588A00509399 /* OpenSans-CondLightItalic.ttf */,
 			);
 			path = "open-sans-condensed";
+			sourceTree = "<group>";
+		};
+		06F33B1C19C54C830053B1BF /* Review VC */ = {
+			isa = PBXGroup;
+			children = (
+				06F33B1D19C54C920053B1BF /* Cell */,
+				06F33B1619C548260053B1BF /* GCReviewViewController.h */,
+				06F33B1719C548260053B1BF /* GCReviewViewController.m */,
+			);
+			name = "Review VC";
+			sourceTree = "<group>";
+		};
+		06F33B1D19C54C920053B1BF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				06F33B1919C54C7D0053B1BF /* GCReviewCell.h */,
+				06F33B1A19C54C7D0053B1BF /* GCReviewCell.m */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -738,10 +769,13 @@
 				068340BB1979688B007A1AEC /* UIImage+MyUIImage.m in Sources */,
 				068340B119783750007A1AEC /* PGParseHelper.m in Sources */,
 				06DCBCD0196E2AFF00E8C9B2 /* PGTutorialViewController.m in Sources */,
+				06F33B1819C548260053B1BF /* GCReviewViewController.m in Sources */,
+				06F33B1B19C54C7D0053B1BF /* GCReviewCell.m in Sources */,
 				06DCBCCA196E2AFF00E8C9B2 /* PGAppDelegate.m in Sources */,
 				064CD86A199D5E52007837A6 /* DRDynamicSlideShow.m in Sources */,
 				06AE7EDD19B7B692001FE651 /* GAI+MyGAITracker.m in Sources */,
 				06654AE9197DBE740014FA74 /* PGFindFriendsTableViewCell.m in Sources */,
+				06F33B1519C535DA0053B1BF /* GCGIFHelper.m in Sources */,
 				06DCBD13196F404C00E8C9B2 /* PGSettingsViewController.m in Sources */,
 				06DCBD17196F421400E8C9B2 /* UIDevice-Hardware.m in Sources */,
 			);

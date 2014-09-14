@@ -11,12 +11,8 @@
 #import "UIView+Animate.h"
 #import "PGSendPingViewController.h"
 //#import <BFPaperButton/BFPaperButton.h>
-#import <ImageIO/ImageIO.h>
-#import <MobileCoreServices/MobileCoreServices.h>
 #import "GCZoomInTrasitionController.h"
-#import <UIAlertView+Blocks/UIAlertView+Blocks.h>
-
-const CGFloat kDefaultGifDelay = 0.5;
+#import "GCGIFHelper.h"
 
 @interface PGPingViewController ()
 
@@ -29,7 +25,6 @@ const CGFloat kDefaultGifDelay = 0.5;
 
 -(IBAction)retakeClicked:(id)sender;
 -(IBAction)durationSliderChanged:(UISlider*)sender;
--(IBAction)backbuttonClicked:(id)sender;
 -(IBAction)sliderDidFinishChanging:(id)sender;
 -(IBAction)nextButtonClicked:(id)sender;
 
@@ -41,7 +36,8 @@ const CGFloat kDefaultGifDelay = 0.5;
 {
     [super viewDidLoad];
     
-    _imageURL = [self saveGifWithImages:_images gifDelay:kDefaultGifDelay];
+//    _imageURL = [self saveGifWithImages:_images gifDelay:kDefaultGifDelay];
+    _imageURL = [GCGIFHelper saveGifWithImages:_images gifDelay:kDefaultGifDelay];
     
     _durationSlider.value = kDefaultGifDelay;
     [_durationSlider setThumbImage:[UIImage imageNamed:@"slider"] forState:UIControlStateNormal];
@@ -89,24 +85,18 @@ const CGFloat kDefaultGifDelay = 0.5;
 -(IBAction)durationSliderChanged:(UISlider *)sender
 {
     DLog(@"Slider Value: %f", sender.value);
-    CGFloat duration = [self loopDurationForDelay:sender.value imagesCount:_images.count];
+//    CGFloat duration = [self loopDurationForDelay:sender.value imagesCount:_images.count];
+    CGFloat duration = [GCGIFHelper loopDurationForDelay:sender.value imagesCount:_images.count];
     _durationLabel.text = [NSString stringWithFormat:@"%.1f sec", duration];
 }
 
 - (IBAction)sliderDidFinishChanging:(UISlider*)sender
 {
-    _imageURL = [self saveGifWithImages:_images gifDelay:sender.value];
+//    _imageURL = [self saveGifWithImages:_images gifDelay:sender.value];
+    _imageURL = [GCGIFHelper saveGifWithImages:_images gifDelay:sender.value];
     _imageView.image = [UIImage animatedImageWithAnimatedGIFURL:_imageURL];
 }
 
-- (IBAction)backbuttonClicked:(id)sender
-{
-    [UIAlertView showWithTitle:@"Start over" message:@"Are you sure? This will discard the current picture." cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"Yes"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-        if (buttonIndex == 1) {
-            [self.navigationController popViewControllerAnimated:YES];
-        }
-    }];
-}
 
 -(IBAction)retakeClicked:(id)sender
 {
@@ -179,56 +169,5 @@ const CGFloat kDefaultGifDelay = 0.5;
 //}
 
 
-#pragma mark -
-
--(CGFloat)loopDurationForDelay:(CGFloat)delay imagesCount:(NSInteger)imagesCount
-{
-    CGFloat duration = (float)delay * imagesCount;
-    
-    return duration;
-}
-
--(NSURL*)saveGifWithImages:(NSArray*)images gifDelay:(CGFloat)delay
-{
-    NSUInteger kFrameCount = images.count;
-    
-    NSDictionary *fileProperties = @{
-                                     (__bridge id)kCGImagePropertyGIFDictionary: @{
-                                             (__bridge id)kCGImagePropertyGIFLoopCount: @0, // 0 means loop forever
-                                             }
-                                     };
-    
-    
-    if (delay == 0)
-        delay = 0.7f;
-    
-    NSDictionary* frameProperties = @{
-                                      (__bridge id)kCGImagePropertyGIFDictionary: @{
-                                              (__bridge id)kCGImagePropertyGIFDelayTime: @(delay), // a float (not double!) in seconds, rounded to centiseconds in the GIF data
-                                              }
-                                      };
-    
-    
-    NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
-    NSURL *fileURL = [documentsDirectoryURL URLByAppendingPathComponent:@"animated.gif"];
-    
-    CGImageDestinationRef destination = CGImageDestinationCreateWithURL((__bridge CFURLRef)fileURL, kUTTypeGIF, kFrameCount, NULL);
-    CGImageDestinationSetProperties(destination, (__bridge CFDictionaryRef)fileProperties);
-    
-    for (NSUInteger i = 0; i < kFrameCount; i++) {
-        @autoreleasepool {
-            UIImage* image = images[i];
-            CGImageDestinationAddImage(destination, image.CGImage, (__bridge CFDictionaryRef)frameProperties);
-        }
-    }
-    
-    if (!CGImageDestinationFinalize(destination)) {
-        NSLog(@"failed to finalize image destination");
-    }
-    CFRelease(destination);
-    
-    return fileURL;
-    DLog(@"url=%@", fileURL);
-}
 
 @end

@@ -91,4 +91,6 @@
 #define FONT_SIZE_MEDIUM 20
 #define FONT_SIZE_LARGE 22
 
+#define kDefaultGifDelay 0.5
+
 #endif

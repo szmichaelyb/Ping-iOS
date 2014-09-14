@@ -20,6 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.4.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - AviarySDK (4.0.1)
   - DACircularProgress (2.2.0)
   - DZNEmptyDataSet (1.4.1)
   - DZNPhotoPickerController (1.5):
@@ -59,7 +60,6 @@ PODS:
     - pop
   - iOS-Hierarchy-Viewer (1.4.7)
   - iRate (1.9.3)
-  - MaryPopin (1.3.1)
   - MBProgressHUD (0.9)
   - pop (1.0.6)
   - SDWebImage (3.7.1):
@@ -73,6 +73,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - AviarySDK (~> 4.0.1)
   - DZNPhotoPickerController
   - Facebook-iOS-SDK (~> 3.9.0)
   - FormatterKit (~> 1.4.2)
@@ -82,7 +83,6 @@ DEPENDENCIES:
   - IDMPhotoBrowser (~> 1.3.5)
   - iOS-Hierarchy-Viewer (~> 1.4.7)
   - iRate (~> 1.9.3)
-  - MaryPopin (~> 1.3.1)
   - MBProgressHUD (~> 0.8)
   - pop (~> 1.0.4)
   - STTweetLabel (~> 3.1.9)
@@ -93,6 +93,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
+  AviarySDK: 3afdc76551f2f46cda2a20e15bb8c21ee48add04
   DACircularProgress: 3b41941891a56dc6aa17971f5322a9a38a6f446e
   DZNEmptyDataSet: 381e880cb3bb2d33885cb0325218443df265bc98
   DZNPhotoPickerController: 3d7428991e2604939fc56e581693d61d29138186
@@ -103,7 +104,6 @@ SPEC CHECKSUMS:
   IDMPhotoBrowser: da2110d99ea8735ad9a0ba52f2d184e756104a71
   iOS-Hierarchy-Viewer: f795abaeb8ccec8f652abd0891c396ad77d211d3
   iRate: 34b63a5e9dabcd26a5cf573d872ebb366802d63d
-  MaryPopin: 51ab03a9ea8342c358a2560c476955ecf2a6d438
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
   pop: e518794da38942c05255eb64b36d894e70cb4f00
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
