@@ -74,6 +74,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)backButtonClicked:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 -(id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC
 {
     if (fromVC == self && [toVC isKindOfClass:[PGSendPingViewController class]]) {
