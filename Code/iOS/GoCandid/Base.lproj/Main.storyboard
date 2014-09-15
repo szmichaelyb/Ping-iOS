@@ -643,7 +643,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="collectionView" destination="mqn-qc-a3D" id="4Rk-U7-bXu"/>
+                        <outlet property="collectionView" destination="mqn-qc-a3D" id="342-qc-h02"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Ki-bT-ZWg" userLabel="First Responder" sceneMemberID="firstResponder"/>

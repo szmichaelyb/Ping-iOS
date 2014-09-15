@@ -36,6 +36,8 @@
 {
     [super viewDidLoad];
     
+    self.navigationController.navigationBar.translucent = NO;
+    
 //    _imageURL = [self saveGifWithImages:_images gifDelay:kDefaultGifDelay];
     _imageURL = [GCGIFHelper saveGifWithImages:_images gifDelay:kDefaultGifDelay];
     

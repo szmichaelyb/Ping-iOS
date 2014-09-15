@@ -11,13 +11,13 @@
 #import "PGPingViewController.h"
 #import "GCReviewCell.h"
 #import <UIAlertView+Blocks/UIAlertView+Blocks.h>
+#import "GCCombineTransitionController.h"
 
 static NSString * const kAFAviaryAPIKey = @"a2095a01a8bde2f7";
 static NSString * const kAFAviarySecret = @"a50ce6288a3d78f1";
 
 @interface GCReviewViewController ()<AFPhotoEditorControllerDelegate>
 
-@property (nonatomic, strong) IBOutlet UICollectionView* collectionView;
 @property (nonatomic, strong) NSIndexPath* selectedIndexPath;
 
 @end
@@ -28,7 +28,24 @@ static NSString * const kAFAviarySecret = @"a50ce6288a3d78f1";
 {
     [super viewDidLoad];
     
+    self.navigationController.navigationBar.translucent = NO;
+    
     // Do any additional setup after loading the view.
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    self.navigationController.delegate = self;
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    if (self.navigationController.delegate == self) {
+        self.navigationController.delegate = nil;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -53,6 +70,15 @@ static NSString * const kAFAviarySecret = @"a50ce6288a3d78f1";
         }
     }];
 }
+
+-(id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC
+{
+    if (fromVC == self && [toVC isKindOfClass:[PGPingViewController class]]) {
+        return [[GCCombineTransitionController alloc] init];
+    }
+    return nil;
+}
+
 
 #pragma mark - UICollectionView Datasource
 

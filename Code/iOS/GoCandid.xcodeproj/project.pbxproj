@@ -38,6 +38,7 @@
 		06B561611975AB9E00E92A92 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06B561601975AB9E00E92A92 /* ImageIO.framework */; };
 		06B561641975B04B00E92A92 /* UIImage+animatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B561631975B04B00E92A92 /* UIImage+animatedGIF.m */; };
 		06B58A80198807F10020D01E /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06B58A7F198807F10020D01E /* AddressBook.framework */; };
+		06D44F9D19C7424C005AF8E5 /* GCCombineTransitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D44F9C19C7424C005AF8E5 /* GCCombineTransitionController.m */; };
 		06DCBCBA196E2AFF00E8C9B2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06DCBCB9196E2AFF00E8C9B2 /* Foundation.framework */; };
 		06DCBCBC196E2AFF00E8C9B2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06DCBCBB196E2AFF00E8C9B2 /* CoreGraphics.framework */; };
 		06DCBCBE196E2AFF00E8C9B2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06DCBCBD196E2AFF00E8C9B2 /* UIKit.framework */; };
@@ -133,6 +134,8 @@
 		06B561621975B04B00E92A92 /* UIImage+animatedGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+animatedGIF.h"; sourceTree = "<group>"; };
 		06B561631975B04B00E92A92 /* UIImage+animatedGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+animatedGIF.m"; sourceTree = "<group>"; };
 		06B58A7F198807F10020D01E /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		06D44F9B19C7424C005AF8E5 /* GCCombineTransitionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCCombineTransitionController.h; sourceTree = "<group>"; };
+		06D44F9C19C7424C005AF8E5 /* GCCombineTransitionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCCombineTransitionController.m; sourceTree = "<group>"; };
 		06DCBCB6196E2AFF00E8C9B2 /* GoCandid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoCandid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06DCBCB9196E2AFF00E8C9B2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		06DCBCBB196E2AFF00E8C9B2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -588,6 +591,8 @@
 				06F33B1D19C54C920053B1BF /* Cell */,
 				06F33B1619C548260053B1BF /* GCReviewViewController.h */,
 				06F33B1719C548260053B1BF /* GCReviewViewController.m */,
+				06D44F9B19C7424C005AF8E5 /* GCCombineTransitionController.h */,
+				06D44F9C19C7424C005AF8E5 /* GCCombineTransitionController.m */,
 			);
 			name = "Review VC";
 			sourceTree = "<group>";
@@ -775,6 +780,7 @@
 				064CD86A199D5E52007837A6 /* DRDynamicSlideShow.m in Sources */,
 				06AE7EDD19B7B692001FE651 /* GAI+MyGAITracker.m in Sources */,
 				06654AE9197DBE740014FA74 /* PGFindFriendsTableViewCell.m in Sources */,
+				06D44F9D19C7424C005AF8E5 /* GCCombineTransitionController.m in Sources */,
 				06F33B1519C535DA0053B1BF /* GCGIFHelper.m in Sources */,
 				06DCBD13196F404C00E8C9B2 /* PGSettingsViewController.m in Sources */,
 				06DCBD17196F421400E8C9B2 /* UIDevice-Hardware.m in Sources */,

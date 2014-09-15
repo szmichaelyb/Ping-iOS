@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "PGCamViewController.h"
 
-@interface GCReviewViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate>
+@interface GCReviewViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate, UINavigationControllerDelegate>
+
+@property (nonatomic, strong) IBOutlet UICollectionView* collectionView;
 
 @property (assign, nonatomic) id<PGCamViewControllerDelegate> delegate;
 @property (strong, nonatomic) NSMutableArray* images;
