@@ -39,6 +39,9 @@
 		06B561641975B04B00E92A92 /* UIImage+animatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B561631975B04B00E92A92 /* UIImage+animatedGIF.m */; };
 		06B58A80198807F10020D01E /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06B58A7F198807F10020D01E /* AddressBook.framework */; };
 		06D44F9D19C7424C005AF8E5 /* GCCombineTransitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D44F9C19C7424C005AF8E5 /* GCCombineTransitionController.m */; };
+		06D44FA219C76D46005AF8E5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06D44FA119C76D46005AF8E5 /* StoreKit.framework */; };
+		06D44FAB19C79138005AF8E5 /* AviarySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06D44FA919C79138005AF8E5 /* AviarySDK.framework */; };
+		06D44FAC19C79138005AF8E5 /* AviarySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 06D44FAA19C79138005AF8E5 /* AviarySDKResources.bundle */; };
 		06DCBCBA196E2AFF00E8C9B2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06DCBCB9196E2AFF00E8C9B2 /* Foundation.framework */; };
 		06DCBCBC196E2AFF00E8C9B2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06DCBCBB196E2AFF00E8C9B2 /* CoreGraphics.framework */; };
 		06DCBCBE196E2AFF00E8C9B2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06DCBCBD196E2AFF00E8C9B2 /* UIKit.framework */; };
@@ -136,6 +139,9 @@
 		06B58A7F198807F10020D01E /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		06D44F9B19C7424C005AF8E5 /* GCCombineTransitionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCCombineTransitionController.h; sourceTree = "<group>"; };
 		06D44F9C19C7424C005AF8E5 /* GCCombineTransitionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCCombineTransitionController.m; sourceTree = "<group>"; };
+		06D44FA119C76D46005AF8E5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		06D44FA919C79138005AF8E5 /* AviarySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AviarySDK.framework; sourceTree = "<group>"; };
+		06D44FAA19C79138005AF8E5 /* AviarySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AviarySDKResources.bundle; sourceTree = "<group>"; };
 		06DCBCB6196E2AFF00E8C9B2 /* GoCandid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoCandid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06DCBCB9196E2AFF00E8C9B2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		06DCBCBB196E2AFF00E8C9B2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -213,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06DF34531999ADBB00509399 /* SystemConfiguration.framework in Frameworks */,
+				06D44FAB19C79138005AF8E5 /* AviarySDK.framework in Frameworks */,
 				06B58A80198807F10020D01E /* AddressBook.framework in Frameworks */,
 				06AE7EDA19B65C55001FE651 /* ParseFacebookUtils.framework in Frameworks */,
 				06B561611975AB9E00E92A92 /* ImageIO.framework in Frameworks */,
@@ -223,6 +230,7 @@
 				06DCBCBE196E2AFF00E8C9B2 /* UIKit.framework in Frameworks */,
 				06DCBCBA196E2AFF00E8C9B2 /* Foundation.framework in Frameworks */,
 				B4D0781A6E87400B8846C0E9 /* libPods.a in Frameworks */,
+				06D44FA219C76D46005AF8E5 /* StoreKit.framework in Frameworks */,
 				06E79447198037CB00E7B143 /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -335,6 +343,15 @@
 			name = "Profile VC";
 			sourceTree = "<group>";
 		};
+		06D44FA819C79137005AF8E5 /* AviarySDK */ = {
+			isa = PBXGroup;
+			children = (
+				06D44FA919C79138005AF8E5 /* AviarySDK.framework */,
+				06D44FAA19C79138005AF8E5 /* AviarySDKResources.bundle */,
+			);
+			path = AviarySDK;
+			sourceTree = "<group>";
+		};
 		06DCBCAD196E2AFF00E8C9B2 = {
 			isa = PBXGroup;
 			children = (
@@ -356,6 +373,8 @@
 		06DCBCB8196E2AFF00E8C9B2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				06D44FA819C79137005AF8E5 /* AviarySDK */,
+				06D44FA119C76D46005AF8E5 /* StoreKit.framework */,
 				06AE7ED419B65C54001FE651 /* parse-library-1.2.21 */,
 				06DF34521999ADBB00509399 /* SystemConfiguration.framework */,
 				06B58A7F198807F10020D01E /* AddressBook.framework */,
@@ -641,6 +660,11 @@
 				TargetAttributes = {
 					06DCBCB5196E2AFF00E8C9B2 = {
 						DevelopmentTeam = CEBY93VF85;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -681,6 +705,7 @@
 				06DCBCC4196E2AFF00E8C9B2 /* InfoPlist.strings in Resources */,
 				06AE7EDF19B90ED4001FE651 /* GCInstructionsView.xib in Resources */,
 				06B561581974467300E92A92 /* PGFeedTableViewCell.xib in Resources */,
+				06D44FAC19C79138005AF8E5 /* AviarySDKResources.bundle in Resources */,
 				06DCBCCD196E2AFF00E8C9B2 /* Main.storyboard in Resources */,
 				06DF34511999588A00509399 /* OpenSans-CondLightItalic.ttf in Resources */,
 				06DF34501999588A00509399 /* OpenSans-CondLight.ttf in Resources */,
@@ -887,12 +912,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/parse-library-1.2.21",
+					"$(PROJECT_DIR)/AviarySDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GoCandid/GoCandid-Prefix.pch";
@@ -910,19 +936,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/parse-library-1.2.21",
+					"$(PROJECT_DIR)/AviarySDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GoCandid/GoCandid-Prefix.pch";
 				INFOPLIST_FILE = "GoCandid/GoCandid-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = GoCandid;
-				PROVISIONING_PROFILE = "8B1BD77C-9B5A-4949-88E4-0B5D625875AC";
+				PROVISIONING_PROFILE = "e37aac96-1a38-40da-9154-2068fbcaa92d";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

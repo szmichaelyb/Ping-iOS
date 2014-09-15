@@ -48,12 +48,6 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 4
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 1
 
-// AviarySDK
-#define COCOAPODS_POD_AVAILABLE_AviarySDK
-#define COCOAPODS_VERSION_MAJOR_AviarySDK 4
-#define COCOAPODS_VERSION_MINOR_AviarySDK 0
-#define COCOAPODS_VERSION_PATCH_AviarySDK 1
-
 // DACircularProgress
 #define COCOAPODS_POD_AVAILABLE_DACircularProgress
 #define COCOAPODS_VERSION_MAJOR_DACircularProgress 2

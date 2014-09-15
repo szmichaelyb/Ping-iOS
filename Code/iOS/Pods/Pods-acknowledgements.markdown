@@ -24,11 +24,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
-## AviarySDK
-
-Copyright (c) 2014 Aviary, Inc. All rights reserved.
-
-
 ## DACircularProgress
 
 # License

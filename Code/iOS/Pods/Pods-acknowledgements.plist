@@ -41,15 +41,6 @@ THE SOFTWARE.
 		</dict>
 		<dict>
 			<key>FooterText</key>
-			<string>Copyright (c) 2014 Aviary, Inc. All rights reserved.
-</string>
-			<key>Title</key>
-			<string>AviarySDK</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
-		</dict>
-		<dict>
-			<key>FooterText</key>
 			<string># License
 
 ## MIT License

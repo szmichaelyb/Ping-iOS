@@ -93,4 +93,7 @@
 
 #define kDefaultGifDelay 0.5
 
+#define kAFAviaryAPIKey @"a2095a01a8bde2f7"
+#define kAFAviarySecret @"a50ce6288a3d78f1"
+
 #endif

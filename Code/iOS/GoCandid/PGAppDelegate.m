@@ -16,7 +16,7 @@
 #import <Crashlytics/Crashlytics.h>
 #include <unistd.h>
 #include<netdb.h>
-
+#import <AviarySDK/AviarySDK.h>
 #import "GAI.h"
 
 @implementation PGAppDelegate
@@ -52,6 +52,13 @@
     [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelError];
     
     [[GAI sharedInstance] trackerWithTrackingId:@"UA-40631521-10"];
+    
+    [AFPhotoEditorController setAPIKey:kAFAviaryAPIKey secret:kAFAviarySecret];
+    
+    [[AFPhotoEditorController inAppPurchaseManager] startObservingTransactions];
+    if (DEBUGMODE) {
+        [AFPhotoEditorCustomization usePCNStagingEnvironment:YES];
+    }
     
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navbar"] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName,FONT_OPENSANS_CONDBOLD(FONT_SIZE_LARGE), NSFontAttributeName, nil]];

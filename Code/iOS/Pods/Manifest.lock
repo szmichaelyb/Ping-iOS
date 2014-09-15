@@ -20,7 +20,6 @@ PODS:
   - AFNetworking/UIKit (2.4.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - AviarySDK (4.0.1)
   - DACircularProgress (2.2.0)
   - DZNEmptyDataSet (1.4.1)
   - DZNPhotoPickerController (1.5):
@@ -73,7 +72,6 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
-  - AviarySDK (~> 4.0.1)
   - DZNPhotoPickerController
   - Facebook-iOS-SDK (~> 3.9.0)
   - FormatterKit (~> 1.4.2)
@@ -93,7 +91,6 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
-  AviarySDK: 3afdc76551f2f46cda2a20e15bb8c21ee48add04
   DACircularProgress: 3b41941891a56dc6aa17971f5322a9a38a6f446e
   DZNEmptyDataSet: 381e880cb3bb2d33885cb0325218443df265bc98
   DZNPhotoPickerController: 3d7428991e2604939fc56e581693d61d29138186

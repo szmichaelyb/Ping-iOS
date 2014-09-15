@@ -13,9 +13,6 @@
 #import <UIAlertView+Blocks/UIAlertView+Blocks.h>
 #import "GCCombineTransitionController.h"
 
-static NSString * const kAFAviaryAPIKey = @"a2095a01a8bde2f7";
-static NSString * const kAFAviarySecret = @"a50ce6288a3d78f1";
-
 @interface GCReviewViewController ()<AFPhotoEditorControllerDelegate>
 
 @property (nonatomic, strong) NSIndexPath* selectedIndexPath;

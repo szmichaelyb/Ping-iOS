@@ -41,7 +41,6 @@ install_resource()
       ;;
   esac
 }
-install_resource "AviarySDK/AviarySDK-4.0.1/AviarySDK/AviarySDKResources.bundle"
 install_resource "DZNPhotoPickerController/Source/Resources/en-GB.lproj/DZNPhotoPickerController.strings"
 install_resource "DZNPhotoPickerController/Source/Resources/en.lproj/DZNPhotoPickerController.strings"
 install_resource "DZNPhotoPickerController/Source/Resources/en-GB.lproj"
