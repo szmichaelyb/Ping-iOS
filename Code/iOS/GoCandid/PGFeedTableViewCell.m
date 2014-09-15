@@ -42,10 +42,10 @@
     
     [self.likeButton setImage:[UIImage imageNamed:@"heartOFF"] forState:UIControlStateNormal];
     
-    UILongPressGestureRecognizer* gesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
-    gesture.minimumPressDuration = 0.08;
-    gesture.allowableMovement = 600;
-    [self.mainIV addGestureRecognizer:gesture];
+//    UILongPressGestureRecognizer* gesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+//    gesture.minimumPressDuration = 0.08;
+//    gesture.allowableMovement = 600;
+//    [self.mainIV addGestureRecognizer:gesture];
     
     UITapGestureRecognizer* doubleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
     doubleTapGesture.numberOfTapsRequired = 2;
@@ -64,20 +64,20 @@
     [self likeButtonClicked:self.likeButton];
 }
 
--(void)handleGesture:(UIGestureRecognizer*)gesture
-{
-    DLog(@"%d", gesture.state);
-    if (gesture.state == UIGestureRecognizerStateBegan) {
-        if (_delegate) {
-            [_delegate cellDidStartTap:self];
-        }
-    }
-    if (gesture.state == UIGestureRecognizerStateEnded) {
-        if (_delegate) {
-            [_delegate cellDidStopTap:self];
-        }
-    }
-}
+//-(void)handleGesture:(UIGestureRecognizer*)gesture
+//{
+//    DLog(@"%d", gesture.state);
+//    if (gesture.state == UIGestureRecognizerStateBegan) {
+//        if (_delegate) {
+//            [_delegate cellDidStartTap:self];
+//        }
+//    }
+//    if (gesture.state == UIGestureRecognizerStateEnded) {
+//        if (_delegate) {
+//            [_delegate cellDidStopTap:self];
+//        }
+//    }
+//}
 
 - (IBAction)nameButtonClicked:(id)sender
 {
