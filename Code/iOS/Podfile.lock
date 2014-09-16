@@ -33,7 +33,6 @@ PODS:
     - DZNEmptyDataSet
     - DZNPhotoPickerController/UIImagePickerControllerExtended
     - SDWebImage (~> 3.7)
-  - Facebook-iOS-SDK (3.9.0)
   - FormatterKit (1.4.3):
     - FormatterKit/AddressFormatter
     - FormatterKit/ArrayFormatter
@@ -73,7 +72,6 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - DZNPhotoPickerController
-  - Facebook-iOS-SDK (~> 3.9.0)
   - FormatterKit (~> 1.4.2)
   - GoogleAnalytics-iOS-SDK (~> 3.0.6)
   - GTScrollNavigationBar (= 0.1.1)
@@ -94,7 +92,6 @@ SPEC CHECKSUMS:
   DACircularProgress: 3b41941891a56dc6aa17971f5322a9a38a6f446e
   DZNEmptyDataSet: 381e880cb3bb2d33885cb0325218443df265bc98
   DZNPhotoPickerController: 3d7428991e2604939fc56e581693d61d29138186
-  Facebook-iOS-SDK: e77b57ba1b0ca040e54df806093cdda32f1f8d25
   FormatterKit: f744aa7928003eba8317d6fd6998414fbc78f7a5
   GoogleAnalytics-iOS-SDK: d9e198b1f955259a72886769be7377cdfcdb2250
   GTScrollNavigationBar: 60392a5cc551047d0471e5693d06f68d4c1bd77b

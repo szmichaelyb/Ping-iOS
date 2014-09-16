@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0628645319C8875700858903 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0628645019C8875700858903 /* Parse.framework */; };
+		0628645419C8875700858903 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0628645119C8875700858903 /* ParseFacebookUtils.framework */; };
+		0628645819C88BB700858903 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0628645719C88BB700858903 /* FacebookSDK.framework */; };
 		064CD86A199D5E52007837A6 /* DRDynamicSlideShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 064CD869199D5E52007837A6 /* DRDynamicSlideShow.m */; };
 		06654AE0197DB1860014FA74 /* PGFramesButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 06654ADF197DB1860014FA74 /* PGFramesButton.m */; };
 		06654AE6197DBABA0014FA74 /* PGFindFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06654AE5197DBABA0014FA74 /* PGFindFriendsViewController.m */; };
@@ -26,9 +29,6 @@
 		068340B519784572007A1AEC /* PGActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 068340B419784572007A1AEC /* PGActivityViewController.m */; };
 		068340B8197850AF007A1AEC /* PGActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 068340B7197850AF007A1AEC /* PGActivityTableViewCell.m */; };
 		068340BB1979688B007A1AEC /* UIImage+MyUIImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 068340BA1979688B007A1AEC /* UIImage+MyUIImage.m */; };
-		06AE7ED819B65C55001FE651 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06AE7ED519B65C54001FE651 /* Bolts.framework */; };
-		06AE7ED919B65C55001FE651 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06AE7ED619B65C54001FE651 /* Parse.framework */; };
-		06AE7EDA19B65C55001FE651 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06AE7ED719B65C54001FE651 /* ParseFacebookUtils.framework */; };
 		06AE7EDD19B7B692001FE651 /* GAI+MyGAITracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AE7EDC19B7B692001FE651 /* GAI+MyGAITracker.m */; };
 		06AE7EDF19B90ED4001FE651 /* GCInstructionsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06AE7EDE19B90ED4001FE651 /* GCInstructionsView.xib */; };
 		06B56151197423AE00E92A92 /* PGProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B56150197423AE00E92A92 /* PGProfileViewController.m */; };
@@ -78,7 +78,6 @@
 		06DF34501999588A00509399 /* OpenSans-CondLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06DF344C1999588A00509399 /* OpenSans-CondLight.ttf */; };
 		06DF34511999588A00509399 /* OpenSans-CondLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06DF344D1999588A00509399 /* OpenSans-CondLightItalic.ttf */; };
 		06DF34531999ADBB00509399 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06DF34521999ADBB00509399 /* SystemConfiguration.framework */; };
-		06E79447198037CB00E7B143 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E79446198037CB00E7B143 /* Crashlytics.framework */; };
 		06F33B1519C535DA0053B1BF /* GCGIFHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F33B1419C535DA0053B1BF /* GCGIFHelper.m */; };
 		06F33B1819C548260053B1BF /* GCReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F33B1719C548260053B1BF /* GCReviewViewController.m */; };
 		06F33B1B19C54C7D0053B1BF /* GCReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F33B1A19C54C7D0053B1BF /* GCReviewCell.m */; };
@@ -86,6 +85,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0628645019C8875700858903 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		0628645119C8875700858903 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
+		0628645719C88BB700858903 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		064CD868199D5E52007837A6 /* DRDynamicSlideShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRDynamicSlideShow.h; sourceTree = "<group>"; };
 		064CD869199D5E52007837A6 /* DRDynamicSlideShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRDynamicSlideShow.m; sourceTree = "<group>"; };
 		06654ADE197DB1860014FA74 /* PGFramesButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGFramesButton.h; sourceTree = "<group>"; };
@@ -121,9 +123,6 @@
 		068340B7197850AF007A1AEC /* PGActivityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGActivityTableViewCell.m; sourceTree = "<group>"; };
 		068340B91979688B007A1AEC /* UIImage+MyUIImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MyUIImage.h"; sourceTree = "<group>"; };
 		068340BA1979688B007A1AEC /* UIImage+MyUIImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MyUIImage.m"; sourceTree = "<group>"; };
-		06AE7ED519B65C54001FE651 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		06AE7ED619B65C54001FE651 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		06AE7ED719B65C54001FE651 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		06AE7EDB19B7B692001FE651 /* GAI+MyGAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GAI+MyGAITracker.h"; sourceTree = "<group>"; };
 		06AE7EDC19B7B692001FE651 /* GAI+MyGAITracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GAI+MyGAITracker.m"; sourceTree = "<group>"; };
 		06AE7EDE19B90ED4001FE651 /* GCInstructionsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GCInstructionsView.xib; sourceTree = "<group>"; };
@@ -202,7 +201,6 @@
 		06DF344C1999588A00509399 /* OpenSans-CondLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-CondLight.ttf"; sourceTree = "<group>"; };
 		06DF344D1999588A00509399 /* OpenSans-CondLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-CondLightItalic.ttf"; sourceTree = "<group>"; };
 		06DF34521999ADBB00509399 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		06E79446198037CB00E7B143 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		06F33B1319C535DA0053B1BF /* GCGIFHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCGIFHelper.h; sourceTree = "<group>"; };
 		06F33B1419C535DA0053B1BF /* GCGIFHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCGIFHelper.m; sourceTree = "<group>"; };
 		06F33B1619C548260053B1BF /* GCReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCReviewViewController.h; sourceTree = "<group>"; };
@@ -220,24 +218,32 @@
 			files = (
 				06DF34531999ADBB00509399 /* SystemConfiguration.framework in Frameworks */,
 				06D44FAB19C79138005AF8E5 /* AviarySDK.framework in Frameworks */,
+				0628645419C8875700858903 /* ParseFacebookUtils.framework in Frameworks */,
+				0628645319C8875700858903 /* Parse.framework in Frameworks */,
 				06B58A80198807F10020D01E /* AddressBook.framework in Frameworks */,
-				06AE7EDA19B65C55001FE651 /* ParseFacebookUtils.framework in Frameworks */,
 				06B561611975AB9E00E92A92 /* ImageIO.framework in Frameworks */,
 				06B5615F1975AB9700E92A92 /* MobileCoreServices.framework in Frameworks */,
 				06DCBCBC196E2AFF00E8C9B2 /* CoreGraphics.framework in Frameworks */,
-				06AE7ED819B65C55001FE651 /* Bolts.framework in Frameworks */,
-				06AE7ED919B65C55001FE651 /* Parse.framework in Frameworks */,
+				0628645819C88BB700858903 /* FacebookSDK.framework in Frameworks */,
 				06DCBCBE196E2AFF00E8C9B2 /* UIKit.framework in Frameworks */,
 				06DCBCBA196E2AFF00E8C9B2 /* Foundation.framework in Frameworks */,
 				B4D0781A6E87400B8846C0E9 /* libPods.a in Frameworks */,
 				06D44FA219C76D46005AF8E5 /* StoreKit.framework in Frameworks */,
-				06E79447198037CB00E7B143 /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0628644E19C8875700858903 /* parse-library-1.3.0 */ = {
+			isa = PBXGroup;
+			children = (
+				0628645019C8875700858903 /* Parse.framework */,
+				0628645119C8875700858903 /* ParseFacebookUtils.framework */,
+			);
+			path = "parse-library-1.3.0";
+			sourceTree = "<group>";
+		};
 		065A263F198FF2C9005E09D8 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -322,16 +328,6 @@
 			name = Vendor;
 			sourceTree = "<group>";
 		};
-		06AE7ED419B65C54001FE651 /* parse-library-1.2.21 */ = {
-			isa = PBXGroup;
-			children = (
-				06AE7ED519B65C54001FE651 /* Bolts.framework */,
-				06AE7ED619B65C54001FE651 /* Parse.framework */,
-				06AE7ED719B65C54001FE651 /* ParseFacebookUtils.framework */,
-			);
-			path = "parse-library-1.2.21";
-			sourceTree = "<group>";
-		};
 		06B5614E1974239200E92A92 /* Profile VC */ = {
 			isa = PBXGroup;
 			children = (
@@ -373,12 +369,12 @@
 		06DCBCB8196E2AFF00E8C9B2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0628645719C88BB700858903 /* FacebookSDK.framework */,
+				0628644E19C8875700858903 /* parse-library-1.3.0 */,
 				06D44FA819C79137005AF8E5 /* AviarySDK */,
 				06D44FA119C76D46005AF8E5 /* StoreKit.framework */,
-				06AE7ED419B65C54001FE651 /* parse-library-1.2.21 */,
 				06DF34521999ADBB00509399 /* SystemConfiguration.framework */,
 				06B58A7F198807F10020D01E /* AddressBook.framework */,
-				06E79446198037CB00E7B143 /* Crashlytics.framework */,
 				06B561601975AB9E00E92A92 /* ImageIO.framework */,
 				06B5615E1975AB9700E92A92 /* MobileCoreServices.framework */,
 				06DCBCB9196E2AFF00E8C9B2 /* Foundation.framework */,
@@ -637,7 +633,6 @@
 				06DCBCB3196E2AFF00E8C9B2 /* Frameworks */,
 				06DCBCB4196E2AFF00E8C9B2 /* Resources */,
 				BAC4277C51214E4CBAF16E3B /* Copy Pods Resources */,
-				06E794451980378400E7B143 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -715,19 +710,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		06E794451980378400E7B143 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./Crashlytics.framework/run 02d3f7db22ac1a3e538528547a694d5230eb8278 af6ede98bc0742057c556b0ed733e4c57ae435cd7cc81f516bb2b4e456b7e234";
-		};
 		35CBE7C6359E48F89243C485 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -919,11 +901,67 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/parse-library-1.2.21",
 					"$(PROJECT_DIR)/AviarySDK",
+					/Users/rishabhtayal/Documents/FacebookSDK,
+					"$(PROJECT_DIR)/parse-library-1.3.0",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GoCandid/GoCandid-Prefix.pch";
 				INFOPLIST_FILE = "GoCandid/GoCandid-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/AFNetworking\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Bolts\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/DACircularProgress\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/DZNEmptyDataSet\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/DZNPhotoPickerController\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/DZNPhotoPickerController/Classes\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/DZNPhotoPickerController/Classes/DZNPhotoService\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/DZNPhotoPickerController/Classes/UIImagePickerController\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Facebook-iOS-SDK\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Facebook-iOS-SDK/FacebookSDK\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/FormatterKit\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/GTScrollNavigationBar\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/GoogleAnalytics-iOS-SDK\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/IDMPhotoBrowser\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/MBProgressHUD\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/SDWebImage\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/STTweetLabel\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/UIActionSheet+Blocks\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/UIAlertView+Blocks\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/UITableView-NXEmptyView\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/ZGParallelView\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/iOS-Hierarchy-Viewer\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/iRate\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/pop\"",
+					"-ObjC",
+				);
 				PRODUCT_NAME = GoCandid;
 				PROVISIONING_PROFILE = "8B1BD77C-9B5A-4949-88E4-0B5D625875AC";
 				WRAPPER_EXTENSION = app;
@@ -943,13 +981,69 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/parse-library-1.2.21",
 					"$(PROJECT_DIR)/AviarySDK",
+					/Users/rishabhtayal/Documents/FacebookSDK,
+					"$(PROJECT_DIR)/parse-library-1.3.0",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GoCandid/GoCandid-Prefix.pch";
 				INFOPLIST_FILE = "GoCandid/GoCandid-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/AFNetworking\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Bolts\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/DACircularProgress\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/DZNEmptyDataSet\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/DZNPhotoPickerController\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/DZNPhotoPickerController/Classes\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/DZNPhotoPickerController/Classes/DZNPhotoService\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/DZNPhotoPickerController/Classes/UIImagePickerController\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Facebook-iOS-SDK\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Facebook-iOS-SDK/FacebookSDK\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/FormatterKit\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/GTScrollNavigationBar\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/GoogleAnalytics-iOS-SDK\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/IDMPhotoBrowser\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/MBProgressHUD\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/SDWebImage\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/STTweetLabel\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/UIActionSheet+Blocks\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/UIAlertView+Blocks\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/UITableView-NXEmptyView\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/ZGParallelView\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/iOS-Hierarchy-Viewer\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/iRate\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/pop\"",
+					"-ObjC",
+				);
 				PRODUCT_NAME = GoCandid;
-				PROVISIONING_PROFILE = "e37aac96-1a38-40da-9154-2068fbcaa92d";
+				PROVISIONING_PROFILE = "6e5479fb-c655-45a2-8742-424cc4423207";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

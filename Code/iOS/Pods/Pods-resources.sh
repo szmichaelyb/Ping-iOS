@@ -45,7 +45,6 @@ install_resource "DZNPhotoPickerController/Source/Resources/en-GB.lproj/DZNPhoto
 install_resource "DZNPhotoPickerController/Source/Resources/en.lproj/DZNPhotoPickerController.strings"
 install_resource "DZNPhotoPickerController/Source/Resources/en-GB.lproj"
 install_resource "DZNPhotoPickerController/Source/Resources/en.lproj"
-install_resource "Facebook-iOS-SDK/src/FBUserSettingsViewResources.bundle"
 install_resource "FormatterKit/Localizations/ca.lproj"
 install_resource "FormatterKit/Localizations/cs.lproj"
 install_resource "FormatterKit/Localizations/da.lproj"

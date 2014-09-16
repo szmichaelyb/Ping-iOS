@@ -13,7 +13,6 @@
 #import "PGFeedViewController.h"
 #import "PGFeedTableView.h"
 #import <iRate/iRate.h>
-#import <Crashlytics/Crashlytics.h>
 #include <unistd.h>
 #include<netdb.h>
 #import <AviarySDK/AviarySDK.h>
@@ -42,7 +41,7 @@
     
     [PFFacebookUtils initializeFacebook];
  
-    [Crashlytics startWithAPIKey:@"02d3f7db22ac1a3e538528547a694d5230eb8278"];
+//    [Crashlytics startWithAPIKey:@"02d3f7db22ac1a3e538528547a694d5230eb8278"];
     
     //Exceptions handled by crashlytics
     [GAI sharedInstance].trackUncaughtExceptions = NO;

@@ -8,7 +8,6 @@
 
 #import "PGSettingsViewController.h"
 #import "PGAppDelegate.h"
-#import <Parse/Parse.h>
 #import <IDMPhotoBrowser.h>
 #import "WebViewController.h"
 #import <iRate/iRate.h>
