@@ -10,6 +10,7 @@
 		0628645319C8875700858903 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0628645019C8875700858903 /* Parse.framework */; };
 		0628645419C8875700858903 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0628645119C8875700858903 /* ParseFacebookUtils.framework */; };
 		0628645819C88BB700858903 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0628645719C88BB700858903 /* FacebookSDK.framework */; };
+		0628645B19C8901800858903 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0628645A19C8901800858903 /* Crashlytics.framework */; };
 		064CD86A199D5E52007837A6 /* DRDynamicSlideShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 064CD869199D5E52007837A6 /* DRDynamicSlideShow.m */; };
 		06654AE0197DB1860014FA74 /* PGFramesButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 06654ADF197DB1860014FA74 /* PGFramesButton.m */; };
 		06654AE6197DBABA0014FA74 /* PGFindFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06654AE5197DBABA0014FA74 /* PGFindFriendsViewController.m */; };
@@ -88,6 +89,7 @@
 		0628645019C8875700858903 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		0628645119C8875700858903 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		0628645719C88BB700858903 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		0628645A19C8901800858903 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		064CD868199D5E52007837A6 /* DRDynamicSlideShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRDynamicSlideShow.h; sourceTree = "<group>"; };
 		064CD869199D5E52007837A6 /* DRDynamicSlideShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRDynamicSlideShow.m; sourceTree = "<group>"; };
 		06654ADE197DB1860014FA74 /* PGFramesButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGFramesButton.h; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				0628645319C8875700858903 /* Parse.framework in Frameworks */,
 				06B58A80198807F10020D01E /* AddressBook.framework in Frameworks */,
 				06B561611975AB9E00E92A92 /* ImageIO.framework in Frameworks */,
+				0628645B19C8901800858903 /* Crashlytics.framework in Frameworks */,
 				06B5615F1975AB9700E92A92 /* MobileCoreServices.framework in Frameworks */,
 				06DCBCBC196E2AFF00E8C9B2 /* CoreGraphics.framework in Frameworks */,
 				0628645819C88BB700858903 /* FacebookSDK.framework in Frameworks */,
@@ -369,6 +372,7 @@
 		06DCBCB8196E2AFF00E8C9B2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0628645A19C8901800858903 /* Crashlytics.framework */,
 				0628645719C88BB700858903 /* FacebookSDK.framework */,
 				0628644E19C8875700858903 /* parse-library-1.3.0 */,
 				06D44FA819C79137005AF8E5 /* AviarySDK */,
@@ -633,6 +637,7 @@
 				06DCBCB3196E2AFF00E8C9B2 /* Frameworks */,
 				06DCBCB4196E2AFF00E8C9B2 /* Resources */,
 				BAC4277C51214E4CBAF16E3B /* Copy Pods Resources */,
+				0628645919C88F8B00858903 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -710,6 +715,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0628645919C88F8B00858903 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 02d3f7db22ac1a3e538528547a694d5230eb8278 af6ede98bc0742057c556b0ed733e4c57ae435cd7cc81f516bb2b4e456b7e234";
+		};
 		35CBE7C6359E48F89243C485 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -899,7 +917,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/parse-library-1.2.21",
 					"$(PROJECT_DIR)/AviarySDK",
 					/Users/rishabhtayal/Documents/FacebookSDK,
 					"$(PROJECT_DIR)/parse-library-1.3.0",
@@ -979,7 +996,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/parse-library-1.2.21",
 					"$(PROJECT_DIR)/AviarySDK",
 					/Users/rishabhtayal/Documents/FacebookSDK,
 					"$(PROJECT_DIR)/parse-library-1.3.0",

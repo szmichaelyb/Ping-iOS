@@ -17,6 +17,7 @@
 #include<netdb.h>
 #import <AviarySDK/AviarySDK.h>
 #import "GAI.h"
+#import <Crashlytics/Crashlytics.h>
 
 @implementation PGAppDelegate
 
@@ -41,7 +42,7 @@
     
     [PFFacebookUtils initializeFacebook];
  
-//    [Crashlytics startWithAPIKey:@"02d3f7db22ac1a3e538528547a694d5230eb8278"];
+    [Crashlytics startWithAPIKey:@"02d3f7db22ac1a3e538528547a694d5230eb8278"];
     
     //Exceptions handled by crashlytics
     [GAI sharedInstance].trackUncaughtExceptions = NO;
