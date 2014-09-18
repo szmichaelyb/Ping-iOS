@@ -104,6 +104,17 @@
     }
 }
 
+-(void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)())completionHandler
+{
+    DLog(@"Identifier: %@", identifier);
+    
+//TODO: Implement Notification Action Handler
+    
+    [GAI trackEventWithCategory:@"notification" action:@"action" label:identifier value:nil];
+    
+    completionHandler();
+}
+
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
     DLog(@"URL: %@", [url scheme]);

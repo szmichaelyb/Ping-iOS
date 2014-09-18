@@ -148,7 +148,36 @@
 
 -(void)setMainView
 {
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
+    //Register for Push Notifications, if running iOS 8
+    if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        
+    UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+
+    UIMutableUserNotificationAction* followBackAction = [[UIMutableUserNotificationAction alloc] init];
+    followBackAction.identifier = @"follow_back";
+    followBackAction.title = @"Follow";
+    
+    followBackAction.activationMode = UIUserNotificationActivationModeBackground;
+    
+    followBackAction.destructive = NO;
+    
+    followBackAction.authenticationRequired = NO;
+    
+    UIMutableUserNotificationCategory* followCat = [[UIMutableUserNotificationCategory alloc] init];
+    followCat.identifier = @"follow";
+    [followCat setActions:@[followBackAction] forContext:UIUserNotificationActionContextDefault];
+        
+    NSSet* cate = [NSSet setWithObjects:followCat, nil];
+    
+    UIUserNotificationSettings* mySettings = [UIUserNotificationSettings settingsForTypes:types categories:cate];
+    
+    [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
+    
+    } else {
+        //Register for Push Notificatios before iOS 8
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
+    }
     
     UIStoryboard* sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     PGTabViewController* mainVC = [sb instantiateViewControllerWithIdentifier:@"PGTabViewController"];
