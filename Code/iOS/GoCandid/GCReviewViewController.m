@@ -165,7 +165,7 @@
     [AFPhotoEditorController setAPIKey:kAFAviaryAPIKey secret:kAFAviarySecret];
     
     // Set Tool Order
-    NSArray * toolOrder = @[kAFEffects, kAFFocus, kAFFrames, kAFStickers, kAFEnhance, kAFOrientation, kAFAdjustments, kAFSplash, kAFDraw, kAFText, kAFRedeye, kAFWhiten, kAFBlemish, kAFMeme];
+    NSArray * toolOrder = @[kAFEffects, kAFFocus, kAFFrames, kAFStickers, kAFDraw, kAFText, kAFMeme];
     [AFPhotoEditorCustomization setToolOrder:toolOrder];
     
     // Set Custom Crop Sizes
@@ -186,4 +186,5 @@
         [AFPhotoEditorCustomization setSupportedIpadOrientations:supportedOrientations];
     }
 }
+
 @end

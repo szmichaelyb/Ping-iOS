@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13F25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -278,7 +279,7 @@
             </objects>
             <point key="canvasLocation" x="-1119" y="-556"/>
         </scene>
-        <!--Signup View Controller - Signup-->
+        <!--Signup-->
         <scene sceneID="MlK-a3-0IB">
             <objects>
                 <viewController restorationIdentifier="PGSignupViewController" storyboardIdentifier="PGSignupViewController" id="Gg3-Ut-TV1" customClass="PGSignupViewController" sceneMemberID="viewController">
@@ -359,7 +360,7 @@
             </objects>
             <point key="canvasLocation" x="-689" y="-556"/>
         </scene>
-        <!--Login View Controller - Login-->
+        <!--Login-->
         <scene sceneID="gbs-gm-lox">
             <objects>
                 <viewController restorationIdentifier="PGLoginViewController" storyboardIdentifier="PGLoginViewController" id="1c0-du-a8I" customClass="PGLoginViewController" sceneMemberID="viewController">
@@ -489,7 +490,7 @@
                                     <action selector="manualButtonClicked:" destination="vCX-ZW-3h4" eventType="touchUpInside" id="OxK-Dz-dQ3"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.69999999999999996" minValue="0.10000000000000001" maxValue="1" id="A6Z-oo-3Oi">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.5" minValue="1" maxValue="2" id="A6Z-oo-3Oi">
                                 <rect key="frame" x="35" y="388" width="250" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="minimumTrackTintColor" red="0.97647058819999999" green="0.62352941179999999" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -561,7 +562,7 @@
             </objects>
             <point key="canvasLocation" x="860" y="-155"/>
         </scene>
-        <!--Review View Controller - Edit-->
+        <!--Edit-->
         <scene sceneID="Rtj-n6-m8N">
             <objects>
                 <viewController restorationIdentifier="GCReviewViewController" storyboardIdentifier="GCReviewViewController" id="VCG-Xa-UAa" customClass="GCReviewViewController" sceneMemberID="viewController">
@@ -666,7 +667,7 @@
             </objects>
             <point key="canvasLocation" x="413" y="-1627"/>
         </scene>
-        <!--Ping View Controller - Edit-->
+        <!--Edit-->
         <scene sceneID="2SQ-zd-hWp">
             <objects>
                 <viewController restorationIdentifier="PGPingViewController" storyboardIdentifier="PGPingViewController" id="Dvu-oQ-EJq" customClass="PGPingViewController" sceneMemberID="viewController">
@@ -747,7 +748,7 @@
             </objects>
             <point key="canvasLocation" x="1684" y="-161"/>
         </scene>
-        <!--Send Ping View Controller - Share-->
+        <!--Share-->
         <scene sceneID="dxP-8g-5u1">
             <objects>
                 <viewController restorationIdentifier="PGSendPingViewController" storyboardIdentifier="PGSendPingViewController" id="omH-ax-muh" customClass="PGSendPingViewController" sceneMemberID="viewController">
@@ -889,7 +890,7 @@
             </objects>
             <point key="canvasLocation" x="413" y="-155"/>
         </scene>
-        <!--Profile View Controller - Profile-->
+        <!--Profile-->
         <scene sceneID="Y4b-aU-VIk">
             <objects>
                 <viewController restorationIdentifier="PGProfileViewController" storyboardIdentifier="PGProfileViewController" id="LW4-3Y-UbR" customClass="PGProfileViewController" sceneMemberID="viewController">
@@ -907,7 +908,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="settings-off" id="cvR-5b-ykj">
                             <connections>
-                                <segue destination="Ept-nu-5wr" kind="modal" identifier="blurSegue" customClass="AFBlurSegue" id="7mk-ZJ-h5C"/>
+                                <segue destination="Ept-nu-5wr" kind="modal" identifier="blurSegue" id="7mk-ZJ-h5C"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -922,7 +923,6 @@
                 <navigationController definesPresentationContext="YES" id="eKY-XE-dNj" sceneMemberID="viewController">
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="lH6-JR-k9X">
-                        <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -933,7 +933,7 @@
             </objects>
             <point key="canvasLocation" x="1366" y="1155"/>
         </scene>
-        <!--Find Friends View Controller - Find Friends-->
+        <!--Find Friends-->
         <scene sceneID="agk-Ph-5es">
             <objects>
                 <viewController restorationIdentifier="PGFindFriendsViewController" storyboardIdentifier="PGFindFriendsViewController" id="FNA-UQ-P0N" customClass="PGFindFriendsViewController" sceneMemberID="viewController">
@@ -1218,7 +1218,6 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <size key="freeformSize" width="320" height="700"/>
                     <connections>
                         <outlet property="getFeaturedLbl" destination="Vld-jJ-rFV" id="5mK-sP-IBF"/>
                         <outlet property="helpLbl" destination="2Vd-QW-E8q" id="HeA-Vo-i1Y"/>
@@ -1249,7 +1248,7 @@
             </objects>
             <point key="canvasLocation" x="413" y="-910"/>
         </scene>
-        <!--Search View Controller - Search-->
+        <!--Search-->
         <scene sceneID="0d7-X9-Txm">
             <objects>
                 <viewController restorationIdentifier="PGSearchViewController" storyboardIdentifier="PGSearchViewController" id="2Hi-o4-zgt" customClass="PGSearchViewController" sceneMemberID="viewController">
@@ -1334,7 +1333,7 @@
             </objects>
             <point key="canvasLocation" x="413" y="580"/>
         </scene>
-        <!--Activity View Controller - Activity-->
+        <!--Activity-->
         <scene sceneID="AbY-Di-5Nc">
             <objects>
                 <tableViewController restorationIdentifier="PGActivityViewController" storyboardIdentifier="PGActivityViewController" id="0EW-Uz-loC" customClass="PGActivityViewController" sceneMemberID="viewController">
@@ -1441,7 +1440,7 @@
             </objects>
             <point key="canvasLocation" x="2329" y="1916"/>
         </scene>
-        <!--Feed View Controller - Feed-->
+        <!--Feed-->
         <scene sceneID="09M-sL-HQQ">
             <objects>
                 <viewController restorationIdentifier="PGFeedViewController" storyboardIdentifier="PGFeedViewController" id="1cV-B3-Drv" customClass="PGFeedViewController" sceneMemberID="viewController">
@@ -1499,7 +1498,7 @@
         <image name="CaptureButton-Normal" width="66" height="66"/>
         <image name="IMG_9468 copy" width="287" height="399"/>
         <image name="IMG_9532" width="320" height="568"/>
-        <image name="RegistrationTextFieldBackground_flat" width="32" height="44"/>
+        <image name="RegistrationTextFieldBackground_flat" width="7" height="7"/>
         <image name="acceptbutton" width="71" height="71"/>
         <image name="arrow1" width="82" height="80"/>
         <image name="arrow2" width="86" height="80"/>

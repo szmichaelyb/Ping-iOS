@@ -39,6 +39,7 @@
 		06B561611975AB9E00E92A92 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06B561601975AB9E00E92A92 /* ImageIO.framework */; };
 		06B561641975B04B00E92A92 /* UIImage+animatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B561631975B04B00E92A92 /* UIImage+animatedGIF.m */; };
 		06B58A80198807F10020D01E /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06B58A7F198807F10020D01E /* AddressBook.framework */; };
+		06C9E54619CB6264008FE173 /* GCCaptureProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C9E54519CB6264008FE173 /* GCCaptureProgressView.m */; };
 		06D44F9D19C7424C005AF8E5 /* GCCombineTransitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D44F9C19C7424C005AF8E5 /* GCCombineTransitionController.m */; };
 		06D44FA219C76D46005AF8E5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06D44FA119C76D46005AF8E5 /* StoreKit.framework */; };
 		06D44FAB19C79138005AF8E5 /* AviarySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06D44FA919C79138005AF8E5 /* AviarySDK.framework */; };
@@ -138,6 +139,8 @@
 		06B561621975B04B00E92A92 /* UIImage+animatedGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+animatedGIF.h"; sourceTree = "<group>"; };
 		06B561631975B04B00E92A92 /* UIImage+animatedGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+animatedGIF.m"; sourceTree = "<group>"; };
 		06B58A7F198807F10020D01E /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		06C9E54419CB6264008FE173 /* GCCaptureProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCCaptureProgressView.h; sourceTree = "<group>"; };
+		06C9E54519CB6264008FE173 /* GCCaptureProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCCaptureProgressView.m; sourceTree = "<group>"; };
 		06D44F9B19C7424C005AF8E5 /* GCCombineTransitionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCCombineTransitionController.h; sourceTree = "<group>"; };
 		06D44F9C19C7424C005AF8E5 /* GCCombineTransitionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCCombineTransitionController.m; sourceTree = "<group>"; };
 		06D44FA119C76D46005AF8E5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -515,6 +518,8 @@
 				06DCBCF6196EE41800E8C9B2 /* AVCamPreviewView.m */,
 				06654ADE197DB1860014FA74 /* PGFramesButton.h */,
 				06654ADF197DB1860014FA74 /* PGFramesButton.m */,
+				06C9E54419CB6264008FE173 /* GCCaptureProgressView.h */,
+				06C9E54519CB6264008FE173 /* GCCaptureProgressView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -794,6 +799,7 @@
 				06DCBD06196F07C500E8C9B2 /* PGFeedTableViewCell.m in Sources */,
 				06B561641975B04B00E92A92 /* UIImage+animatedGIF.m in Sources */,
 				06DCBCC6196E2AFF00E8C9B2 /* main.m in Sources */,
+				06C9E54619CB6264008FE173 /* GCCaptureProgressView.m in Sources */,
 				068340A7197810B0007A1AEC /* PGLoginViewController.m in Sources */,
 				06B561541974425D00E92A92 /* PGFeedTableView.m in Sources */,
 				068340BB1979688B007A1AEC /* UIImage+MyUIImage.m in Sources */,

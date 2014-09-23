@@ -20,12 +20,13 @@
 
 #import "PGFramesButton.h"
 //#import <BFPaperButton/BFPaperButton.h>
+#import "GCCaptureProgressView.h"
 
 static void * CapturingStillImageContext = &CapturingStillImageContext;
 //static void * RecordingContext = &RecordingContext;
 static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDeviceAuthorizedContext;
 
-static float kDefaultCaptureDelay = 0.7f;
+static float kDefaultCaptureDelay = 1.5f;
 
 @interface PGCamViewController () <AVCaptureFileOutputRecordingDelegate>
 
@@ -190,6 +191,11 @@ static float kDefaultCaptureDelay = 0.7f;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    for (UIView* subviews in _thumbScrollView.subviews) {
+        [subviews removeFromSuperview];
+    }
+    _images = [NSMutableArray new];
     
 	dispatch_async([self sessionQueue], ^{
 		[self addObserver:self forKeyPath:@"sessionRunningAndDeviceAuthorized" options:(NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew) context:SessionRunningAndDeviceAuthorizedContext];
@@ -425,8 +431,11 @@ static float kDefaultCaptureDelay = 0.7f;
         }
         _images = [NSMutableArray new];
 
+
         for (int i = 0; i < _framesButton.buttonState; i++) {
-            [self takePhotoDelay:self.delaySlider.value * i];
+            float delay = (float)self.delaySlider.value * i;
+            [self takePhotoDelay:delay];
+            [[GCCaptureProgressView sharedInstance] startAnimatingInView:self.view withDuration:self.delaySlider.value times:_framesButton.buttonState];
         }
     }
 }
@@ -436,9 +445,10 @@ static float kDefaultCaptureDelay = 0.7f;
     self.delaySlider.value = sender.value;
 }
 
--(void)takePhotoDelay:(int)delay
+-(void)takePhotoDelay:(float)delay
 {
     [self performblock:^(int blockI, UIImage *image) {
+        
         UIImageView* iv = [[UIImageView alloc]initWithImage:image];
         iv.frame = CGRectMake((blockI * _thumbScrollView.frame.size.height), 0, _thumbScrollView.frame.size.height, _thumbScrollView.frame.size.height);
         
@@ -461,7 +471,7 @@ static float kDefaultCaptureDelay = 0.7f;
 }
 
 - (void)snapStillImage:(void (^) (int blockI, UIImage* image))block
-{
+{    
     dispatch_async([self sessionQueue], ^{
         // Update the orientation on the still image output video connection before capturing.
         [[[self stillImageOutput] connectionWithMediaType:AVMediaTypeVideo] setVideoOrientation:[[(AVCaptureVideoPreviewLayer *)[[self previewView] layer] connection] videoOrientation]];
@@ -659,12 +669,12 @@ static float kDefaultCaptureDelay = 0.7f;
 
 - (void)runStillImageCaptureAnimation
 {
-    //	dispatch_async(dispatch_get_main_queue(), ^{
-    //		[[[self previewView] layer] setOpacity:0.0];
-    //		[UIView animateWithDuration:.25 animations:^{
-    //			[[[self previewView] layer] setOpacity:1.0];
-    //		}];
-    //	});
+	dispatch_async(dispatch_get_main_queue(), ^{
+		[[[self previewView] layer] setOpacity:0.0];
+		[UIView animateWithDuration:.25 animations:^{
+			[[[self previewView] layer] setOpacity:1.0];
+		}];
+	});
 }
 
 - (void)checkDeviceAuthorizationStatus

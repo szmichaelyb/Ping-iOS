@@ -212,15 +212,18 @@
                         
                         if (!error) {
                             
-//                            [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
-                            
                             [self setMainView];
                             
-                            [[PFUser currentUser] setObject:result[@"name"] forKey:kPFUser_Name];
-                            if ([[PFUser currentUser] objectForKey:kPFUser_FBID] == NULL) {
-                                DLog(@"First Time");
+                            if (user.isNew) {
+                                DLog(@"New");
+                                if (result[@"email"] != NULL) {
+                                    [self sendWelcomeEmail:result[@"email"] name:result[@"name"]];
+                                    [self subscribeToListEmail:result[@"email"]];
+                                }
                                 [self notifyFriendsViaPushThatIJoined];
                             }
+                            
+                            [[PFUser currentUser] setObject:result[@"name"] forKey:kPFUser_Name];
                             [[PFUser currentUser] setObject:result[@"id"] forKey:kPFUser_FBID];
                             if (result[@"email"] != NULL) {
                                 [[PFUser currentUser] setObject:result[@"email"] forKey:kPFUser_Email];
@@ -244,11 +247,6 @@
                                     }];
                                 });
                             }
-                            
-//                            [[PFInstallation currentInstallation] setObject:[PFUser currentUser] forKey:kPFInstallation_Owner];
-//                            [[PFInstallation currentInstallation] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//                                DLog(@"%@", error);
-//                            }];
                         }
                     }];
                 }
@@ -289,6 +287,23 @@
                 [PGParseHelper sendPushToUsers:objects pushText:pushMessage];
             }];
         }
+    }];
+}
+
+-(void)sendWelcomeEmail:(NSString*)email name:(NSString*)name
+{
+    NSDictionary* params = @{@"name":name, @"toEmail":email};
+    [PFCloud callFunctionInBackground:@"sendWelcomeEmail" withParameters:params block:^(id object, NSError *error) {
+        DLog(@"Sent welcome Email");
+    }];
+}
+
+-(void)subscribeToListEmail:(NSString*)email
+{
+    DLog(@"subscribing");
+    NSDictionary* params = @{@"email":email};
+    [PFCloud callFunctionInBackground:@"subscribeToList" withParameters:params block:^(id object, NSError *error) {
+        DLog(@"%@", object);
     }];
 }
 
