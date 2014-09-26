@@ -1,0 +1,30 @@
+platform:ios, '7.0'
+
+inhibit_all_warnings!
+
+pod 'pop', '~> 1.0.4'
+pod 'ZGParallelView', '~> 0.1.6'
+pod 'iRate', '~> 1.9.3'
+pod 'IDMPhotoBrowser'
+pod 'UIActionSheet+Blocks', '~> 0.8.1'
+pod 'UIAlertView+Blocks', '~> 0.8.1'
+pod 'FormatterKit', '~> 1.4.2'
+pod 'MBProgressHUD', '~> 0.8'
+pod 'UITableView-NXEmptyView'
+pod 'DZNPhotoPickerController'
+pod 'GTScrollNavigationBar', '0.1.1'
+pod 'AFNetworking'
+pod 'IDMPhotoBrowser', '~> 1.3.5'
+pod 'iOS-Hierarchy-Viewer', '~> 1.4.7'
+pod 'STTweetLabel', '~> 3.1.9'
+pod 'GoogleAnalytics-iOS-SDK', '~> 3.0.6'
+
+##Use it for paper button effect
+#spod 'GPUImage', '~> 0.1.4'
+#pod 'BFPaperButton'
+#pod 'RDGPUImage', '~> 0.1.1'
+#pod 'FXBlurView', '~> 1.6.1'
+#pod 'AFBlurSegue'
+#pod 'MaryPopin', '~> 1.3.1'
+#epod 'STZPullToRefresh', '~> 0.0.1'
+#pod 'Parse', '~1.2.9'

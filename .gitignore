@@ -3,9 +3,8 @@
 
 *.xcbkptlist
 
-Code/iOS/Pods/
-Code/Android/bin/
+Code/Pods/
 
-Code/iOS/Pods/AFNetworking/AFNetworking/AFHTTPRequestOperation.h
+Code/Pods/AFNetworking/AFNetworking/AFHTTPRequestOperation.h
 
-Code/iOS/AviarySDK/*
+Code/AviarySDK/*
