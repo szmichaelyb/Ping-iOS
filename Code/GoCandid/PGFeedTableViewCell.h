@@ -24,6 +24,7 @@
 @property (nonatomic, strong) IBOutlet UIView* featuredView;
 
 @property (nonatomic, strong) IBOutlet UILabel* totalLikes;
+@property (nonatomic, strong) IBOutlet UIButton* commentButton;
 
 @property (assign, nonatomic) id<PGFeedTableViewCellDelegate> delegate;
 
@@ -39,5 +40,6 @@
 -(void)cellDidTapOnNameButton:(PGFeedTableViewCell*)cell;
 -(void)cellDidTapOnThumbButton:(PGFeedTableViewCell*)cell;
 -(void)cellDidTapOnLikeButton:(PGFeedTableViewCell*)cell;
+-(void)cellDidTapOnCommentButton:(PGFeedTableViewCell*)cell;
 -(void)cellDidTapOnMoreButton:(PGFeedTableViewCell*)cell;
 @end

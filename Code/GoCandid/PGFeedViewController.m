@@ -16,6 +16,7 @@
 #import <GTScrollNavigationBar/GTScrollNavigationBar.h>
 #import "PGProfileViewController.h"
 #import "GCSharePost.h"
+#import "GCPhotoDetailViewController.h"
 
 @interface PGFeedViewController ()<PGFeedTableViewDelegate>
 {
@@ -154,6 +155,13 @@
     DLog(@"%@", object);
     profileVC.profileUser = object[kPFSelfie_Owner];
     [self.navigationController pushViewController:profileVC animated:YES];
+}
+
+-(void)tableview:(PGFeedTableView *)tableView didSelectCell:(UITableViewCell *)cell dataObject:(id)object
+{
+    GCPhotoDetailViewController* detailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"GCPhotoDetailViewController"];
+    detailVC.photo = object;
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 -(void)tableView:(PGFeedTableView *)tableView willDisplayLastCell:(UITableViewCell *)cell

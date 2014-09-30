@@ -18,7 +18,7 @@
     if ([[followUser objectId] isEqualToString:[[PFUser currentUser] objectId]]) {
         return;
     }
-
+    
     [PGParseHelper isUserFollowingUser:followUser completion:^(BOOL finished, BOOL following) {
         if (following) {
             return ;
@@ -39,7 +39,7 @@
                 [PGParseHelper getTotalFollowersForUser:followUser completion:^(BOOL finished, int count) {
                     [PFCloud callFunction:kPFCloudFunctionNameEditUser withParameters:@{kPFCloudEditUser_UserId: followUser.objectId, kPFCloudEditUser_ColumnName: kPFUser_FollowersCount, kPFCloudEditUser_ColumnText: [NSNumber numberWithInt:count]}];
                 }];
-               
+                
                 [PGParseHelper sendPushToUsers:@[followUser] pushText:[NSString stringWithFormat:@"%@ is now following you.", [PFUser currentUser][kPFUser_Name]]];
             }];
         }
@@ -48,7 +48,7 @@
 }
 
 +(void)unfollowUserInBackground:(PFUser *)user completion:(void (^)(bool))block
-{    
+{
     PFQuery *query = [PFQuery queryWithClassName:kPFTableActivity];
     [query whereKey:kPFActivity_FromUser equalTo:[PFUser currentUser]];
     [query whereKey:kPFActivity_ToUser equalTo:user];
@@ -65,7 +65,7 @@
                     
                     [PGParseHelper getTotalFollowersForUser:user completion:^(BOOL finished, int count) {
                         [PFCloud callFunction:kPFCloudFunctionNameEditUser withParameters:@{kPFCloudEditUser_UserId: user.objectId, kPFCloudEditUser_ColumnName: kPFUser_FollowersCount, kPFCloudEditUser_ColumnText: [NSNumber numberWithInt:count]}];
-                    }];                    
+                    }];
                 }];
             }
         }
@@ -126,7 +126,62 @@
     }];
 }
 
-#pragma mark -
+#pragma mark - Comment Activity
+
++(void)getCommentActivityForSelfie:(PFObject *)selfie completion:(void (^)(BOOL, NSArray *))block
+{
+    PFQuery* query = [PFQuery queryWithClassName:kPFTableActivity];
+    [query whereKey:kPFActivity_Type equalTo:kPFActivity_Type_Comment];
+    [query whereKey:kPFActivity_Selfie equalTo:selfie];
+    [query includeKey:kPFActivity_Selfie];
+    [query includeKey:kPFActivity_FromUser];
+    [query orderByAscending:@"createdAt"];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (block) {
+            block(YES, objects);
+        }
+    }];
+}
+
++(void)commentOnSelfie:(PFObject *)selfie comment:(NSString*)comment completion:(void (^)(BOOL))block
+{
+    PFObject* commentActivity = [PFObject objectWithClassName:kPFTableActivity];
+    [commentActivity setObject:kPFActivity_Type_Comment forKey:kPFActivity_Type];
+    [commentActivity setObject:[PFUser currentUser] forKey:kPFActivity_FromUser];
+    [commentActivity setObject:selfie[kPFSelfie_Owner] forKey:kPFActivity_ToUser];
+    [commentActivity setObject:selfie forKey:kPFActivity_Selfie];
+    [commentActivity setObject:comment forKey:kPFActivity_Content];
+    
+    PFACL* commentACL = [PFACL ACLWithUser:[PFUser currentUser]];
+    [commentACL setPublicReadAccess:YES];
+    [commentACL setWriteAccess:YES forUser:selfie[kPFSelfie_Owner]];
+    commentActivity.ACL = commentACL;
+    
+    [commentActivity saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        PFUser* user = selfie[kPFSelfie_Owner];
+        if (![user.objectId isEqualToString:[PFUser currentUser].objectId]) {
+            NSString* pushMessage = [NSString stringWithFormat:@"%@ commented on your post.", [PFUser currentUser][kPFUser_Name]];
+            [PGParseHelper sendPushToUsers:@[user] pushText:pushMessage];
+        }
+        block(succeeded);
+    }];
+}
+
++(void)getTotalCommentsForSelfie:(PFObject *)selfie completion:(void (^)(BOOL, int))block
+{
+    PFQuery* query = [PFQuery queryWithClassName:kPFTableActivity];
+    [query whereKey:kPFActivity_Type equalTo:kPFActivity_Type_Comment];
+    [query whereKey:kPFActivity_Selfie equalTo:selfie];
+    
+    [query countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
+        if (block) {
+            block(YES, number);
+        }
+    }];
+}
+
+#pragma mark - Like Activity
 
 +(void)getLikeActivityForSelfies:(NSArray *)selfies fromUser:(PFUser *)user completion:(void (^)(BOOL, NSArray *))block
 {
@@ -179,35 +234,35 @@
             }
             
             // refresh cache
-//            PFQuery *query = [PAPUtility queryForActivitiesOnPhoto:photo cachePolicy:kPFCachePolicyNetworkOnly];
-//            [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//                if (!error) {
-//                    
-//                    NSMutableArray *likers = [NSMutableArray array];
-//                    NSMutableArray *commenters = [NSMutableArray array];
-//                    
-//                    BOOL isLikedByCurrentUser = NO;
-//                    
-//                    for (PFObject *activity in objects) {
-//                        if ([[activity objectForKey:kPAPActivityTypeKey] isEqualToString:kPAPActivityTypeLike]) {
-//                            [likers addObject:[activity objectForKey:kPAPActivityFromUserKey]];
-//                        } else if ([[activity objectForKey:kPAPActivityTypeKey] isEqualToString:kPAPActivityTypeComment]) {
-//                            [commenters addObject:[activity objectForKey:kPAPActivityFromUserKey]];
-//                        }
-//                        
-//                        if ([[[activity objectForKey:kPAPActivityFromUserKey] objectId] isEqualToString:[[PFUser currentUser] objectId]]) {
-//                            if ([[activity objectForKey:kPAPActivityTypeKey] isEqualToString:kPAPActivityTypeLike]) {
-//                                isLikedByCurrentUser = YES;
-//                            }
-//                        }
-//                    }
-//                    
-//                    [[PAPCache sharedCache] setAttributesForPhoto:photo likers:likers commenters:commenters likedByCurrentUser:isLikedByCurrentUser];
-//                }
-//                
-//                [[NSNotificationCenter defaultCenter] postNotificationName:PAPUtilityUserLikedUnlikedPhotoCallbackFinishedNotification object:photo userInfo:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:PAPPhotoDetailsViewControllerUserLikedUnlikedPhotoNotificationUserInfoLikedKey]];
-//            }];
-//            
+            //            PFQuery *query = [PAPUtility queryForActivitiesOnPhoto:photo cachePolicy:kPFCachePolicyNetworkOnly];
+            //            [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            //                if (!error) {
+            //
+            //                    NSMutableArray *likers = [NSMutableArray array];
+            //                    NSMutableArray *commenters = [NSMutableArray array];
+            //
+            //                    BOOL isLikedByCurrentUser = NO;
+            //
+            //                    for (PFObject *activity in objects) {
+            //                        if ([[activity objectForKey:kPAPActivityTypeKey] isEqualToString:kPAPActivityTypeLike]) {
+            //                            [likers addObject:[activity objectForKey:kPAPActivityFromUserKey]];
+            //                        } else if ([[activity objectForKey:kPAPActivityTypeKey] isEqualToString:kPAPActivityTypeComment]) {
+            //                            [commenters addObject:[activity objectForKey:kPAPActivityFromUserKey]];
+            //                        }
+            //
+            //                        if ([[[activity objectForKey:kPAPActivityFromUserKey] objectId] isEqualToString:[[PFUser currentUser] objectId]]) {
+            //                            if ([[activity objectForKey:kPAPActivityTypeKey] isEqualToString:kPAPActivityTypeLike]) {
+            //                                isLikedByCurrentUser = YES;
+            //                            }
+            //                        }
+            //                    }
+            //
+            //                    [[PAPCache sharedCache] setAttributesForPhoto:photo likers:likers commenters:commenters likedByCurrentUser:isLikedByCurrentUser];
+            //                }
+            //
+            //                [[NSNotificationCenter defaultCenter] postNotificationName:PAPUtilityUserLikedUnlikedPhotoCallbackFinishedNotification object:photo userInfo:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:PAPPhotoDetailsViewControllerUserLikedUnlikedPhotoNotificationUserInfoLikedKey]];
+            //            }];
+            //
         } else {
             if (block) {
                 block(NO);
@@ -238,7 +293,6 @@
         [thumbFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
             UIImage* img = [UIImage imageWithData:data];
             block(img);
-            //        [cell.thumbIV setImage:[UIImage imageWithData:data]];
         }];
     } else {
         block([UIImage imageNamed:@"NoProfilePhotoIMAGE"]);
@@ -251,7 +305,7 @@
 {
     PFQuery* installationQuery = [PFInstallation query];
     [installationQuery whereKey:@"owner" containedIn:users];
-
+    
     PFPush *push = [[PFPush alloc] init];
     [push setQuery:installationQuery];
     [push setMessage:text];

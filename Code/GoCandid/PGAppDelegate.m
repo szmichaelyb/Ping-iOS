@@ -34,14 +34,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    if (DEBUGMODE) {
-        [Parse setApplicationId:@"RjjejatHY8BsqER68vg48jtr9nRv0FVAfKqryjja" clientKey:@"hTwjS9Ng9azIQoOfpQ6xeYX3Ah8mesiCWGt0gz3b"];
-    } else {
-        [Parse setApplicationId:@"oLAYrU2fvZm5MTwA8z7kdtyVsJC4rSY4NiAh6yAp" clientKey:@"GMc6VRe3Op6SllEFXwm0hrDear99ptg7WuFZfiC7"];
-    }
+#warning Chagne the Parse key
+    
+    //if (DEBUGMODE) {
+    //  [Parse setApplicationId:@"RjjejatHY8BsqER68vg48jtr9nRv0FVAfKqryjja" clientKey:@"hTwjS9Ng9azIQoOfpQ6xeYX3Ah8mesiCWGt0gz3b"];
+    //  } else {
+    [Parse setApplicationId:@"oLAYrU2fvZm5MTwA8z7kdtyVsJC4rSY4NiAh6yAp" clientKey:@"GMc6VRe3Op6SllEFXwm0hrDear99ptg7WuFZfiC7"];
+    //    }
     
     [PFFacebookUtils initializeFacebook];
- 
+    
     [Crashlytics startWithAPIKey:@"02d3f7db22ac1a3e538528547a694d5230eb8278"];
     
     //Exceptions handled by crashlytics
@@ -95,11 +97,11 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"notificationTapped" object:nil userInfo:userInfo];
     } else {
         [[InAppNotificationTapListener sharedInAppNotificationTapListener] startObserving];
-
+        
         DLog(@"%@", userInfo);
         
         [[InAppNotificationView sharedInstance] notifyWithUserInfo:userInfo andTouchBlock:^(InAppNotificationView *view) {
-//            [[NSNotificationCenter defaultCenter] postNotificationName:@"notificationTapped" object:nil userInfo:userInfo];
+            //            [[NSNotificationCenter defaultCenter] postNotificationName:@"notificationTapped" object:nil userInfo:userInfo];
         }];
     }
 }
@@ -108,7 +110,7 @@
 {
     DLog(@"Identifier: %@", identifier);
     
-//TODO: Implement Notification Action Handler
+    //TODO: Implement Notification Action Handler
     
     [GAI trackEventWithCategory:@"notification" action:@"action" label:identifier value:nil];
     
@@ -132,7 +134,7 @@
             PGTabViewController* tab = (PGTabViewController*)((UIWindow*)[UIApplication sharedApplication].windows[0]).rootViewController;
             [tab setSelectedIndex:0];
             UINavigationController* feedNavC = tab.viewControllers[0];
-
+            
             UIViewController* controller = [[UIViewController alloc] init];
             
             PGFeedTableView* table = [[PGFeedTableView alloc] initWithFrame:controller.view.bounds];

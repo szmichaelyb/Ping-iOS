@@ -38,6 +38,7 @@ typedef enum {
 
 -(void)tableView:(PGFeedTableView*)tableView willDisplayLastCell:(UITableViewCell*)cell;
 //-(void)tableView:(PGFeedTableView*)tableView didTapOnImageView:(UIImageView*)imageView;
+-(void)tableview:(PGFeedTableView*)tableView didSelectCell:(UITableViewCell*)cell dataObject:(id)object;
 -(void)tableView:(PGFeedTableView *)tableView moreButtonClicked:(NSIndexPath*)indexPath dataObject:(id)object;
 -(void)tableView:(PGFeedTableView*)tableView didTapOnKeyword:(NSString*)keyword;
 

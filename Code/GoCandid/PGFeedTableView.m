@@ -15,7 +15,8 @@
 
 @interface PGFeedTableView()
 
-@property (strong, nonatomic) NSMutableArray* activityArray;
+@property (strong, nonatomic) NSMutableArray* likeActivityArray;
+//@property (nonatomic, strong) NSMutableArray* commentActivityArray;
 
 @end
 
@@ -40,7 +41,8 @@
     self.showsVerticalScrollIndicator = NO;
     self.nxEV_hideSeparatorLinesWheyShowingEmptyView = YES;
     self.datasource = [NSMutableArray new];
-    self.activityArray = [NSMutableArray new];
+    self.likeActivityArray = [NSMutableArray new];
+//    self.commentActivityArray = [NSMutableArray new];
 }
 
 #pragma mark -
@@ -80,7 +82,7 @@
             }
             
             [PGParseHelper getLikeActivityForSelfies:_datasource fromUser:[PFUser currentUser] completion:^(BOOL finished, NSArray *likeObjects) {
-                [_activityArray addObjectsFromArray:likeObjects];
+                [_likeActivityArray addObjectsFromArray:likeObjects];
                 if (_datasource.count != objects.count) {
                     //Check if objects are new.
                     [self beginUpdates];
@@ -138,8 +140,8 @@
                 i++;
             }
             
-            [PGParseHelper getLikeActivityForSelfies:_datasource fromUser:[PFUser currentUser] completion:^(BOOL finished, NSArray *likeObjects) {
-                [_activityArray addObjectsFromArray:likeObjects];
+            [PGParseHelper getLikeActivityForSelfies:_datasource fromUser:[PFUser currentUser] completion:^(BOOL finished, NSArray *activityObjects) {
+                [_likeActivityArray addObjectsFromArray:activityObjects];
                 if (_datasource.count != objects.count) {
                     //Check if objects are new.
 #warning implement table reload
@@ -152,6 +154,17 @@
                 }
                 
             }];
+            
+//            [PGParseHelper getCommentActivityForSelfies:_datasource fromUser:[PFUser currentUser] completion:^(BOOL finished, NSArray *commentObjects) {
+//                [_commentActivityArray addObjectsFromArray:commentObjects];
+//                if (_datasource.count != objects.count) {
+//                    [self beginUpdates];
+//                    [self insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+//                    [self endUpdates];
+//                } else {
+//                    [self reloadData];
+//                }
+//            }];
         }
     }];
 }
@@ -252,11 +265,15 @@
         cell.featuredView.hidden = YES;
     }
     
-    if ([[[_activityArray valueForKey:kPFActivity_Selfie] valueForKey:kPFObjectId] containsObject:[_datasource[indexPath.row] valueForKey:kPFObjectId]]) {
+    if ([[[_likeActivityArray valueForKey:kPFActivity_Selfie] valueForKey:kPFObjectId] containsObject:[_datasource[indexPath.row] valueForKey:kPFObjectId]]) {
         [cell setLikeButtonState:YES];
     } else {
         [cell setLikeButtonState:NO];
     }
+    
+    [PGParseHelper getTotalCommentsForSelfie:_datasource[indexPath.row] completion:^(BOOL finished, int number) {
+        [cell.commentButton setTitle:[NSString stringWithFormat:@"%d comments", number] forState:UIControlStateNormal];
+    }];
     
     [PGParseHelper getTotalLikeForSelfie:_datasource[indexPath.row] completion:^(BOOL finished, int number) {
         cell.totalLikes.text = [NSString stringWithFormat:@"%d likes", number];
@@ -281,6 +298,14 @@
 -(void)tableView:(UITableView *)tableView didEndDisplayingCell:(PGFeedTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //    [cell.mainIV stopAnimating];
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (_myDelegate) {
+        PGFeedTableViewCell* cell = (PGFeedTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
+        [_myDelegate tableview:self didSelectCell:cell dataObject:_datasource[indexPath.row]];
+    }
 }
 
 #pragma mark -
