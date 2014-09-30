@@ -12,6 +12,6 @@
 
 + (instancetype)sharedInstance;
 
--(void)startAnimatingInView:(UIView *)view withDuration:(float)duration times:(int)times;
+//-(void)startAnimatingInView:(UIView *)view withDuration:(float)duration times:(int)times;
 
 @end

@@ -435,7 +435,7 @@ static float kDefaultCaptureDelay = 1.5f;
         for (int i = 0; i < _framesButton.buttonState; i++) {
             float delay = (float)self.delaySlider.value * i;
             [self takePhotoDelay:delay];
-            [[GCCaptureProgressView sharedInstance] startAnimatingInView:self.view withDuration:self.delaySlider.value times:_framesButton.buttonState];
+//            [[GCCaptureProgressView sharedInstance] startAnimatingInView:self.view withDuration:self.delaySlider.value times:_framesButton.buttonState];
         }
     }
 }
