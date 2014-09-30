@@ -14,6 +14,8 @@
 		064CD86A199D5E52007837A6 /* DRDynamicSlideShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 064CD869199D5E52007837A6 /* DRDynamicSlideShow.m */; };
 		064F8F5F19DB365A00291398 /* GCPhotoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 064F8F5E19DB365A00291398 /* GCPhotoDetailViewController.m */; };
 		064F8F6219DB38F600291398 /* GCPhotoDetailsFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 064F8F6119DB38F600291398 /* GCPhotoDetailsFooterView.m */; };
+		064F8F6619DB4DE500291398 /* GCCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 064F8F6519DB4DE500291398 /* GCCommentTableViewCell.m */; };
+		064F8F6819DB4DFE00291398 /* GCCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 064F8F6719DB4DFE00291398 /* GCCommentTableViewCell.xib */; };
 		06654AE0197DB1860014FA74 /* PGFramesButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 06654ADF197DB1860014FA74 /* PGFramesButton.m */; };
 		06654AE6197DBABA0014FA74 /* PGFindFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06654AE5197DBABA0014FA74 /* PGFindFriendsViewController.m */; };
 		06654AE9197DBE740014FA74 /* PGFindFriendsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06654AE8197DBE740014FA74 /* PGFindFriendsTableViewCell.m */; };
@@ -99,6 +101,9 @@
 		064F8F5E19DB365A00291398 /* GCPhotoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCPhotoDetailViewController.m; sourceTree = "<group>"; };
 		064F8F6019DB38F600291398 /* GCPhotoDetailsFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCPhotoDetailsFooterView.h; sourceTree = "<group>"; };
 		064F8F6119DB38F600291398 /* GCPhotoDetailsFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCPhotoDetailsFooterView.m; sourceTree = "<group>"; };
+		064F8F6419DB4DE500291398 /* GCCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCCommentTableViewCell.h; sourceTree = "<group>"; };
+		064F8F6519DB4DE500291398 /* GCCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCCommentTableViewCell.m; sourceTree = "<group>"; };
+		064F8F6719DB4DFE00291398 /* GCCommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GCCommentTableViewCell.xib; sourceTree = "<group>"; };
 		06654ADE197DB1860014FA74 /* PGFramesButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGFramesButton.h; sourceTree = "<group>"; };
 		06654ADF197DB1860014FA74 /* PGFramesButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGFramesButton.m; sourceTree = "<group>"; };
 		06654AE4197DBABA0014FA74 /* PGFindFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGFindFriendsViewController.h; sourceTree = "<group>"; };
@@ -259,12 +264,23 @@
 		064F8F5C19DB362E00291398 /* Photo Detail VC */ = {
 			isa = PBXGroup;
 			children = (
+				064F8F6319DB4DCC00291398 /* Comment Cell */,
 				064F8F6019DB38F600291398 /* GCPhotoDetailsFooterView.h */,
 				064F8F6119DB38F600291398 /* GCPhotoDetailsFooterView.m */,
 				064F8F5D19DB365A00291398 /* GCPhotoDetailViewController.h */,
 				064F8F5E19DB365A00291398 /* GCPhotoDetailViewController.m */,
 			);
 			name = "Photo Detail VC";
+			sourceTree = "<group>";
+		};
+		064F8F6319DB4DCC00291398 /* Comment Cell */ = {
+			isa = PBXGroup;
+			children = (
+				064F8F6419DB4DE500291398 /* GCCommentTableViewCell.h */,
+				064F8F6519DB4DE500291398 /* GCCommentTableViewCell.m */,
+				064F8F6719DB4DFE00291398 /* GCCommentTableViewCell.xib */,
+			);
+			name = "Comment Cell";
 			sourceTree = "<group>";
 		};
 		065A263F198FF2C9005E09D8 /* Cell */ = {
@@ -727,6 +743,7 @@
 				0683112B1976C8460099689D /* PGProfileHeaderView.xib in Resources */,
 				06DCBCC4196E2AFF00E8C9B2 /* InfoPlist.strings in Resources */,
 				06AE7EDF19B90ED4001FE651 /* GCInstructionsView.xib in Resources */,
+				064F8F6819DB4DFE00291398 /* GCCommentTableViewCell.xib in Resources */,
 				06B561581974467300E92A92 /* PGFeedTableViewCell.xib in Resources */,
 				06D44FAC19C79138005AF8E5 /* AviarySDKResources.bundle in Resources */,
 				06DCBCCD196E2AFF00E8C9B2 /* Main.storyboard in Resources */,
@@ -823,6 +840,7 @@
 				068340A7197810B0007A1AEC /* PGLoginViewController.m in Sources */,
 				06B561541974425D00E92A92 /* PGFeedTableView.m in Sources */,
 				068340BB1979688B007A1AEC /* UIImage+MyUIImage.m in Sources */,
+				064F8F6619DB4DE500291398 /* GCCommentTableViewCell.m in Sources */,
 				068340B119783750007A1AEC /* PGParseHelper.m in Sources */,
 				06DCBCD0196E2AFF00E8C9B2 /* PGTutorialViewController.m in Sources */,
 				06F33B1819C548260053B1BF /* GCReviewViewController.m in Sources */,

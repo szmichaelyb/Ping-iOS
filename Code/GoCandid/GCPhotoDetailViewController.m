@@ -10,6 +10,7 @@
 #import "GCPhotoDetailsFooterView.h"
 #import "PGFeedTableViewCell.h"
 #import <FormatterKit/TTTTimeIntervalFormatter.h>
+#import "GCCommentTableViewCell.h"
 
 @interface GCPhotoDetailViewController ()<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, PGFeedTableViewCellDelegate>
 
@@ -152,7 +153,22 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 50;
+    PFObject *object = [self.commentsDatasource objectAtIndex:indexPath.row];
+    
+    if (object) {
+        NSString *commentString = [self.commentsDatasource[indexPath.row] objectForKey:kPFActivity_Content];
+        
+        PFUser *commentAuthor = (PFUser *)[object objectForKey:kPFActivity_FromUser];
+        
+        NSString *nameString = @"";
+        if (commentAuthor) {
+            nameString = [commentAuthor objectForKey:kPFUser_Name];
+        }
+        
+        return [GCCommentTableViewCell heightForCellWithName:nameString contentString:commentString cellInsetWidth:20.0f];
+    }
+    
+    return 44.0f;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -162,9 +178,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    GCCommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell = [[NSBundle mainBundle] loadNibNamed:@"GCCommentTableViewCell" owner:self options:nil][0];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
     [self configureCell:cell forRowAtIndexPath:indexPath];
@@ -172,12 +189,12 @@
     return cell;
 }
 
-- (void)configureCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(GCCommentTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    cell.textLabel.text = _commentsDatasource[indexPath.row][kPFActivity_Content];
+    cell.commentText.text = _commentsDatasource[indexPath.row][kPFActivity_Content];
     
     [PGParseHelper profilePhotoUser:_commentsDatasource[indexPath.row][kPFActivity_FromUser] completion:^(UIImage *image) {
-        cell.imageView.image = image;
+        cell.userImage.image = image;
     }];
 }
 
