@@ -40,7 +40,7 @@
         commentBox.frame = CGRectMake(0.0f, 8.0f, 237.0f, 35.0f);
         [mainView addSubview:commentBox];
         
-        commentField = [[UITextField alloc] initWithFrame:CGRectMake(20.0f, 10.0f, 227.0f, 31.0f)];
+        commentField = [[UITextField alloc] initWithFrame:CGRectMake(20.0f, 10.0f, 280.0f, 31.0f)];
         commentField.font = [UIFont systemFontOfSize:14.0f];
         commentField.placeholder = @"Add a comment";
         commentField.returnKeyType = UIReturnKeySend;
