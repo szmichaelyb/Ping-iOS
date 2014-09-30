@@ -37,6 +37,10 @@
       "idiom" : "universal",
       "filename" : "RegistrationTextFieldBackground_flat@2x.png",
       "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {

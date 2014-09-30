@@ -8,6 +8,10 @@
       "idiom" : "iphone",
       "scale" : "2x",
       "filename" : "nav_bar_black.png"
+    },
+    {
+      "idiom" : "iphone",
+      "scale" : "3x"
     }
   ],
   "info" : {

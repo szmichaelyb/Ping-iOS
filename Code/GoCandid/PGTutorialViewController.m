@@ -39,6 +39,7 @@
 
 //Last Page
 @property (nonatomic, strong) IBOutlet UILabel* createPostLabel;
+
 @property (nonatomic, strong) IBOutlet UIButton* facebookLoginButton;
 
 -(IBAction)loginWithFacebook:(id)sender;
