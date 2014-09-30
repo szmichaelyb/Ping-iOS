@@ -14,7 +14,6 @@
 #import "PGFeedTableView.h"
 #import "PGProgressHUD.h"
 #import <GTScrollNavigationBar/GTScrollNavigationBar.h>
-#import "UIView+HidingView.h"
 #import "PGProfileViewController.h"
 #import "GCSharePost.h"
 
@@ -126,15 +125,15 @@
 
 #pragma mark - PGFeedTableView Delegate
 
--(void)tableScrollViewWillBeginDragging:(UIScrollView *)scrollView
-{
-    [self.segBGBlurView scrollViewWillBeginDragging:scrollView];
-}
-
--(void)tableScrollViewDidScroll:(UIScrollView *)scrollView
-{
-    [self.segBGBlurView scrollViewDidScroll:scrollView];
-}
+//-(void)tableScrollViewWillBeginDragging:(UIScrollView *)scrollView
+//{
+//    [self.segBGBlurView scrollViewWillBeginDragging:scrollView];
+//}
+//
+//-(void)tableScrollViewDidScroll:(UIScrollView *)scrollView
+//{
+//    [self.segBGBlurView scrollViewDidScroll:scrollView];
+//}
 
 -(void)tablescrollViewDidScrollToTop:(UIScrollView *)scrollView
 {

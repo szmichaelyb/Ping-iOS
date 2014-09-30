@@ -72,7 +72,6 @@
 		06DCBD301970886A00E8C9B2 /* InAppNotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06DCBD2D1970886A00E8C9B2 /* InAppNotificationView.xib */; };
 		06DF342D19928D9700509399 /* GCZoomInTrasitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DF342C19928D9700509399 /* GCZoomInTrasitionController.m */; };
 		06DF3431199294D600509399 /* GCZoomOutTransitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DF3430199294D600509399 /* GCZoomOutTransitionController.m */; };
-		06DF343419993ED600509399 /* UIView+HidingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DF343319993ED600509399 /* UIView+HidingView.m */; };
 		06DF343E1999584000509399 /* GeosansLight-Oblique.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06DF343C1999584000509399 /* GeosansLight-Oblique.ttf */; };
 		06DF343F1999584000509399 /* GeosansLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06DF343D1999584000509399 /* GeosansLight.ttf */; };
 		06DF344E1999588A00509399 /* Apache License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 06DF344A1999588A00509399 /* Apache License.txt */; };
@@ -197,8 +196,6 @@
 		06DF342C19928D9700509399 /* GCZoomInTrasitionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCZoomInTrasitionController.m; sourceTree = "<group>"; };
 		06DF342F199294D600509399 /* GCZoomOutTransitionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCZoomOutTransitionController.h; sourceTree = "<group>"; };
 		06DF3430199294D600509399 /* GCZoomOutTransitionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCZoomOutTransitionController.m; sourceTree = "<group>"; };
-		06DF343219993ED600509399 /* UIView+HidingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HidingView.h"; sourceTree = "<group>"; };
-		06DF343319993ED600509399 /* UIView+HidingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HidingView.m"; sourceTree = "<group>"; };
 		06DF343C1999584000509399 /* GeosansLight-Oblique.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeosansLight-Oblique.ttf"; sourceTree = "<group>"; };
 		06DF343D1999584000509399 /* GeosansLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GeosansLight.ttf; sourceTree = "<group>"; };
 		06DF344A1999588A00509399 /* Apache License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Apache License.txt"; sourceTree = "<group>"; };
@@ -326,8 +323,6 @@
 				06B561631975B04B00E92A92 /* UIImage+animatedGIF.m */,
 				064CD868199D5E52007837A6 /* DRDynamicSlideShow.h */,
 				064CD869199D5E52007837A6 /* DRDynamicSlideShow.m */,
-				06DF343219993ED600509399 /* UIView+HidingView.h */,
-				06DF343319993ED600509399 /* UIView+HidingView.m */,
 				06DCBD15196F421400E8C9B2 /* UIDevice-Hardware.h */,
 				06DCBD16196F421400E8C9B2 /* UIDevice-Hardware.m */,
 			);
@@ -778,7 +773,6 @@
 				06DF3431199294D600509399 /* GCZoomOutTransitionController.m in Sources */,
 				06DCBD2719707A1E00E8C9B2 /* PGFeedHeader.m in Sources */,
 				06654AE6197DBABA0014FA74 /* PGFindFriendsViewController.m in Sources */,
-				06DF343419993ED600509399 /* UIView+HidingView.m in Sources */,
 				067A140C1980BD0200D9EF2B /* GCUsersListViewController.m in Sources */,
 				06DCBD14196F404C00E8C9B2 /* WebViewController.m in Sources */,
 				06DCBD2E1970886A00E8C9B2 /* InAppNotificationTapListener.m in Sources */,
