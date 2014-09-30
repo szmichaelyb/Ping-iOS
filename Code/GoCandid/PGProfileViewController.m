@@ -16,6 +16,7 @@
 #import "UIImage+MyUIImage.h"
 #import "PGSettingsViewController.h"
 #import "GCSharePost.h"
+#import "GCPhotoDetailViewController.h"
 
 @interface PGProfileViewController ()<PGFeedTableViewDelegate>
 
@@ -291,6 +292,13 @@
 -(void)tableView:(PGFeedTableView *)tableView didTapOnImageView:(UIImageView *)imageView
 {
     
+}
+
+-(void)tableview:(PGFeedTableView *)tableView didSelectCell:(UITableViewCell *)cell dataObject:(id)object
+{
+    GCPhotoDetailViewController* detailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"GCPhotoDetailViewController"];
+    detailVC.photo = object;
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 -(void)tableView:(PGFeedTableView *)tableView moreButtonClicked:(NSIndexPath *)indexPath dataObject:(id)object
