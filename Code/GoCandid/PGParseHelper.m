@@ -126,7 +126,57 @@
     }];
 }
 
-#pragma mark -
+#pragma mark - Comment Activity
+
++(void)getCommentActivityForSelfie:(PFObject *)selfie completion:(void (^)(BOOL, NSArray *))block
+{
+    PFQuery* query = [PFQuery queryWithClassName:kPFTableActivity];
+    [query whereKey:kPFActivity_Type equalTo:kPFActivity_Type_Comment];
+    [query whereKey:kPFActivity_Selfie equalTo:selfie];
+    [query includeKey:kPFActivity_Selfie];
+    [query includeKey:kPFActivity_FromUser];
+    [query orderByAscending:@"createdAt"];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (block) {
+            block(YES, objects);
+        }
+    }];
+}
+
++(void)commentOnSelfie:(PFObject *)selfie comment:(NSString*)comment completion:(void (^)(BOOL))block
+{
+    PFObject* commentActivity = [PFObject objectWithClassName:kPFTableActivity];
+    [commentActivity setObject:kPFActivity_Type_Comment forKey:kPFActivity_Type];
+    [commentActivity setObject:[PFUser currentUser] forKey:kPFActivity_FromUser];
+    [commentActivity setObject:selfie[kPFSelfie_Owner] forKey:kPFActivity_ToUser];
+    [commentActivity setObject:selfie forKey:kPFActivity_Selfie];
+    [commentActivity setObject:comment forKey:kPFActivity_Content];
+    
+    PFACL* commentACL = [PFACL ACLWithUser:[PFUser currentUser]];
+    [commentACL setPublicReadAccess:YES];
+    [commentACL setWriteAccess:YES forUser:selfie[kPFSelfie_Owner]];
+    commentActivity.ACL = commentACL;
+    
+    [commentActivity saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        block(succeeded);
+    }];
+}
+
++(void)getTotalCommentsForSelfie:(PFObject *)selfie completion:(void (^)(BOOL, int))block
+{
+    PFQuery* query = [PFQuery queryWithClassName:kPFTableActivity];
+    [query whereKey:kPFActivity_Type equalTo:kPFActivity_Type_Comment];
+    [query whereKey:kPFActivity_Selfie equalTo:selfie];
+    
+    [query countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
+        if (block) {
+            block(YES, number);
+        }
+    }];
+}
+
+#pragma mark - Like Activity
 
 +(void)getLikeActivityForSelfies:(NSArray *)selfies fromUser:(PFUser *)user completion:(void (^)(BOOL, NSArray *))block
 {

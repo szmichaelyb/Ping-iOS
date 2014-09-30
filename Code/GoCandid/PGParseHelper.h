@@ -17,6 +17,10 @@
 +(void)getTotalFollowersForUser:(PFUser*)user completion:(void (^) (BOOL finished, int count))block;
 +(void)isUserFollowingUser:(PFUser*)user completion:(void (^) (BOOL finished, BOOL following))block;
 
++(void)getCommentActivityForSelfie:(PFObject*)selfie completion:(void (^)(BOOL finished, NSArray* objects))block;
++(void)commentOnSelfie:(PFObject *)selfie comment:(NSString*)comment completion:(void (^)(BOOL finished))block;
++(void)getTotalCommentsForSelfie:(PFObject*)selfie completion:(void (^)(BOOL finished, int number))block;
+
 +(void)getLikeActivityForSelfies:(NSArray*)selfies fromUser:(PFUser*)user completion:(void (^) (BOOL finished, NSArray* objects))block;
 +(void)likeSelfie:(PFObject*)selfie completion:(void (^) (BOOL finished))block;
 +(void)unlikeSelfie:(PFObject*)selfie compltion:(void (^) (BOOL finished))block;

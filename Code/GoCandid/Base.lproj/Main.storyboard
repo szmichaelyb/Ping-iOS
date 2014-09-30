@@ -1492,6 +1492,35 @@
             </objects>
             <point key="canvasLocation" x="855" y="-1627"/>
         </scene>
+        <!--Photo Detail View Controller-->
+        <scene sceneID="dAu-2G-w7J">
+            <objects>
+                <viewController restorationIdentifier="GCPhotoDetailViewController" storyboardIdentifier="GCPhotoDetailViewController" id="siN-wX-Msv" customClass="GCPhotoDetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="khj-eR-cIg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="2yR-N9-olo">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="siN-wX-Msv" id="8Pd-4g-2Pn"/>
+                                    <outlet property="delegate" destination="siN-wX-Msv" id="mUz-gE-dm9"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="2yR-N9-olo" id="Rdo-7c-rUa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ifd-Hy-Ce0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1254" y="-1627"/>
+        </scene>
     </scenes>
     <resources>
         <image name="CaptureButton-Normal" width="66" height="66"/>
