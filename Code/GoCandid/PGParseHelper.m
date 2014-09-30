@@ -159,6 +159,11 @@
     commentActivity.ACL = commentACL;
     
     [commentActivity saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        PFUser* user = selfie[kPFSelfie_Owner];
+        if (![user.objectId isEqualToString:[PFUser currentUser].objectId]) {
+            NSString* pushMessage = [NSString stringWithFormat:@"%@ commented on your post.", [PFUser currentUser][kPFUser_Name]];
+            [PGParseHelper sendPushToUsers:@[user] pushText:pushMessage];
+        }
         block(succeeded);
     }];
 }
