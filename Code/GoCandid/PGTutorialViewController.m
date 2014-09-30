@@ -79,7 +79,7 @@
     if ([PFUser currentUser] != NULL) {
         [self setMainView];
     }
-	// Do any additional setup after loading the view, typically from a nib.
+    // Do any additional setup after loading the view, typically from a nib.
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -118,7 +118,7 @@
     [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page2IV1 page:0 keyPath:@"alpha" fromValue:@0 toValue:@1 delay:0.75]];
     [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page3IV1 page:0 keyPath:@"alpha" fromValue:@0 toValue:@1 delay:0.75]];
     //    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page2IV1 page:1 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.page2IV1.center.x + self.slideShow.frame.size.width, self.page2IV1.center.y)] delay:0]];
-//    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page2Label1 page:1 keyPath:@"transform" fromValue:[NSValue valueWithCGAffineTransform:CGAffineTransformMakeRotation(-0.9)] toValue:[NSValue valueWithCGAffineTransform:CGAffineTransformMakeRotation(0)] delay:0]];
+    //    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page2Label1 page:1 keyPath:@"transform" fromValue:[NSValue valueWithCGAffineTransform:CGAffineTransformMakeRotation(-0.9)] toValue:[NSValue valueWithCGAffineTransform:CGAffineTransformMakeRotation(0)] delay:0]];
     //    [self.slideShow addAnimation:[DRDynamicSlideShowAnimation animationForSubview:self.page2Label1 page:2 keyPath:@"center" toValue:[NSValue valueWithCGPoint:CGPointMake(self.page2Label1.center.x + self.slideShow.frame.size.width, 300)] delay:0]];
     
 #pragma mark Page 2
@@ -149,31 +149,32 @@
 -(void)setMainView
 {
     //Register for Push Notifications, if running iOS 8
+#warning Test push notification for iOS 8 actions. Specially follow button.
     if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
         
-    UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
-
-    UIMutableUserNotificationAction* followBackAction = [[UIMutableUserNotificationAction alloc] init];
-    followBackAction.identifier = @"follow_back";
-    followBackAction.title = @"Follow";
-    
-    followBackAction.activationMode = UIUserNotificationActivationModeBackground;
-    
-    followBackAction.destructive = NO;
-    
-    followBackAction.authenticationRequired = NO;
-    
-    UIMutableUserNotificationCategory* followCat = [[UIMutableUserNotificationCategory alloc] init];
-    followCat.identifier = @"follow";
-    [followCat setActions:@[followBackAction] forContext:UIUserNotificationActionContextDefault];
+        UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
         
-    NSSet* cate = [NSSet setWithObjects:followCat, nil];
-    
-    UIUserNotificationSettings* mySettings = [UIUserNotificationSettings settingsForTypes:types categories:cate];
-    
-    [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
-    [[UIApplication sharedApplication] registerForRemoteNotifications];
-    
+        UIMutableUserNotificationAction* followBackAction = [[UIMutableUserNotificationAction alloc] init];
+        followBackAction.identifier = @"follow_back";
+        followBackAction.title = @"Follow";
+        
+        followBackAction.activationMode = UIUserNotificationActivationModeBackground;
+        
+        followBackAction.destructive = NO;
+        
+        followBackAction.authenticationRequired = NO;
+        
+        UIMutableUserNotificationCategory* followCat = [[UIMutableUserNotificationCategory alloc] init];
+        followCat.identifier = @"follow";
+        [followCat setActions:@[followBackAction] forContext:UIUserNotificationActionContextDefault];
+        
+        NSSet* cate = [NSSet setWithObjects:followCat, nil];
+        
+        UIUserNotificationSettings* mySettings = [UIUserNotificationSettings settingsForTypes:types categories:cate];
+        
+        [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+        
     } else {
         //Register for Push Notificatios before iOS 8
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
@@ -253,7 +254,7 @@
             }];
         } else if (buttonIndex == 2) {
             //Read Terms
-        
+            
             WebViewController* webViewContr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"WebViewController"];
             webViewContr.title = @"Terms of Use";
             webViewContr.url = [NSURL URLWithString:@"http://appikon.com/GoCandid/ToS.html"];
@@ -295,6 +296,9 @@
     NSDictionary* params = @{@"name":name, @"toEmail":email};
     [PFCloud callFunctionInBackground:@"sendWelcomeEmail" withParameters:params block:^(id object, NSError *error) {
         DLog(@"Sent welcome Email");
+        if (error) {
+            [GAI trackEventWithCategory:@"welcomeEmail" action:@"error" label:error.localizedDescription value:nil];
+        }
     }];
 }
 
@@ -304,6 +308,9 @@
     NSDictionary* params = @{@"email":email};
     [PFCloud callFunctionInBackground:@"subscribeToList" withParameters:params block:^(id object, NSError *error) {
         DLog(@"%@", object);
+        if (error) {
+            [GAI trackEventWithCategory:@"subscibeToList" action:@"errorOccured" label:error.localizedDescription value:nil];
+        }
     }];
 }
 
