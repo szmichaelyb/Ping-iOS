@@ -14,7 +14,7 @@
 #import "AVCamPreviewView.h"
 
 #import "GCReviewViewController.h"
-#import "UIView+Animate.h"
+#import "UIView+MyCategory.h"
 #import <DZNPhotoPickerController.h>
 #import "UIImagePickerControllerExtended.h"
 
@@ -181,6 +181,7 @@ static float kDefaultCaptureDelay = 1.5f;
 //    self.captureButton.cornerRadius = self.captureButton.frame.size.width/2;
 //    self.captureButton.rippleFromTapLocation = NO;
     self.manualButton.titleLabel.font = FONT_OPENSANS_CONDLIGHT(FONT_SIZE_SMALL);
+    
 }
 
 //-(BOOL)prefersStatusBarHidden

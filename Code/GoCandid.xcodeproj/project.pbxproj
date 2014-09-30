@@ -60,7 +60,7 @@
 		06DCBD03196F063400E8C9B2 /* PGFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBD02196F063400E8C9B2 /* PGFeedViewController.m */; };
 		06DCBD06196F07C500E8C9B2 /* PGFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBD05196F07C500E8C9B2 /* PGFeedTableViewCell.m */; };
 		06DCBD09196F2A5900E8C9B2 /* UIViewController+Transitions.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBD08196F2A5900E8C9B2 /* UIViewController+Transitions.m */; };
-		06DCBD0C196F2E0500E8C9B2 /* UIView+Animate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBD0B196F2E0500E8C9B2 /* UIView+Animate.m */; };
+		06DCBD0C196F2E0500E8C9B2 /* UIView+MyCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBD0B196F2E0500E8C9B2 /* UIView+MyCategory.m */; };
 		06DCBD12196F404C00E8C9B2 /* SettingsShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06DCBD0D196F404C00E8C9B2 /* SettingsShareView.xib */; };
 		06DCBD13196F404C00E8C9B2 /* PGSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBD0F196F404C00E8C9B2 /* PGSettingsViewController.m */; };
 		06DCBD14196F404C00E8C9B2 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DCBD11196F404C00E8C9B2 /* WebViewController.m */; };
@@ -176,8 +176,8 @@
 		06DCBD05196F07C500E8C9B2 /* PGFeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGFeedTableViewCell.m; sourceTree = "<group>"; };
 		06DCBD07196F2A5900E8C9B2 /* UIViewController+Transitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Transitions.h"; sourceTree = "<group>"; };
 		06DCBD08196F2A5900E8C9B2 /* UIViewController+Transitions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "UIViewController+Transitions.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		06DCBD0A196F2E0400E8C9B2 /* UIView+Animate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Animate.h"; sourceTree = "<group>"; };
-		06DCBD0B196F2E0500E8C9B2 /* UIView+Animate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "UIView+Animate.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		06DCBD0A196F2E0400E8C9B2 /* UIView+MyCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MyCategory.h"; sourceTree = "<group>"; };
+		06DCBD0B196F2E0500E8C9B2 /* UIView+MyCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "UIView+MyCategory.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		06DCBD0D196F404C00E8C9B2 /* SettingsShareView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsShareView.xib; sourceTree = "<group>"; };
 		06DCBD0E196F404C00E8C9B2 /* PGSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSettingsViewController.h; sourceTree = "<group>"; };
 		06DCBD0F196F404C00E8C9B2 /* PGSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSettingsViewController.m; sourceTree = "<group>"; };
@@ -492,8 +492,8 @@
 			children = (
 				06DCBD07196F2A5900E8C9B2 /* UIViewController+Transitions.h */,
 				06DCBD08196F2A5900E8C9B2 /* UIViewController+Transitions.m */,
-				06DCBD0A196F2E0400E8C9B2 /* UIView+Animate.h */,
-				06DCBD0B196F2E0500E8C9B2 /* UIView+Animate.m */,
+				06DCBD0A196F2E0400E8C9B2 /* UIView+MyCategory.h */,
+				06DCBD0B196F2E0500E8C9B2 /* UIView+MyCategory.m */,
 			);
 			name = Animations;
 			sourceTree = "<group>";
@@ -793,7 +793,7 @@
 				06DCBCF7196EE41800E8C9B2 /* AVCamPreviewView.m in Sources */,
 				06DCBD09196F2A5900E8C9B2 /* UIViewController+Transitions.m in Sources */,
 				068340B8197850AF007A1AEC /* PGActivityTableViewCell.m in Sources */,
-				06DCBD0C196F2E0500E8C9B2 /* UIView+Animate.m in Sources */,
+				06DCBD0C196F2E0500E8C9B2 /* UIView+MyCategory.m in Sources */,
 				06DCBD03196F063400E8C9B2 /* PGFeedViewController.m in Sources */,
 				06654AE0197DB1860014FA74 /* PGFramesButton.m in Sources */,
 				06DCBD06196F07C500E8C9B2 /* PGFeedTableViewCell.m in Sources */,

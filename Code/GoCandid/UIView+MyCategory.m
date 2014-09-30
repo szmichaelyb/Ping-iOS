@@ -6,9 +6,21 @@
 //  Copyright (c) 2014 Appikon Mobile. All rights reserved.
 //
 
-#import "UIView+Animate.h"
+#import "UIView+MyCategory.h"
 
-@implementation UIView (Animate)
+@implementation UIView (MyCategory)
+
+
+-(UIImage*)convertViewToImage
+{
+    UIGraphicsBeginImageContext(self.bounds.size);
+    [self drawViewHierarchyInRect:self.bounds afterScreenUpdates:YES];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+
 
 //-(void)springAnimate
 //{

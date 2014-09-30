@@ -8,7 +8,7 @@
 
 #import "PGPingViewController.h"
 #import "UIViewController+Transitions.h"
-#import "UIView+Animate.h"
+#import "UIView+MyCategory.h"
 #import "PGSendPingViewController.h"
 //#import <BFPaperButton/BFPaperButton.h>
 #import "GCZoomInTrasitionController.h"

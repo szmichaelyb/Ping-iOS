@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <pop/POP.h>
 
-@interface UIView (Animate)
+@interface UIView (MyCategory)
+
+-(UIImage*)convertViewToImage;
 
 //-(void)springAnimate;
 
