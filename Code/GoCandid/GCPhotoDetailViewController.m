@@ -38,12 +38,32 @@
     self.tableView.tableFooterView = footerView;
     
     [self loadObjects];
+    
+    // Register to be notified when the keyboard will be shown to scroll the view
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     // Do any additional setup after loading the view.
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)keyboardWillShow:(NSNotification*)note {
+    // Scroll the view to the comment text box
+    NSDictionary* info = [note userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    [self.tableView setContentOffset:CGPointMake(0.0f, self.tableView.contentSize.height - kbSize.height) animated:YES];
+}
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [_commentTextField resignFirstResponder];
 }
 
 -(void)configureSelfieView:(PGFeedTableViewCell*)cell
@@ -146,7 +166,6 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
-//    cell.delegate = self;
     
     [self configureCell:cell forRowAtIndexPath:indexPath];
     
@@ -156,6 +175,10 @@
 - (void)configureCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     cell.textLabel.text = _commentsDatasource[indexPath.row][kPFActivity_Content];
+    
+    [PGParseHelper profilePhotoUser:_commentsDatasource[indexPath.row][kPFActivity_FromUser] completion:^(UIImage *image) {
+        cell.imageView.image = image;
+    }];
 }
 
 -(NSString*)friendlyDateTime:(NSDate*)dateTime

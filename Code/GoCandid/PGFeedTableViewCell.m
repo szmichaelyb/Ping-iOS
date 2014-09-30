@@ -18,7 +18,7 @@
 //- (IBAction)thumbButtonClicked:(id)sender;
 - (IBAction)moreButtonClicked:(id)sender;
 - (IBAction)likeButtonClicked:(id)sender;
-- (IBAction)commentButtonClicked:(id)sender;
+//- (IBAction)commentButtonClicked:(id)sender;
 
 @end
 
@@ -106,11 +106,11 @@
     }
 }
 
--(IBAction)commentButtonClicked:(id)sender {
-    if (_delegate) {
-        [_delegate cellDidTapOnCommentButton:self];
-    }
-}
+//-(IBAction)commentButtonClicked:(id)sender {
+//    if (_delegate) {
+//        [_delegate cellDidTapOnCommentButton:self];
+//    }
+//}
 
 -(void)setLikeButtonState:(BOOL)liked
 {    
