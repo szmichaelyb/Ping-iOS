@@ -18,6 +18,7 @@
 #import <AviarySDK/AviarySDK.h>
 #import "GAI.h"
 #import <Crashlytics/Crashlytics.h>
+//#import <AppsFlyerTracker.h>
 
 @implementation PGAppDelegate
 
@@ -39,6 +40,7 @@
     //if (DEBUGMODE) {
     //  [Parse setApplicationId:@"RjjejatHY8BsqER68vg48jtr9nRv0FVAfKqryjja" clientKey:@"hTwjS9Ng9azIQoOfpQ6xeYX3Ah8mesiCWGt0gz3b"];
     //  } else {
+        
     [Parse setApplicationId:@"oLAYrU2fvZm5MTwA8z7kdtyVsJC4rSY4NiAh6yAp" clientKey:@"GMc6VRe3Op6SllEFXwm0hrDear99ptg7WuFZfiC7"];
     //    }
     

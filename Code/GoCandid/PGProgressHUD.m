@@ -8,6 +8,12 @@
 
 #import "PGProgressHUD.h"
 
+@interface PGProgressHUD()
+
+@property (nonatomic, strong) MBProgressHUD* HUD;
+
+@end
+
 @implementation PGProgressHUD
 
 + (instancetype)sharedInstance
@@ -20,27 +26,27 @@
 
 -(void)showInView:(UIView *)view withText:(NSString *)text hideAfter:(CGFloat)delay progressType:(PGProgressHUDType)progressType
 {
-    MBProgressHUD* HUD = [[MBProgressHUD alloc] initWithView:view];
-	[view addSubview:HUD];
-	
-	// The sample image is based on the work by http://www.pixelpressicons.com, http://creativecommons.org/licenses/by/2.5/ca/
-	// Make the customViews 37 by 37 pixels for best results (those are the bounds of the build-in progress indicators)
+    _HUD = [[MBProgressHUD alloc] initWithView:view];
+    [view addSubview:_HUD];
+    
+    // The sample image is based on the work by http://www.pixelpressicons.com, http://creativecommons.org/licenses/by/2.5/ca/
+    // Make the customViews 37 by 37 pixels for best results (those are the bounds of the build-in progress indicators)
     if (progressType != PGProgressHUDTypeDefault) {
         if (progressType == PGProgressHUDTypeCheck)
-            HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+            _HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
         else if (progressType == PGProgressHUDTypeError)
-            HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"error"]];
+            _HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"error"]];
         
         // Set custom view mode
-        HUD.mode = MBProgressHUDModeCustomView;
+        _HUD.mode = MBProgressHUDModeCustomView;
     }
     
-	HUD.delegate = self;
-	HUD.labelText = text;
-	
-	[HUD show:YES];
+    _HUD.delegate = self;
+    _HUD.labelText = text;
+    
+    [_HUD show:YES];
     if (delay != 0) {
-        [HUD hide:YES afterDelay:delay];
+        [_HUD hide:YES afterDelay:delay];
     }
 }
 
@@ -52,6 +58,7 @@
 -(void)hide:(BOOL)animated
 {
     [super hide:animated];
+    [_HUD hide:animated];
 }
 
 -(void)hudWasHidden:(MBProgressHUD *)hud
