@@ -14,11 +14,11 @@
 		<string>https://github.com/rishabhtayal/Ping-iOS.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Code/iOS/GoCandid.xcworkspace</string>
+	<string>Code/GoCandid.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>CDB5F452C7029FF55F0CEE72D16A665FE412D81F</key>
-		<string>../../..</string>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/rishabhtayal/Ping-iOS.git</string>
