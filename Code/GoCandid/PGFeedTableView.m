@@ -42,7 +42,7 @@
     self.nxEV_hideSeparatorLinesWheyShowingEmptyView = YES;
     self.datasource = [NSMutableArray new];
     self.likeActivityArray = [NSMutableArray new];
-//    self.commentActivityArray = [NSMutableArray new];
+    //    self.commentActivityArray = [NSMutableArray new];
 }
 
 #pragma mark -
@@ -155,16 +155,16 @@
                 
             }];
             
-//            [PGParseHelper getCommentActivityForSelfies:_datasource fromUser:[PFUser currentUser] completion:^(BOOL finished, NSArray *commentObjects) {
-//                [_commentActivityArray addObjectsFromArray:commentObjects];
-//                if (_datasource.count != objects.count) {
-//                    [self beginUpdates];
-//                    [self insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-//                    [self endUpdates];
-//                } else {
-//                    [self reloadData];
-//                }
-//            }];
+            //            [PGParseHelper getCommentActivityForSelfies:_datasource fromUser:[PFUser currentUser] completion:^(BOOL finished, NSArray *commentObjects) {
+            //                [_commentActivityArray addObjectsFromArray:commentObjects];
+            //                if (_datasource.count != objects.count) {
+            //                    [self beginUpdates];
+            //                    [self insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+            //                    [self endUpdates];
+            //                } else {
+            //                    [self reloadData];
+            //                }
+            //            }];
         }
     }];
 }
@@ -201,7 +201,15 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 430;
+    if ([[UIScreen mainScreen] bounds].size.width == 375.0f) {
+        //iPhone 6
+        return 430;
+    } else if ([[UIScreen mainScreen] bounds].size.width == 414.0f) {
+        //        iPhone 6+
+        return 510;
+    } else {
+        return 430;
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -245,7 +253,7 @@
     {
         [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
             UIImage* img = [UIImage animatedImageWithAnimatedGIFData:data];
-//        UIImage* img = [UIImage imageWithData:data];
+            //        UIImage* img = [UIImage imageWithData:data];
             [UIView transitionWithView:cell.mainIV duration:0.2f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
                 cell.mainIV.image = img;
             } completion:nil];
