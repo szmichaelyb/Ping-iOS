@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0623721219DF0D790057C458 /* libAppsFlyerLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0623721119DF0D790057C458 /* libAppsFlyerLib.a */; };
 		0628645319C8875700858903 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0628645019C8875700858903 /* Parse.framework */; };
 		0628645419C8875700858903 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0628645119C8875700858903 /* ParseFacebookUtils.framework */; };
 		0628645819C88BB700858903 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0628645719C88BB700858903 /* FacebookSDK.framework */; };
@@ -91,8 +90,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0623721019DF0D790057C458 /* AppsFlyerTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppsFlyerTracker.h; sourceTree = "<group>"; };
-		0623721119DF0D790057C458 /* libAppsFlyerLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAppsFlyerLib.a; sourceTree = "<group>"; };
 		0628645019C8875700858903 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		0628645119C8875700858903 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		0628645719C88BB700858903 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
@@ -244,7 +241,6 @@
 				0628645819C88BB700858903 /* FacebookSDK.framework in Frameworks */,
 				06DCBCBE196E2AFF00E8C9B2 /* UIKit.framework in Frameworks */,
 				06DCBCBA196E2AFF00E8C9B2 /* Foundation.framework in Frameworks */,
-				0623721219DF0D790057C458 /* libAppsFlyerLib.a in Frameworks */,
 				B4D0781A6E87400B8846C0E9 /* libPods.a in Frameworks */,
 				06D44FA219C76D46005AF8E5 /* StoreKit.framework in Frameworks */,
 			);
@@ -256,8 +252,6 @@
 		0623720F19DF0D790057C458 /* AF-iOS-SDK-v2 */ = {
 			isa = PBXGroup;
 			children = (
-				0623721019DF0D790057C458 /* AppsFlyerTracker.h */,
-				0623721119DF0D790057C458 /* libAppsFlyerLib.a */,
 			);
 			path = "AF-iOS-SDK-v2";
 			sourceTree = "<group>";
@@ -979,7 +973,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/AF-iOS-SDK-v2",
+					"$(PROJECT_DIR)",
 				);
 				OTHER_CFLAGS = (
 					"$(inherited)",
@@ -1062,7 +1056,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/AF-iOS-SDK-v2",
+					"$(PROJECT_DIR)",
 				);
 				OTHER_CFLAGS = (
 					"$(inherited)",

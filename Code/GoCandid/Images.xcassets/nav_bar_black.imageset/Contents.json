@@ -2,16 +2,18 @@
   "images" : [
     {
       "idiom" : "iphone",
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "iphone",
-      "scale" : "2x",
+      "scale" : "1x",
       "filename" : "nav_bar_black.png"
     },
     {
       "idiom" : "iphone",
-      "scale" : "3x"
+      "scale" : "2x",
+      "filename" : "nav_bar_black@2x.png"
+    },
+    {
+      "idiom" : "iphone",
+      "scale" : "3x",
+      "filename" : "nav_bar_black@3x.png"
     }
   ],
   "info" : {
