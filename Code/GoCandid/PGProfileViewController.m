@@ -74,6 +74,11 @@
     }
     
     UIView* view = [[NSBundle mainBundle] loadNibNamed:@"PGProfileHeaderView" owner:self options:nil][0];
+
+    CGRect viewFrame = view.frame;
+    viewFrame.size.width = self.view.bounds.size.width;
+    view.frame = viewFrame;
+    
     PFFile* file = _profileUser[kPFUser_Picture];
     if (file) {
         _profileIV.image = [UIImage imageWithData:[file getData]];

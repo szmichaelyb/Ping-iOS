@@ -35,12 +35,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    if (DEBUGMODE) {
-        [Parse setApplicationId:@"RjjejatHY8BsqER68vg48jtr9nRv0FVAfKqryjja" clientKey:@"hTwjS9Ng9azIQoOfpQ6xeYX3Ah8mesiCWGt0gz3b"];
-    } else {
-        
+//    if (DEBUGMODE) {
+//        [Parse setApplicationId:@"RjjejatHY8BsqER68vg48jtr9nRv0FVAfKqryjja" clientKey:@"hTwjS9Ng9azIQoOfpQ6xeYX3Ah8mesiCWGt0gz3b"];
+//    } else {
+#warning remove
         [Parse setApplicationId:@"oLAYrU2fvZm5MTwA8z7kdtyVsJC4rSY4NiAh6yAp" clientKey:@"GMc6VRe3Op6SllEFXwm0hrDear99ptg7WuFZfiC7"];
-    }
+//    }
     
     [PFFacebookUtils initializeFacebook];
     
@@ -62,7 +62,22 @@
         [AFPhotoEditorCustomization usePCNStagingEnvironment:YES];
     }
     
-    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navbar"] forBarMetrics:UIBarMetricsDefault];
+    UIImage* backgroundImage;
+    if ([[UIScreen mainScreen] bounds].size.width == 375.0f) {
+        //iPhone 6
+        backgroundImage = [UIImage imageNamed:@"navbar"];
+        
+    } else if ([[UIScreen mainScreen] bounds].size.width == 414.0f) {
+        //        iPhone 6+
+        backgroundImage = [UIImage imageNamed:@"navbar-iPhone6p"];
+    } else {
+        
+        backgroundImage = [UIImage imageNamed:@"navbar"];
+    }
+    
+    UIImage* resizableBackground = [backgroundImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 82, 0, 0)];
+    [[UINavigationBar appearance] setBackgroundImage:resizableBackground forBarMetrics:UIBarMetricsDefault];
+    
     [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName,FONT_OPENSANS_CONDBOLD(FONT_SIZE_LARGE), NSFontAttributeName, nil]];
     [UINavigationBar appearance].tintColor = [UIColor whiteColor];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];

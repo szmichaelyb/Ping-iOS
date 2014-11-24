@@ -30,6 +30,23 @@
     //Remove 1px line from top
     self.tabBar.clipsToBounds = YES;
     
+    UIImage* backgroundImage;
+    
+    if ([[UIScreen mainScreen] bounds].size.width == 375.0f) {
+        //iPhone 6
+        backgroundImage = [UIImage imageNamed:@"tab_bar"];
+        
+    } else if ([[UIScreen mainScreen] bounds].size.width == 414.0f) {
+        //        iPhone 6+
+        backgroundImage = [UIImage imageNamed:@"tabbar-iPhone 6P"];
+    } else {
+        
+        backgroundImage = [UIImage imageNamed:@"tab_bar"];
+    }
+    
+    UIImage* resizableBackground = [backgroundImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 82, 0, 0)];
+    self.tabBar.backgroundImage = backgroundImage;
+
     //Remove Grey Tint
     [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
     [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"tab_selection"]];
