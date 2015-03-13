@@ -86,14 +86,7 @@ static float kDefaultCaptureDelay = 1.5f;
 {
 	[super viewDidLoad];
 	
-//    [self.navigationController setNavigationBarHidden:YES];
     self.navigationController.navigationBar.translucent = NO;
-    
-    //    if (_overalayImage) {
-    //        self.overlayImageView.image = _overalayImage;
-    //    } else {
-    //        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(clocseClicked:)];
-    //    }
     
 	// Create the AVCaptureSession
 	AVCaptureSession *session = [[AVCaptureSession alloc] init];
@@ -141,30 +134,7 @@ static float kDefaultCaptureDelay = 1.5f;
                 [(AVCaptureVideoPreviewLayer*) [[self previewView] layer] setMasksToBounds:YES];
 			});
 		}
-        //
-        //		AVCaptureDevice *audioDevice = [[AVCaptureDevice devicesWithMediaType:AVMediaTypeAudio] firstObject];
-        //		AVCaptureDeviceInput *audioDeviceInput = [AVCaptureDeviceInput deviceInputWithDevice:audioDevice error:&error];
-        //
-        //		if (error)
-        //		{
-        //			DLog(@"%@", error);
-        //		}
-        //
-        //		if ([session canAddInput:audioDeviceInput])
-        //		{
-        //			[session addInput:audioDeviceInput];
-        //		}
-        //
-        //		AVCaptureMovieFileOutput *movieFileOutput = [[AVCaptureMovieFileOutput alloc] init];
-        //		if ([session canAddOutput:movieFileOutput])
-        //		{
-        //			[session addOutput:movieFileOutput];
-        //			AVCaptureConnection *connection = [movieFileOutput connectionWithMediaType:AVMediaTypeVideo];
-        //			if ([connection isVideoStabilizationSupported])
-        //				[connection setEnablesVideoStabilizationWhenAvailable:YES];
-        //			[self setMovieFileOutput:movieFileOutput];
-        //		}
-		
+        
 		AVCaptureStillImageOutput *stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
 		if ([session canAddOutput:stillImageOutput])
 		{
@@ -252,92 +222,33 @@ static float kDefaultCaptureDelay = 1.5f;
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-	if (context == CapturingStillImageContext)
-	{
+	if (context == CapturingStillImageContext) {
 		BOOL isCapturingStillImage = [change[NSKeyValueChangeNewKey] boolValue];
 		
 		if (isCapturingStillImage)
 		{
 			[self runStillImageCaptureAnimation];
 		}
-	}
-    //	else if (context == RecordingContext)
-    //	{
-    //		BOOL isRecording = [change[NSKeyValueChangeNewKey] boolValue];
-    //
-    //		dispatch_async(dispatch_get_main_queue(), ^{
-    //			if (isRecording)
-    //			{
-    //				[[self cameraButton] setEnabled:NO];
-    //				[[self recordButton] setTitle:NSLocalizedString(@"Stop", @"Recording button stop title") forState:UIControlStateNormal];
-    //				[[self recordButton] setEnabled:YES];
-    //			}
-    //			else
-    //			{
-    //				[[self cameraButton] setEnabled:YES];
-    //				[[self recordButton] setTitle:NSLocalizedString(@"Record", @"Recording button record title") forState:UIControlStateNormal];
-    //				[[self recordButton] setEnabled:YES];
-    //			}
-    //		});
-    //	}
-	else if (context == SessionRunningAndDeviceAuthorizedContext)
-	{
+	} else if (context == SessionRunningAndDeviceAuthorizedContext) {
 		BOOL isRunning = [change[NSKeyValueChangeNewKey] boolValue];
 		
 		dispatch_async(dispatch_get_main_queue(), ^{
-			if (isRunning)
-			{
+            if (isRunning) {
 				[[self cameraButton] setEnabled:YES];
                 //				[[self recordButton] setEnabled:YES];
 				[[self stillButton] setEnabled:YES];
-			}
-			else
-			{
+			} else {
 				[[self cameraButton] setEnabled:NO];
                 //				[[self recordButton] setEnabled:NO];
 				[[self stillButton] setEnabled:NO];
 			}
 		});
-	}
-	else
-	{
+	} else {
 		[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 	}
 }
 
 #pragma mark Actions
-
-//- (IBAction)toggleMovieRecording:(id)sender
-//{
-//	[[self recordButton] setEnabled:NO];
-//
-//	dispatch_async([self sessionQueue], ^{
-//		if (![[self movieFileOutput] isRecording])
-//		{
-//			[self setLockInterfaceRotation:YES];
-//
-//			if ([[UIDevice currentDevice] isMultitaskingSupported])
-//			{
-//				// Setup background task. This is needed because the captureOutput:didFinishRecordingToOutputFileAtURL: callback is not received until AVCam returns to the foreground unless you request background execution time. This also ensures that there will be time to write the file to the assets library when AVCam is backgrounded. To conclude this background execution, -endBackgroundTask is called in -recorder:recordingDidFinishToOutputFileURL:error: after the recorded file has been saved.
-//				[self setBackgroundRecordingID:[[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:nil]];
-//			}
-//
-//			// Update the orientation on the movie file output video connection before starting recording.
-//			[[[self movieFileOutput] connectionWithMediaType:AVMediaTypeVideo] setVideoOrientation:[[(AVCaptureVideoPreviewLayer *)[[self previewView] layer] connection] videoOrientation]];
-//
-//			// Turning OFF flash for video recording
-//			[AVCamViewController setFlashMode:AVCaptureFlashModeOff forDevice:[[self videoDeviceInput] device]];
-//
-//			// Start recording to a temporary file.
-//			NSString *outputFilePath = [NSTemporaryDirectory() stringByAppendingPathComponent:[@"movie" stringByAppendingPathExtension:@"mov"]];
-//			[[self movieFileOutput] startRecordingToOutputFileURL:[NSURL fileURLWithPath:outputFilePath] recordingDelegate:self];
-//		}
-//		else
-//		{
-//			[[self movieFileOutput] stopRecording];
-//		}
-//	});
-//}
 
 - (IBAction)changeCamera:(id)sender
 {
@@ -374,8 +285,7 @@ static float kDefaultCaptureDelay = 1.5f;
 		[[self session] beginConfiguration];
 		
 		[[self session] removeInput:[self videoDeviceInput]];
-		if ([[self session] canAddInput:videoDeviceInput])
-		{
+		if ([[self session] canAddInput:videoDeviceInput]) {
             //			[[NSNotificationCenter defaultCenter] removeObserver:self name:AVCaptureDeviceSubjectAreaDidChangeNotification object:currentVideoDevice];
 			
 			[PGCamViewController setFlashMode:AVCaptureFlashModeOff forDevice:videoDevice];
@@ -383,9 +293,7 @@ static float kDefaultCaptureDelay = 1.5f;
 			
 			[[self session] addInput:videoDeviceInput];
 			[self setVideoDeviceInput:videoDeviceInput];
-		}
-		else
-		{
+		} else {
 			[[self session] addInput:[self videoDeviceInput]];
 		}
 		
