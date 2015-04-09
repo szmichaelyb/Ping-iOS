@@ -64,7 +64,7 @@
     //
     //    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LogoNavigationBar.png"]];
     
-    self.tableView.nxEV_hideSeparatorLinesWheyShowingEmptyView = YES;
+    self.tableView.nxEV_hideSeparatorLinesWhenShowingEmptyView = YES;
     UILabel* label = [[UILabel alloc] initWithFrame:self.view.frame];
     label.textAlignment = NSTextAlignmentCenter;
     label.text = @"No activity yet.";

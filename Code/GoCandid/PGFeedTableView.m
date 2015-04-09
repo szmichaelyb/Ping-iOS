@@ -39,7 +39,7 @@
     self.delegate = self;
     self.dataSource = self;
     self.showsVerticalScrollIndicator = NO;
-    self.nxEV_hideSeparatorLinesWheyShowingEmptyView = YES;
+    self.nxEV_hideSeparatorLinesWhenShowingEmptyView = YES;
     self.datasource = [NSMutableArray new];
     self.likeActivityArray = [NSMutableArray new];
     //    self.commentActivityArray = [NSMutableArray new];
